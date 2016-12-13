@@ -28,5 +28,8 @@
         <item name="android:gravity">center</item>
     </style>
 
+    <style name="activity_contact_us">
+
+    </style>
 
 </resources>

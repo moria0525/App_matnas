@@ -12,11 +12,20 @@
     </item>
     <item
         is-multidex="true"
+        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-25.0.1_28b26dce19d698229dca2046e8b2a2383b7e0852\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="5fd77b862fbd9ea15fdb486a2d497cb2278e6775">
+        sha1="211293d09cdc0dc6946dfc46f1251727926dcfcf">
         <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_967707feda17076ec459decb4349a5d094cbe167\classes.dex" />
     </item>
     <item
@@ -30,66 +39,21 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\jars\libs\internal_impl-25.0.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="c5b7145fb34779b6639147b8f2f8dd77c0db771b">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.1_9359286c0416b1ca1d30261556e6eb521fe5775c\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="bc7e99e8d0fc279a05aa91378530f467ad62d443">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-25.0.1_3e50c5aec9c9f8a8d3f77ffe2e2c762f5a12fd66\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="b24e1c688744078e1fa833ffadf696794761bbe5">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-25.0.1_46d0f7d981db02efd2f63a84617a2014141ec6e0\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="ac546985528c179f507172cd4eb5398a4100dbc3">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_ec64e175f934cd606483c90c785a1450bba26db0\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\jars\libs\internal_impl-25.0.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="f83b00041ecfba705603fec40363416c7de69719">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.1_c24fd11f5fe4df3f37a7a6f40f93b1e856250b36\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-25.0.1_28b26dce19d698229dca2046e8b2a2383b7e0852\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.0.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
         sha1="772bed2d992b67b9d0327f766cc95cd63031dcd3">
         <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-25.0.1_19550875dd1cffc1d030c9031a2ae315a3be4a9c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="c5b7145fb34779b6639147b8f2f8dd77c0db771b">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.1_9359286c0416b1ca1d30261556e6eb521fe5775c\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -120,6 +84,15 @@
     </item>
     <item
         is-multidex="true"
+        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="bc7e99e8d0fc279a05aa91378530f467ad62d443">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-25.0.1_3e50c5aec9c9f8a8d3f77ffe2e2c762f5a12fd66\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.1\jars\libs\internal_impl-25.0.1.jar"
         jumboMode="true"
         optimize="true"
@@ -129,12 +102,39 @@
     </item>
     <item
         is-multidex="true"
+        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="b24e1c688744078e1fa833ffadf696794761bbe5">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-25.0.1_46d0f7d981db02efd2f63a84617a2014141ec6e0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="0f7f8f137f9027c7e33e48d2e57b0597e3a47528">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_ec64e175f934cd606483c90c785a1450bba26db0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
         sha1="00d4c8eebf2b681073c72a26bd0849549e51c7cb">
         <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-25.0.1_509039bf315167e56e6d6d0029ecc9e3113f4e88\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="f83b00041ecfba705603fec40363416c7de69719">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.1_c24fd11f5fe4df3f37a7a6f40f93b1e856250b36\classes.dex" />
     </item>
     <item
         is-multidex="true"

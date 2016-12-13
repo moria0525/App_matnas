@@ -1,17 +1,24 @@
 <resources>
+
+    <!--Home Screen Top-->
     <string name="app_name">מרכז קהילתי פאני קפלן פת</string>
     <string name="welcome">ברוכים הבאים</string>
 
+    <!--Home Screen Icons-->
     <string name="text_about">אודות</string>
     <string name="text_messages">הודעות</string>
     <string name="text_events">לוח אירועים</string>
-
     <string name="text_projects">פרוייקטים</string>
     <string name="text_hobbies">חוגים</string>
     <string name="text_workshops">סדנאות</string>
-
     <string name="text_team">צוות המרכז</string>
     <string name="text_gallery">גלריית תמונות</string>
     <string name="text_contactus">צור קשר</string>
+
+
+    <!--ContactUs Screen Icons -->
+    <string name="contactUs_title">צור קשר</string>
+    <string name="contactus_address">כתובת: \r\n מוריס פישר 20 \r\n שכונת פת \r\n ירושלים</string>
+
 
 </resources>
