@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackgroundHome"
+    tools:context="com.example.user.app_matnas.MainActivity">
+
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@mipmap/logo" />
+
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:layout_below="@+id/help"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
+        android:gravity="center"
+        android:text="@string/welcome"
+        android:textAlignment="center"
+        android:textSize="20dp" />
+
+
+    <ImageButton
+        android:id="@+id/messages"
+        style="@style/imageButtonInHomePage"
+        android:layout_below="@+id/welcome"
+        android:layout_centerHorizontal="true"
+        android:foregroundGravity="center"
+        app:srcCompat="@drawable/messages" />
+
+    <TextView
+        android:id="@+id/text_messages"
+        style="textImageButtonHomePage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/messages"
+        android:layout_alignLeft="@+id/messages"
+        android:layout_alignRight="@+id/messages"
+        android:layout_alignStart="@+id/messages"
+        android:layout_below="@+id/messages"
+        android:gravity="center"
+        android:text="@string/text_messages" />
+
+    <ImageButton
+        android:id="@+id/projects"
+        style="@style/imageButtonInHomePage"
+        android:layout_alignLeft="@+id/about"
+        android:layout_alignStart="@+id/about"
+        android:layout_alignTop="@+id/hobbies"
+        app:srcCompat="@drawable/projects" />
+
+
+    <TextView
+        android:id="@+id/text_projects"
+        style="@style/textImageButtonHomePage"
+        android:layout_alignEnd="@+id/projects"
+        android:layout_alignRight="@+id/projects"
+        android:layout_below="@+id/projects"
+        android:text="@string/text_projects" />
+
+
+    <ImageButton
+        android:id="@+id/hobbies"
+        style="@style/imageButtonInHomePage"
+        android:layout_alignEnd="@+id/messages"
+        android:layout_alignLeft="@+id/messages"
+        android:layout_alignRight="@+id/messages"
+        android:layout_below="@+id/text_messages"
+        android:layout_marginTop="13dp"
+        app:srcCompat="@drawable/hobbies" />
+
+
+    <TextView
+        android:id="@+id/text_hobbies"
+        style="@style/textImageButtonHomePage"
+        android:layout_alignEnd="@+id/text_messages"
+        android:layout_alignLeft="@+id/hobbies"
+        android:layout_alignRight="@+id/text_messages"
+        android:layout_alignStart="@+id/hobbies"
+        android:layout_below="@+id/hobbies"
+        android:text="@string/text_hobbies" />
+
+
+    <ImageButton
+        android:id="@+id/workshops"
+        style="@style/imageButtonInHomePage"
+        android:layout_alignLeft="@+id/events"
+        android:layout_alignStart="@+id/events"
+        android:layout_alignTop="@+id/hobbies"
+        app:srcCompat="@drawable/workshops" />
+
+    <TextView
+        android:id="@+id/text_workshops"
+        style="@style/textImageButtonHomePage"
+        android:layout_alignEnd="@+id/workshops"
+        android:layout_alignLeft="@+id/workshops"
+        android:layout_alignRight="@+id/workshops"
+        android:layout_alignStart="@+id/workshops"
+        android:layout_below="@+id/workshops"
+        android:text="@string/text_workshops" />
+
+    <ImageButton
+        android:id="@+id/team"
+        style="@style/imageButtonInHomePage"
+        android:layout_above="@+id/text_gallery"
+        android:layout_alignEnd="@+id/text_projects"
+        android:layout_alignRight="@+id/text_projects"
+        app:srcCompat="@drawable/team" />
+
+    <ImageButton
+        android:id="@+id/gallery"
+        style="@style/imageButtonInHomePage"
+        android:layout_alignLeft="@+id/text_hobbies"
+        android:layout_alignStart="@+id/text_hobbies"
+        android:layout_alignTop="@+id/contactus"
+        app:srcCompat="@drawable/gallery" />
+
+
+    <TextView
+        android:id="@+id/text_gallery"
+        style="@style/textImageButtonHomePage"
+        android:layout_below="@+id/gallery"
+        android:layout_centerHorizontal="true"
+        android:text="@string/text_gallery" />
+
+
+    <ImageButton
+        android:id="@+id/contactus"
+        style="@style/imageButtonInHomePage"
+        android:layout_alignLeft="@+id/text_workshops"
+        android:layout_alignStart="@+id/text_workshops"
+        android:layout_below="@+id/text_workshops"
+        android:layout_marginTop="12dp"
+        app:srcCompat="@drawable/contactus" />
+
+
+    <TextView
+        android:id="@+id/text_contactus"
+        style="@style/textImageButtonHomePage"
+        android:layout_alignEnd="@+id/contactus"
+        android:layout_alignLeft="@+id/contactus"
+        android:layout_alignRight="@+id/contactus"
+        android:layout_alignStart="@+id/contactus"
+        android:layout_below="@+id/contactus"
+        android:text="@string/text_contactus" />
+
+    <TextView
+        android:id="@+id/text_about"
+        style="textImageButtonHomePage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/about"
+        android:layout_alignLeft="@+id/text_projects"
+        android:layout_alignRight="@+id/about"
+        android:layout_alignStart="@+id/text_projects"
+        android:layout_below="@+id/about"
+        android:gravity="center"
+        android:text="@string/text_about" />
+
+    <ImageButton
+        android:id="@+id/events"
+        style="@style/imageButtonInHomePage"
+        app:srcCompat="@drawable/events"
+        android:layout_below="@+id/welcome"
+        android:layout_toRightOf="@+id/welcome"
+        android:layout_toEndOf="@+id/welcome" />
+
+    <ImageButton
+        android:id="@+id/about"
+        style="@style/imageButtonInHomePage"
+        app:srcCompat="@drawable/about"
+        android:layout_below="@+id/welcome"
+        android:layout_toLeftOf="@+id/welcome"
+        android:layout_toStartOf="@+id/welcome" />
+
+    <TextView
+        android:id="@+id/text_team"
+        style="@style/textImageButtonHomePage"
+        android:text="@string/text_team"
+        android:layout_below="@+id/team"
+        android:layout_alignRight="@+id/team"
+        android:layout_alignEnd="@+id/team" />
+
+    <TextView
+        android:id="@+id/text_events"
+        style="@style/textImageButtonHomePage"
+        android:text="@string/text_events"
+        android:layout_below="@+id/events"
+        android:layout_alignRight="@+id/events"
+        android:layout_alignEnd="@+id/events" />
+
+    <ImageView
+        android:id="@+id/manager"
+        style="@style/imageButtonIcon"
+        app:srcCompat="@drawable/manager"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/text_team"
+        android:layout_toStartOf="@+id/text_team" />
+
+    <ImageView
+        android:id="@+id/help"
+        style="@style/imageButtonIcon"
+        app:srcCompat="@drawable/help"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/events"
+        android:layout_toEndOf="@+id/events" />
+
+
+</RelativeLayout>

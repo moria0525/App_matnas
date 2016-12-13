@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">מרכז קהילתי פאני קפלן פת</string>
+    <string name="welcome">ברוכים הבאים</string>
+
+    <string name="text_about">אודות</string>
+    <string name="text_messages">הודעות</string>
+    <string name="text_events">לוח אירועים</string>
+
+    <string name="text_projects">פרוייקטים</string>
+    <string name="text_hobbies">חוגים</string>
+    <string name="text_workshops">סדנאות</string>
+
+    <string name="text_team">צוות המרכז</string>
+    <string name="text_gallery">גלריית תמונות</string>
+    <string name="text_contactus">צור קשר</string>
+
+</resources>
