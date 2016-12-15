@@ -18,7 +18,14 @@
 
     <!--ContactUs Screen Icons -->
     <string name="contactUs_title">צור קשר</string>
-    <string name="contactus_address">כתובת: \r\n מוריס פישר 20 \r\n שכונת פת \r\n ירושלים</string>
+    <string name="contactus_Taddress">כתובת: </string>
+    <string name="contactus_address">\r\n מוריס פישר 20 \r\n שכונת פת \r\n ירושלים</string>
+    <string name="form_title">כתוב לנו</string>
+    <string name="form_name">שם</string>
+    <string name="form_email">כתובת מייל</string>
+    <string name="form_phone">מספר נייד</string>
+    <string name="form_message">ההודעה שלך</string>
+    <string name="form_btn">שלח</string>
 
 
 </resources>

@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(this,activity_contactUs.class);
         startActivity(i);
     }
+
 }
 
 
