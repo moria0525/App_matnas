@@ -25,7 +25,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="8ecbbe23a2e73da145d756e75858dc36879d790e">
+        sha1="5dbdd1597ce8db8d7a7f5ee18670b9bc63dd5235">
         <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_967707feda17076ec459decb4349a5d094cbe167\classes.dex" />
     </item>
     <item
@@ -777,21 +777,21 @@
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="8308ed003522a2ee8958311afcc4cfd0470377cd">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-gcm-10.0.1_a13d3d4a25a42708cd9f7f6e33e17a6c6df79fbe.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.0"
         sha1="26c6eef571592c91f29e56fda0bac73321de0c92">
         <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-25.0.1_24d31a31ea5a80dae9d8eba154ff4b4caba549f5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\10.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="8308ed003522a2ee8958311afcc4cfd0470377cd">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-gcm-10.0.1_a13d3d4a25a42708cd9f7f6e33e17a6c6df79fbe.jar" />
     </item>
     <item
         is-multidex="true"
@@ -961,7 +961,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="4c9aa11ffb6a547e4b060e20f0ffec19c62188ad">
+        sha1="437b74ca983eb4acd05e1583e3b2724ae45668a6">
         <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_ec64e175f934cd606483c90c785a1450bba26db0\classes.dex" />
     </item>
     <item

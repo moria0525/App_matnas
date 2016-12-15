@@ -3,40 +3,72 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_contact_us"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    style="@style/general_match_parent"
     android:background="@color/colorBackgroundHome"
     tools:context="com.example.user.app_matnas.activity_contactUs">
 
+
+    <TextView
+        android:id="@+id/contactus_Taddress"
+        style="@style/contactus_Taddress"
+        android:layout_alignLeft="@+id/contactus_address"
+        android:layout_alignStart="@+id/contactus_address"
+        android:text="@string/contactus_Taddress" />
+
+    <TextView
+        android:id="@+id/contactus_address"
+        style="@style/contactus_address"
+        android:layout_toLeftOf="@+id/map"
+        android:layout_toStartOf="@+id/map"
+        android:text="@string/contactus_address" />
+
     <fragment
         android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        style="@style/map"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
         android:layout_marginEnd="12dp"
         android:layout_marginRight="12dp"
         android:layout_marginTop="24dp" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:id="@+id/form_layout"
+        style="@style/general_match_parent"
         android:layout_below="@+id/map"
         android:orientation="vertical"
         android:weightSum="1">
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:id="@+id/form_layout_internal"
+            style="@style/general_match_parent">
+
+
+            <TextView
+                android:id="@+id/form_title"
+                style="@style/form_title"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:text="@string/form_title" />
+
+
+            <EditText
+                android:id="@+id/form_name"
+                style="@style/form_fields"
+                android:layout_width="131dp"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/form_title"
+                android:layout_alignStart="@+id/form_title"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:hint="@string/form_name"
+                android:inputType="textPersonName" />
 
 
             <EditText
                 android:id="@+id/form_phone"
-                android:layout_width="131dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/form_title"
+                style="@style/form_fields"
                 android:layout_marginLeft="31dp"
                 android:layout_marginStart="31dp"
                 android:layout_toEndOf="@+id/form_name"
@@ -45,86 +77,34 @@
                 android:hint="@string/form_phone"
                 android:inputType="phone" />
 
-            <TextView
-                android:id="@+id/form_title"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="16dp"
-                android:layout_marginStart="16dp"
-                android:backgroundTint="@color/colorPrimaryDark"
-                android:text="@string/form_title"
-                android:textSize="30dp"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/form_name"
-                android:layout_width="131dp"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/form_title"
-                android:layout_alignStart="@+id/form_title"
-                android:layout_below="@+id/form_title"
-                android:backgroundTint="@color/colorPrimaryDark"
-                android:hint="@string/form_name"
-                android:inputType="textPersonName" />
-
-            <Button
-                android:id="@+id/form_btn"
-                android:layout_width="100dp"
-                android:layout_height="42dp"
-                android:layout_alignBaseline="@+id/form_message"
-                android:layout_alignBottom="@+id/form_message"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginEnd="28dp"
-                android:layout_marginRight="28dp"
-                android:layout_weight="0.01"
-                android:background="@color/colorPrimaryDark"
-                android:text="@string/form_btn"
-                android:textColor="#fff" />
 
             <EditText
                 android:id="@+id/form_message"
-                android:layout_width="200dp"
-                android:layout_height="50dp"
+                style="@style/form_message"
                 android:layout_alignLeft="@+id/form_name"
                 android:layout_alignStart="@+id/form_name"
                 android:layout_below="@+id/form_phone"
                 android:backgroundTint="@color/colorPrimaryDark"
                 android:breakStrategy="balanced"
-                android:fitsSystemWindows="true"
-                android:gravity="top"
                 android:hint="@string/form_message"
-                android:inputType="textMultiLine"
-                android:padding="5dp" />
+                android:inputType="textMultiLine" />
+
+
+            <Button
+                android:id="@+id/form_btn"
+                android:layout_width="100dp"
+                android:layout_height="42dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/form_phone"
+                android:layout_marginEnd="28dp"
+                android:layout_marginRight="28dp"
+                android:layout_marginTop="15dp"
+                android:layout_weight="0.01"
+                android:background="@color/colorPrimaryDark"
+                android:text="@string/form_btn"
+                android:textColor="#fff" />
 
         </RelativeLayout>
-
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/contactus_Taddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/contactus_address"
-        android:layout_alignStart="@+id/contactus_address"
-        android:layout_alignTop="@+id/map"
-        android:text="@string/contactus_Taddress"
-        android:textSize="30dp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/contactus_address"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/contactus_Taddress"
-        android:layout_toLeftOf="@+id/map"
-        android:layout_toStartOf="@+id/map"
-        android:text="@string/contactus_address"
-        android:textSize="20dp" />
-
-
 </RelativeLayout>
-

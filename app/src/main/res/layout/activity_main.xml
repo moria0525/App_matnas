@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    style="@style/general_match_parent"
     android:background="@color/colorBackgroundHome"
     android:theme="@color/colorBackgroundHome"
     tools:context="com.example.user.app_matnas.MainActivity">
@@ -204,7 +203,7 @@
 
     <ImageView
         android:id="@+id/manager"
-        style="@style/imageButtonIcon"
+        style="@style/general_wrap_content"
         android:layout_alignParentTop="true"
         android:layout_toLeftOf="@+id/text_team"
         android:layout_toStartOf="@+id/text_team"
@@ -212,7 +211,7 @@
 
     <ImageView
         android:id="@+id/help"
-        style="@style/imageButtonIcon"
+        style="@style/general_wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="12dp"
         android:layout_marginStart="12dp"
