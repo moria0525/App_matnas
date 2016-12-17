@@ -40,71 +40,140 @@
 
         <RelativeLayout
             android:id="@+id/form_layout_internal"
-            style="@style/general_match_parent">
-
-
-            <TextView
-                android:id="@+id/form_title"
-                style="@style/form_title"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginLeft="16dp"
-                android:layout_marginStart="16dp"
-                android:backgroundTint="@color/colorPrimaryDark"
-                android:text="@string/form_title" />
-
-
-            <EditText
-                android:id="@+id/form_name"
-                style="@style/form_fields"
-                android:layout_width="131dp"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/form_title"
-                android:layout_alignStart="@+id/form_title"
-                android:backgroundTint="@color/colorPrimaryDark"
-                android:hint="@string/form_name"
-                android:inputType="textPersonName" />
-
-
-            <EditText
-                android:id="@+id/form_phone"
-                style="@style/form_fields"
-                android:layout_marginLeft="31dp"
-                android:layout_marginStart="31dp"
-                android:layout_toEndOf="@+id/form_name"
-                android:layout_toRightOf="@+id/form_name"
-                android:backgroundTint="@color/colorPrimaryDark"
-                android:hint="@string/form_phone"
-                android:inputType="phone" />
+            style="@style/general_match_parent"
+            android:layout_height="191dp"
+            android:layout_weight="0.08">
 
 
             <EditText
                 android:id="@+id/form_message"
                 style="@style/form_message"
-                android:layout_alignLeft="@+id/form_name"
-                android:layout_alignStart="@+id/form_name"
-                android:layout_below="@+id/form_phone"
                 android:backgroundTint="@color/colorPrimaryDark"
                 android:breakStrategy="balanced"
                 android:hint="@string/form_message"
-                android:inputType="textMultiLine" />
-
+                android:inputType="textMultiLine"
+                android:layout_alignParentBottom="true"
+                android:layout_alignLeft="@+id/form_name"
+                android:layout_alignStart="@+id/form_name" />
 
             <Button
                 android:id="@+id/form_btn"
                 android:layout_width="100dp"
                 android:layout_height="42dp"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/form_phone"
-                android:layout_marginEnd="28dp"
-                android:layout_marginRight="28dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginEnd="29dp"
+                android:layout_marginRight="29dp"
+                android:layout_marginTop="12dp"
                 android:layout_weight="0.01"
                 android:background="@color/colorPrimaryDark"
                 android:text="@string/form_btn"
-                android:textColor="#fff" />
+                android:textColor="#fff"
+                android:layout_alignTop="@+id/form_message"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+            <EditText
+                android:id="@+id/form_name"
+                style="@style/form_fields"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:hint="@string/form_name"
+                android:inputType="textPersonName"
+                android:layout_above="@+id/form_btn"
+                android:layout_alignLeft="@+id/form_title"
+                android:layout_alignStart="@+id/form_title" />
+
+            <EditText
+                android:id="@+id/form_phone"
+                style="@style/form_fields"
+                android:layout_marginLeft="34dp"
+                android:layout_marginStart="34dp"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:hint="@string/form_phone"
+                android:inputType="phone"
+                android:layout_above="@+id/form_message"
+                android:layout_toRightOf="@+id/form_name"
+                android:layout_toEndOf="@+id/form_name" />
+
+            <TextView
+                android:id="@+id/form_title"
+                style="@style/form_title"
+                android:layout_marginLeft="18dp"
+                android:layout_marginStart="18dp"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:text="@string/form_title"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="15dp" />
 
         </RelativeLayout>
+
+
     </LinearLayout>
+
+    <RelativeLayout
+        style="@style/general_match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/map"
+        android:layout_marginTop="211dp">
+
+
+        <ImageButton
+            android:id="@+id/social_media_mail"
+            style="@style/social_media"
+            android:layout_alignTop="@+id/social_media_facebook"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_toLeftOf="@+id/social_media_phone"
+            android:layout_toStartOf="@+id/social_media_phone"
+            android:onClick="onClickMail"
+            android:src="@mipmap/social_media_mail" />
+
+        <ImageButton
+            android:id="@+id/social_media_facebook"
+            style="@style/social_media"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_toLeftOf="@+id/social_media_mail"
+            android:layout_toStartOf="@+id/social_media_mail"
+            android:onClick="onClickFacebook"
+            android:src="@mipmap/social_media_facebook" />
+
+        <ImageButton
+            android:id="@+id/social_media_phone"
+            style="@style/social_media"
+            android:layout_alignTop="@+id/social_media_mail"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_toLeftOf="@+id/social_media_whatsapp"
+            android:layout_toStartOf="@+id/social_media_whatsapp"
+            android:onClick="onClickPhone"
+            android:src="@mipmap/social_media_phone" />
+
+        <ImageButton
+            android:id="@+id/social_media_facebook_messenger"
+            style="@style/social_media"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/social_media_whatsapp"
+            android:layout_marginEnd="37dp"
+            android:layout_marginRight="16dp"
+            android:onClick="onClickFacebookMessenger"
+            android:src="@mipmap/social_media_facebook_messenger" />
+
+        <ImageButton
+            android:id="@+id/social_media_whatsapp"
+            style="@style/social_media"
+            android:layout_alignTop="@+id/social_media_phone"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_toLeftOf="@+id/social_media_facebook_messenger"
+            android:layout_toStartOf="@+id/social_media_facebook_messenger"
+            android:onClick="onClickWhatsapp"
+            android:src="@mipmap/social_media_whatsapp" />
+
+    </RelativeLayout>
+
+
 </RelativeLayout>

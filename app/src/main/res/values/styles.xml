@@ -86,15 +86,20 @@
         <item name="android:padding">5dp</item>
     </style>
 
+    <style name="social_media">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:background">@color/colorBackgroundHome</item>
+    </style>
+
+
     <!--<style name="form_btn">-->
-        <!--<item name="android:layout_weight">0.01</item>-->
-        <!--<item name="android:textColor">#fff</item>-->
-        <!--<item name="android:layout_alignBaseline">@+id/form_message</item>-->
-        <!--<item name="android:layout_alignBottom">@+id/form_message</item>-->
+    <!--<item name="android:layout_weight">0.01</item>-->
+    <!--<item name="android:textColor">#fff</item>-->
+    <!--<item name="android:layout_alignBaseline">@+id/form_message</item>-->
+    <!--<item name="android:layout_alignBottom">@+id/form_message</item>-->
     <!--</style>-->
 
-
     <!---->
-
 
 </resources>
