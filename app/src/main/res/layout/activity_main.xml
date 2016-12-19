@@ -207,7 +207,8 @@
         android:layout_alignParentTop="true"
         android:layout_toLeftOf="@+id/text_team"
         android:layout_toStartOf="@+id/text_team"
-        app:srcCompat="@drawable/manager" />
+        app:srcCompat="@drawable/manager"
+        android:onClick="onClickManagerIcon"/>
 
     <ImageView
         android:id="@+id/help"

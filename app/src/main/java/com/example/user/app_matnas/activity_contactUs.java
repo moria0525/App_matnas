@@ -38,8 +38,7 @@ public class activity_contactUs extends FragmentActivity implements OnMapReadyCa
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LocationMatnas, zoomLevel));
     }
 
-    public void onClickMail(View view)
-    {
+    public void onClickMail(View view) {
         Uri uri = Uri.parse("mailto:matnaspat@fannykaplan.org");
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
@@ -47,24 +46,21 @@ public class activity_contactUs extends FragmentActivity implements OnMapReadyCa
     }
 
 
-    public void onClickFacebook(View view)
-    {
+    public void onClickFacebook(View view) {
         Uri uri = Uri.parse("http://m.facebook.com/matnaspat");
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
 
     }
 
-    public void onClickWhatsapp(View view)
-    {
+    public void onClickWhatsapp(View view) {
         Uri uri = Uri.parse("https://chat.whatsapp.com/EvtmaQvQRQc9WLMjwd9ihv");
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
 
     }
 
-    public void onClickPhone(View view)
-    {
+    public void onClickPhone(View view) {
         Intent intent = new Intent(Intent.ACTION_CALL);
         intent.setData(Uri.parse("tel:026782858"));
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -72,9 +68,8 @@ public class activity_contactUs extends FragmentActivity implements OnMapReadyCa
 
     }
 
-    public void onClickFacebookMessenger(View view)
-    {
-        Uri uri = Uri.parse("http://m.me/matnaspat"); // missing 'http://' will cause crashed
+    public void onClickFacebookMessenger(View view) {
+        Uri uri = Uri.parse("http://m.me/matnaspat");
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
 
