@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -13,7 +14,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class activity_contactUs extends FragmentActivity implements OnMapReadyCallback {
+public class activity_contactUs extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private float zoomLevel = 17;

@@ -183,7 +183,8 @@
         android:layout_below="@+id/welcome"
         android:layout_toLeftOf="@+id/welcome"
         android:layout_toStartOf="@+id/welcome"
-        app:srcCompat="@drawable/about" />
+        app:srcCompat="@drawable/about"
+        android:onClick="onClickAboutIcon"/>
 
     <TextView
         android:id="@+id/text_team"

@@ -28,10 +28,14 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".activity_contactUs" />
+        <activity android:name=".activity_contactUs"
+            android:label="@string/text_contactus"/>
         <activity
             android:name=".activity_loginManager"
-            android:label="@string/bar_manager"></activity>
+            android:label="@string/bar_manager" />
+        <activity android:name=".activity_about"
+            android:label="@string/text_about" />
+
     </application>
 
 </manifest>
