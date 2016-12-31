@@ -35,6 +35,17 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void onClickEventsIcon(View view)
+    {
+        Intent i= new Intent(this,activity_events.class);
+        startActivity(i);
+    }
+    public void onClickGalleryIcon(View view)
+    {
+        Intent i= new Intent(this,activity_gallery.class);
+        startActivity(i);
+    }
+
 }
 
 

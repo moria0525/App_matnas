@@ -123,7 +123,8 @@
         android:layout_alignLeft="@+id/text_hobbies"
         android:layout_alignStart="@+id/text_hobbies"
         android:layout_alignTop="@+id/contactus"
-        app:srcCompat="@drawable/gallery" />
+        app:srcCompat="@drawable/gallery"
+        android:onClick="onClickGalleryIcon"/>
 
 
     <TextView
@@ -175,7 +176,8 @@
         android:layout_below="@+id/welcome"
         android:layout_toEndOf="@+id/welcome"
         android:layout_toRightOf="@+id/welcome"
-        app:srcCompat="@drawable/events" />
+        app:srcCompat="@drawable/events"
+        android:onClick="onClickEventsIcon"/>
 
     <ImageButton
         android:id="@+id/about"
