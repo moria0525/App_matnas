@@ -12,11 +12,13 @@
 
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="false"
         android:icon="@mipmap/logo"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity_main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -32,16 +34,19 @@
             android:name=".activity_contactUs"
             android:label="@string/text_contactus" />
         <activity
-            android:name=".activity_loginManager"
-            android:label="@string/bar_manager" />
-        <activity
             android:name=".activity_about"
             android:label="@string/text_about" />
         <activity android:name=".activity_events" />
         <activity
             android:name=".activity_gallery"
             android:label="@string/text_gallery" />
-        <activity android:name=".FullImageGallery"></activity>
+        <activity android:name=".FullImageGallery" />
+        <activity
+            android:name=".activity_hobbies"
+            android:label="@string/text_hobbies" />
+        <activity
+            android:name=".activity_login_manager"
+            android:label="@string/text_manager"></activity>
     </application>
 
 </manifest>

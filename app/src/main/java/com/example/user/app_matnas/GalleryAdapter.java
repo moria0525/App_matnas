@@ -38,7 +38,7 @@ public class GalleryAdapter extends BaseAdapter {
         ImageView imageView = new ImageView(context);
         imageView.setImageResource(images[i]);
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        imageView.setLayoutParams(new GridView.LayoutParams(400,400));
+        imageView.setLayoutParams(new GridView.LayoutParams(360,360));
         return imageView;
     }
 }

@@ -12,48 +12,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.firebase\firebase-storage-common\10.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="09cf6aa1390f95157e8295d02be7868f568825fc">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-storage-common-10.0.1_4784bacc57a841ce4f2fa9273a4aeb427026d503\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-auth\10.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="e2185aff89caeb337b1ffc36d5e525d8318e7cfe">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-auth-10.0.1_3cf77fb723fcf3de21d74d6d07e2b70b4fa40f57\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\jars\libs\internal_impl-25.0.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="c0bd6ffb002a85b5e7cad29f8558d1cc59539679">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.1_2a3a27e7fff9334a413e7f063dfed2fcbd387b61\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="5477ecbed2971dad9b1927c3b58cb3b483578135">
+        sha1="63c948898556c72a4f282b30b148636a82f1b555">
         <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_967707feda17076ec459decb4349a5d094cbe167\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="f7ac4b327fdb9e2ee386f5adc46164927658de4b">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-25.0.1_7ab3b1ca8acfbb5af1ca982b46fa6285ff26bf27\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -84,15 +48,6 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\10.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="92c871a22463a247e8a77a9f3fd231c278788c4a">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-panorama-10.0.1_6b790346bdd90d321addc8c0973e109efafee776\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\10.0.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
@@ -102,30 +57,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="297d4bcf6ed4e747a1bf7d0d094a2d911a8d3a8e">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-25.0.1_52e8149c9cca6f2f137c007fcdf4522fe8f1de7a\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wallet\10.0.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
         sha1="2d5d113b0352ab60946fc44c518cf68fd26cbb79">
         <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-wallet-10.0.1_1bc6e907612ab5fe44341e7b78a5c9425419ca0d\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\jars\libs\internal_impl-25.0.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="c5b7145fb34779b6639147b8f2f8dd77c0db771b">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.1_9359286c0416b1ca1d30261556e6eb521fe5775c\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -147,42 +84,6 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.firebase\firebase-database\10.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="8f128aeeb7e31271b28a7adb9dac1f3a6ed9f5e7">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-database-10.0.1_9b7fda2a33ff5536c90da45bcdc43249025c7a59\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-tagmanager\10.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="971509bbe30bb7b971fc1c49d7b23d0d818830ac">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-tagmanager-10.0.1_d00d6b2a8e459f319f22c2b63d4d4921124ad8ee\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="bc7e99e8d0fc279a05aa91378530f467ad62d443">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-25.0.1_3e50c5aec9c9f8a8d3f77ffe2e2c762f5a12fd66\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="b24e1c688744078e1fa833ffadf696794761bbe5">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-25.0.1_46d0f7d981db02efd2f63a84617a2014141ec6e0\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-auth-base\10.0.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
@@ -192,39 +93,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads-lite\10.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="b955cb3a1ad6f1b6ff728ce1e0cd592c1717b440">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-ads-lite-10.0.1_9d73fd851816c8c6adee5d09cec8850401dd290f\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gass\10.0.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
         sha1="57c2eceb8548de84509d1ebc293fedec53231f6c">
         <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-gass-10.0.1_392cd0691ecc0ed24d8f4ec0c602449580437222\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\jars\libs\internal_impl-25.0.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="f83b00041ecfba705603fec40363416c7de69719">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.1_c24fd11f5fe4df3f37a7a6f40f93b1e856250b36\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\10.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="25438f55fc6d906a0e72f30b21487541430ede43">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-base-10.0.1_c230226acef58fdd10f6e628a3aa8652f9013228\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -255,48 +129,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.0.1\jars\classes.jar"
+        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.1.0\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-25.0.1_28b26dce19d698229dca2046e8b2a2383b7e0852\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.firebase\firebase-config\10.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="ffc15e965a9e8c28f24455eedd4cac215c45d1fc">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-config-10.0.1_e0d60a8bf03343668773f68960a8b92fa961e1ba\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="772bed2d992b67b9d0327f766cc95cd63031dcd3">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-25.0.1_19550875dd1cffc1d030c9031a2ae315a3be4a9c\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.firebase\firebase-common\10.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="eb0d830e3eabb9deb9ec44869cf7ac7ea1ad794c">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-common-10.0.1_d0c43d3ede7a68099f1c954e1708463e111177b6\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.firebase\firebase-auth\10.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="9cca2818594cc5348806d6662133491e7ea0fa8d">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-auth-10.0.1_66658c892df0ab09f5e93c4c0c004d98cd66ffbc\classes.dex" />
+        sha1="f02263e35e52668dd17b73bf961437e3d562b35f">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-media-compat-25.1.0_810ae6122bbb5cc8eb900b487d808c3a994653ce\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -309,39 +147,30 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\transition\25.0.1\jars\classes.jar"
+        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.1.0\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="c1b6ab157e8e12cb08b9ee82bb5e3c5d22632eb3">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-transition-25.0.1_f0220d77ed88a3bf43467e6748b25ec3139c1618\classes.dex" />
+        sha1="0a0ef86b7fa568a52bf6214a0326ca1f1d618da7">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-25.1.0_870f8e79611bcae338647ca19d42084e2f322b25\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\jars\classes.jar"
+        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.1.0\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="6a1479afe9f1b3645e1cd9a87318976893472818">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-media-compat-25.0.1_833684134a68f9ca81ac912a4a7e014b8f985bcb\classes.dex" />
+        sha1="aee64634871d88a419d59eb743c1258a60f19700">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-25.1.0_668ae602cb180813c282a9feb561d14e65ded6c0\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\10.0.1\jars\classes.jar"
+        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.1.0\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="39907d5c8f5902fffef30160ca7447c93b82405c">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-appinvite-10.0.1_fff2808518418cceab4583d1329d5a50dc32f1dc\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.firebase\firebase-storage\10.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="dd39827d2067497e60e21da48a7926000b6d4b0c">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-storage-10.0.1_49142fd5177b789480e2fe3d4d1dc9a2797b080d\classes.dex" />
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-25.1.0_dd5accd6cf77fd7f094c2e038af52cefc236cb60\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -354,24 +183,6 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\24.0.0\jars\libs\internal_impl-24.0.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="b6763651ec29b4c95e7bbe63fc393ffcc8c4c2c5">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.0.0_e73f9a0ab72e8f581afdc56be064681bf452fdb0\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\design\25.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="3b236883e0df6002cabb01ce57d00a5b1e5de610">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-25.0.1_e7311b4230b91bf4a3e43859e212056b178f82d5\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-tasks\10.0.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
@@ -381,21 +192,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\10.0.1\jars\classes.jar"
+        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\design\25.1.0\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="27777b3cad3c20b1acab19f6e37fe3e03371bf6e">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-maps-10.0.1_182bad162601d25ce8ece3091cd66841895aa028\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\palette-v7\24.0.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="734e80dffea7bd76c18ae256822a124c30d85850">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-palette-v7-24.0.0_e963d29ef47a8b30ee15c53f5a47ca5479e52e7e\classes.dex" />
+        sha1="30103d98fa5ed824b54af839c85e2111f9bde8ec">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-25.1.0_b010a2332eefc249bd629d57bf77d346ce588630\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -426,15 +228,6 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\10.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="d0460bf07cc3657e0be518ca01c174493951c6b8">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-ads-10.0.1_e4cb6ecae6e59fb1c6359f50250b2c4a00705034\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-places\10.0.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
@@ -462,30 +255,21 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\10.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="756f6297eef79784f5e356dcd4f39865028b2bd0">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-basement-10.0.1_26551217f79da5f55cd63c505c457d201a921e05\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="ee71099c2ee1266a45bee0c2da7f3cfb0753ab8d">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_ec64e175f934cd606483c90c785a1450bba26db0\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\10.0.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
         sha1="44a694d4095be84c2888764b1f7256b385c030ad">
         <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-location-10.0.1_600b9892973c622f0f63002d9bd2458dac161d9e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Moria\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.1.0\support-annotations-25.1.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="64cb6b229a8bdfd907bc8dd46839a0053e4c018d">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.1.0_40374c4e1b758e5d56b50633ee8abbabc96682ae\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -498,21 +282,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\10.0.1\jars\classes.jar"
+        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\multidex\1.0.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="4c829ff0ccfecb28a999ee46d9e75948dfc777a4">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-analytics-10.0.1_bea3eccc9ba9f4adeb311d012c8ae306558b9150\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\10.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="1e11c68fec92a17c84dd8d1dd80e74c4e67b12e2">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-games-10.0.1_48863724f52907c14dbe69cb85528653b3c9a723\classes.dex" />
+        sha1="78ea232052df889856dcb7b7b542707c89bb3bfb">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-multidex-1.0.1_bff22f6f8f3f6f2c7ae139d1a90943e663fbc68a\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -525,66 +300,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\24.0.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="b327fbe2fad414bc38cf0ce8f7efe1a38f572837">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-mediarouter-v7-24.0.0_e274cdc3f13c5fa8578564b22c7eee9eb645a3e1\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="26c6eef571592c91f29e56fda0bac73321de0c92">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-fragment-25.0.1_24d31a31ea5a80dae9d8eba154ff4b4caba549f5\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.1\jars\libs\internal_impl-25.0.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.1_89ff3f62a035ee953b94cf1043b64fa453227621\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.1\jars\libs\internal_impl-25.0.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="3af8cc51ef7088e56f132780da8c0bd858b6a6ad">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.1_deac91dc7865ed1a43ab9806fe940abd210a6c6f\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="00d4c8eebf2b681073c72a26bd0849549e51c7cb">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-25.0.1_509039bf315167e56e6d6d0029ecc9e3113f4e88\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-iid\10.0.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
         sha1="6bb5d347ebc0c6ef3c83a905222a688da5d2f7b4">
         <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-iid-10.0.1_d9bda4d880f6f89e6d593191bf84d81e36f6b46e\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.firebase\firebase-database-connection\10.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="8010ae6ed32828a145b25ec97bc07b7a83c6318f">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-database-connection-10.0.1_0c6b3798496d2d8cdb2162eebadcbbebc50ea80a\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -606,12 +327,255 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.1\jars\classes.jar"
+        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.firebase\firebase-storage-common\10.0.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="51eba4a4dd73044f90a9d58dd7ca34adbebfcf4e">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-25.0.1_d1ca4bb2ae82c6e7925342cfadb1df9bdeb2c25c\classes.dex" />
+        sha1="09cf6aa1390f95157e8295d02be7868f568825fc">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-storage-common-10.0.1_4784bacc57a841ce4f2fa9273a4aeb427026d503\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-auth\10.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e2185aff89caeb337b1ffc36d5e525d8318e7cfe">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-auth-10.0.1_3cf77fb723fcf3de21d74d6d07e2b70b4fa40f57\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\10.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="92c871a22463a247e8a77a9f3fd231c278788c4a">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-panorama-10.0.1_6b790346bdd90d321addc8c0973e109efafee776\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ca3c7aa31e2726a400a6e552b93cb9f63c9a1e6d">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-25.1.0_0699fdb5275b18fac75c80343573e82d726982a5\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.firebase\firebase-database\10.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="8f128aeeb7e31271b28a7adb9dac1f3a6ed9f5e7">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-database-10.0.1_9b7fda2a33ff5536c90da45bcdc43249025c7a59\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-tagmanager\10.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="971509bbe30bb7b971fc1c49d7b23d0d818830ac">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-tagmanager-10.0.1_d00d6b2a8e459f319f22c2b63d4d4921124ad8ee\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e79aa3d9a16f8c9f16377c0608de70a8f31e5d80">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-25.1.0_a160ebe515716517177386ce0b33f309c46f5ae2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads-lite\10.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="b955cb3a1ad6f1b6ff728ce1e0cd592c1717b440">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-ads-lite-10.0.1_9d73fd851816c8c6adee5d09cec8850401dd290f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\10.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="25438f55fc6d906a0e72f30b21487541430ede43">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-base-10.0.1_c230226acef58fdd10f6e628a3aa8652f9013228\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.firebase\firebase-config\10.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ffc15e965a9e8c28f24455eedd4cac215c45d1fc">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-config-10.0.1_e0d60a8bf03343668773f68960a8b92fa961e1ba\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.firebase\firebase-common\10.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="eb0d830e3eabb9deb9ec44869cf7ac7ea1ad794c">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-common-10.0.1_d0c43d3ede7a68099f1c954e1708463e111177b6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.firebase\firebase-auth\10.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="9cca2818594cc5348806d6662133491e7ea0fa8d">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-auth-10.0.1_66658c892df0ab09f5e93c4c0c004d98cd66ffbc\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="1630658fbc2d222b988603c27b4a4249586fbfe7">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-25.1.0_b874f8990655980a8e1d55c8c17c6d6af0193631\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="6fb6ac3e8d3b9013819920d9ea11f3803c4c0033">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-25.1.0_34e5f4b71ada46c94ba26ae64399ddc9be047e9e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\10.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="39907d5c8f5902fffef30160ca7447c93b82405c">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-appinvite-10.0.1_fff2808518418cceab4583d1329d5a50dc32f1dc\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.firebase\firebase-storage\10.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="dd39827d2067497e60e21da48a7926000b6d4b0c">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-storage-10.0.1_49142fd5177b789480e2fe3d4d1dc9a2797b080d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="b266c8faa5af72e579b9da36ef35053ffed6ac64">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-25.1.0_7a4af133752225d54f367358df7c2dd427aa4d74\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\24.0.0\jars\libs\internal_impl-24.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="b6763651ec29b4c95e7bbe63fc393ffcc8c4c2c5">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.0.0_e73f9a0ab72e8f581afdc56be064681bf452fdb0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\10.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="27777b3cad3c20b1acab19f6e37fe3e03371bf6e">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-maps-10.0.1_182bad162601d25ce8ece3091cd66841895aa028\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\palette-v7\24.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="734e80dffea7bd76c18ae256822a124c30d85850">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-palette-v7-24.0.0_e963d29ef47a8b30ee15c53f5a47ca5479e52e7e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\10.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d0460bf07cc3657e0be518ca01c174493951c6b8">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-ads-10.0.1_e4cb6ecae6e59fb1c6359f50250b2c4a00705034\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\10.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="756f6297eef79784f5e356dcd4f39865028b2bd0">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-basement-10.0.1_26551217f79da5f55cd63c505c457d201a921e05\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="b85683c4b2e0f5007457fd7c176d70cdbdad45c1">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_ec64e175f934cd606483c90c785a1450bba26db0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\10.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="4c829ff0ccfecb28a999ee46d9e75948dfc777a4">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-analytics-10.0.1_bea3eccc9ba9f4adeb311d012c8ae306558b9150\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\10.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="1e11c68fec92a17c84dd8d1dd80e74c4e67b12e2">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-games-10.0.1_48863724f52907c14dbe69cb85528653b3c9a723\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\24.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="b327fbe2fad414bc38cf0ce8f7efe1a38f572837">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-mediarouter-v7-24.0.0_e274cdc3f13c5fa8578564b22c7eee9eb645a3e1\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="2a53c4f3518116b8c6aee0e477233f0f7da8616f">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-fragment-25.1.0_a4e268d44896230da08b54cef42f74c06bf58c60\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.google.firebase\firebase-database-connection\10.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="8010ae6ed32828a145b25ec97bc07b7a83c6318f">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-database-connection-10.0.1_0c6b3798496d2d8cdb2162eebadcbbebc50ea80a\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -633,12 +597,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Moria\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.0.1\support-annotations-25.0.1.jar"
+        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\exploded-aar\com.android.support\transition\25.1.0\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="a09194311f8f89c3e6db09d79f50897a889d615e">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.0.1_4ca9be8a9623a72d44c20127da589e5e385bd626\classes.dex" />
+        sha1="d38084015027549951cbaea5d5f6fb795cc81151">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-transition-25.1.0_59038fbda2558f188fc7c5c16c12ae24f6b5129b\classes.dex" />
     </item>
 
 </items>

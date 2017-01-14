@@ -14,6 +14,7 @@
     <string name="text_team">צוות המרכז</string>
     <string name="text_gallery">גלריית תמונות</string>
     <string name="text_contactus">צור קשר</string>
+    <string name="text_help">עזרה</string>
 
 
     <!--ContactUs Screen -->
@@ -28,7 +29,7 @@
     <string name="form_btn">שלח</string>
 
     <!-- Login_Manager Screen -->
-    <string name="bar_manager">כניסת מנהל</string>
+    <string name="text_manager">כניסת מנהל</string>
     <string name="prompt_email">אימייל</string>
     <string name="prompt_password">סיסמא</string>
     <string name="action_sign_in">היכנס</string>
@@ -68,6 +69,18 @@
 
 קהילה – אירועי חגים וציון ימים לאומיים, הצגות, מופעים, הרצאות, גינה קהילתית, פסטיבל בריאות וקיימות, פרויקט בריאופת, עסקטמוני, חממה עסקית לנשים, ליווי וייצוג משפטי, השכרת אולמות וכיתות, אכסניה ליוזמות תושבים ולמפגשי הסברה, גיבוש וחשיבה ועוד.
     </string>
+
+    <string name="title_activityteam_list">Items</string>
+    <string name="title_activityteam_detail">activity_team Detail</string>
+
+    <!-- Hobbies Screen-->
+    <string name="filter">סנן</string>
+    <string name="type_prompt">בחר תחום</string>
+    <string name="age_prompt">בחר גיל</string>
+    <!---->
+    <!--<string name="title_activity_hobbies">activity_hobbies</string>-->
+    <!--<string name="action_settings">Settings</string>-->
+    <!--<string name="section_format">Hello World from section: %1$d</string>-->
 
 
 </resources>
