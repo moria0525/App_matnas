@@ -110,7 +110,7 @@ public class activity_main extends AppCompatActivity {
     }
 
     private void onClickManager() {
-        Intent intent = new Intent(activity_main.this, activity_contactUs.class);
+        Intent intent = new Intent(activity_main.this, activity_login_manager.class);
         startActivity(intent);
     }
 

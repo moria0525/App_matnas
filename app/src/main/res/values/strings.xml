@@ -32,8 +32,8 @@
     <string name="text_manager">כניסת מנהל</string>
     <string name="prompt_email">אימייל</string>
     <string name="prompt_password">סיסמא</string>
+    <string name="forget_password">שכחת סיסמא?</string>
     <string name="action_sign_in">היכנס</string>
-    <string name="action_sign_in_short">Sign in</string>
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
