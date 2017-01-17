@@ -13,7 +13,9 @@
         style="@style/contactus_Taddress"
         android:layout_alignLeft="@+id/contactus_address"
         android:layout_alignStart="@+id/contactus_address"
-        android:text="@string/contactus_Taddress" />
+        android:text="@string/contactus_Taddress"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="0dp" />
 
     <TextView
         android:id="@+id/contactus_address"
@@ -56,31 +58,6 @@
                 android:hint="@string/form_message"
                 android:inputType="textMultiLine" />
 
-            <Button
-                android:id="@+id/form_btn"
-                android:layout_width="100dp"
-                android:layout_height="42dp"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignTop="@+id/form_message"
-                android:layout_marginEnd="29dp"
-                android:layout_marginRight="29dp"
-                android:layout_marginTop="12dp"
-                android:layout_weight="0.01"
-                android:background="@color/colorPrimaryDark"
-                android:text="@string/form_btn"
-                android:textColor="#fff" />
-
-            <EditText
-                android:id="@+id/form_name"
-                style="@style/form_fields"
-                android:layout_above="@+id/form_btn"
-                android:layout_alignLeft="@+id/form_title"
-                android:layout_alignStart="@+id/form_title"
-                android:backgroundTint="@color/colorPrimaryDark"
-                android:hint="@string/form_name"
-                android:inputType="textPersonName" />
-
             <EditText
                 android:id="@+id/form_phone"
                 style="@style/form_fields"
@@ -105,6 +82,32 @@
                 android:backgroundTint="@color/colorPrimaryDark"
                 android:text="@string/form_title" />
 
+            <EditText
+                android:id="@+id/form_name"
+                style="@style/form_fields"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:hint="@string/form_name"
+                android:inputType="textPersonName"
+                android:layout_alignBaseline="@+id/form_phone"
+                android:layout_alignBottom="@+id/form_phone"
+                android:layout_alignLeft="@+id/form_title"
+                android:layout_alignStart="@+id/form_title" />
+
+            <Button
+                android:id="@+id/form_btn"
+                android:layout_width="100dp"
+                android:layout_height="42dp"
+                android:layout_weight="0.01"
+                android:background="@color/colorPrimaryDark"
+                android:text="@string/form_btn"
+                android:textColor="#fff"
+                android:layout_marginLeft="31dp"
+                android:layout_marginStart="31dp"
+                android:layout_alignParentBottom="true"
+                android:layout_toRightOf="@+id/form_message"
+                android:layout_toEndOf="@+id/form_message"
+                android:layout_marginBottom="5dp" />
+
         </RelativeLayout>
 
 
@@ -112,66 +115,73 @@
 
     <RelativeLayout
         style="@style/general_match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_marginTop="244dp"
         android:layout_below="@+id/map"
-        android:layout_marginTop="211dp">
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
 
-        <ImageButton
-            android:id="@+id/social_media_mail"
-            style="@style/social_media"
-            android:layout_alignTop="@+id/social_media_facebook"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_toLeftOf="@+id/social_media_phone"
-            android:layout_toStartOf="@+id/social_media_phone"
-            android:onClick="onClickMail"
-            android:src="@mipmap/social_media_mail" />
-
-        <ImageButton
+        <Button
             android:id="@+id/social_media_facebook"
             style="@style/social_media"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_toLeftOf="@+id/social_media_mail"
-            android:layout_toStartOf="@+id/social_media_mail"
             android:onClick="onClickFacebook"
-            android:src="@mipmap/social_media_facebook" />
+            android:background="@drawable/social_media_facebook"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="29dp"
+            android:layout_marginStart="29dp" />
 
-        <ImageButton
+        <Button
+            android:id="@+id/social_media_mail"
+            style="@style/social_media"
+            android:onClick="onClickMail"
+            android:background="@drawable/social_media_mail"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/social_media_facebook"
+            android:layout_toEndOf="@+id/social_media_facebook"
+            android:layout_marginLeft="11dp"
+            android:layout_marginStart="11dp" />
+
+        <Button
             android:id="@+id/social_media_phone"
             style="@style/social_media"
-            android:layout_alignTop="@+id/social_media_mail"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_toLeftOf="@+id/social_media_whatsapp"
-            android:layout_toStartOf="@+id/social_media_whatsapp"
             android:onClick="onClickPhone"
-            android:src="@mipmap/social_media_phone" />
+            android:background="@drawable/social_media_phone"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
 
-        <ImageButton
-            android:id="@+id/social_media_facebook_messenger"
-            style="@style/social_media"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignTop="@+id/social_media_whatsapp"
-            android:layout_marginEnd="37dp"
-            android:layout_marginRight="16dp"
-            android:onClick="onClickFacebookMessenger"
-            android:src="@mipmap/social_media_facebook_messenger" />
-
-        <ImageButton
+        <Button
             android:id="@+id/social_media_whatsapp"
             style="@style/social_media"
-            android:layout_alignTop="@+id/social_media_phone"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_toLeftOf="@+id/social_media_facebook_messenger"
-            android:layout_toStartOf="@+id/social_media_facebook_messenger"
             android:onClick="onClickWhatsapp"
-            android:src="@mipmap/social_media_whatsapp" />
+            android:background="@drawable/social_media_whatsapp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/social_media_phone"
+            android:layout_toEndOf="@+id/social_media_phone"
+            android:layout_marginLeft="18dp"
+            android:layout_marginStart="18dp" />
+
+        <Button
+            android:id="@+id/social_media_facebook_messenger"
+            style="@style/social_media"
+            android:onClick="onClickFacebookMessenger"
+            android:background="@drawable/social_media_facebook_messenger"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/social_media_whatsapp"
+            android:layout_toEndOf="@+id/social_media_whatsapp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp" />
 
     </RelativeLayout>
 
