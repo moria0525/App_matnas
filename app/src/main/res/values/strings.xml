@@ -32,7 +32,7 @@
     <string name="text_manager">כניסת מנהל</string>
     <string name="prompt_email">אימייל</string>
     <string name="prompt_password">סיסמא</string>
-    <string name="forget_password">שכחת סיסמא?</string>
+    <string name="forget_password"><u>שכחת סיסמא?</u></string>
     <string name="action_sign_in">היכנס</string>
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
@@ -41,6 +41,9 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="connect">מחובר</string>
+    <string name="not_connect">התנתק</string>
+
 
     <!-- About Screen -->
     <string name="about">
@@ -77,6 +80,32 @@
     <string name="filter">סנן</string>
     <string name="type_prompt">בחר תחום</string>
     <string name="age_prompt">בחר גיל</string>
+    <string name="hobbies_toddler">חוגים לגיל הרך</string>
+    <string name="hobbies_children">חוגים לילדים</string>
+    <string name="hobbies_women">חוגים לנשים</string>
+    <string name="hobbies_adult">חוגים למבוגרים</string>
+    <string name="hobbies_seniors">חוגים לגיל השלישי</string>
+
+    <!--<string-array name="types">-->
+    <!--<item>בחר סוג</item>-->
+    <!--<item>ספורט</item>-->
+    <!--<item>מחשבים</item>-->
+    <!--<item>השכלה</item>-->
+    <!--</string-array>-->
+
+
+    <!--<string-array name="ages">-->
+    <!--<item>בחר גיל</item>-->
+    <!--<item>הגיל הרך</item>-->
+    <!--<item>ילדים</item>-->
+    <!--<item>נשים</item>-->
+    <!--<item>מבוגרים</item>-->
+
+    <!--</string-array>-->
+
+    <!--<string name="hobbies">kfjkd</string>-->
+
+
     <!---->
     <!--<string name="title_activity_hobbies">activity_hobbies</string>-->
     <!--<string name="action_settings">Settings</string>-->

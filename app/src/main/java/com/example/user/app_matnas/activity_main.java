@@ -30,6 +30,7 @@ public class activity_main extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         nineIcon = (GridView) findViewById(R.id.activity_main);
         nineIcon.setAdapter(new MainAdapter(this, imageIDs));
 

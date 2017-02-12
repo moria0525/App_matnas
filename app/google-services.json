@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "386961459244",
+    "firebase_url": "https://app-matnas-22408.firebaseio.com",
+    "project_id": "app-matnas-22408",
+    "storage_bucket": "app-matnas-22408.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:386961459244:android:f1e41b6dba929a0b",
+        "android_client_info": {
+          "package_name": "com.example.user.app_matnas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "386961459244-hjamfvd0rn6bvvtf9as7jbc3a96437nr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPXsw0yOSADHivm7hIVVFL1U_pvNBZTF8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
