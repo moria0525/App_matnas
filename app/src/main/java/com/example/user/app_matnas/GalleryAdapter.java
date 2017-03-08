@@ -7,11 +7,16 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
 
 public class GalleryAdapter extends BaseAdapter {
 
+
     public Integer[] images = {R.drawable.gallery1, R.drawable.gallery2, R.drawable.gallery3,
             R.drawable.gallery4};
+
     private Context context;
 
     public GalleryAdapter(Context c) {

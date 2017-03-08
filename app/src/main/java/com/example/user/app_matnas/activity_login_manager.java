@@ -40,8 +40,8 @@ public class activity_login_manager extends AppCompatActivity
         // set the view now
         setContentView(R.layout.activity_login_manager);
 
-        inputEmail = (EditText) findViewById(R.id.login_email);
-        inputPassword = (EditText) findViewById(R.id.login_password);
+        inputEmail = (EditText) findViewById(R.id.email);
+        inputPassword = (EditText) findViewById(R.id.password);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         btnLogin = (Button) findViewById(R.id.btn_login);
         btnReset = (Button) findViewById(R.id.btn_reset_password);
@@ -93,7 +93,7 @@ public class activity_login_manager extends AppCompatActivity
                                         Toast.makeText(activity_login_manager.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
                                     }
                                 } else {
-                                    Intent intent = new Intent(activity_login_manager.this, activity_hobbies.class);
+                                    Intent intent = new Intent(activity_login_manager.this, ManagerScreen.class);
                                     startActivity(intent);
                                     finish();
                                 }

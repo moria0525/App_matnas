@@ -4,35 +4,24 @@ import java.util.ArrayList;
 
 import android.app.ListActivity;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
-public class activity_hobbies extends ListActivity {
+public class activity_hobbies extends AppCompatActivity
+{
+    private TabLayout tabLayout;
 
-    ArrayList<DataSource> data = new ArrayList<DataSource>();
-    String[] nameTexts = {
-            "שליחת הודעה למשתמשים", "עדכון מידע", "העלאת תמונות לגלריה", "הוספת אירוע",
-    };
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_hobbies);
 
-        setListAdapter(new HobbiesAdapter(activity_hobbies.this, R.layout.list_item, this.getAllAnimal()));
-
-    }
-
-    public ArrayList<DataSource> getAllAnimal() {
-        for (int i = 0; i < nameTexts.length; i++) {
-            data.add(new DataSource(nameTexts[i]));
-        }
-
-        return data;
     }
 }
-
 //
 //
 //    private Spinner type;

@@ -60,11 +60,11 @@ public class activity_main extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case 3:
-                intent = new Intent(activity_main.this, activity_about.class);
+                intent = new Intent(activity_main.this, ManagerScreen.class);
                 startActivity(intent);
                 break;
             case 4:
-                intent = new Intent(activity_main.this, activity_hobbies.class);
+                intent = new Intent(activity_main.this, activity_about.class);
                 startActivity(intent);
                 break;
             case 5:

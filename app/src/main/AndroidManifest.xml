@@ -47,9 +47,10 @@
             android:label="@string/text_hobbies" />
         <activity
             android:name=".activity_login_manager"
-            android:label="@string/text_manager" />
+            android:label="@string/title_activity_login" />
         <activity android:name=".activity_messages" />
-        <activity android:name=".ForgetPassword"></activity>
+        <activity android:name=".ForgetPassword" />
+        <activity android:name=".ManagerScreen" />
     </application>
 
 </manifest>

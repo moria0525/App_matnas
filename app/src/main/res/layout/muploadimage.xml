@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <EditText
+        android:id="@+id/et_name_event"
+        android:layout_width="181dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="17dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="13dp"
+        android:ems="10"
+        android:hint="שם האירוע"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/et_date_event"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/et_name_event"
+        android:layout_alignLeft="@+id/et_name_event"
+        android:layout_alignRight="@+id/et_name_event"
+        android:layout_alignStart="@+id/et_name_event"
+        android:layout_below="@+id/et_name_event"
+        android:layout_marginTop="18dp"
+        android:ems="10"
+        android:hint="בחר תאריך"
+        android:inputType="date" />
+
+    <EditText
+        android:id="@+id/et_description_event"
+        android:layout_width="181dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/et_date_event"
+        android:layout_alignStart="@+id/et_date_event"
+        android:layout_below="@+id/et_date_event"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="תיאור האירוע"
+        android:inputType="textMultiLine" />
+
+    <ImageButton
+        android:id="@+id/gallery_event"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignTop="@+id/photo_event"
+        android:layout_toEndOf="@+id/et_description_event"
+        android:layout_toRightOf="@+id/et_description_event"
+        android:background="@drawable/gallery_event" />
+
+    <TextView
+        android:id="@+id/photo_event"
+        android:layout_width="152dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/et_description_event"
+        android:layout_alignStart="@+id/et_description_event"
+        android:layout_below="@+id/et_description_event"
+        android:layout_marginTop="19dp"
+        android:text="בחר תמונות להעלאה:" />
+
+</RelativeLayout>
