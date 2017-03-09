@@ -52,7 +52,8 @@
         android:layout_alignTop="@+id/photo_event"
         android:layout_toEndOf="@+id/et_description_event"
         android:layout_toRightOf="@+id/et_description_event"
-        android:background="@drawable/gallery_event" />
+        android:background="@drawable/gallery_event"
+        android:onClick="onClickUploadPictures"/>
 
     <TextView
         android:id="@+id/photo_event"

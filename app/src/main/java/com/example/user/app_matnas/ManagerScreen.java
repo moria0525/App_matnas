@@ -1,9 +1,9 @@
 package com.example.user.app_matnas;
 
-import android.app.Dialog;
-import android.content.Context;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
@@ -14,22 +14,35 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
+import java.util.Calendar;
 
 
 public class ManagerScreen extends AppCompatActivity {
 
+    private static final int PICK_IMAGE =2 ;
     private ListView actionsList;
     private FirebaseAuth auth;
     private EditText name, date, des;
     private ImageButton gallery;
+    private StorageReference mStorage;
+    private static final int GALLERY_INTENT = 2;
+    private ProgressDialog mProgressDialog;
+    private boolean flag = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +53,8 @@ public class ManagerScreen extends AppCompatActivity {
         actionsList = (ListView) findViewById(R.id.List);
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
+        mStorage = FirebaseStorage.getInstance().getReference();
+        mProgressDialog = new ProgressDialog(this);
 
         // Defined Array values to show in ListView
         String[] values = new String[]{"העלאת תמונות לגלרייה",
@@ -123,8 +138,7 @@ public class ManagerScreen extends AppCompatActivity {
                     String s_event = name.getText().toString();
                     String s_date = date.getText().toString();
                     String s_des = des.getText().toString();
-                    if (TextUtils.isEmpty(s_event))
-                    {
+                    if (TextUtils.isEmpty(s_event)) {
                         name.setError("insert name");
                         entriesValid = false;
 
@@ -135,6 +149,12 @@ public class ManagerScreen extends AppCompatActivity {
                         des.setError("insert description");
                         entriesValid = false;
                     }
+                    else if(!flag)
+                    {
+                        Toast.makeText(getApplicationContext(),"לא נבחרו תמונות להעלאה",Toast.LENGTH_LONG).show();
+                        entriesValid = false;
+                    }
+
                 } catch (Exception e) {
                     entriesValid = false;
                 }
@@ -142,147 +162,60 @@ public class ManagerScreen extends AppCompatActivity {
                 if (entriesValid) {
                     dialog.dismiss();
                 }
-                //else dialog stays open. Make sure you have an obvious way to close the dialog especially if you set cancellable to false.
             }
         });
 
         dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 dialog.dismiss();
             }
 
-            });
+        });
 
-
-//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
-//        LayoutInflater inflater = LayoutInflater.from(this);
-//
-//        final View layoutView = inflater.inflate(R.layout.muploadimage, null);
-//        builder.setView(layoutView);
-//
-//        AlertDialog dialog = builder.create();
-//        Button button = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
-//        boolean entriesValid = true;
-//
-//        try {
-//            name = (EditText) layoutView.findViewById(R.id.et_name_event);
-//            date = (EditText) layoutView.findViewById(R.id.et_date_event);
-//            des = (EditText) layoutView.findViewById(R.id.et_description_event);
-//            gallery = (ImageButton) layoutView.findViewById(R.id.gallery_event);
-//
-//            String s_event = name.getText().toString();
-//            String s_date = date.getText().toString();
-//            String s_des = des.getText().toString();
-//
-//            if (TextUtils.isEmpty(s_event)) {
-//                Toast.makeText(getApplicationContext(), "hi!!!!!" + s_event, Toast.LENGTH_LONG).show();
-//                name.setError("הכנס שם לאירוע");
-//                entriesValid = false;
-//
-//            } else if (TextUtils.isEmpty(s_date)) {
-//                date.setError("הכנס תאריך לאירוע");
-//                entriesValid = false;
-//            } else if (TextUtils.isEmpty(s_des)) {
-//                des.setError("הכנס תיאור לאירוע");
-//                entriesValid = false;
-//            }
-//        } catch (Exception e) {
-//            entriesValid = false;
-//        }
-//
-//        if(!entriesValid) {
-//            button.setEnabled(false);
-//        }
-//        else
-//        button.setEnabled(true);
-//        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which)
-//            {
-//
-//                // get the edit text values here and pass them back via the listener
-//                try {
-//                    name = (EditText) layoutView.findViewById(R.id.et_name_event);
-//                    date = (EditText) layoutView.findViewById(R.id.et_date_event);
-//                    des = (EditText) layoutView.findViewById(R.id.et_description_event);
-//                    gallery = (ImageButton) layoutView.findViewById(R.id.gallery_event);
-//
-//                    String s_event = name.getText().toString();
-//                    String s_date = date.getText().toString();
-//                    String s_des = des.getText().toString();
-//
-//                    if (TextUtils.isEmpty(s_event)) {
-//                        Toast.makeText(getApplicationContext(), "hi!!!!!" + s_event, Toast.LENGTH_LONG).show();
-//                        name.setError("הכנס שם לאירוע");
-//                        entriesValid = false;
-//
-//                    } else if (TextUtils.isEmpty(s_date)) {
-//                        date.setError("הכנס תאריך לאירוע");
-//                        entriesValid = false;
-//                    } else if (TextUtils.isEmpty(s_des)) {
-//                        des.setError("הכנס תיאור לאירוע");
-//                        entriesValid = false;
-//                    }
-//                } catch (Exception e) {
-//                    entriesValid = false;
-//                }
-//                if (entriesValid)
-//                    dialog.dismiss();
-//            }
-        // });
-        //     dialog.show();
     }
-
-
-//        adb.setPositiveButton("אישור", new DialogInterface.OnClickListener()
-//        {
-//            public void onClick(DialogInterface dialog, int which)
-//            {
-//
-//                Dialog final_dialog = (Dialog) dialog;
-//                name = (EditText)final_dialog.findViewById(R.id.et_name_event);
-//                date = (EditText)final_dialog.findViewById(R.id.et_date_event);
-//                des = (EditText)final_dialog.findViewById(R.id.et_description_event);
-//                gallery = (ImageButton)final_dialog.findViewById(R.id.gallery_event);
-//
-//                String s_event = name.getText().toString();
-//                String s_date =  date.getText().toString();
-//                String s_des = des.getText().toString();
-//
-//                    if (s_event.length()==0)
-//                    {
-//                        Toast.makeText(getApplicationContext(),"hi!!!!!"+ s_event,Toast.LENGTH_LONG).show();
-//                        name.setError("הכנס שם לאירוע");
-//                        getCurrentFocus();
-//                    }
-//                    if (s_date.equals("")) {
-//                        date.setError("הכנס תאריך לאירוע");
-//                        getCurrentFocus();
-//                    }
-//                    if (s_des.equals("")) {
-//                        des.setError("הכנס תיאור לאירוע");
-//                        getCurrentFocus();
-//                    }
-//
-//            } });
-//
-//
-//        adb.setNegativeButton("ביטול", new DialogInterface.OnClickListener() {
-//            public void onClick(DialogInterface dialog, int which) {
-//                dialog.dismiss();
-//
-//            } });
-//        adb.show();
-//
-//
-//    }
 
     public void onClickLogOut(View v) {
         auth.signOut();
         startActivity(new Intent(ManagerScreen.this, activity_main.class));
+    }
+
+
+    public boolean onClickUploadPictures(View v)
+    {
+        flag = true;
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
+       // startActivityForResult(intent,GALLERY_INTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), GALLERY_INTENT );
+        return flag;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == GALLERY_INTENT && resultCode == RESULT_OK)
+        {
+            mProgressDialog.setMessage("Uploading...");
+            mProgressDialog.show();
+            Uri uri = data.getData();
+
+            StorageReference filepath = mStorage.child("Photos").child(uri.getLastPathSegment());
+            filepath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    Toast.makeText(getApplicationContext(),"Upload Done",Toast.LENGTH_LONG).show();
+                    mProgressDialog.dismiss();
+                    flag = true;
+                }
+            });
+        }
+        else
+        {
+            flag = false;
+        }
     }
 }
 
