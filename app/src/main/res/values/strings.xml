@@ -37,7 +37,7 @@
     <string name="send_password_reset_email">שלח איפוס סיסמא למייל</string>
 
     <string name="new_pass">סיסמא חדשה</string>
-
+    <string name="actions_manager">מה תרצה לעשות?</string>
     <string name="title_activity_login">כניסת מנהל</string>
     <string name="hint_email">אימייל</string>
     <string name="hint_password">סיסמא</string>

@@ -11,8 +11,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 public class activity_gallery extends AppCompatActivity {
+
     private GridView gv;
-    private StorageReference mStorage;
+
 
 
     @Override
@@ -30,7 +31,6 @@ public class activity_gallery extends AppCompatActivity {
                 Intent i = new Intent(getApplicationContext(),FullImageGallery.class);
                 i.putExtra("id",position);
                 startActivity(i);
-
             }
         });
 

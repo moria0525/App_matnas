@@ -2,6 +2,7 @@ package com.example.user.app_matnas;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -9,9 +10,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.content.Intent;
+import android.widget.TextView;
 
 public class activity_main extends AppCompatActivity {
 
+    private Toolbar toolbar;
+    private TextView toolBarText;
 
     private GridView nineIcon;
     public static int[] imageIDs = {
@@ -31,9 +35,13 @@ public class activity_main extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        toolbar = (Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolBarText = (TextView)findViewById(R.id.toolBarText);
+        toolBarText.setText(R.string.app_name);
+
         nineIcon = (GridView) findViewById(R.id.activity_main);
         nineIcon.setAdapter(new MainAdapter(this, imageIDs));
-
 
         nineIcon.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -43,6 +51,29 @@ public class activity_main extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.activity_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.menu_login_manager:
+                onClickManager();
+                return true;
+            case R.id.menu_help:
+                onClickHelp();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     private void iconSelect(int position) {
@@ -60,7 +91,7 @@ public class activity_main extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case 3:
-                intent = new Intent(activity_main.this, ManagerScreen.class);
+                intent = new Intent(activity_main.this,ManagerScreen.class);
                 startActivity(intent);
                 break;
             case 4:
@@ -88,27 +119,6 @@ public class activity_main extends AppCompatActivity {
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.activity_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
-        switch (item.getItemId()) {
-            case R.id.menu_login_manager:
-                onClickManager();
-                return true;
-            case R.id.menu_help:
-                onClickHelp();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
 
     private void onClickManager() {
         Intent intent = new Intent(activity_main.this, activity_login_manager.class);

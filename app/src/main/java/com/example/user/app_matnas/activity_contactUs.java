@@ -46,7 +46,6 @@ public class activity_contactUs extends AppCompatActivity implements OnMapReadyC
 
     }
 
-
     public void onClickFacebook(View view) {
         Uri uri = Uri.parse("http://m.facebook.com/matnaspat");
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);

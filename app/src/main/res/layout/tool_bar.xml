@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:theme="@style/Theme.AppCompat.NoActionBar"
+    android:background="@color/blue">
+
+
+    <TextView
+        android:id="@+id/toolBarText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="cursive"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="@color/wallet_bright_foreground_disabled_holo_light"
+        />
+
+
+</android.support.v7.widget.Toolbar>

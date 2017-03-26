@@ -1,0 +1,128 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddActivity">
+
+    <LinearLayout
+        android:id="@+id/layout_main"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:orientation="vertical">
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/tool_bar"
+            />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/et_name_activity"
+        android:layout_width="181dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:hint="שם החוג"
+        android:inputType="textPersonName"
+        android:layout_marginLeft="13dp"
+        android:layout_marginStart="13dp"
+        android:layout_below="@+id/layout_main"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Spinner
+        android:id="@+id/type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        android:layout_marginTop="17dp"
+        android:layout_below="@+id/et_name_activity"
+        android:layout_alignLeft="@+id/et_name_activity"
+        android:layout_alignStart="@+id/et_name_activity"
+        android:layout_alignRight="@+id/et_name_activity"
+        android:layout_alignEnd="@+id/et_name_activity" />
+
+    <EditText
+        android:id="@+id/et_age_activity"
+        android:layout_width="181dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="גילאים"
+        android:inputType="textPersonName"
+        android:layout_marginTop="28dp"
+        android:layout_below="@+id/type"
+        android:layout_alignRight="@+id/type"
+        android:layout_alignEnd="@+id/type" />
+
+
+    <Spinner
+        android:id="@+id/days"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        android:layout_marginTop="19dp"
+        android:layout_below="@+id/et_age_activity"
+        android:layout_alignLeft="@+id/type"
+        android:layout_alignStart="@+id/type"
+        android:layout_alignRight="@+id/et_age_activity"
+        android:layout_alignEnd="@+id/et_age_activity" />
+
+    <TableRow
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center_horizontal"
+        android:layout_below="@+id/days"
+        android:layout_marginTop="20dp"
+        android:layout_alignLeft="@+id/days"
+        android:layout_alignStart="@+id/days"
+        android:id="@+id/tableRow">
+
+        <EditText
+            android:layout_weight="1"
+            android:id="@+id/timeStart"
+            android:hint="שעת התחלה"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="time"
+
+            android:layout_above="@+id/description"
+            android:layout_alignLeft="@+id/days"
+            android:layout_alignStart="@+id/days"
+            android:layout_marginBottom="27dp"
+            android:layout_alignRight="@+id/days"
+            android:layout_alignEnd="@+id/days" />
+
+
+        <EditText
+            android:layout_weight="1"
+            android:hint="שעת סיום"
+            android:id="@+id/timeEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="time"
+            android:layout_alignBaseline="@+id/timeStart"
+            android:layout_alignBottom="@+id/timeStart"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="14dp"
+            android:layout_marginEnd="14dp"
+            android:layout_toRightOf="@+id/description"
+            android:layout_toEndOf="@+id/description" />
+
+    </TableRow>
+
+    <EditText
+        android:hint="תיאור החוג"
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:layout_below="@+id/tableRow"
+        android:layout_alignLeft="@+id/tableRow"
+        android:layout_alignStart="@+id/tableRow" />
+
+</RelativeLayout>
