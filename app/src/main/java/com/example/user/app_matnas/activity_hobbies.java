@@ -9,18 +9,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.Toast;
 
-public class activity_hobbies extends AppCompatActivity
-{
-    private TabLayout tabLayout;
+import com.google.firebase.database.DataSnapshot;
 
-
+public class activity_hobbies extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hobbies);
-
     }
+
+
+
 }
 //
 //

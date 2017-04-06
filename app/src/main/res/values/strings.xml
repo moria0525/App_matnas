@@ -28,7 +28,7 @@
     <string name="form_message">ההודעה שלך</string>
     <string name="form_btn">שלח</string>
 
-    <!-- Login_Manager Screen -->
+    <!-- Login Screen -->
     <string name="email">אימייל</string>
     <string name="minimum_password">הסיסמא קצרה מדי, הכנס 6 תווים לפחות!</string>
     <string name="auth_failed">האימות נכשל, בדוק שוב את האימייל או הסיסמא</string>
@@ -53,6 +53,27 @@
     <string name="btn_sign_out">התנתק</string>
     <string name="lbl_forgot_password">שכחת סיסמא?</string>
     <string name="forgot_password_msg">We just need your registered Email Id to sent you password reset instructions.</string>
+
+    <!--Manager Screen-->
+    <string-array name="actions">
+        <item>העלאת תמונות לגלרייה</item>
+        <item>הוספת חוג חדש</item>
+
+    </string-array>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <!-- About Screen -->
     <string name="about">
@@ -85,20 +106,81 @@
     <string name="title_activityteam_list">Items</string>
     <string name="title_activityteam_detail">activity_team Detail</string>
 
-    <!-- Hobbies Screen-->
-    <string name="filter">סנן</string>
-    <string name="type_prompt">בחר תחום</string>
-    <string name="age_prompt">בחר גיל</string>
-    <string name="hobbies_toddler">חוגים לגיל הרך</string>
-    <string name="hobbies_children">חוגים לילדים</string>
-    <string name="hobbies_women">חוגים לנשים</string>
-    <string name="hobbies_adult">חוגים למבוגרים</string>
-    <string name="hobbies_seniors">חוגים לגיל השלישי</string>
+    <!-- Activities Screen-->
+  <string-array name="itemsType">
+        <item>ילדים</item>
+        <item>נשים</item>
+        <item>מבוגרים</item>
+    </string-array>
 
+    <string-array name="itemsDays">
+        <item>ראשון</item>
+        <item>שני</item>
+        <item>שלישי</item>
+        <item>רביעי</item>
+        <item>חמישי</item>
+    </string-array>
+
+
+
+
+
+
+    <string-array name="activityDB">
+        <item>שם החוג</item>
+        <item>סוג החוג</item>
+        <item>תיאור</item>
+        <item>גיל</item>
+        <item>ימי החוג</item>
+        <item>שעת התחלה</item>
+        <item>שעת סיום</item>
+    </string-array>
+
+
+
+
+
+
+
+
+
+
+
+
+    <string-array name="error">
+        <item>חסר שם</item>
+        <item>חסר סוג</item>
+        <item>חסר גיל</item>
+        <item>חסר ימים</item>
+        <item>חסר שעת התחלה</item>
+        <item>חסר שעת סיום</item>
+        <item>חסר תיאור</item>
+    </string-array>
+    <string name="errorDialog">שים לב, חסרים השדות הבאים:</string>
+    <string name="selectType">בחר את סוג החוג</string>
+    <string name="selectDays">בחר את ימי החוג</string>
+    <string name="selectTime">בחר שעה</string>
 
     <string name="title_activity_example">Example</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
+
+
+
+    <!--dialogs-->
+    <string name="ok">אישור</string>
+    <string name="cancel">ביטול</string>
+    <string name="understand">הבנתי</string>
+    <string name="yes">כן</string>
+    <string name="no">לא</string>
+    <string name="clickCancel">האם לצאת בלי לשמור את החוג?</string>
+
+
+
+
+
+
+
 
     <!--<string-array name="types">-->
     <!--<item>בחר סוג</item>-->

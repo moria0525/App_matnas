@@ -1,50 +1,67 @@
 package com.example.user.app_matnas;
 
+import android.app.AlertDialog;
+import android.app.TimePickerDialog;
 import android.content.Context;
-import android.icu.text.SimpleDateFormat;
-import android.support.annotation.NonNull;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.text.format.DateFormat;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.CheckedTextView;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.TimePicker;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.Date;
+import java.util.Arrays;
+import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class AddActivity extends AppCompatActivity {
+
     private Context context;
     private Toolbar toolbar;
     private TextView toolBarText;
     private EditText name, age, timeStart, timeEnd, description;
-    private Spinner type, days;
-    DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+    private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+
+    private String s_type, s_days;
+    private String error;
+    private String[] AlertDialogItemsType;
+    private String[] AlertDialogItemsDays;
+    private List<String> ItemsIntoList;
+
+    private boolean[] SelectedtruefalseType = new boolean[3];
+    private boolean[] SelectedtruefalseDays = new boolean[5];
+
+    private AlertDialog.Builder alertdialogbuilder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
 
-        //init screen
+        //init screen and variables
         context = getApplicationContext();
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolBarText = (TextView) findViewById(R.id.toolBarText);
-        toolBarText.setText("הוספת חוג חדש");
+        toolBarText.setText(getResources().getStringArray(R.array.actions)[1]);
+        AlertDialogItemsType = getResources().getStringArray(R.array.itemsType);
+        AlertDialogItemsDays = getResources().getStringArray(R.array.itemsDays);
+        Arrays.fill(SelectedtruefalseType, false);
+        Arrays.fill(SelectedtruefalseDays, false);
+        s_type = "";
+        s_days = "";
 
         //find id fields
         name = (EditText) findViewById(R.id.et_name_activity);
@@ -52,10 +69,92 @@ public class AddActivity extends AppCompatActivity {
         timeStart = (EditText) findViewById(R.id.timeStart);
         timeEnd = (EditText) findViewById(R.id.timeEnd);
         description = (EditText) findViewById(R.id.description);
-        type = (Spinner) findViewById(R.id.type);
-        days = (Spinner) findViewById(R.id.days);
     }
 
+    /*Method to select types of activity*/
+    public void onClickType(View v) {
+        s_type = "";
+        alertdialogbuilder = new AlertDialog.Builder(AddActivity.this);
+
+        ItemsIntoList = Arrays.asList(AlertDialogItemsType);
+
+        alertdialogbuilder.setMultiChoiceItems(AlertDialogItemsType, SelectedtruefalseType, new DialogInterface.OnMultiChoiceClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+            }
+        });
+
+        alertdialogbuilder.setCancelable(false);
+
+        alertdialogbuilder.setTitle(getResources().getString(R.string.selectType));
+
+        alertdialogbuilder.setPositiveButton(getResources().getString(R.string.ok), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                int a = 0;
+                while (a < SelectedtruefalseType.length) {
+                    boolean value = SelectedtruefalseType[a];
+                    if (value) {
+                        s_type += ItemsIntoList.get(a) + " ";
+                    }
+                    a++;
+                }
+            }
+        });
+
+        alertdialogbuilder.setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+
+        AlertDialog dialog = alertdialogbuilder.create();
+        dialog.show();
+    }
+
+    /*Method to select days of activity*/
+    public void onClickDays(View v) {
+
+        alertdialogbuilder = new AlertDialog.Builder(AddActivity.this);
+
+        ItemsIntoList = Arrays.asList(AlertDialogItemsDays);
+
+        alertdialogbuilder.setMultiChoiceItems(AlertDialogItemsDays, SelectedtruefalseDays, new DialogInterface.OnMultiChoiceClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+
+            }
+        });
+
+        alertdialogbuilder.setCancelable(false);
+
+        alertdialogbuilder.setTitle(getResources().getString(R.string.selectDays));
+
+        alertdialogbuilder.setPositiveButton(getResources().getString(R.string.ok), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                int a = 0;
+                while (a < SelectedtruefalseDays.length) {
+                    boolean value = SelectedtruefalseDays[a];
+                    if (value) {
+                        s_days += ItemsIntoList.get(a) + " ";
+                    }
+                    a++;
+                }
+            }
+        });
+
+        alertdialogbuilder.setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+
+        AlertDialog dialog = alertdialogbuilder.create();
+        dialog.show();
+    }
+
+    /*Method to create menu*/
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -70,7 +169,7 @@ public class AddActivity extends AppCompatActivity {
                 checkFullFields();
                 break;
             case R.id.action_cancel:
-                Toast.makeText(context, "cancel", Toast.LENGTH_LONG).show();
+                openMessage();
                 break;
             default:
                 return super.onOptionsItemSelected(item);
@@ -79,8 +178,52 @@ public class AddActivity extends AppCompatActivity {
 
     }
 
-    private void checkFullFields()
-    {
+    /*Method to see message if click cancel without saving*/
+    public void openMessage() {
+        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setMessage(getResources().getString(R.string.clickCancel));
+        alertDialogBuilder.setPositiveButton(getResources().getString(R.string.yes),
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        backToManagerScreen();
+                    }
+                });
+
+        alertDialogBuilder.setNegativeButton(getResources().getString(R.string.no), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
+
+    /*Method to selset time of activity*/
+    public void ClickOnTime(final View view) {
+        Calendar mcurrentTime = Calendar.getInstance();
+        int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+        int minute = mcurrentTime.get(Calendar.MINUTE);
+        TimePickerDialog mTimePicker;
+        mTimePicker = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                if (view.getId() == R.id.timeStart) {
+                    timeStart.setText(String.format("%02d:%02d", selectedHour, selectedMinute));
+                } else if (view.getId() == R.id.timeEnd) {
+                    timeEnd.setText(String.format("%02d:%02d", selectedHour, selectedMinute));
+                }
+            }
+        }, hour, minute, true);//Yes 24 hour time
+        mTimePicker.setTitle(getResources().getString(R.string.selectTime));
+        mTimePicker.show();
+    }
+
+    /*Method to validation fields in form */
+    private void checkFullFields() {
+        error = "";
         String s_name = name.getText().toString();
         String s_age = age.getText().toString();
         String s_timeStart = timeStart.getText().toString();
@@ -90,48 +233,79 @@ public class AddActivity extends AppCompatActivity {
         boolean entriesValid = true;
         try {
             if (TextUtils.isEmpty(s_name)) {
-                name.setError("insert");
+                error += getResources().getStringArray(R.array.error)[0] + "\n";
                 entriesValid = false;
-            } else if (TextUtils.isEmpty(s_age)) {
-                age.setError("insert");
+            }
+            if (!checkArray(SelectedtruefalseType)) {
+                error += getResources().getStringArray(R.array.error)[1] + "\n";
                 entriesValid = false;
-            } else if (TextUtils.isEmpty(s_timeStart)) {
-                timeStart.setError("insert");
+            }
+            if (TextUtils.isEmpty(s_age)) {
+                error += getResources().getStringArray(R.array.error)[2] + "\n";
                 entriesValid = false;
-            } else if (TextUtils.isEmpty(s_timeEnd)) {
-                timeStart.setError("insert");
+            }
+            if (!checkArray(SelectedtruefalseDays)) {
+                error += getResources().getStringArray(R.array.error)[3] + "\n";
                 entriesValid = false;
-            } else if (TextUtils.isEmpty(s_description)) {
-                description.setError("insert");
+            }
+            if (TextUtils.isEmpty(s_timeStart)) {
+                error += getResources().getStringArray(R.array.error)[4] + "\n";
+                entriesValid = false;
+            }
+            if (TextUtils.isEmpty(s_timeEnd)) {
+                error += getResources().getStringArray(R.array.error)[5] + "\n";
+                entriesValid = false;
+            }
+            if (TextUtils.isEmpty(s_description)) {
+                error += getResources().getStringArray(R.array.error)[6] + "\n";
                 entriesValid = false;
             }
 
-        } catch (Exception e)
-        {
-            Toast.makeText(context,"stop",Toast.LENGTH_LONG).show();
+        } catch (Exception e) {
             entriesValid = false;
         }
-        if(entriesValid)
-        {
-            //DatabaseReference usersRef = mDatabase.child("Nision");
-            Map<String, String> userData = new HashMap<String, String>();
+        if (!entriesValid) {
+            errorFields();
+        } else {
+            //add data to DB
+            DatabaseReference usersRef = mDatabase.child(getResources().getString(R.string.text_hobbies));
+            Map<String, String> activityData = new HashMap<>();
+            activityData.put(getResources().getStringArray(R.array.activityDB)[0], s_name);
+            activityData.put(getResources().getStringArray(R.array.activityDB)[1], s_type);
+            activityData.put(getResources().getStringArray(R.array.activityDB)[2], s_description);
+            activityData.put(getResources().getStringArray(R.array.activityDB)[3], s_age);
+            activityData.put(getResources().getStringArray(R.array.activityDB)[4], s_days);
+            activityData.put(getResources().getStringArray(R.array.activityDB)[5], s_timeStart);
+            activityData.put(getResources().getStringArray(R.array.activityDB)[6], s_timeEnd);
 
-            userData.put("שם החוג", s_name);
-            userData.put("גיל", s_age);
-            userData.put("שעת התחלה", s_timeStart);
-            userData.put("שעת סיום",s_timeStart);
-            userData.put("תיאור",s_description);
-
-
-            mDatabase.child("חוגים").setValue(userData);
-            Toast.makeText(context,"finish",Toast.LENGTH_LONG).show();
-
-            //TODO save to db
-            // processbar
-            //message sucess
-
-
+            usersRef.child(s_name).setValue(activityData);
+            backToManagerScreen();
         }
+    }
 
+    /* Method to build dialog error*/
+    private void errorFields() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(AddActivity.this);
+        builder.setTitle(getResources().getString(R.string.errorDialog));
+        builder.setMessage(error);
+        builder.setPositiveButton(getResources().getString(R.string.understand), null);
+        builder.show();
+    }
+
+    /* Method to check if select items in multiple choice items */
+    private boolean checkArray(boolean[] temp) {
+        boolean flag = false;
+        for (boolean b : temp)
+            if (b) {
+                flag = true;
+                break;
+            }
+        return flag;
+    }
+
+    /* Method to back to screen manager after saving new activity */
+    private void backToManagerScreen() {
+        Intent i = new Intent(AddActivity.this, ManagerScreen.class);
+        startActivity(i);
     }
 }

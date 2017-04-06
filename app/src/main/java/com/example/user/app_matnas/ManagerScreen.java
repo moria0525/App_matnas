@@ -58,6 +58,7 @@ public class ManagerScreen extends AppCompatActivity {
 
     private Toolbar toolbar;
     private TextView toolBarText;
+    private String[] values;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,16 +82,7 @@ public class ManagerScreen extends AppCompatActivity {
 
 
         // Defined Array values to show in ListView
-        String[] values = new String[]{"העלאת תמונות לגלרייה",
-                "הוספת חוג חדש",
-                "Simple List View In Android",
-                "Create List View Android",
-                "Android Example",
-                "List View Source Code",
-                "List View Array Adapter",
-                "Android Example List View"
-        };
-
+        values = getResources().getStringArray(R.array.actions);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, android.R.id.text1, values);
