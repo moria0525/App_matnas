@@ -65,4 +65,12 @@
         android:layout_marginTop="19dp"
         android:text="בחר תמונות להעלאה:" />
 
+    <TextView
+        android:id="@+id/counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/gallery_event"
+        android:layout_alignLeft="@+id/photo_event"
+        android:layout_alignStart="@+id/photo_event" />
+
 </RelativeLayout>

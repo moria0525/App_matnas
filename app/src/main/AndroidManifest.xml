@@ -53,7 +53,8 @@
         <activity android:name=".activity_messages" />
         <activity android:name=".ForgetPassword" />
         <activity android:name=".ManagerScreen" />
-        <activity android:name=".AddActivity"></activity>
+        <activity android:name=".AddActivity" />
+        <activity android:name=".ImageListActivity"></activity>
     </application>
 
 </manifest>

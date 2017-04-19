@@ -27,6 +27,8 @@ dependencies {
     })
     'com.google.firebase:firebase-storage:10.2.0'
     // FirebaseUI Storage only
+
+
     compile 'com.android.support:multidex:1.0.1'
     compile 'com.android.support:appcompat-v7:25.2.0'
     compile 'com.google.android.gms:play-services:10.2.0'

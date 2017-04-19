@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.google.firebase.database.DatabaseException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -32,7 +33,7 @@ public class AddActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private TextView toolBarText;
     private EditText name, age, timeStart, timeEnd, description;
-    private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+    private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("activitys");
 
     private String s_type, s_days;
     private String error;
@@ -267,18 +268,16 @@ public class AddActivity extends AppCompatActivity {
         if (!entriesValid) {
             errorFields();
         } else {
-            //add data to DB
-            DatabaseReference usersRef = mDatabase.child(getResources().getString(R.string.text_hobbies));
-            Map<String, String> activityData = new HashMap<>();
-            activityData.put(getResources().getStringArray(R.array.activityDB)[0], s_name);
-            activityData.put(getResources().getStringArray(R.array.activityDB)[1], s_type);
-            activityData.put(getResources().getStringArray(R.array.activityDB)[2], s_description);
-            activityData.put(getResources().getStringArray(R.array.activityDB)[3], s_age);
-            activityData.put(getResources().getStringArray(R.array.activityDB)[4], s_days);
-            activityData.put(getResources().getStringArray(R.array.activityDB)[5], s_timeStart);
-            activityData.put(getResources().getStringArray(R.array.activityDB)[6], s_timeEnd);
 
-            usersRef.child(s_name).setValue(activityData);
+            //add data to DB
+            Activity activity = new Activity(s_name, s_type, s_description, s_age, s_days, s_timeStart, s_timeEnd);
+
+            try {
+                mDatabase.child(s_name).setValue(activity);
+
+            } catch (DatabaseException e) {
+                e.printStackTrace();
+            }
             backToManagerScreen();
         }
     }
