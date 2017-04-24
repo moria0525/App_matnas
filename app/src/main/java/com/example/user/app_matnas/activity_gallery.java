@@ -3,6 +3,7 @@ package com.example.user.app_matnas;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
@@ -24,36 +25,14 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.app.ProgressDialog;
-import android.os.Bundle;
-import android.support.v7.view.menu.MenuAdapter;
-import android.support.v7.widget.Toolbar;
-import android.widget.GridView;
-import android.widget.ListView;
+import static android.R.attr.bitmap;
+import static android.R.attr.imeActionId;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import android.app.ProgressDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class activity_gallery extends AppCompatActivity {
 
     private DatabaseReference mDatabaseRef;
-    public  List<ImageUpload> imgList;
+    public List<Image> imgList;
     private ListView lv;
     private ImageListAdapter adapter;
     private ProgressDialog progressDialog;
@@ -77,7 +56,7 @@ public class activity_gallery extends AppCompatActivity {
         progressDialog.setMessage("Please wait loading list image...");
         progressDialog.show();
 
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference(ManagerScreen.FB_DATABASE_PATH);
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference(UploadImage.FB_DATABASE_PATH);
 
         Toast.makeText(getApplicationContext(), "ImageListActivity1", Toast.LENGTH_LONG).show();
 
@@ -89,8 +68,7 @@ public class activity_gallery extends AppCompatActivity {
                                                    //Fetch image data from firebase database
                                                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                                                        //ImageUpload class require default constructor
-                                                       ImageUpload img = snapshot.getValue(ImageUpload.class);
-                                                       Toast.makeText(getApplicationContext(), "loop", Toast.LENGTH_LONG).show();
+                                                       Image img = snapshot.getValue(Image.class);
                                                        imgList.add(img);
                                                    }
 
@@ -107,16 +85,22 @@ public class activity_gallery extends AppCompatActivity {
                                                }
                                            }
         );
+
         gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent
-                        (getApplicationContext(), FullImageGallery.class);
-                intent.putExtra("filename", position);
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                //Get item at position
+                Image item = (Image) parent.getItemAtPosition(position);
+                Image item1 = (Image) parent.getItemAtPosition(position + 1);
+                //Pass the image title and url to DetailsActivity
+                Intent intent = new Intent(activity_gallery.this, FullImageGallery.class);
+                intent.putExtra("image", item.getUrl());
+                intent.putExtra("image1", item1.getUrl());
+                //Start details activity
                 startActivity(intent);
             }
-        }
-        );
+
+        });
     }
+
 }

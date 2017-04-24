@@ -54,7 +54,8 @@
         <activity android:name=".ForgetPassword" />
         <activity android:name=".ManagerScreen" />
         <activity android:name=".AddActivity" />
-        <activity android:name=".ImageListActivity"></activity>
+        <activity android:name=".EditActivity" />
+        <activity android:name=".UploadImage"></activity>
     </application>
 
 </manifest>

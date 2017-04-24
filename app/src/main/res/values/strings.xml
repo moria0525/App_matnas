@@ -58,6 +58,18 @@
     <string-array name="actions">
         <item>העלאת תמונות לגלרייה</item>
         <item>הוספת חוג חדש</item>
+        <item>עריכת חוג קיים</item>
+        <item>מחיקת חוג קיים</item>
+        <item>הוספת פרוייקט חדש</item>
+        <item>עריכת פרוייקט קיים</item>
+        <item>מחיקת פרוייקט קיים</item>
+        <item>הוספת סדנא חדשה</item>
+        <item>עריכת סדנא קיימת</item>
+        <item>מחיקת סדנא קיימת</item>
+        <item>הוספת אירוע חדש</item>
+        <item>עריכת אירוע קיים</item>
+        <item>מחיקת אירוע קיים</item>
+        <item>שליחת הודעה למשתמשים</item>
     </string-array>
 
 
@@ -142,6 +154,7 @@
     <string name="yes">כן</string>
     <string name="no">לא</string>
     <string name="clickCancel">האם לצאת בלי לשמור את החוג?</string>
+    <string name="editActivity">בחר חוג לעריכה</string>
 
 
 </resources>

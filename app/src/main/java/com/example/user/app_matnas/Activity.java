@@ -1,6 +1,9 @@
 package com.example.user.app_matnas;
 
-public class Activity {
+import java.io.Serializable;
+import java.util.Arrays;
+
+public class Activity implements Serializable {
 
     private String activityName;
     private String activityType;
@@ -9,6 +12,9 @@ public class Activity {
     private String activityStart;
     private String activityEnd;
     private String activityDes;
+
+    private boolean[] activityBType;
+    private boolean[] activityBDays;
 
 
     public Activity() {
@@ -54,6 +60,21 @@ public class Activity {
         return activityDes;
     }
 
+    public boolean[] getActivityBType() {
+        return activityBType;
+    }
+
+    public boolean[] getActivityBDays() {
+        return activityBDays;
+
+    }
+    public void setActivityBType(boolean[] activityBType) {
+        this.activityBType = activityBType;
+    }
+
+    public void setActivityBDays(boolean[] activityBDays) {
+        this.activityBDays = activityBDays;
+    }
 
 }
 

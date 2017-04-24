@@ -1,9 +1,9 @@
 package com.example.user.app_matnas;
 
 
-public class ImageUpload {
+public class Image {
 
-    public ImageUpload() {
+    public Image() {
     }
 
     public String name;
@@ -11,7 +11,7 @@ public class ImageUpload {
     public String des;
     public String url;
 
-    public ImageUpload(String name, String date, String des, String url) {
+    public Image(String name, String date, String des, String url) {
         this.name = name;
         this.date = date;
         this.des = des;

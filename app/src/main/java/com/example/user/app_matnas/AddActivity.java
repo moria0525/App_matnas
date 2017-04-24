@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseException;
 import com.google.firebase.database.DatabaseReference;
@@ -46,6 +47,8 @@ public class AddActivity extends AppCompatActivity {
 
     private AlertDialog.Builder alertdialogbuilder;
 
+    private Activity a_edit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +73,22 @@ public class AddActivity extends AppCompatActivity {
         timeStart = (EditText) findViewById(R.id.timeStart);
         timeEnd = (EditText) findViewById(R.id.timeEnd);
         description = (EditText) findViewById(R.id.description);
+
+
+        a_edit = (Activity) getIntent().getSerializableExtra("edit");
+
+        if (a_edit != null)
+        {
+            fillFields();
+        }
+    }
+
+    private void fillFields() {
+        name.setText(a_edit.getActivityName());
+        age.setText(a_edit.getActivityAge());
+        timeStart.setText(a_edit.getActivityStart());
+        timeEnd.setText(a_edit.getActivityEnd());
+        description.setText(a_edit.getActivityDes());
     }
 
     /*Method to select types of activity*/
@@ -268,14 +287,14 @@ public class AddActivity extends AppCompatActivity {
         if (!entriesValid) {
             errorFields();
         } else {
-
             //add data to DB
             Activity activity = new Activity(s_name, s_type, s_description, s_age, s_days, s_timeStart, s_timeEnd);
-
+            Toast.makeText(getApplicationContext(), "!!!!!!!!111", Toast.LENGTH_LONG).show();
             try {
                 mDatabase.child(s_name).setValue(activity);
-
+                activity.setActivityBType(SelectedtruefalseType);
             } catch (DatabaseException e) {
+                Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                 e.printStackTrace();
             }
             backToManagerScreen();

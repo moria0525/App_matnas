@@ -37,12 +37,11 @@ import java.util.List;
 import static com.example.user.app_matnas.R.id.tvImageName;
 
 
-public class ImageListAdapter extends ArrayAdapter<ImageUpload> {
+public class ImageListAdapter extends ArrayAdapter<Image> {
     private android.app.Activity context;
     private int resource;
-    private List<ImageUpload> listImage;
-
-    public ImageListAdapter(@NonNull android.app.Activity context, @LayoutRes int resource, @NonNull List<ImageUpload> objects) {
+    private List<Image> listImage;
+    public ImageListAdapter(@NonNull android.app.Activity context, @LayoutRes int resource, @NonNull List<Image> objects) {
         super(context, resource, objects);
         this.context = context;
         this.resource = resource;
@@ -53,7 +52,6 @@ public class ImageListAdapter extends ArrayAdapter<ImageUpload> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
-
         View v = inflater.inflate(resource, null);
         TextView tvName = (TextView) v.findViewById(tvImageName);
         ImageView img = (ImageView) v.findViewById(R.id.imgView);

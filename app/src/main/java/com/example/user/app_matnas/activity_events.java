@@ -24,18 +24,18 @@ public class activity_events extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events);
-        StorageReference storageReference = FirebaseStorage.getInstance().getReferenceFromUrl("gs://app-matnas-22408.appspot.com/Photos/");
-      //  storageReference.child("16169.jpg");
-        List<FileDownloadTask> activeDownloadTasks = storageReference.getActiveDownloadTasks();
-
-        Toast.makeText(getApplicationContext(), ""+ activeDownloadTasks.get(1),Toast.LENGTH_LONG).show();
-
-        ImageView imageView = (ImageView)findViewById(R.id.imageView);
-
-
-        Glide.with(this)
-                .using(new FirebaseImageLoader())
-                .load(storageReference)
-                .into(imageView);
+//        StorageReference storageReference = FirebaseStorage.getInstance().getReferenceFromUrl("gs://app-matnas-22408.appspot.com/Photos/");
+//      //  storageReference.child("16169.jpg");
+//        List<FileDownloadTask> activeDownloadTasks = storageReference.getActiveDownloadTasks();
+//
+//        Toast.makeText(getApplicationContext(), ""+ activeDownloadTasks.get(1),Toast.LENGTH_LONG).show();
+//
+//        ImageView imageView = (ImageView)findViewById(R.id.imageView);
+//
+//
+//        Glide.with(this)
+//                .using(new FirebaseImageLoader())
+//                .load(storageReference)
+//                .into(imageView);
     }
 }
