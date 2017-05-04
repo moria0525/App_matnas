@@ -12,13 +12,15 @@ import android.widget.GridView;
 import android.content.Intent;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class activity_main extends AppCompatActivity {
 
     private Toolbar toolbar;
     private TextView toolBarText;
 
     private GridView nineIcon;
-    public static int[] imageIDs = {
+    public int[] imageIDs = {
             R.drawable.about,
             R.drawable.messages,
             R.drawable.event,
@@ -29,6 +31,9 @@ public class activity_main extends AppCompatActivity {
             R.drawable.gallery,
             R.drawable.contactus
     };
+
+    private FirebaseAuth auth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +56,8 @@ public class activity_main extends AppCompatActivity {
             }
         });
 
+        auth = FirebaseAuth.getInstance();
+
     }
 
     @Override
@@ -66,7 +73,14 @@ public class activity_main extends AppCompatActivity {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.menu_login_manager:
-                onClickManager();
+                if(auth.getCurrentUser() == null)
+                {
+                    onClickManager();
+                }
+               else{
+                    Intent intent = new Intent(activity_main.this,ManagerScreen.class);
+                    startActivity(intent);
+                }
                 return true;
             case R.id.menu_help:
                 onClickHelp();
@@ -91,7 +105,7 @@ public class activity_main extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case 3:
-                intent = new Intent(activity_main.this,ManagerScreen.class);
+                intent = new Intent(activity_main.this,activity_about.class);
                 startActivity(intent);
                 break;
             case 4:
@@ -119,7 +133,6 @@ public class activity_main extends AppCompatActivity {
 
     }
 
-
     private void onClickManager() {
         Intent intent = new Intent(activity_main.this, activity_login_manager.class);
         startActivity(intent);
@@ -129,7 +142,6 @@ public class activity_main extends AppCompatActivity {
         Intent intent = new Intent(activity_main.this, activity_contactUs.class);
         startActivity(intent);
     }
-
 
 }
 

@@ -24,7 +24,7 @@ import static android.R.id.list;
 
 public class EditActivity extends AppCompatActivity {
     private DatabaseReference mDatabaseRef;
-    public static final String DATABASE_PATH = "activitys";
+    public static final String DATABASE_PATH = "activities";
     public List<Activity> actList;
     String name;
 
@@ -45,8 +45,6 @@ public class EditActivity extends AppCompatActivity {
                              actList.add(activity);
                          }
                          showDialog();
-
-
                      }
 
                      @Override
@@ -81,15 +79,16 @@ public class EditActivity extends AppCompatActivity {
                 .setPositiveButton(getResources().getString(R.string.ok), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        int delete;
+                        int active;
                         // user clicked OK, so save the mSelectedItems results somewhere
                         // or return them to the component that opened the dialog
                         int selectedPosition = ((AlertDialog) dialog).getListView().getCheckedItemPosition();
                         Intent i = getIntent();
-                        delete = i.getIntExtra("delete",-1);
-                        if(delete == 0)
+                        active = i.getIntExtra("active",-1);
+                        Toast.makeText(getApplicationContext(),""+active,Toast.LENGTH_LONG).show();
+                        if(active == 0)
                         {
-                            Toast.makeText(getApplicationContext(),"delete",Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(),"active",Toast.LENGTH_LONG).show();
                             name = actList.get(selectedPosition).getActivityName();
                             mDatabaseRef.child(name).removeValue();
                             backToManagerScreen();
@@ -114,7 +113,7 @@ public class EditActivity extends AppCompatActivity {
 
    }
 
-    
+
     /* Method to back to screen manager after saving new activity */
     private void backToManagerScreen() {
         Intent i = new Intent(EditActivity.this, ManagerScreen.class);

@@ -55,7 +55,8 @@
         <activity android:name=".ManagerScreen" />
         <activity android:name=".AddActivity" />
         <activity android:name=".EditActivity" />
-        <activity android:name=".UploadImage"></activity>
+        <activity android:name=".UploadImage" />
+
     </application>
 
 </manifest>

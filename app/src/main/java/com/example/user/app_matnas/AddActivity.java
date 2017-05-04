@@ -34,7 +34,7 @@ public class AddActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private TextView toolBarText;
     private EditText name, age, timeStart, timeEnd, description;
-    private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("activitys");
+    private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("activities");
 
     private String s_type, s_days;
     private String error;

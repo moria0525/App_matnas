@@ -1,41 +1,54 @@
 package com.example.user.app_matnas;
 
 
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.CalendarView;
-import android.widget.ImageView;
-import android.widget.Toast;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
-import com.bumptech.glide.Glide;
-import com.firebase.ui.storage.images.FirebaseImageLoader;
-import com.google.firebase.storage.FileDownloadTask;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
-import java.util.List;
-import java.util.UUID;
-import java.util.concurrent.atomic.AtomicMarkableReference;
-
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.view.KeyEvent;
+import android.webkit.WebChromeClient;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 public class activity_events extends AppCompatActivity {
+    private WebView view; //membuat variabel view agar bisa akses method onKeyDown
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events);
-//        StorageReference storageReference = FirebaseStorage.getInstance().getReferenceFromUrl("gs://app-matnas-22408.appspot.com/Photos/");
-//      //  storageReference.child("16169.jpg");
-//        List<FileDownloadTask> activeDownloadTasks = storageReference.getActiveDownloadTasks();
-//
-//        Toast.makeText(getApplicationContext(), ""+ activeDownloadTasks.get(1),Toast.LENGTH_LONG).show();
-//
-//        ImageView imageView = (ImageView)findViewById(R.id.imageView);
-//
-//
-//        Glide.with(this)
-//                .using(new FirebaseImageLoader())
-//                .load(storageReference)
-//                .into(imageView);
+
+        view = (WebView) this.findViewById(R.id.webView);
+        view.getSettings().setJavaScriptEnabled(true);
+        view.setWebViewClient(new MyBrowser());
+        view.loadUrl("https://console.firebase.google.com/project/app-matnas-22408/notification/compose"); //try js alert
+        view.setWebChromeClient(new WebChromeClient()); // adding js alert support
+    }
+
+    private class MyBrowser extends WebViewClient {
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            view.loadUrl(url);
+            return true;
+        }
+    }
+
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        //ketika disentuh tombol back
+        if ((keyCode == KeyEvent.KEYCODE_BACK) && view.canGoBack()) {
+            view.goBack(); //method goback() dieksekusi untuk kembali pada halaman sebelumnya
+            return true;
+        }
+        // Jika tidak ada history (Halaman yang sebelumnya dibuka)
+        // maka akan keluar dari activity
+        return super.onKeyDown(keyCode, event);
     }
 }

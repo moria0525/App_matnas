@@ -100,8 +100,10 @@ public class ManagerScreen extends AppCompatActivity {
                         break;
                     case 2:
                         editActivity();
+                        break;
                     case 3:
                         deleteActivity();
+                        break;
                 }
             }
 
@@ -126,7 +128,7 @@ public class ManagerScreen extends AppCompatActivity {
 
     private void deleteActivity() {
         Intent i = new Intent(this, EditActivity.class);
-        i.putExtra("delete", 0);
+        i.putExtra("active",0);
         startActivity(i);
     }
 

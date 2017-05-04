@@ -38,7 +38,7 @@
     <string name="new_pass">סיסמא חדשה</string>
 
     <string name="actions_manager">מה תרצה לעשות?</string>
-    <string name="title_activity_login">כניסת מנהל</string>
+    <string name="title_activity_login">מנהל</string>
     <string name="hint_email">אימייל</string>
     <string name="hint_password">סיסמא</string>
     <string name="hint_name">שם מלא</string>
@@ -154,7 +154,7 @@
     <string name="yes">כן</string>
     <string name="no">לא</string>
     <string name="clickCancel">האם לצאת בלי לשמור את החוג?</string>
-    <string name="editActivity">בחר חוג לעריכה</string>
+    <string name="editActivity">בחר חוג</string>
 
 
 </resources>
