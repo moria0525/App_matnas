@@ -97,7 +97,7 @@ public class activity_main extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case 1:
-                intent = new Intent(activity_main.this, activity_about.class);
+                intent = new Intent(activity_main.this, activity_messages.class);
                 startActivity(intent);
                 break;
             case 2:

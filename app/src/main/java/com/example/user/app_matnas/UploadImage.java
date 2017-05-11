@@ -146,6 +146,7 @@ public class UploadImage extends AppCompatActivity {
             {
                 counter = 0;
                 dialog.dismiss();
+                backToManagerScreen();
             }
 
         });

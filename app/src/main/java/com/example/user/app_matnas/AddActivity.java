@@ -115,7 +115,7 @@ public class AddActivity extends AppCompatActivity {
                 while (a < SelectedtruefalseType.length) {
                     boolean value = SelectedtruefalseType[a];
                     if (value) {
-                        s_type += ItemsIntoList.get(a) + " ";
+                        s_type += ItemsIntoList.get(a) + ", ";
                     }
                     a++;
                 }
