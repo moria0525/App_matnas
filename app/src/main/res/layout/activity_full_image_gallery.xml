@@ -20,14 +20,23 @@
         <!--android:text="Button"-->
         <!--android:onClick="click"/>-->
 
+
+
+
     <ImageView
         android:id="@+id/imageViewFull"
-        android:layout_width="match_parent"
-        android:layout_height="535dp"
+        android:layout_width="195dp"
+        android:layout_height="148dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:scaleType="centerInside"
-        android:layout_weight="0.92" />
+        android:src="@drawable/lock"/>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="100dp"
+        android:layout_height="68dp"
+        android:text="TextView" />
 
 
 </LinearLayout>

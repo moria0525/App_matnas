@@ -11,9 +11,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.firebase.ui.storage.images.FirebaseImageLoader;
+import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
@@ -22,29 +25,23 @@ public class FullImageGallery extends AppCompatActivity {
 
 
     private ImageView imageViewFull;
-    String image,image1;
+    String image = "!!!!!!";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_full_image_gallery);
 
         imageViewFull = (ImageView) findViewById(R.id.imageViewFull);
-         image = getIntent().getStringExtra("image");
-        imageViewFull.setScaleType(ImageView.ScaleType.CENTER);
-        Glide.with(this).load(image).into(imageViewFull);
+        image = getIntent().getStringExtra("full");
 
-//        Button b= (Button)findViewById(R.id.button2);
-//        b.setOnClickListener(new View.OnClickListener() {
-//
-//            public void onClick(View v) {
-//                Toast.makeText(getApplicationContext(),"!",Toast.LENGTH_LONG).show();
-//                image1 = getIntent().getStringExtra("image1");
-//                imageViewFull.setScaleType(ImageView.ScaleType.CENTER);
-//                Glide.with(getApplicationContext()).load(image1).into(imageViewFull);
-//
-//
-//            }
-//        });
+        TextView tv = (TextView)findViewById(R.id.textView3);
+        tv.setText("image");
+        imageViewFull.setScaleType(ImageView.ScaleType.CENTER);
+        //Glide.with(this).load(image).into(imageViewFull);
+        Glide.with(getApplicationContext()).load(image).into(imageViewFull);
+
+
     }
 
 }

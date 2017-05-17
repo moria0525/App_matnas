@@ -188,7 +188,8 @@ public class UploadImage extends AppCompatActivity {
 
 
     @SuppressWarnings("VisibleForTests")
-    public void btnUpload_Click() {
+    public void btnUpload_Click()
+    {
         if (imgUri != null) {
             final ProgressDialog dialog = new ProgressDialog(this);
             dialog.setTitle("Uploading image");
@@ -196,26 +197,30 @@ public class UploadImage extends AppCompatActivity {
 
             FB_STORAGE_PATH = s_event+"/";
             //Get the storage reference
-            StorageReference ref = mStorageRef.child(FB_STORAGE_PATH + System.currentTimeMillis() + "." + getImageExt(imgUri));
-
+            StorageReference ref = mStorageRef.child(FB_STORAGE_PATH).child(imgUri.getLastPathSegment());
+//            Toast.makeText(context,"FB_STORAGE_PATH: \n" + FB_STORAGE_PATH+"\n" + "count: \n" + System.currentTimeMillis()
+//                    + "\n "+ "getImageExt(imgUri): " + "\n"  + getImageExt(imgUri),Toast.LENGTH_LONG).show();
             //Add file to reference
+
 
             ref.putFile(imgUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
 
+
                     //Dimiss dialog when success
                     dialog.dismiss();
                     //Display success toast msg
                     Toast.makeText(getApplicationContext(), "Image uploaded", Toast.LENGTH_SHORT).show();
+                    //// TODO: 11/05/2017 show one picture to see in front.
                     backToManagerScreen();
                     Image imageUpload = new Image(s_event, s_date, s_des, taskSnapshot.getDownloadUrl().toString());
 
                     //Save image info in to firebase database
                     String uploadId = mDatabaseRef.push().getKey();
-                    mDatabaseRef.child(s_event).setValue(imageUpload);
-                }
+                    mDatabaseRef.child(s_event).child(uploadId).setValue(imageUpload.getUrl());
+                     }
             })
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
