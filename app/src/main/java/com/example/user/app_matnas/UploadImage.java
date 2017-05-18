@@ -32,7 +32,7 @@ import com.google.firebase.storage.UploadTask;
 
 public class UploadImage extends AppCompatActivity {
 
-    private EditText name, date, des;
+    private EditText name;
     private ProgressDialog mProgressDialog;
 
     private boolean flag = false;
@@ -50,7 +50,7 @@ public class UploadImage extends AppCompatActivity {
     public static String FB_STORAGE_PATH;
     public static final String FB_DATABASE_PATH = "image";
     public static final int REQUEST_CODE = 1234;
-    String s_event, s_date, s_des;
+    String s_event;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -106,22 +106,11 @@ public class UploadImage extends AppCompatActivity {
                 boolean entriesValid = true;
                 try {
                     name = (EditText) layoutView.findViewById(R.id.et_name_event);
-                    date = (EditText) layoutView.findViewById(R.id.et_date_event);
-                    des = (EditText) layoutView.findViewById(R.id.et_description_event);
                     // count = (TextView) layoutView.findViewById(R.id.cunt);
 
                     s_event = name.getText().toString();
-                    s_date = date.getText().toString();
-                    s_des = des.getText().toString();
                     if (TextUtils.isEmpty(s_event)) {
                         name.setError("insert name");
-                        entriesValid = false;
-
-                    } else if (TextUtils.isEmpty(s_date)) {
-                        date.setError("insert date");
-                        entriesValid = false;
-                    } else if (TextUtils.isEmpty(s_des)) {
-                        des.setError("insert description");
                         entriesValid = false;
                     } else if (!flag) {
                         Toast.makeText(context, "לא נבחרו תמונות להעלאה", Toast.LENGTH_LONG).show();
@@ -215,7 +204,7 @@ public class UploadImage extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Image uploaded", Toast.LENGTH_SHORT).show();
                     //// TODO: 11/05/2017 show one picture to see in front.
                     backToManagerScreen();
-                    Image imageUpload = new Image(s_event, s_date, s_des, taskSnapshot.getDownloadUrl().toString());
+                    Image imageUpload = new Image(s_event, taskSnapshot.getDownloadUrl().toString());
 
                     //Save image info in to firebase database
                     String uploadId = mDatabaseRef.push().getKey();

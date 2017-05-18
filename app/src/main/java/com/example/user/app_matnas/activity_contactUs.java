@@ -5,7 +5,9 @@ import android.net.Uri;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -18,11 +20,17 @@ public class activity_contactUs extends AppCompatActivity implements OnMapReadyC
 
     private GoogleMap mMap;
     private float zoomLevel = 17;
+    private Toolbar toolbar;
+    private TextView toolBarText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_us);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolBarText = (TextView) findViewById(R.id.toolBarText);
+        toolBarText.setText(R.string.text_contactus);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -34,7 +42,8 @@ public class activity_contactUs extends AppCompatActivity implements OnMapReadyC
         mMap = googleMap;
 
         // Add a marker in matnas and move the camera
-        LatLng LocationMatnas = new LatLng(31.749968, 35.200593);
+        //TODO LATLNG
+        LatLng LocationMatnas = new LatLng(31.749959, 35.200732);
         mMap.addMarker(new MarkerOptions().position(LocationMatnas).title("מרכז קהילתי פאני קפלן פת"));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LocationMatnas, zoomLevel));
     }

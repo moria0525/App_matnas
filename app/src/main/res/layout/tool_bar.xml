@@ -15,7 +15,7 @@
         android:fontFamily="cursive"
         android:textStyle="bold"
         android:textSize="20sp"
-        android:textColor="@color/wallet_bright_foreground_disabled_holo_light"
+        android:textColor="#000"
         />
 
 

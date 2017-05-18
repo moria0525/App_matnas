@@ -3,6 +3,10 @@ package com.example.user.app_matnas;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
+/**
+ * Created by Suleiman19 on 10/22/15.
+ */
+
 public class DepthPageTransformer implements ViewPager.PageTransformer {
     private static final float MIN_SCALE = 0.75f;
 

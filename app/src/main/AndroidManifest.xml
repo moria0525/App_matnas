@@ -44,7 +44,6 @@
         <activity
             android:name=".activity_gallery"
             android:label="@string/text_gallery" />
-        <activity android:name=".FullImageGallery" />
         <activity
             android:name=".activity_hobbies"
             android:label="@string/text_hobbies" />
@@ -59,6 +58,8 @@
         <activity android:name=".UploadImage" />
         <activity android:name=".register"></activity>
         <activity android:name=".Grid"/>
+        <activity android:name=".FullImage" />
+
     </application>
 
 </manifest>

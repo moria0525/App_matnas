@@ -7,6 +7,18 @@
     android:background="@color/colorBackgroundHome"
     tools:context="com.example.user.app_matnas.activity_contactUs">
 
+    <LinearLayout
+        android:id="@+id/layout_main"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/tool_bar"
+            android:layout_width="394dp"
+            android:layout_height="71dp" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/contactus_Taddress"
@@ -14,6 +26,7 @@
         android:layout_alignLeft="@+id/contactus_address"
         android:layout_alignStart="@+id/contactus_address"
         android:text="@string/contactus_Taddress"
+        android:layout_marginTop="2dp"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="0dp" />
 
@@ -31,7 +44,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginEnd="12dp"
         android:layout_marginRight="12dp"
-        android:layout_marginTop="24dp" />
+        android:layout_marginTop="60dp" />
 
     <LinearLayout
         android:id="@+id/form_layout"
@@ -78,7 +91,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="18dp"
                 android:layout_marginStart="18dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="20dp"
                 android:backgroundTint="@color/colorPrimaryDark"
                 android:text="@string/form_title" />
 
@@ -115,7 +128,7 @@
 
     <RelativeLayout
         style="@style/general_match_parent"
-        android:layout_marginTop="244dp"
+        android:layout_marginTop="270dp"
         android:layout_below="@+id/map"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
