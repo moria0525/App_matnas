@@ -6,5 +6,6 @@
     <color name="colorBackgroundHome">#ffffff</color>
     <color name="blue">#4db6ac</color>
     <color name="transperent">#00000000</color>
+    <color name="cardview">#e6f9ff</color>
 
 </resources>

@@ -56,10 +56,14 @@
         <activity android:name=".AddActivity" />
         <activity android:name=".EditActivity" />
         <activity android:name=".UploadImage" />
-        <activity android:name=".register"></activity>
-        <activity android:name=".Grid"/>
+        <activity android:name=".register" />
+        <activity android:name=".Grid" />
         <activity android:name=".FullImage" />
-
+        <activity android:name=".SendNews" />
+        <activity android:name=".AddProject" />
+        <activity android:name=".activity_project" />
+        <activity android:name=".ShowProject"/>
+        <activity android:name=".EditProject"/>
     </application>
 
 </manifest>

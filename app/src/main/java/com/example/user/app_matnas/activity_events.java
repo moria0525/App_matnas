@@ -1,24 +1,29 @@
 package com.example.user.app_matnas;
 
-
-import android.app.Activity;
-import android.content.Intent;
-import android.net.Uri;
+import android.icu.util.Calendar;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
+import android.widget.CalendarView;
 
 
-import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
-import android.view.KeyEvent;
-import android.webkit.WebChromeClient;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
+public class activity_events extends AppCompatActivity
+{
+    CalendarView cal;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_events);
+        cal = (CalendarView)findViewById(R.id.calendarView);
+        Calendar calendar = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            calendar = Calendar.getInstance();
+            int daysInMonth = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+            cal.setMaxDate(daysInMonth);
+        }
 
-public class activity_events extends AppCompatActivity {
-    private WebView view; //membuat variabel view agar bisa akses method onKeyDown
 
+
+    }
 }

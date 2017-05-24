@@ -6,31 +6,13 @@
     android:layout_height="match_parent"
     tools:context="com.example.user.app_matnas.activity_gallery">
 
-    <LinearLayout
-        android:id="@+id/layout_main"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:orientation="vertical">
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="58dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        />
 
-        <include
-            android:id="@+id/toolbar"
-            layout="@layout/tool_bar"
-            android:layout_width="394dp"
-            android:layout_height="71dp" />
-    </LinearLayout>
-
-    <GridView
-        android:id="@+id/gallery_grid"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/layout_main"
-        android:columnWidth="100dp"
-        android:horizontalSpacing="5dp"
-        android:numColumns="2"
-        android:paddingTop="20dp"
-        android:stretchMode="columnWidth"
-        android:verticalSpacing="10dp" />
 </RelativeLayout>

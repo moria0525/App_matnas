@@ -30,12 +30,16 @@ public class SendMail extends AsyncTask<Void,Void,Void> {
     private String neighborhood;
     private String phone;
     private String email;
+    private String name;
+    private String message;
     //Progressdialog to show while sending email
     private ProgressDialog progressDialog;
 
+    private int flag = 0;
     //Class Constructor
     public SendMail(Context context, String subject, String fname, String lname, String neighborhood, String phone, String email){
         //Initializing variables
+        flag = 0;
         this.context = context;
         this.subject = subject;
         this.fname = fname;
@@ -46,11 +50,24 @@ public class SendMail extends AsyncTask<Void,Void,Void> {
 
     }
 
+    public SendMail(Context context, String subject, String name, String phone, String message)
+    {
+        flag = 1;
+        this.context = context;
+        this.subject = subject;
+        this.name = name;
+        this.phone = phone;
+        this.message = message;
+    }
+
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
         //Showing progress dialog while sending email
+        if(flag  == 0)
         progressDialog = ProgressDialog.show(context,"שולח את פרטי הרישום","נא להמתין...",false,false);
+        else
+        progressDialog = ProgressDialog.show(context,"שולח את ההודעה","נא להמתין...",false,false);
     }
 
     @Override
@@ -59,7 +76,10 @@ public class SendMail extends AsyncTask<Void,Void,Void> {
         //Dismissing the progress dialog
         progressDialog.dismiss();
         //Showing a success message
+        if(flag == 0)
         Toast.makeText(context,"נרשמת בהצלחה",Toast.LENGTH_LONG).show();
+        else
+        Toast.makeText(context,"ההודעה נשלחה, יצרו איתך קשר תוך 24 שעות",Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -95,11 +115,10 @@ public class SendMail extends AsyncTask<Void,Void,Void> {
             //Adding subject
             mm.setSubject(subject);
             //Adding content
-            mm.setText(fname+"\n"+lname+"\n"+neighborhood+"\n"+phone+"\n"+email);
-           // mm.setText(lname);
-//            mm.setText(neighborhood);
-//            mm.setText(phone);
-//            mm.setText(email);
+            if(flag == 0)
+                mm.setText(fname + "\n" + lname + "\n" + neighborhood + "\n" + phone + "\n" + email);
+            else
+                mm.setText(name + "\n" + phone + "\n" + message);
             //Sending email
             Transport.send(mm);
 

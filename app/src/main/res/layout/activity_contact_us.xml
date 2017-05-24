@@ -56,32 +56,35 @@
         <RelativeLayout
             android:id="@+id/form_layout_internal"
             style="@style/general_match_parent"
-            android:layout_height="191dp"
-            android:layout_weight="0.08">
+            android:layout_height="240dp"
+            android:descendantFocusability="beforeDescendants"
+            android:focusableInTouchMode="true" >
 
 
-            <EditText
-                android:id="@+id/form_message"
-                style="@style/form_message"
-                android:layout_alignLeft="@+id/form_name"
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/input_layout_name"
                 android:layout_alignParentBottom="true"
-                android:layout_alignStart="@+id/form_name"
-                android:backgroundTint="@color/colorPrimaryDark"
-                android:breakStrategy="balanced"
-                android:hint="@string/form_message"
-                android:inputType="textMultiLine" />
+                android:layout_alignStart="@+id/input_layout_name"
+                android:layout_below="@+id/input_layout_name"
+                android:layout_toStartOf="@+id/input_layout_phone">
 
-            <EditText
-                android:id="@+id/form_phone"
-                style="@style/form_fields"
-                android:layout_above="@+id/form_message"
-                android:layout_marginLeft="34dp"
-                android:layout_marginStart="34dp"
-                android:layout_toEndOf="@+id/form_name"
-                android:layout_toRightOf="@+id/form_name"
-                android:backgroundTint="@color/colorPrimaryDark"
-                android:hint="@string/form_phone"
-                android:inputType="phone" />
+                <EditText
+                    android:id="@+id/form_message"
+                    style="@style/form_message"
+                    android:layout_width="match_parent"
+                    android:layout_height="85dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:backgroundTint="@color/colorPrimaryDark"
+                    android:hint="@string/form_message"
+                    android:inputType="textMultiLine" />
+
+            </android.support.design.widget.TextInputLayout>
+
 
             <TextView
                 android:id="@+id/form_title"
@@ -95,31 +98,67 @@
                 android:backgroundTint="@color/colorPrimaryDark"
                 android:text="@string/form_title" />
 
-            <EditText
-                android:id="@+id/form_name"
-                style="@style/form_fields"
-                android:backgroundTint="@color/colorPrimaryDark"
-                android:hint="@string/form_name"
-                android:inputType="textPersonName"
-                android:layout_alignBaseline="@+id/form_phone"
-                android:layout_alignBottom="@+id/form_phone"
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/form_title"
                 android:layout_alignLeft="@+id/form_title"
-                android:layout_alignStart="@+id/form_title" />
+                android:layout_alignStart="@+id/form_title">
+
+                <EditText
+                    android:id="@+id/form_name"
+                    android:layout_width="173dp"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/form_title"
+                    android:layout_toEndOf="@+id/form_title"
+                    android:layout_toRightOf="@+id/form_title"
+                    android:backgroundTint="@color/colorPrimaryDark"
+                    android:hint="@string/form_name"
+                    android:inputType="textPersonName" />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_phone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/form_title"
+                android:layout_toEndOf="@+id/form_title"
+                android:layout_above="@+id/input_layout_message">
+
+                <EditText
+                    android:id="@+id/form_phone"
+                    android:layout_width="130dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignBottom="@+id/input_layout_name"
+                    android:layout_alignEnd="@+id/form_btn"
+                    android:layout_alignRight="@+id/form_btn"
+                    android:layout_below="@+id/form_title"
+                    android:backgroundTint="@color/colorPrimaryDark"
+                    android:hint="@string/form_phone"
+                    android:inputType="phone" />
+            </android.support.design.widget.TextInputLayout>
 
             <Button
                 android:id="@+id/form_btn"
                 android:layout_width="100dp"
                 android:layout_height="42dp"
-                android:layout_weight="0.01"
+                android:onClick="onClickSubmitForm"
+                android:layout_weight="1"
                 android:background="@color/colorPrimaryDark"
                 android:text="@string/form_btn"
                 android:textColor="#fff"
-                android:layout_marginLeft="31dp"
-                android:layout_marginStart="31dp"
+                android:layout_marginBottom="33dp"
+                android:layout_marginLeft="17dp"
+                android:layout_marginStart="17dp"
                 android:layout_alignParentBottom="true"
-                android:layout_toRightOf="@+id/form_message"
-                android:layout_toEndOf="@+id/form_message"
-                android:layout_marginBottom="5dp" />
+                android:layout_toRightOf="@+id/input_layout_message"
+                android:layout_toEndOf="@+id/input_layout_message" />
 
         </RelativeLayout>
 

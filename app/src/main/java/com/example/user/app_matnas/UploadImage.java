@@ -1,11 +1,13 @@
 package com.example.user.app_matnas;
 
 import android.app.ProgressDialog;
+import android.content.ClipData;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -30,6 +32,8 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.util.ArrayList;
+
 public class UploadImage extends AppCompatActivity {
 
     private EditText name;
@@ -45,7 +49,7 @@ public class UploadImage extends AppCompatActivity {
     private StorageReference mStorageRef;
     private DatabaseReference mDatabaseRef;
     private Uri imgUri;
-
+    ArrayList<Uri> uris = null;
 
     public static String FB_STORAGE_PATH;
     public static final String FB_DATABASE_PATH = "image";
@@ -53,8 +57,7 @@ public class UploadImage extends AppCompatActivity {
     String s_event;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = getApplicationContext();
 
@@ -131,8 +134,7 @@ public class UploadImage extends AppCompatActivity {
 
         dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 counter = 0;
                 dialog.dismiss();
                 backToManagerScreen();
@@ -144,94 +146,110 @@ public class UploadImage extends AppCompatActivity {
 
 
     public boolean onClickUploadPictures(View v) {
+//        flag = true;
+//        Intent intent = new Intent();
+//        intent.setType("image/*");
+//        intent.setAction(Intent.ACTION_GET_CONTENT);
+//        startActivityForResult(Intent.createChooser(intent, "Select image"), REQUEST_CODE);
         flag = true;
         Intent intent = new Intent();
         intent.setType("image/*");
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
+            intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+        }
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select image"), REQUEST_CODE);
+        startActivityForResult(Intent.createChooser(intent, "בחר תמונות"), REQUEST_CODE);
+
+
         return flag;
     }
 
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            imgUri = data.getData();
-            counter++;
-            count = (TextView) layoutView.findViewById(R.id.counter);
-            count.setText("נבחרו עד כה: " + counter + " תמונות");
-            mProgressDialog.dismiss();
-            flag = true;
-        } else {
+        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK && data != null) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                ClipData clipData = data.getClipData();
+                if (clipData != null) {
+                    uris = new ArrayList<>();
+                    for (int i = 0; i < clipData.getItemCount(); i++) {
+                        counter++;
+                        ClipData.Item item = clipData.getItemAt(i);
+                        Uri uri = item.getUri();
+                        uris.add(uri);
+                    }
+
+                }
+                if (uris != null) {
+
+                    count = (TextView) layoutView.findViewById(R.id.counter);
+                    count.setText("נבחרו עד כה: " + counter + " תמונות");
+                    mProgressDialog.dismiss();
+                    flag = true;
+                }
+            }
+        }
+        else {
             flag = false;
         }
-    }
 
-
-    public String getImageExt(Uri uri) {
-        ContentResolver contentResolver = getContentResolver();
-        MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
-        return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(uri));
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
 
     @SuppressWarnings("VisibleForTests")
-    public void btnUpload_Click()
-    {
-        if (imgUri != null) {
+    public void btnUpload_Click() {
+        if (uris != null) {
             final ProgressDialog dialog = new ProgressDialog(this);
-            dialog.setTitle("Uploading image");
+            dialog.setTitle("מעלה את "+counter+" התמונות שנבחרו");
             dialog.show();
+            for(int i = 0;i<uris.size();i++)
+            {
+                FB_STORAGE_PATH = s_event + "/";
+                //Get the storage reference
+                StorageReference ref = mStorageRef.child(FB_STORAGE_PATH).child(uris.get(i).getLastPathSegment());
 
-            FB_STORAGE_PATH = s_event+"/";
-            //Get the storage reference
-            StorageReference ref = mStorageRef.child(FB_STORAGE_PATH).child(imgUri.getLastPathSegment());
-//            Toast.makeText(context,"FB_STORAGE_PATH: \n" + FB_STORAGE_PATH+"\n" + "count: \n" + System.currentTimeMillis()
-//                    + "\n "+ "getImageExt(imgUri): " + "\n"  + getImageExt(imgUri),Toast.LENGTH_LONG).show();
-            //Add file to reference
-
-
-            ref.putFile(imgUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                final int finalI = i;
+                ref.putFile(uris.get(i)).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
 
+                        Image imageUpload = new Image(s_event, taskSnapshot.getDownloadUrl().toString());
 
-                    //Dimiss dialog when success
-                    dialog.dismiss();
-                    //Display success toast msg
-                    Toast.makeText(getApplicationContext(), "Image uploaded", Toast.LENGTH_SHORT).show();
-                    //// TODO: 11/05/2017 show one picture to see in front.
-                    backToManagerScreen();
-                    Image imageUpload = new Image(s_event, taskSnapshot.getDownloadUrl().toString());
-
-                    //Save image info in to firebase database
-                    String uploadId = mDatabaseRef.push().getKey();
-                    mDatabaseRef.child(s_event).child(uploadId).setValue(imageUpload.getUrl());
-                     }
-            })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-
-                            //Dimiss dialog when error
+                        //Save image info in to firebase database
+                        String uploadId = mDatabaseRef.push().getKey();
+                        mDatabaseRef.child(s_event).child(uploadId).setValue(imageUpload.getUrl());
+                        //Dimiss dialog when success
+                        if(finalI == uris.size()-1)
+                        {
                             dialog.dismiss();
-                            //Display err toast msg
-                            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                            //Display success toast msg
+                            Toast.makeText(getApplicationContext(), "התמונות עלו בהצלחה", Toast.LENGTH_SHORT).show();
+                            backToManagerScreen();
                         }
-                    })
-                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                    }
+                })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
 
-                        @Override
-                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                                //Dismiss dialog when error
+                                dialog.dismiss();
+                                //Display err toast msg
+                                Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
 
-                            //Show upload progress
+                            @Override
+                            public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
 
-                            double progress = (100 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
-                            dialog.setMessage("Uploaded " + (int) progress + "%");
-                        }
-                    });
+                                //Show upload progress
+                                double progress = (100 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
+                                dialog.setMessage("מעלה " + (int) progress + "%");
+                            }
+                        });
+            }
         } else {
             Toast.makeText(getApplicationContext(), "Please select image", Toast.LENGTH_SHORT).show();
         }

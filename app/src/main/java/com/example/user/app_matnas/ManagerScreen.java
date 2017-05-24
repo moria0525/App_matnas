@@ -96,13 +96,25 @@ public class ManagerScreen extends AppCompatActivity {
                         uploadPictureTogallery();
                         break;
                     case 1:
-                        addNewActivity();
+                        sendNews();
                         break;
                     case 2:
-                        editActivity();
+                        addNewActivity();
                         break;
                     case 3:
+                        editActivity();
+                        break;
+                    case 4:
                         deleteActivity();
+                        break;
+                    case 5:
+                        addNewProject();
+                        break;
+                    case 6:
+                        editProject();
+                        break;
+                    case 7:
+                        deleteProject();
                         break;
                 }
             }
@@ -110,9 +122,17 @@ public class ManagerScreen extends AppCompatActivity {
         });
     }
 
+
+
     private void uploadPictureTogallery() {
 
         Intent i = new Intent(this, UploadImage.class);
+        startActivity(i);
+    }
+
+    private void sendNews()
+    {
+        Intent i = new Intent(this, SendNews.class);
         startActivity(i);
     }
 
@@ -131,6 +151,21 @@ public class ManagerScreen extends AppCompatActivity {
         i.putExtra("active",0);
         startActivity(i);
     }
+
+    private void addNewProject() {
+        Intent i = new Intent(this, AddProject.class);
+        startActivity(i);
+    }
+    private void editProject() {
+        Intent i = new Intent(this, EditProject.class);
+        startActivity(i);
+    }
+    private void deleteProject() {
+        Intent i = new Intent(this, EditProject.class);
+        i.putExtra("active",0);
+        startActivity(i);
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

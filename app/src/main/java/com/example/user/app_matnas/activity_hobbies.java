@@ -3,17 +3,12 @@ package com.example.user.app_matnas;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.TextInputLayout;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -21,7 +16,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,11 +30,11 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 
 public class activity_hobbies extends AppCompatActivity {
 
+    //todo change user - activity and hobbies - activites and psik in days
     private HobbiesAdapter adapter;
     private DatabaseReference databaseReference;
     private ProgressDialog mProgressDialog;
@@ -48,8 +42,6 @@ public class activity_hobbies extends AppCompatActivity {
     private RecyclerView recyclerView;
     private Toolbar toolbar;
     private TextView toolBarText;
-    final Random rnd = new Random();
-    private View layoutView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,8 +69,8 @@ public class activity_hobbies extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
                     for (DataSnapshot postSnapShot : dataSnapshot.getChildren()) {
-                        Activity user = postSnapShot.getValue(Activity.class);
-                        activityList.add(user);
+                        Activity activity = postSnapShot.getValue(Activity.class);
+                        activityList.add(activity);
                     }
                 }
                 hideProgressDialog();
@@ -116,14 +108,17 @@ public class activity_hobbies extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_activites, menu);
+        inflater.inflate(R.menu.menu_search, menu);
         MenuItem item = menu.findItem(R.id.app_bar_search);
         android.widget.SearchView searchView = (android.widget.SearchView) item.getActionView();
         //searchView.setIconified(false);
         searchView.setQueryHint("חיפוש חופשי");
 
+
         searchView.setOnQueryTextListener(new android.widget.SearchView.OnQueryTextListener() {
+
             @Override
             public boolean onQueryTextSubmit(String query) {
 
@@ -132,6 +127,7 @@ public class activity_hobbies extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
+
                 newText = newText.toLowerCase();
                 ArrayList<Activity> newList = new ArrayList<>();
                 for (Activity activity : activityList) {
@@ -195,26 +191,13 @@ public class activity_hobbies extends AppCompatActivity {
 
             holder.button.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v)
-                {
+                public void onClick(View v) {
                     Intent i = new Intent(activity_hobbies.this, register.class);
-                    i.putExtra("name",user.getActivityName());
-                    Toast.makeText(context,"!!!!!!!!!!!!!!!!!!!!1",Toast.LENGTH_LONG).show();
+                    i.putExtra("name", user.getActivityName());
+                    Toast.makeText(context, "!!!!!!!!!!!!!!!!!!!!1", Toast.LENGTH_LONG).show();
                     startActivity(i);
                 }
             });
-
-//            String[] rnd =
-//                    {"https://firebasestorage.googleapis.com/v0/b/app-matnas-22408.appspot.com/o/Recycleview%2Fbutterfly.jpg?alt=media&token=42d8f6d4-463b-4cba-8dc8-89ba802b80b9",
-//                            "https://firebasestorage.googleapis.com/v0/b/app-matnas-22408.appspot.com/o/Recycleview%2Fdesert.jpg?alt=media&token=bd8a4c9b-9b78-40cb-b4d2-2c23516a5b61",
-//                            "https://firebasestorage.googleapis.com/v0/b/app-matnas-22408.appspot.com/o/Recycleview%2Fflower.jpg?alt=media&token=26c40c91-0cd0-4d09-b64e-0d2f19af8476" +
-//                                    "https://firebasestorage.googleapis.com/v0/b/app-matnas-22408.appspot.com/o/Recycleview%2Fflowers.jpg?alt=media&token=378f8a92-737b-477e-a862-94aea46c419e",
-//                            "https://firebasestorage.googleapis.com/v0/b/app-matnas-22408.appspot.com/o/Recycleview%2Fnight.jpg?alt=media&token=04eb078b-1de4-42d5-a18a-8b942f25d269"
-//                    };
-//
-//            int idx = new Random().nextInt(rnd.length);
-//            String random = (rnd[idx]);
-//            Glide.with(context).load(random).into(holder.ivProfilePic);
 
         }
 
@@ -239,7 +222,6 @@ public class activity_hobbies extends AppCompatActivity {
 
             public UserViewHolder(View itemView) {
                 super(itemView);
-                ivProfilePic = (ImageView) itemView.findViewById(R.id.ivProfilePic);
                 tvName = (TextView) itemView.findViewById(R.id.view_name);
                 tvType = (TextView) itemView.findViewById(R.id.view_type);
                 tvAge = (TextView) itemView.findViewById(R.id.view_age);

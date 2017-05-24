@@ -21,10 +21,10 @@
     <string name="contactus_Taddress">כתובת: </string>
     <string name="contactus_address">\r\n מוריס פישר 20 \r\n שכונת פת \r\n ירושלים</string>
     <string name="form_title">כתוב לנו</string>
-    <string name="form_name">שם</string>
+    <string name="form_name">שם*</string>
     <string name="form_email">כתובת מייל</string>
-    <string name="form_phone">מספר נייד</string>
-    <string name="form_message">ההודעה שלך</string>
+    <string name="form_phone">מספר נייד*</string>
+    <string name="form_message">ההודעה שלך*</string>
     <string name="form_btn">שלח</string>
 
     <!-- Login Screen -->
@@ -57,6 +57,7 @@
     <!--Manager Screen-->
     <string-array name="actions">
         <item>העלאת תמונות לגלרייה</item>
+        <item>שליחת הודעה למשתמשים</item>
         <item>הוספת חוג חדש</item>
         <item>עריכת חוג קיים</item>
         <item>מחיקת חוג קיים</item>
@@ -69,7 +70,7 @@
         <item>הוספת אירוע חדש</item>
         <item>עריכת אירוע קיים</item>
         <item>מחיקת אירוע קיים</item>
-        <item>שליחת הודעה למשתמשים</item>
+
     </string-array>
 
 
@@ -161,11 +162,13 @@
     <string name="err_msg_lname">הכנס/י שם משפחה</string>
     <string name="err_msg_neighborhood">הכנס/י שם שכונה</string>
     <string name="err_msg_email">הכנס/י כתובת מייל תקינה</string>
-    <string name="err_msg_phone" >הכנס/י טלפון נייד תקין</string>
+    <string name="err_msg_phone">הכנס/י טלפון נייד תקין</string>
 
     <string name="hint_fname">שם פרטי</string>
     <string name="hint_lname">שם משפחה</string>
     <string name="hint_neighborhood">שכונת מגורים</string>
     <string name="hint_phone">טלפון נייד</string>
-
+    <string name="clickCancelMessage">האם לצאת מבלי לשלוח את ההודעה?</string>
+    <string name="clickCancelProject">האם לצאת מבלי לשמור את הפרוייקט?</string>
+    <string name="editProject">בחר פרוייקט</string>
 </resources>

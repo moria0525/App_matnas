@@ -24,9 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Arrays;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class AddActivity extends AppCompatActivity {
 
@@ -52,14 +50,14 @@ public class AddActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add);
+        setContentView(R.layout.activity_add_activity);
 
         //init screen and variables
         context = getApplicationContext();
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolBarText = (TextView) findViewById(R.id.toolBarText);
-        toolBarText.setText(getResources().getStringArray(R.array.actions)[1]);
+        toolBarText.setText(getResources().getStringArray(R.array.actions)[2]);
         AlertDialogItemsType = getResources().getStringArray(R.array.itemsType);
         AlertDialogItemsDays = getResources().getStringArray(R.array.itemsDays);
         Arrays.fill(SelectedtruefalseType, false);
@@ -79,6 +77,7 @@ public class AddActivity extends AppCompatActivity {
 
         if (a_edit != null)
         {
+            toolBarText.setText(getResources().getStringArray(R.array.actions)[3]);
             fillFields();
         }
     }
@@ -178,7 +177,7 @@ public class AddActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.edit_activity, menu);
+        inflater.inflate(R.menu.menu_form, menu);
         return true;
     }
 
