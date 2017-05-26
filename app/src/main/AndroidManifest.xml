@@ -62,7 +62,6 @@
         <activity android:name=".SendNews" />
         <activity android:name=".AddProject" />
         <activity android:name=".activity_project" />
-        <activity android:name=".ShowProject"/>
         <activity android:name=".EditProject"/>
     </application>
 

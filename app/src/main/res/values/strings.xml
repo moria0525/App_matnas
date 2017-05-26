@@ -171,4 +171,6 @@
     <string name="clickCancelMessage">האם לצאת מבלי לשלוח את ההודעה?</string>
     <string name="clickCancelProject">האם לצאת מבלי לשמור את הפרוייקט?</string>
     <string name="editProject">בחר פרוייקט</string>
+    <string name="joinProject">להצטרפות לפרוייקט</string>
+    <string name="close">סגור</string>
 </resources>

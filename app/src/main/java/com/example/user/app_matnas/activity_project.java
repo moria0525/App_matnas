@@ -2,15 +2,18 @@ package com.example.user.app_matnas;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -20,6 +23,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -38,12 +42,12 @@ import java.util.List;
 public class activity_project extends AppCompatActivity {
     private ProjectAdapter adapter;
     private DatabaseReference databaseReference;
-    private ProgressDialog mProgressDialog;
     private List<Project> projectList = new ArrayList<>();
     private ListView list;
     private Toolbar toolbar;
     private TextView toolBarText;
-
+    private ProgressDialog mProgressDialog;
+    private View layoutView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,12 +62,67 @@ public class activity_project extends AppCompatActivity {
         toolBarText = (TextView) findViewById(R.id.toolBarText);
         toolBarText.setText("פרוייקטים");
         list = (ListView) findViewById(R.id.list);
-        //   list.setLayoutManager(new LinearLayoutManager(this));
         getDataFromDB();
 
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+            final Project project = projectList.get(position);
+            final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(activity_project.this);
+            alertDialogBuilder.setTitle(project.getProjectName());
+            alertDialogBuilder.setMessage(project.getProjectDes())
+                    .setPositiveButton(R.string.joinProject, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id)
+                        {
+                            dialog.dismiss();
+                            LayoutInflater inflater = LayoutInflater.from(activity_project.this);
+
+                            register r = new register(project.getProjectName(),activity_project.this);
+                            r.showDialog(inflater);
+
+//                            final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(activity_project.this);
+//                            alertDialogBuilder.setMessage("second");
+//                            alertDialogBuilder.create();
+//                            alertDialogBuilder.show();
+//                            Intent i = new Intent(activity_project.this, register.class);
+//                            i.putExtra("name", project.getProjectName());
+//                            Toast.makeText(getApplicationContext(), "!!!!!!!!!!!!!!!!!!!!1", Toast.LENGTH_LONG).show();
+//                            startActivity(i);
+                        }
+                    })
+                    .setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+        }
+                                    }
+        );
     }
 
+    private void show()
+    {
+//        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(activity_project.this);
+
+//        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+//        LayoutInflater inflater = this.getLayoutInflater();
+//        View dialogView = inflater.inflate(R.layout.activity_register, null);
+//        dialogBuilder.setView(dialogView);
+//
+//        EditText editText = (EditText) dialogView.findViewById(R.id.register_email);
+//
+//        AlertDialog alertDialog = dialogBuilder.create();
+//        alertDialog.show();
+
+
+
+//        alertDialogBuilder.setMessage("second");
+//        alertDialogBuilder.create();
+//        alertDialogBuilder.show();
+
+    }
 
     public void getDataFromDB() {
 
@@ -102,22 +161,6 @@ public class activity_project extends AppCompatActivity {
         if (mProgressDialog != null && mProgressDialog.isShowing()) {
             mProgressDialog.dismiss();
         }
-
-
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                Project project = projectList.get(position);
-                Intent intent = new Intent(activity_project.this, ShowProject.class);
-                intent.putExtra("show", project);
-                startActivity(intent);
-
-
-
-            }
-        });
-
-
     }
 
 

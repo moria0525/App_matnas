@@ -115,13 +115,12 @@ public class SendMail extends AsyncTask<Void,Void,Void> {
             //Adding subject
             mm.setSubject(subject);
             //Adding content
-            if(flag == 0)
+            if(flag == 0)//todo form style
                 mm.setText(fname + "\n" + lname + "\n" + neighborhood + "\n" + phone + "\n" + email);
             else
                 mm.setText(name + "\n" + phone + "\n" + message);
             //Sending email
             Transport.send(mm);
-
         } catch (MessagingException e) {
             e.printStackTrace();
         }

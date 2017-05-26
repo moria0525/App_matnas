@@ -1,6 +1,7 @@
 package com.example.user.app_matnas;
 
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -175,27 +176,22 @@ public class activity_hobbies extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(UserViewHolder holder, final int position) {
-            final Activity user = userList.get(position);
-
-            //holder.ivProfilePic.setImageResource(Glide.with(context).load("gs://app-matnas-22408.appspot.com/m/1492931631390.jpg"));
-
-            // holder.ivProfilePic.setImageURI(a);
-            holder.tvName.setText(user.getActivityName());
-            String type = user.getActivityType().substring(0, user.getActivityType().length() - 2);
+            final Activity activity = userList.get(position);
+            holder.tvName.setText(activity.getActivityName());
+            String type = activity.getActivityType().substring(0, activity.getActivityType().length() - 2);
             holder.tvType.setText(type);
-            holder.tvAge.setText(user.getActivityAge());
-            holder.tvDays.setText(user.getActivityDays());
-            holder.tvStart.setText(user.getActivityStart());
-            holder.tvEnd.setText(user.getActivityEnd());
-            holder.tvDes.setText(user.getActivityDes());
+            holder.tvAge.setText(activity.getActivityAge());
+            holder.tvDays.setText(activity.getActivityDays());
+            holder.tvStart.setText(activity.getActivityStart());
+            holder.tvEnd.setText(activity.getActivityEnd());
+            holder.tvDes.setText(activity.getActivityDes());
 
             holder.button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent i = new Intent(activity_hobbies.this, register.class);
-                    i.putExtra("name", user.getActivityName());
-                    Toast.makeText(context, "!!!!!!!!!!!!!!!!!!!!1", Toast.LENGTH_LONG).show();
-                    startActivity(i);
+                    LayoutInflater inflater = LayoutInflater.from(activity_hobbies.this);
+                    register r = new register(activity.getActivityName(), activity_hobbies.this);
+                    r.showDialog(inflater);
                 }
             });
 
@@ -244,5 +240,3 @@ public class activity_hobbies extends AppCompatActivity {
     }
 
 }
-
-

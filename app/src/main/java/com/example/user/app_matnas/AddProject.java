@@ -51,6 +51,7 @@ public class AddProject extends AppCompatActivity {
     private ImageView logo;
     private DatabaseReference mDatabase;
     private Project p_edit;
+    private Project project;
     public static final int GALLERY_CODE = 1;
     private Uri imgUri;
     private StorageReference mStorageRef;
@@ -93,6 +94,7 @@ public class AddProject extends AppCompatActivity {
         name.setText(p_edit.getProjectName());
         description.setText(p_edit.getProjectDes());
         Glide.with(getApplicationContext()).load(p_edit.getProjectLogo()).into(logo);
+
     }
 
 
@@ -185,32 +187,46 @@ public class AddProject extends AppCompatActivity {
         StorageReference ref = mStorageRef.child(FB_STORAGE_LOGO).child(s_name);
 
         //TODO without image...
-        ref.putFile(imgUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                //add data to DB
-                Project project = new Project(s_name, s_description, taskSnapshot.getDownloadUrl().toString());
-                try {
-                    mDatabase.child(s_name).setValue(project);
-                } catch (DatabaseException e) {
-                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-                    e.printStackTrace();
-                }
-                Toast.makeText(getApplicationContext(), "הפרוייקט נשמר בהצלחה", Toast.LENGTH_SHORT).show();
-                backToManagerScreen();
-
-
+        if(p_edit!= null)
+        {
+            project = new Project(s_name, s_description, p_edit.getProjectLogo());
+            try {
+                mDatabase.child(s_name).setValue(project);
+            } catch (DatabaseException e) {
+                Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                e.printStackTrace();
             }
-        })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
+            Toast.makeText(getApplicationContext(), "הפרוייקט התעדכן בהצלחה", Toast.LENGTH_SHORT).show();
+            finish();
+        }
+        else {
+            ref.putFile(imgUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                        //Display err toast msg
-                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                    //add data to DB
+                    project = new Project(s_name, s_description, taskSnapshot.getDownloadUrl().toString());
+                    try {
+                        mDatabase.child(s_name).setValue(project);
+                    } catch (DatabaseException e) {
+                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                        e.printStackTrace();
                     }
-                });
+                    Toast.makeText(getApplicationContext(), "הפרוייקט נשמר בהצלחה", Toast.LENGTH_SHORT).show();
+                    finish();
+
+                }
+            })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+
+                            //Display err toast msg
+                            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        }
     }
 
 

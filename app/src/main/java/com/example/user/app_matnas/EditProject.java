@@ -63,6 +63,12 @@ public class EditProject extends AppCompatActivity {
         {
             list[i] = proList.get(i).getProjectName();
         }
+        if(list.length==0)
+        {
+            Toast.makeText(getApplicationContext(), "אין פרוייקטים קיימים", Toast.LENGTH_SHORT).show();
+            finish();
+        }
+
         builder.setTitle(R.string.editProject)
 
                 // specify the list array, the items to be selected by default (null for none),
@@ -88,10 +94,10 @@ public class EditProject extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),""+active,Toast.LENGTH_LONG).show();
                         if(active == 0)
                         {
-                            Toast.makeText(getApplicationContext(),"active",Toast.LENGTH_LONG).show();
                             name = proList.get(selectedPosition).getProjectName();
                             mDatabaseRef.child(name).removeValue();
-                            backToManagerScreen();
+                            Toast.makeText(getApplicationContext(), "הפרוייקט נמחק בהצלחה", Toast.LENGTH_SHORT).show();
+                            finish();
                         }
                         else {
                             Project project = proList.get(selectedPosition);
