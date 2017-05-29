@@ -204,7 +204,9 @@ public class AddActivity extends AppCompatActivity {
         alertDialogBuilder.setPositiveButton(getResources().getString(R.string.yes),
                 new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface arg0, int arg1) {
+                    public void onClick(DialogInterface arg0, int arg1)
+                    {
+                        arg0.dismiss();
                         backToManagerScreen();
                     }
                 });
@@ -288,15 +290,16 @@ public class AddActivity extends AppCompatActivity {
         } else {
             //add data to DB
             Activity activity = new Activity(s_name, s_type, s_description, s_age, s_days, s_timeStart, s_timeEnd);
-            Toast.makeText(getApplicationContext(), "!!!!!!!!111", Toast.LENGTH_LONG).show();
             try {
                 mDatabase.child(s_name).setValue(activity);
-                activity.setActivityBType(SelectedtruefalseType);
+                //activity.setActivityBType(SelectedtruefalseType);
+                Toast.makeText(getApplicationContext(), "החוג נוסף בהצלחה", Toast.LENGTH_LONG).show();
+                backToManagerScreen();
             } catch (DatabaseException e) {
                 Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                 e.printStackTrace();
             }
-            backToManagerScreen();
+
         }
     }
 
@@ -321,8 +324,11 @@ public class AddActivity extends AppCompatActivity {
     }
 
     /* Method to back to screen manager after saving new activity */
-    private void backToManagerScreen() {
-        Intent i = new Intent(AddActivity.this, ManagerScreen.class);
-        startActivity(i);
+    private void backToManagerScreen()
+    {
+        Toast.makeText(getApplicationContext(),"טופל",Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(AddActivity.this, ManagerScreen.class);
+        startActivity(intent);
+        finish();
     }
 }

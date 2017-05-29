@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btn_selectTeamImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClickTeamImage"
+        android:text="לחץ כאן לבחירת תמונת איש צוות"
+        android:layout_alignBottom="@+id/imageTeam"
+        android:layout_alignLeft="@+id/et_des_team"
+        android:layout_alignStart="@+id/et_des_team"
+        android:layout_marginBottom="12dp" />
+
+    <LinearLayout
+        android:id="@+id/layout_main"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/tool_bar" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/et_des_team"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:ems="10"
+        android:gravity="top"
+        android:hint="תיאור קצר"
+        android:inputType="textMultiLine"
+        android:layout_below="@+id/et_mail_team"
+        android:layout_alignLeft="@+id/et_mail_team"
+        android:layout_alignStart="@+id/et_mail_team"
+        android:layout_marginTop="16dp" />
+
+
+    <ImageView
+        android:id="@+id/imageTeam"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/gallery_event"
+        android:layout_marginTop="41dp"
+        android:layout_below="@+id/et_des_team"
+        android:layout_toRightOf="@+id/btn_selectTeamImage"
+        android:layout_toEndOf="@+id/btn_selectTeamImage" />
+
+    <EditText
+        android:id="@+id/et_name_team"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="19dp"
+        android:ems="10"
+        android:hint="שם איש צוות"
+        android:inputType="textPersonName"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp"
+        android:layout_below="@+id/layout_main"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:id="@+id/et_role_team"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/et_name_team"
+        android:layout_alignStart="@+id/et_name_team"
+        android:layout_below="@+id/et_name_team"
+        android:layout_marginTop="13dp"
+        android:ems="10"
+        android:hint="תפקיד"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/et_mail_team"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="כתובת אימייל ליצירת קשר"
+        android:inputType="textPersonName"
+        android:layout_marginTop="12dp"
+        android:layout_below="@+id/et_role_team"
+        android:layout_alignLeft="@+id/et_role_team"
+        android:layout_alignStart="@+id/et_role_team" />
+</RelativeLayout>

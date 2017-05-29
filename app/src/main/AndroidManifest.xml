@@ -62,7 +62,13 @@
         <activity android:name=".SendNews" />
         <activity android:name=".AddProject" />
         <activity android:name=".activity_project" />
-        <activity android:name=".EditProject"/>
+        <activity android:name=".EditProject" />
+        <activity android:name=".activity_team" />
+        <activity android:name=".AddTeam" />
+        <activity android:name=".EditTeam" />
+        <activity android:name=".AddWorkShop" />
+        <activity android:name=".EditWorkShop" />
+        <activity android:name=".activity_workShop"></activity>
     </application>
 
 </manifest>

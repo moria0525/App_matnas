@@ -114,11 +114,11 @@ public class activity_main extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case 5:
-                intent = new Intent(activity_main.this, activity_about.class);
+                intent = new Intent(activity_main.this, activity_workShop.class);
                 startActivity(intent);
                 break;
             case 6:
-                intent = new Intent(activity_main.this, activity_about.class);
+                intent = new Intent(activity_main.this, activity_team.class);
                 startActivity(intent);
                 break;
             case 7:

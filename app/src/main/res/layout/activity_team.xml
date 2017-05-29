@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:padding="10dp"
+    android:background="@color/colorBackgroundHome">
+
+    <RelativeLayout
+        android:id="@+id/innerContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/border"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+
+        <ImageView
+            android:id="@+id/imageViewTeam"
+            android:layout_width="123dp"
+            android:layout_height="135dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true" />
+
+
+        <TextView
+            android:id="@+id/tv_TName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textSize="20sp"
+            android:maxWidth="120dip"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="14dp" />
+
+        <TextView
+            android:id="@+id/tv_TRole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textSize="20sp"
+            android:layout_below="@+id/tv_TName"
+            android:layout_alignLeft="@+id/tv_TName"
+            android:layout_alignStart="@+id/tv_TName" />
+        <TextView
+            android:id="@+id/tv_TDes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="fdsgrewsdgwrre"
+            android:textSize="12sp"
+            android:maxWidth="120dip"
+            android:layout_below="@+id/imageViewMail"
+            android:layout_alignLeft="@+id/tv_TRole"
+            android:layout_alignStart="@+id/tv_TRole"
+            android:layout_marginTop="24dp" />
+
+        <ImageView
+            android:id="@+id/imageViewMail"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/social_media_mail"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginEnd="15dp" />
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
+

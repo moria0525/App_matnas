@@ -48,7 +48,6 @@ public class register extends AppCompatActivity {
     public void showDialog(final LayoutInflater inflater) {
 
 
-
         title = "הרשמה ל" + name;
         final AlertDialog.Builder builder = new AlertDialog.Builder(context);
         final View dialogView = inflater.inflate(R.layout.activity_register, null);

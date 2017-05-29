@@ -57,9 +57,6 @@ public class AddProject extends AppCompatActivity {
     private StorageReference mStorageRef;
     public static String FB_STORAGE_LOGO = "logoProjects";
 
-    private AlertDialog.Builder alertdialogbuilder;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -130,7 +127,9 @@ public class AddProject extends AppCompatActivity {
         alertDialogBuilder.setPositiveButton(getResources().getString(R.string.yes),
                 new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface arg0, int arg1) {
+                    public void onClick(DialogInterface arg0, int arg1)
+                    {
+                        arg0.dismiss();
                         backToManagerScreen();
                     }
                 });
@@ -198,7 +197,7 @@ public class AddProject extends AppCompatActivity {
                 e.printStackTrace();
             }
             Toast.makeText(getApplicationContext(), "הפרוייקט התעדכן בהצלחה", Toast.LENGTH_SHORT).show();
-            finish();
+            backToManagerScreen();
         }
         else {
             ref.putFile(imgUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -235,5 +234,6 @@ public class AddProject extends AppCompatActivity {
     private void backToManagerScreen() {
         Intent i = new Intent(AddProject.this, ManagerScreen.class);
         startActivity(i);
+
     }
 }

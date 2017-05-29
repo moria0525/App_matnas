@@ -63,7 +63,7 @@ public class ManagerScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_manager_screen);
+        setContentView(R.layout.list);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -71,7 +71,7 @@ public class ManagerScreen extends AppCompatActivity {
         toolBarText = (TextView) findViewById(R.id.toolBarText);
         toolBarText.setText(R.string.actions_manager);
 
-        actionsList = (ListView) findViewById(R.id.List);
+        actionsList = (ListView) findViewById(R.id.list);
 
         auth = FirebaseAuth.getInstance();
 
@@ -116,12 +116,29 @@ public class ManagerScreen extends AppCompatActivity {
                     case 7:
                         deleteProject();
                         break;
+                    case 8:
+                        AddNewWorkshop();
+                        break;
+                    case 9:
+                        editWorkShop();
+                        break;
+                    case 10:
+                        deleteWorkShop();
+                        break;
+                    case 14:
+                        AddNewTeam();
+                        break;
+                    case 15:
+                        editTeam();
+                        break;
+                    case 16:
+                        deleteTeam();
+                        break;
                 }
             }
 
         });
     }
-
 
 
     private void uploadPictureTogallery() {
@@ -142,14 +159,15 @@ public class ManagerScreen extends AppCompatActivity {
     }
 
     private void editActivity() {
-        Intent i = new Intent(this, EditActivity.class);
-        startActivity(i);
+        LayoutInflater inflater = LayoutInflater.from(ManagerScreen.this);
+        EditActivity ea = new EditActivity(ManagerScreen.this);
+        ea.getDB(-1);
     }
 
     private void deleteActivity() {
-        Intent i = new Intent(this, EditActivity.class);
-        i.putExtra("active",0);
-        startActivity(i);
+        LayoutInflater inflater = LayoutInflater.from(ManagerScreen.this);
+        EditActivity ea = new EditActivity(ManagerScreen.this);
+        ea.getDB(0);
     }
 
     private void addNewProject() {
@@ -157,13 +175,38 @@ public class ManagerScreen extends AppCompatActivity {
         startActivity(i);
     }
     private void editProject() {
-        Intent i = new Intent(this, EditProject.class);
-        startActivity(i);
+        EditProject ep = new EditProject(ManagerScreen.this);
+        ep.getDB(-1);
     }
     private void deleteProject() {
-        Intent i = new Intent(this, EditProject.class);
-        i.putExtra("active",0);
+        EditProject ep = new EditProject(ManagerScreen.this);
+        ep.getDB(0);
+    }
+    private void AddNewTeam()
+    {
+        Intent i = new Intent(this, AddTeam.class);
         startActivity(i);
+    }
+    private void editTeam() {
+        EditTeam t = new EditTeam(ManagerScreen.this);
+        t.getDB(-1);
+    }
+    private void deleteTeam() {
+        EditTeam t = new EditTeam(ManagerScreen.this);
+        t.getDB(0);
+    }
+    private void AddNewWorkshop()
+    {
+        Intent i = new Intent(this, AddWorkShop.class);
+        startActivity(i);
+    }
+    private void editWorkShop() {
+        EditWorkShop ws = new EditWorkShop(ManagerScreen.this);
+        ws.getDB(-1);
+    }
+    private void deleteWorkShop() {
+        EditWorkShop ws = new EditWorkShop(ManagerScreen.this);
+        ws.getDB(0);
     }
 
 

@@ -257,8 +257,7 @@ public class UploadImage extends AppCompatActivity {
 
     /* Method to back to screen manager after saving new activity */
     private void backToManagerScreen() {
-        Intent i = new Intent(UploadImage.this, ManagerScreen.class);
-        startActivity(i);
+       finish();
     }
 
 }

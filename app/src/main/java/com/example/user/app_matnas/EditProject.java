@@ -1,11 +1,14 @@
 package com.example.user.app_matnas;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Parcelable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.widget.ListAdapter;
 import android.widget.Toast;
 
@@ -14,6 +17,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -21,108 +26,127 @@ import java.util.List;
 
 import static android.R.id.list;
 
-
 public class EditProject extends AppCompatActivity {
     private DatabaseReference mDatabaseRef;
     public static final String DATABASE_PATH = "projects";
     public List<Project> proList;
     String name;
 
+    private StorageReference mStorageRef;
+    String list[];
+    int active;
+    Context context;
+    private ProgressDialog mProgressDialog;
+
+
+    public EditProject() {
+
+    }
+    public EditProject(Context context) {
+
+        this.context = context;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    public void getDB(int flag) {
+
         proList = new ArrayList<>();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference(DATABASE_PATH);
-        mDatabaseRef.addValueEventListener
-                (new ValueEventListener() {
+        mStorageRef = FirebaseStorage.getInstance().getReference();
+        active = flag;
+        showProgressDialog();
+        mDatabaseRef.addValueEventListener(new ValueEventListener() {
                      @Override
                      public void onDataChange(DataSnapshot dataSnapshot) {
-                         //Fetch image data from firebase database
                          for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                             //ImageUpload class require default constructor
                              Project project = snapshot.getValue(Project.class);
                              proList.add(project);
                          }
+                         hideProgressDialog();
                          showDialog();
                      }
 
                      @Override
-                     public void onCancelled(DatabaseError databaseError) {
+                     public void onCancelled(DatabaseError databaseError)
+                     {
+                         hideProgressDialog();
                      }
                  }
                 );
 
     }
 
-    public void showDialog()
-    {
-        AlertDialog.Builder builder = new AlertDialog.Builder(EditProject.this);
+    public void showDialog() {
         String list[] = new String[proList.size()];
-        for (int i = 0; i < proList.size(); i++)
-        {
+        for (int i = 0; i < proList.size(); i++) {
             list[i] = proList.get(i).getProjectName();
         }
-        if(list.length==0)
-        {
-            Toast.makeText(getApplicationContext(), "אין פרוייקטים קיימים", Toast.LENGTH_SHORT).show();
-            finish();
+        if (list.length == 0) {
+            backToManagerScreen();
         }
 
-        builder.setTitle(R.string.editProject)
+        final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(R.string.editProject);
 
-                // specify the list array, the items to be selected by default (null for none),
-                // and the listener through which to receive call backs when items are selected
-                // again, R.array.choices were set in the resources res/values/strings.xml
-                .setSingleChoiceItems(list, 0, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface arg0, int arg1) {
-                    }
+        builder.setSingleChoiceItems(list, -1, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+            }
+        });
 
-                })
+        builder.setPositiveButton(context.getString(R.string.ok), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
 
-                // Set the action buttons
-                .setPositiveButton(getResources().getString(R.string.ok), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        int active;
-                        // user clicked OK, so save the mSelectedItems results somewhere
-                        // or return them to the component that opened the dialog
-                        int selectedPosition = ((AlertDialog) dialog).getListView().getCheckedItemPosition();
-                        Intent i = getIntent();
-                        active = i.getIntExtra("active",-1);
-                        Toast.makeText(getApplicationContext(),""+active,Toast.LENGTH_LONG).show();
-                        if(active == 0)
-                        {
-                            name = proList.get(selectedPosition).getProjectName();
-                            mDatabaseRef.child(name).removeValue();
-                            Toast.makeText(getApplicationContext(), "הפרוייקט נמחק בהצלחה", Toast.LENGTH_SHORT).show();
-                            finish();
-                        }
-                        else {
-                            Project project = proList.get(selectedPosition);
-                            Intent intent = new Intent(EditProject.this, AddProject.class);
-                            intent.putExtra("editProject", project);
-                            startActivity(intent);
-                        }
-                    }
-                })
+                Intent intent;
+                int selectedPosition = ((AlertDialog) dialogInterface).getListView().getCheckedItemPosition();
+                name = proList.get(selectedPosition).getProjectName();
+                if (active == 0) {
+                    mDatabaseRef.child(name).removeValue();
+                    StorageReference ref = mStorageRef.child(AddProject.FB_STORAGE_LOGO).child(name);
+                    ref.delete();
+                    backToManagerScreen();
+                    dialogInterface.dismiss();
+                } else {
+                    Project project = proList.get(selectedPosition);
+                    intent = new Intent(context, AddProject.class);
+                    intent.putExtra("editProject", project);
+                    mDatabaseRef.child(name).removeValue();
+                    context.startActivity(intent);
+                }
+            }
+        });
 
-                .setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        backToManagerScreen();
-                    }
-                })
-
-                .show();
-
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
+
+
+    private void showProgressDialog() {
+        if (mProgressDialog == null) {
+            mProgressDialog = new ProgressDialog(context);
+            mProgressDialog.setMessage("עוד רגע..");
+            mProgressDialog.setIndeterminate(true);
+        }
+        mProgressDialog.show();
+    }
+
+    private void hideProgressDialog() {
+        if (mProgressDialog != null && mProgressDialog.isShowing()) {
+            mProgressDialog.dismiss();
+        }
+    }
 
     /* Method to back to screen manager after saving new activity */
     private void backToManagerScreen() {
-        Intent i = new Intent(EditProject.this, ManagerScreen.class);
-        startActivity(i);
+        Toast.makeText(context, "אין פרוייקטים", Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(context, ManagerScreen.class);
+        context.startActivity(intent);
     }
+
 }

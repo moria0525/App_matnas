@@ -29,11 +29,15 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/ImageGallery"
             android:layout_gravity="left"
-            android:inputType="text"
+            android:inputType="textMultiLine"
+            android:maxWidth="120dip"
             android:textAlignment="center"
             android:textColor="#000"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_centerHorizontal="true"/>
 
     </RelativeLayout>
 

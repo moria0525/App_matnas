@@ -1,12 +1,20 @@
 package com.example.user.app_matnas;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Parcelable;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -17,6 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static android.R.id.list;
@@ -27,96 +36,123 @@ public class EditActivity extends AppCompatActivity {
     public static final String DATABASE_PATH = "activities";
     public List<Activity> actList;
     String name;
+    String list[];
+    int active;
+    Context context;
+    private ProgressDialog mProgressDialog;
+
+
+    public EditActivity() {
+
+    }
+
+
+    public EditActivity(Context context) {
+
+        this.context = context;
+    }
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+
+    public void getDB(int flag) {
+
         actList = new ArrayList<>();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference(DATABASE_PATH);
-        mDatabaseRef.addValueEventListener
-                (new ValueEventListener() {
-                     @Override
-                     public void onDataChange(DataSnapshot dataSnapshot) {
-                         //Fetch image data from firebase database
-                         for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                             //ImageUpload class require default constructor
-                             Activity activity = snapshot.getValue(Activity.class);
-                             actList.add(activity);
-                         }
-                         showDialog();
-                     }
+        active = flag;
+        showProgressDialog();
 
-                     @Override
-                     public void onCancelled(DatabaseError databaseError) {
-                     }
-                 }
-                );
+        mDatabaseRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot)
+            {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren())
+                {
+                    Activity activity = snapshot.getValue(Activity.class);
+                    actList.add(activity);
+                }
+                hideProgressDialog();
+                showDialog();
+            }
 
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                hideProgressDialog();
+            }
+                                           }
+        );
     }
 
     public void showDialog()
     {
-        AlertDialog.Builder builder = new AlertDialog.Builder(EditActivity.this);
-        String list[] = new String[actList.size()];
-        for (int i = 0; i < actList.size(); i++)
-        {
+        list = new String[actList.size()];
+        for (int i = 0; i < actList.size(); i++) {
             list[i] = actList.get(i).getActivityName();
         }
-        builder.setTitle(R.string.editActivity)
+        if (list.length == 0) {
+            backToManagerScreen();
+        }
 
-                // specify the list array, the items to be selected by default (null for none),
-                // and the listener through which to receive call backs when items are selected
-                // again, R.array.choices were set in the resources res/values/strings.xml
-                .setSingleChoiceItems(list, 0, new DialogInterface.OnClickListener() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(R.string.editActivity);
+
+        builder.setSingleChoiceItems(list, -1, new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface arg0, int arg1) {
+                    public void onClick(DialogInterface dialogInterface, int i) {
                     }
+                });
 
-                })
+        builder.setPositiveButton(context.getString(R.string.ok), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
 
-                // Set the action buttons
-                .setPositiveButton(getResources().getString(R.string.ok), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        int active;
-                        // user clicked OK, so save the mSelectedItems results somewhere
-                        // or return them to the component that opened the dialog
-                        int selectedPosition = ((AlertDialog) dialog).getListView().getCheckedItemPosition();
-                        Intent i = getIntent();
-                        active = i.getIntExtra("active",-1);
-                        Toast.makeText(getApplicationContext(),""+active,Toast.LENGTH_LONG).show();
-                        if(active == 0)
-                        {
-                            Toast.makeText(getApplicationContext(),"active",Toast.LENGTH_LONG).show();
-                            name = actList.get(selectedPosition).getActivityName();
-                            mDatabaseRef.child(name).removeValue();
-                            backToManagerScreen();
-                        }
-                        else {
-                            Activity a = actList.get(selectedPosition);
-                            Intent intent = new Intent(EditActivity.this, AddActivity.class);
-                            intent.putExtra("edit", a);
-                            startActivity(intent);
-                        }
-                    }
-                })
+                Intent intent;
+                int selectedPosition = ((AlertDialog) dialogInterface).getListView().getCheckedItemPosition();
+                name = actList.get(selectedPosition).getActivityName();
 
-                .setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        backToManagerScreen();
-                    }
-                })
+                if (active == 0) {
+                    mDatabaseRef.child(name).removeValue();
+                    backToManagerScreen();
+                    dialogInterface.dismiss();
+                } else {
+                    Activity a = actList.get(selectedPosition);
+                    intent = new Intent(context, AddActivity.class);
+                    intent.putExtra("edit", a);
+                    mDatabaseRef.child(name).removeValue();
+                    context.startActivity(intent);
+                }
+            }
+        });
 
-                .show();
+        AlertDialog dialog = builder.create();
+        dialog.show();
 
-   }
+    }
 
+    private void showProgressDialog() {
+        if (mProgressDialog == null) {
+            mProgressDialog = new ProgressDialog(context);
+            mProgressDialog.setMessage("עוד רגע..");
+            mProgressDialog.setIndeterminate(true);
+        }
+        mProgressDialog.show();
+    }
+
+    private void hideProgressDialog() {
+        if (mProgressDialog != null && mProgressDialog.isShowing()) {
+            mProgressDialog.dismiss();
+        }
+    }
 
     /* Method to back to screen manager after saving new activity */
     private void backToManagerScreen() {
-        Intent i = new Intent(EditActivity.this, ManagerScreen.class);
-        startActivity(i);
+        Toast.makeText(context, "אין חוגים", Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(context, ManagerScreen.class);
+        context.startActivity(intent);
     }
+
 }

@@ -57,7 +57,7 @@
     <!--Manager Screen-->
     <string-array name="actions">
         <item>העלאת תמונות לגלרייה</item>
-        <item>שליחת הודעה למשתמשים</item>
+        <item>הוספת חדשות</item>
         <item>הוספת חוג חדש</item>
         <item>עריכת חוג קיים</item>
         <item>מחיקת חוג קיים</item>
@@ -70,6 +70,9 @@
         <item>הוספת אירוע חדש</item>
         <item>עריכת אירוע קיים</item>
         <item>מחיקת אירוע קיים</item>
+        <item>הוספת איש צוות</item>
+        <item>עריכת איש צוות קיים</item>
+        <item>מחיקת איש צוות</item>
 
     </string-array>
 
@@ -173,4 +176,8 @@
     <string name="editProject">בחר פרוייקט</string>
     <string name="joinProject">להצטרפות לפרוייקט</string>
     <string name="close">סגור</string>
+    <string name="clickCancelTeam">האם לצאת מבלי לשמור את איש הצוות?</string>
+    <string name="editTeam">בחר איש צוות</string>
+    <string name="clickCancelWorkShop">האם לצאת מבלי לשמור את הסדנא?</string>
+    <string name="editWorkShop">בחר סדנא</string>
 </resources>
