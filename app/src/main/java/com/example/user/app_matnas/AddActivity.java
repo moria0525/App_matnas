@@ -326,9 +326,6 @@ public class AddActivity extends AppCompatActivity {
     /* Method to back to screen manager after saving new activity */
     private void backToManagerScreen()
     {
-        Toast.makeText(getApplicationContext(),"טופל",Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(AddActivity.this, ManagerScreen.class);
-        startActivity(intent);
         finish();
     }
 }

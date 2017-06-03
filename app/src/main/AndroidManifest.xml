@@ -56,7 +56,7 @@
         <activity android:name=".AddActivity" />
         <activity android:name=".EditActivity" />
         <activity android:name=".UploadImage" />
-        <activity android:name=".register" />
+        <activity android:name=".Register" />
         <activity android:name=".Grid" />
         <activity android:name=".FullImage" />
         <activity android:name=".SendNews" />
@@ -68,7 +68,7 @@
         <activity android:name=".EditTeam" />
         <activity android:name=".AddWorkShop" />
         <activity android:name=".EditWorkShop" />
-        <activity android:name=".activity_workShop"></activity>
+        <activity android:name=".activity_workShop" />
     </application>
 
 </manifest>

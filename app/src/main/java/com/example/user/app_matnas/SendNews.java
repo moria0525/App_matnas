@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -46,15 +48,19 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URL;
 import java.util.Date;
 import java.text.DateFormat;
 import java.util.Iterator;
+import java.util.Objects;
 
 public class SendNews extends AppCompatActivity {
     private EditText content;
@@ -62,18 +68,19 @@ public class SendNews extends AppCompatActivity {
     private TextView toolBarText;
     private ImageView image;
     private RadioGroup radioGroup;
-    private RadioButton rb_send, rb_notSend;
-    private Button btn_selectImage;
+    private RadioButton rb_send;
     public static final int GALLERY_CODE = 1;
     private boolean flagSend = false;
     private Uri imgUri;
     private DatabaseReference mDatabase;
     private StorageReference mStorageRef;
     public static String FB_STORAGE = "news";
-    String date;
-    String s_content;
-
-    Bitmap selectedImage;
+    private String date;
+    private String s_content;
+    boolean click = false;
+    private Bitmap selectedImage;
+    private String[] tmp;
+    private News news;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,12 +94,10 @@ public class SendNews extends AppCompatActivity {
         toolBarText.setText("שליחת הודעה למשתמשים");
 
         content = (EditText) findViewById(R.id.et_content_news);
-        btn_selectImage = (Button) findViewById(R.id.btn_selectImage);
         image = (ImageView) findViewById(R.id.imageNews);
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
         rb_send = (RadioButton) findViewById(R.id.rb_send);
-        rb_notSend = (RadioButton) findViewById(R.id.rb_notSend);
-
+        tmp = new String[4];
         mDatabase = FirebaseDatabase.getInstance().getReference("news");
         mStorageRef = FirebaseStorage.getInstance().getReference();
 
@@ -100,7 +105,6 @@ public class SendNews extends AppCompatActivity {
 
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                // find which radio button is selected
                 if (checkedId == R.id.rb_send) {
                     flagSend = true;
                 } else if (checkedId == R.id.rb_notSend) {
@@ -121,21 +125,22 @@ public class SendNews extends AppCompatActivity {
     @Override
     protected void onActivityResult(int reqCode, int resultCode, Intent data) {
         super.onActivityResult(reqCode, resultCode, data);
-
+        click = true;
 
         if (reqCode == GALLERY_CODE && resultCode == RESULT_OK && data != null && data.getData() != null) {
             try {
                 imgUri = data.getData();
                 final InputStream imageStream = getContentResolver().openInputStream(imgUri);
-                 selectedImage = BitmapFactory.decodeStream(imageStream);
+                selectedImage = BitmapFactory.decodeStream(imageStream);
                 image.setImageBitmap(selectedImage);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
-                Toast.makeText(SendNews.this, "Something went wrong", Toast.LENGTH_LONG).show();
+                Toast.makeText(SendNews.this, "שגיאה", Toast.LENGTH_LONG).show();
             }
 
         } else {
-            Toast.makeText(SendNews.this, "You haven't picked Image", Toast.LENGTH_LONG).show();
+            click = false;
+            Toast.makeText(SendNews.this, "לא בחרת תמונה", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -165,39 +170,53 @@ public class SendNews extends AppCompatActivity {
 
     @SuppressWarnings("VisibleForTests")
     private void saveFields() {
-        date = DateFormat.getDateTimeInstance().format(new Date());
-        s_content = content.getText().toString();
 
+        boolean flag = true;
+        s_content = content.getText().toString();
+        if (TextUtils.isEmpty(s_content)) {
+            flag = false;
+            content.setError("");
+        }
+        if (radioGroup.getCheckedRadioButtonId() <= 0) {
+            flag = false;
+            rb_send.setError("");//Set error to last Radio button
+        }
+
+        if (flag) {
+            date = DateFormat.getDateTimeInstance().format(new Date());
 
             final ProgressDialog dialog = new ProgressDialog(this);
             dialog.setTitle("שולח את ההודעה");
             dialog.show();
-                //Get the storage reference
-                StorageReference ref = mStorageRef.child(FB_STORAGE).child(date);
+            //Get the storage reference
+            StorageReference ref = mStorageRef.child(FB_STORAGE).child(date);
+            .
+            if (!click) {
+                news = new News(date, s_content, "", flagSend);
+                try {
+                    mDatabase.child(date).setValue(news);
+                } catch (DatabaseException e) {
+                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                    e.printStackTrace();
+                }
 
-                //TODO without image...
+            } else {
                 ref.putFile(imgUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
                         //add data to DB
-                        News news = new News(date, s_content, taskSnapshot.getDownloadUrl().toString(), flagSend);
+                        news = new News(date, s_content, taskSnapshot.getDownloadUrl().toString(), flagSend);
                         try {
                             mDatabase.child(date).setValue(news);
                         } catch (DatabaseException e) {
                             Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                             e.printStackTrace();
                         }
-                        Toast.makeText(getApplicationContext(), "ההודעה נשלחה בהצלחה", Toast.LENGTH_SHORT).show();
-                        backToManagerScreen();
-                        //if(flagSend)
-                      //  {
-                            Notification();
-                       // }
-
                     }
-                   })
-                  .addOnFailureListener(new OnFailureListener() {
+                })
+
+                        .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
 
@@ -217,14 +236,21 @@ public class SendNews extends AppCompatActivity {
                                 dialog.setMessage((int) progress + "%");
                             }
                         });
-        }
-//   //  else {
-//     //   Toast.makeText(getApplicationContext(), "שגיאה!!!!!!!!!!!", Toast.LENGTH_SHORT).show();
-//    }
-//}
+            }
+            Toast.makeText(getApplicationContext(), "ההודעה נשלחה בהצלחה", Toast.LENGTH_SHORT).show();
+            if (flagSend) {
 
-    private void Notification()
-    {
+                Notification();
+            }
+
+            //case 1
+            backToManagerScreen();
+        }
+
+    }
+
+
+    private void Notification() {
 
         mDatabase.child(date).addValueEventListener(new ValueEventListener() {
             @Override
@@ -233,66 +259,25 @@ public class SendNews extends AppCompatActivity {
                 int i = 0;
                 Iterator<DataSnapshot> iterator = dataSnapshot.getChildren().iterator();
                 int length = (int) dataSnapshot.getChildrenCount();
-                String[] tmp = new String[length];
                 while (i < length) {
                     tmp[i] = iterator.next().getValue().toString();
                     i++;
                 }
+                new notiImage().execute();
 
-        // notification is selected
-        Intent intent = new Intent(SendNews.this, activity_messages.class);
-        PendingIntent pIntent = PendingIntent.getActivity(SendNews.this, (int) System.currentTimeMillis(), intent, 0);
-
-        // Build notification
-        // Actions are just fake
-        Notification noti = null;
-                Bitmap bm = null;
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN)
-                {
-                    bm = getBitmapfromUrl(tmp[2]);
-
-                    noti = new Notification.Builder(getApplicationContext())
-                    .setContentTitle(tmp[0])
-                    .setContentText(tmp[1]).setSmallIcon(R.mipmap.logo)
-                    .setContentIntent(pIntent)
-                    .setStyle(new Notification.BigPictureStyle()
-                    .bigPicture(bm)).build();
-        }
-        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        // hide the notification after its selected
-        noti.flags |= Notification.FLAG_AUTO_CANCEL;
-
-        notificationManager.notify(0, noti);
-
+                finish();
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError){
+            public void onCancelled(DatabaseError databaseError) {
             }
         });
 
 
-
     }
 
-    public Bitmap getBitmapfromUrl(String imageUrl) {
-        try {
-            URL url = new URL(imageUrl);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setDoInput(true);
-            connection.connect();
-            InputStream input = connection.getInputStream();
-            return BitmapFactory.decodeStream(input);
 
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            return null;
-
-        }
-    }
-
-            /*Method to see message if click cancel without saving*/
+    /*Method to see message if click cancel without saving*/
     public void openMessage() {
         final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setMessage(getResources().getString(R.string.clickCancelMessage));
@@ -317,11 +302,66 @@ public class SendNews extends AppCompatActivity {
 
     /* Method to back to screen manager after saving new activity */
     private void backToManagerScreen() {
-        Intent i = new Intent(SendNews.this, ManagerScreen.class);
-        startActivity(i);
+        finish();
 
     }
+
+
+    //  AsyncTask
+    private class notiImage extends AsyncTask<String, Void, Bitmap> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected Bitmap doInBackground(String... URL) {
+            String imageURL = tmp[2];
+
+            if (!TextUtils.isEmpty(imageURL)) {
+                Bitmap bitmap = null;
+                try {
+                    // Download Image from URL
+                    InputStream input = new java.net.URL(imageURL).openStream();
+                    // Decode Bitmap
+                    bitmap = BitmapFactory.decodeStream(input);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                return bitmap;
+            } else {
+                return null;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap result) {
+            Notification noti;
+            Intent intent = new Intent(SendNews.this, activity_messages.class);
+            PendingIntent pIntent = PendingIntent.getActivity(SendNews.this, (int) System.currentTimeMillis(), intent, 0);
+
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
+                if (!click) {
+
+                    noti = new Notification.Builder(getApplicationContext())
+                            .setContentTitle(tmp[0]).setSmallIcon(R.mipmap.logo)
+                            .setContentIntent(pIntent).setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
+                            .build();
+                } else {
+                    noti = new Notification.Builder(getApplicationContext())
+                            .setContentTitle(tmp[0])
+                            .setContentText(tmp[1]).setSmallIcon(R.mipmap.logo)
+                            .setContentIntent(pIntent).setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
+                            .setStyle(new Notification.BigPictureStyle()
+                                    .bigPicture(result)).build();
+                }
+                NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+                // hide the notification after its selected
+                noti.flags |= Notification.FLAG_AUTO_CANCEL;
+                notificationManager.notify(0, noti);
+
+            }
+        }
+    }
 }
-
-
-

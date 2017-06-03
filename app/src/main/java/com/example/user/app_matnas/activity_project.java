@@ -2,9 +2,6 @@ package com.example.user.app_matnas;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.support.annotation.LayoutRes;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,14 +11,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -39,16 +32,12 @@ public class activity_project extends AppCompatActivity {
     private Toolbar toolbar;
     private TextView toolBarText;
     private ProgressDialog mProgressDialog;
-    private View layoutView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list);
-
-
         databaseReference = FirebaseDatabase.getInstance().getReference();
-
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolBarText = (TextView) findViewById(R.id.toolBarText);
@@ -68,7 +57,7 @@ public class activity_project extends AppCompatActivity {
                         {
                             dialog.dismiss();
                             LayoutInflater inflater = LayoutInflater.from(activity_project.this);
-                            register r = new register(project.getProjectName(),activity_project.this);
+                            Register r = new Register(project.getProjectName(),activity_project.this);
                             r.showDialog(inflater);
                         }
                     })
@@ -84,27 +73,6 @@ public class activity_project extends AppCompatActivity {
         );
     }
 
-    private void show()
-    {
-//        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(activity_project.this);
-
-//        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
-//        LayoutInflater inflater = this.getLayoutInflater();
-//        View dialogView = inflater.inflate(R.layout.activity_register, null);
-//        dialogBuilder.setView(dialogView);
-//
-//        EditText editText = (EditText) dialogView.findViewById(R.id.register_email);
-//
-//        AlertDialog alertDialog = dialogBuilder.create();
-//        alertDialog.show();
-
-
-
-//        alertDialogBuilder.setMessage("second");
-//        alertDialogBuilder.create();
-//        alertDialogBuilder.show();
-
-    }
 
     public void getDataFromDB() {
 
@@ -186,51 +154,4 @@ public class activity_project extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    public class ProjectAdapter extends ArrayAdapter<Project> {
-        private android.app.Activity context;
-        private int resource;
-        private List<Project> listProjects;
-
-        public ProjectAdapter(@NonNull android.app.Activity context, @LayoutRes int resource, @NonNull List<Project> objects) {
-            super(context, resource, objects);
-            this.context = context;
-            this.resource = resource;
-            listProjects = objects;
-        }
-
-        @NonNull
-        @Override
-        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-            LayoutInflater inflater = context.getLayoutInflater();
-            View v = inflater.inflate(resource, null);
-            TextView tvName = (TextView) v.findViewById(R.id.tv_PName);
-            ImageView img = (ImageView) v.findViewById(R.id.imageViewProject);
-            ImageView arrow = (ImageView) v.findViewById(R.id.arrow);
-            arrow.setImageResource(R.drawable.next);
-            tvName.setText(listProjects.get(position).getProjectName());
-            Glide.with(context).load(listProjects.get(position).getProjectLogo()).into(img);
-            return v;
-
-        }
-
-        @Override
-        public int getCount() {
-            return listProjects.size();
-        }
-
-        public void setFilter(ArrayList<Project> newList) {
-            listProjects = new ArrayList<>();
-            listProjects.addAll(newList);
-            notifyDataSetChanged();
-
-        }
-
-    }
-
 }
-
-
-
-
-
-

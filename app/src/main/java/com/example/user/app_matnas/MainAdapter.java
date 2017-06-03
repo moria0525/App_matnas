@@ -35,7 +35,7 @@ public class MainAdapter extends BaseAdapter
         return position;
     }
 
-    //---rbeturns an ImageView view---
+    //---returns an ImageView view---
     public View getView(int position, View convertView, ViewGroup parent)
     {
         ImageView imageView;
