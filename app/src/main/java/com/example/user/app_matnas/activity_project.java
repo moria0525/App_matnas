@@ -1,10 +1,13 @@
 package com.example.user.app_matnas;
 
 import android.app.ProgressDialog;
+import android.app.SearchManager;
 import android.content.DialogInterface;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -119,23 +122,23 @@ public class activity_project extends AppCompatActivity {
 
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_search, menu);
-        MenuItem item = menu.findItem(R.id.app_bar_search);
-        android.widget.SearchView searchView = (android.widget.SearchView) item.getActionView();
-        //searchView.setIconified(false);
+        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.app_bar_search));
+        SearchManager searchManager = (SearchManager) getSystemService(SEARCH_SERVICE);
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         searchView.setQueryHint("חיפוש חופשי");
 
+        SearchView.OnQueryTextListener queryTextListener = new SearchView.OnQueryTextListener() {
 
-        searchView.setOnQueryTextListener(new android.widget.SearchView.OnQueryTextListener() {
 
             @Override
             public boolean onQueryTextSubmit(String query) {
 
-                return false;
+                searchView.clearFocus();
+                return true;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-
                 newText = newText.toLowerCase();
                 ArrayList<Project> newList = new ArrayList<>();
                 for (Project project : projectList) {
@@ -149,9 +152,9 @@ public class activity_project extends AppCompatActivity {
 
                 return true;
             }
-        });
-
-        return super.onCreateOptionsMenu(menu);
+        };
+        searchView.setOnQueryTextListener(queryTextListener);
+        return true;
     }
 
 }

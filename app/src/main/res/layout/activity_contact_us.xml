@@ -26,11 +26,13 @@
         android:layout_alignLeft="@+id/contactus_address"
         android:layout_alignStart="@+id/contactus_address"
         android:text="@string/contactus_Taddress"
+        android:textColor="@color/black"
         android:layout_marginTop="2dp"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="0dp" />
 
     <TextView
+        android:textColor="@color/black"
         android:id="@+id/contactus_address"
         style="@style/contactus_address"
         android:layout_toLeftOf="@+id/map"
@@ -69,7 +71,8 @@
                 android:layout_alignParentBottom="true"
                 android:layout_alignStart="@+id/input_layout_name"
                 android:layout_below="@+id/input_layout_name"
-                android:layout_toStartOf="@+id/input_layout_phone">
+                android:layout_toStartOf="@+id/input_layout_phone"
+                android:layout_toLeftOf="@+id/input_layout_phone">
 
                 <EditText
                     android:id="@+id/form_message"
@@ -79,7 +82,7 @@
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
-                    android:backgroundTint="@color/colorPrimaryDark"
+                    android:backgroundTint="@color/black"
                     android:hint="@string/form_message"
                     android:inputType="textMultiLine" />
 
@@ -88,6 +91,7 @@
 
             <TextView
                 android:id="@+id/form_title"
+                android:textColor="@color/black"
                 style="@style/form_title"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
@@ -95,7 +99,6 @@
                 android:layout_marginLeft="18dp"
                 android:layout_marginStart="18dp"
                 android:layout_marginTop="20dp"
-                android:backgroundTint="@color/colorPrimaryDark"
                 android:text="@string/form_title" />
 
 
@@ -114,7 +117,6 @@
                     android:layout_below="@+id/form_title"
                     android:layout_toEndOf="@+id/form_title"
                     android:layout_toRightOf="@+id/form_title"
-                    android:backgroundTint="@color/colorPrimaryDark"
                     android:hint="@string/form_name"
                     android:inputType="textPersonName" />
 
@@ -129,7 +131,8 @@
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/form_title"
                 android:layout_toEndOf="@+id/form_title"
-                android:layout_above="@+id/input_layout_message">
+                android:layout_above="@+id/input_layout_message"
+                android:layout_toRightOf="@+id/form_title">
 
                 <EditText
                     android:id="@+id/form_phone"
@@ -139,7 +142,6 @@
                     android:layout_alignEnd="@+id/form_btn"
                     android:layout_alignRight="@+id/form_btn"
                     android:layout_below="@+id/form_title"
-                    android:backgroundTint="@color/colorPrimaryDark"
                     android:hint="@string/form_phone"
                     android:inputType="phone" />
             </android.support.design.widget.TextInputLayout>
@@ -150,9 +152,9 @@
                 android:layout_height="42dp"
                 android:onClick="onClickSubmitForm"
                 android:layout_weight="1"
-                android:background="@color/colorPrimaryDark"
+                android:background="@color/yellow"
                 android:text="@string/form_btn"
-                android:textColor="#fff"
+                android:textColor="@color/black"
                 android:layout_marginBottom="33dp"
                 android:layout_marginLeft="17dp"
                 android:layout_marginStart="17dp"
@@ -161,7 +163,6 @@
                 android:layout_toEndOf="@+id/input_layout_message" />
 
         </RelativeLayout>
-
 
     </LinearLayout>
 

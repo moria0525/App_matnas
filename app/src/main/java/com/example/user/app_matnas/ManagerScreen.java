@@ -81,7 +81,6 @@ public class ManagerScreen extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, android.R.id.text1, values);
 
-
         // Assign adapter to ListView
         actionsList.setAdapter(adapter);
 
@@ -93,122 +92,68 @@ public class ManagerScreen extends AppCompatActivity {
                                     int position, long id) {
                 switch (position) {
                     case 0:
-                        uploadPictureTogallery();
+                        Intent i = new Intent(ManagerScreen.this, UploadImage.class);
+                        startActivity(i);
                         break;
                     case 1:
-                        sendNews();
+                        i = new Intent(ManagerScreen.this, SendNews.class);
+                        startActivity(i);
                         break;
                     case 2:
-                        addNewActivity();
+                        i = new Intent(ManagerScreen.this, AddActivity.class);
+                        startActivity(i);
                         break;
                     case 3:
-                        editActivity();
+                        EditActivity ea = new EditActivity(ManagerScreen.this);
+                        ea.getDB(-1);
                         break;
                     case 4:
-                        deleteActivity();
+                        ea = new EditActivity(ManagerScreen.this);
+                        ea.getDB(0);
                         break;
                     case 5:
-                        addNewProject();
+                        i = new Intent(ManagerScreen.this, AddProject.class);
+                        startActivity(i);
                         break;
                     case 6:
-                        editProject();
+                        EditProject ep = new EditProject(ManagerScreen.this);
+                        ep.getDB(-1);
                         break;
                     case 7:
-                        deleteProject();
+                        ep = new EditProject(ManagerScreen.this);
+                        ep.getDB(0);
                         break;
                     case 8:
-                        AddNewWorkshop();
+                        i = new Intent(ManagerScreen.this, AddWorkShop.class);
+                        startActivity(i);
                         break;
                     case 9:
-                        editWorkShop();
+                        EditWorkShop ws = new EditWorkShop(ManagerScreen.this);
+                        ws.getDB(-1);
                         break;
                     case 10:
-                        deleteWorkShop();
+                        ws = new EditWorkShop(ManagerScreen.this);
+                        ws.getDB(0);
+                        break;
+                    case 11:
+                        i = new Intent(ManagerScreen.this, AddTeam.class);
+                        startActivity(i);
+                        break;
+                    case 12:
+                        EditTeam t = new EditTeam(ManagerScreen.this);
+                        t.getDB(-1);
+                        break;
+                    case 13:
+                        t = new EditTeam(ManagerScreen.this);
+                        t.getDB(0);
                         break;
                     case 14:
-                        AddNewTeam();
-                        break;
-                    case 15:
-                        editTeam();
-                        break;
-                    case 16:
-                        deleteTeam();
                         break;
                 }
             }
 
         });
     }
-
-
-    private void uploadPictureTogallery() {
-
-        Intent i = new Intent(this, UploadImage.class);
-        startActivity(i);
-    }
-
-    private void sendNews()
-    {
-        Intent i = new Intent(this, SendNews.class);
-        startActivity(i);
-    }
-
-    private void addNewActivity() {
-        Intent i = new Intent(this, AddActivity.class);
-        startActivity(i);
-    }
-
-    private void editActivity() {
-        LayoutInflater inflater = LayoutInflater.from(ManagerScreen.this);
-        EditActivity ea = new EditActivity(ManagerScreen.this);
-        ea.getDB(-1);
-    }
-
-    private void deleteActivity() {
-        LayoutInflater inflater = LayoutInflater.from(ManagerScreen.this);
-        EditActivity ea = new EditActivity(ManagerScreen.this);
-        ea.getDB(0);
-    }
-
-    private void addNewProject() {
-        Intent i = new Intent(this, AddProject.class);
-        startActivity(i);
-    }
-    private void editProject() {
-        EditProject ep = new EditProject(ManagerScreen.this);
-        ep.getDB(-1);
-    }
-    private void deleteProject() {
-        EditProject ep = new EditProject(ManagerScreen.this);
-        ep.getDB(0);
-    }
-    private void AddNewTeam()
-    {
-        Intent i = new Intent(this, AddTeam.class);
-        startActivity(i);
-    }
-    private void editTeam() {
-        EditTeam t = new EditTeam(ManagerScreen.this);
-        t.getDB(-1);
-    }
-    private void deleteTeam() {
-        EditTeam t = new EditTeam(ManagerScreen.this);
-        t.getDB(0);
-    }
-    private void AddNewWorkshop()
-    {
-        Intent i = new Intent(this, AddWorkShop.class);
-        startActivity(i);
-    }
-    private void editWorkShop() {
-        EditWorkShop ws = new EditWorkShop(ManagerScreen.this);
-        ws.getDB(-1);
-    }
-    private void deleteWorkShop() {
-        EditWorkShop ws = new EditWorkShop(ManagerScreen.this);
-        ws.getDB(0);
-    }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -82,8 +82,8 @@ public class activity_contactUs extends AppCompatActivity implements OnMapReadyC
         mMap = googleMap;
 
         // Add a marker in matnas and move the camera
-        LatLng LocationMatnas = new LatLng(31.749959, 35.200732);
-        mMap.addMarker(new MarkerOptions().position(LocationMatnas).title("מרכז קהילתי פאני קפלן פת"));
+        LatLng LocationMatnas = new LatLng(31.749629, 35.200562);
+        mMap.addMarker(new MarkerOptions().position(LocationMatnas)).setTitle(getResources().getString(R.string.app_name));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LocationMatnas, zoomLevel));
     }
 

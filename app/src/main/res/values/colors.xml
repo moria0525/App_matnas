@@ -7,5 +7,8 @@
     <color name="blue">#4db6ac</color>
     <color name="transperent">#00000000</color>
     <color name="cardview">#e6f9ff</color>
+    <color name="text">#000</color>
+    <color name="yellow">#F1F1B3</color>
+    <color name="black">#000</color>
 
 </resources>

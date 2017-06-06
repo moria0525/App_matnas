@@ -47,20 +47,16 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-
-import java.io.BufferedInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.text.DateFormat;
 import java.util.Iterator;
+import java.util.Locale;
 import java.util.Objects;
+
+import static com.example.user.app_matnas.MainAdapter.notification;
 
 public class SendNews extends AppCompatActivity {
     private EditText content;
@@ -81,6 +77,7 @@ public class SendNews extends AppCompatActivity {
     private Bitmap selectedImage;
     private String[] tmp;
     private News news;
+    public static int countNotification = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,7 +97,6 @@ public class SendNews extends AppCompatActivity {
         tmp = new String[4];
         mDatabase = FirebaseDatabase.getInstance().getReference("news");
         mStorageRef = FirebaseStorage.getInstance().getReference();
-
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 
             @Override
@@ -182,15 +178,17 @@ public class SendNews extends AppCompatActivity {
             rb_send.setError("");//Set error to last Radio button
         }
 
-        if (flag) {
-            date = DateFormat.getDateTimeInstance().format(new Date());
+        if (flag)
+        {
+            SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault());
+            date = format.format(new Date());
 
             final ProgressDialog dialog = new ProgressDialog(this);
             dialog.setTitle("שולח את ההודעה");
             dialog.show();
             //Get the storage reference
             StorageReference ref = mStorageRef.child(FB_STORAGE).child(date);
-            .
+
             if (!click) {
                 news = new News(date, s_content, "", flagSend);
                 try {
@@ -237,7 +235,12 @@ public class SendNews extends AppCompatActivity {
                             }
                         });
             }
+            countNotification++;
             Toast.makeText(getApplicationContext(), "ההודעה נשלחה בהצלחה", Toast.LENGTH_SHORT).show();
+            //update count
+            if(notification.getVisibility() == View.INVISIBLE)
+            notification.setVisibility(View.VISIBLE);
+            notification.setText(""+countNotification);
             if (flagSend) {
 
                 Notification();

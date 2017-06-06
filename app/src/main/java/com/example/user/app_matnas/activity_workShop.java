@@ -2,10 +2,12 @@ package com.example.user.app_matnas;
 
 import android.app.*;
 import android.content.Context;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -97,16 +99,19 @@ public class activity_workShop extends AppCompatActivity {
 
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_search, menu);
-        MenuItem item = menu.findItem(R.id.app_bar_search);
-        android.widget.SearchView searchView = (android.widget.SearchView) item.getActionView();
+        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.app_bar_search));
+        SearchManager searchManager = (SearchManager) getSystemService(SEARCH_SERVICE);
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         searchView.setQueryHint("חיפוש חופשי");
 
-        searchView.setOnQueryTextListener(new android.widget.SearchView.OnQueryTextListener() {
+        SearchView.OnQueryTextListener queryTextListener = new SearchView.OnQueryTextListener() {
+
 
             @Override
             public boolean onQueryTextSubmit(String query) {
 
-                return false;
+                searchView.clearFocus();
+                return true;
             }
 
             @Override
@@ -127,8 +132,9 @@ public class activity_workShop extends AppCompatActivity {
 
                 return true;
             }
-        });
+        };
 
-        return super.onCreateOptionsMenu(menu);
+        searchView.setOnQueryTextListener(queryTextListener);
+        return true;
     }
 }

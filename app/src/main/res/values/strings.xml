@@ -2,7 +2,6 @@
 
     <!--Home Screen Top-->
     <string name="app_name">מרכז קהילתי פאני קפלן פת</string>
-    <string name="welcome">ברוכים הבאים</string>
 
     <!--Home Screen Icons-->
     <string name="text_about">אודות</string>
@@ -67,12 +66,10 @@
         <item>הוספת סדנא חדשה</item>
         <item>עריכת סדנא קיימת</item>
         <item>מחיקת סדנא קיימת</item>
-        <item>הוספת אירוע חדש</item>
-        <item>עריכת אירוע קיים</item>
-        <item>מחיקת אירוע קיים</item>
         <item>הוספת איש צוות</item>
         <item>עריכת איש צוות קיים</item>
         <item>מחיקת איש צוות</item>
+        <item>עריכת העדכונים הזזים</item>
 
     </string-array>
 

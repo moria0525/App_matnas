@@ -35,7 +35,7 @@ public class activity_login_manager extends AppCompatActivity
         auth = FirebaseAuth.getInstance();
 
         if (auth.getCurrentUser() != null) {
-            startActivity(new Intent(activity_login_manager.this, activity_main.class));
+            startActivity(new Intent(activity_login_manager.this, ManagerScreen.class));
             finish();
         }
 

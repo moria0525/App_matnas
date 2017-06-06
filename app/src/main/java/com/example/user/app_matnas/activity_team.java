@@ -1,15 +1,18 @@
 package com.example.user.app_matnas;
 
 import android.app.ProgressDialog;
+import android.app.SearchManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -104,18 +107,19 @@ public class activity_team extends AppCompatActivity
 
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_search, menu);
-        MenuItem item = menu.findItem(R.id.app_bar_search);
-        android.widget.SearchView searchView = (android.widget.SearchView) item.getActionView();
-        //searchView.setIconified(false);
-        searchView.setQueryHint("חיפוש חופשי");
+        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.app_bar_search));
+        SearchManager searchManager = (SearchManager) getSystemService(SEARCH_SERVICE);
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        searchView.setQueryHint("חיפוש לפי שם");
 
+        SearchView.OnQueryTextListener queryTextListener = new SearchView.OnQueryTextListener() {
 
-        searchView.setOnQueryTextListener(new android.widget.SearchView.OnQueryTextListener() {
 
             @Override
             public boolean onQueryTextSubmit(String query) {
 
-                return false;
+                searchView.clearFocus();
+                return true;
             }
 
             @Override
@@ -131,13 +135,17 @@ public class activity_team extends AppCompatActivity
                     }
                 }
                 adapter.setFilter(newList);
-
                 return true;
             }
-        });
 
-        return super.onCreateOptionsMenu(menu);
-    }
+        };
+
+        searchView.setOnQueryTextListener(queryTextListener);
+        return true;
+
+        }
+
+
 
     public class TeamAdapter extends ArrayAdapter<Team> {
         private android.app.Activity context;

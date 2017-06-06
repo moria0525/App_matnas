@@ -10,6 +10,11 @@ public class News {
     private String newsImage;
     private boolean newsPush;
 
+    public News()
+    {
+
+    }
+
     public News(String newsDate, String newsContent, String newsImage, boolean newsPush) {
         this.newsDate = newsDate;
         this.newsContent = newsContent;
