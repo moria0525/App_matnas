@@ -13,6 +13,7 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -30,9 +31,9 @@
             </intent-filter>
         </activity>
 
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
+        <!-- <meta-data -->
+        <!-- android:name="com.google.android.geo.API_KEY" -->
+        <!-- android:value="@string/google_maps_key" /> -->
 
         <activity
             android:name=".activity_contactUs"
@@ -40,7 +41,7 @@
         <activity
             android:name=".activity_about"
             android:label="@string/text_about" />
-        <activity android:name=".activity_events" />
+        <activity android:name=".activity_business" />
         <activity
             android:name=".activity_gallery"
             android:label="@string/text_gallery" />
@@ -69,6 +70,13 @@
         <activity android:name=".AddWorkShop" />
         <activity android:name=".EditWorkShop" />
         <activity android:name=".activity_workShop" />
+        <activity android:name=".AddBusiness" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDuAyGu9a_ZFoucS8aGCDT2n5LoXQ5iaag" />
+
+        <activity android:name=".Esek"></activity>
     </application>
 
 </manifest>

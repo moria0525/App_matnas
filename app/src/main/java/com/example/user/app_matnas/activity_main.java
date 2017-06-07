@@ -2,12 +2,6 @@ package com.example.user.app_matnas;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
-import android.text.method.ScrollingMovementMethod;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -15,8 +9,6 @@ import android.content.Intent;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
-
-import org.w3c.dom.Text;
 
 public class activity_main extends AppCompatActivity {
 
@@ -113,7 +105,7 @@ public class activity_main extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case 2:
-                intent = new Intent(activity_main.this, activity_events.class);
+                intent = new Intent(activity_main.this, activity_business.class);
                 startActivity(intent);
                 break;
             case 3:

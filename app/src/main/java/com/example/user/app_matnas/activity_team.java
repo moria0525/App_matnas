@@ -145,64 +145,6 @@ public class activity_team extends AppCompatActivity
 
         }
 
-
-
-    public class TeamAdapter extends ArrayAdapter<Team> {
-        private android.app.Activity context;
-        private int resource;
-        private List<Team> listTeam;
-
-        public TeamAdapter(@NonNull android.app.Activity context, @LayoutRes int resource, @NonNull List<Team> objects) {
-            super(context, resource, objects);
-            this.context = context;
-            this.resource = resource;
-            listTeam = objects;
-        }
-
-        @NonNull
-        @Override
-        public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-            LayoutInflater inflater = context.getLayoutInflater();
-            View v = inflater.inflate(resource, null);
-            TextView tvName = (TextView) v.findViewById(R.id.tv_TName);
-            TextView tvRole = (TextView) v.findViewById(R.id.tv_TRole);
-            TextView tvDes = (TextView) v.findViewById(R.id.tv_TDes);
-            ImageView img = (ImageView) v.findViewById(R.id.imageViewTeam);
-            ImageView mail = (ImageView) v.findViewById(R.id.imageViewMail);
-
-            mail.setImageResource(R.drawable.social_media_mail);
-            tvName.setText(listTeam.get(position).getTeamName());
-            tvRole.setText(listTeam.get(position).getTeamRole());
-            tvDes.setText(listTeam.get(position).getTeamDes());
-            Glide.with(context).load(listTeam.get(position).getTeamImage()).into(img);
-            v.findViewById(R.id.imageViewMail).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v)
-                {
-                    Uri mail = Uri.parse("mailto:"+listTeam.get(position).getTeamMail());
-                    Intent intent = new Intent(Intent.ACTION_VIEW, mail);
-                    intent.putExtra(Intent.EXTRA_SUBJECT, "פניה אישית ל"+listTeam.get(position).getTeamName());
-                    startActivity(intent);
-                }
-            });
-            return v;
-
-        }
-
-        @Override
-        public int getCount() {
-            return listTeam.size();
-        }
-
-        public void setFilter(ArrayList<Team> newList) {
-            listTeam = new ArrayList<>();
-            listTeam.addAll(newList);
-            notifyDataSetChanged();
-
-        }
-
-    }
-
 }
 
 

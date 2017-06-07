@@ -3,6 +3,24 @@
 
     <item
         is-multidex="true"
+        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="bc605692a6f5e36c477dd05d2b2000c7b165bde0">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_967707feda17076ec459decb4349a5d094cbe167\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\libs\activation.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d1257cbff6faa44c1f325ae0d9413522d4644383">
+        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\2\activation_811fe1cc83a2aba7ac382c1987cd3b9dae9125fa\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
@@ -18,24 +36,6 @@
         revision="25.0.2"
         sha1="bd9e8dc422bb8c8405359947fe9f4282b49f57f4">
         <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\2\additionnal_124dec24dbb3bf852fa44ea9a099370f5044b9ba\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="307bf04ab73e20cb00b85983d3df9a71eb59a2e5">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_967707feda17076ec459decb4349a5d094cbe167\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\libs\activation.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="d1257cbff6faa44c1f325ae0d9413522d4644383">
-        <dex dex="C:\Users\Moria\AndroidStudioProjects\App_matnas\app\build\intermediates\transforms\dex\debug\folders\1000\2\activation_811fe1cc83a2aba7ac382c1987cd3b9dae9125fa\classes.dex" />
     </item>
     <item
         is-multidex="true"

@@ -58,7 +58,7 @@ public class AddTeam extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolBarText = (TextView) findViewById(R.id.toolBarText);
-        toolBarText.setText(getResources().getStringArray(R.array.actions)[14]);
+        toolBarText.setText(getResources().getStringArray(R.array.actions)[11]);
         mDatabase = FirebaseDatabase.getInstance().getReference("team");
         mStorageRef = FirebaseStorage.getInstance().getReference();
         //find id fields
@@ -71,7 +71,7 @@ public class AddTeam extends AppCompatActivity {
         t_edit = (Team) getIntent().getSerializableExtra("editTeam");
 
         if (t_edit != null) {
-            toolBarText.setText(getResources().getStringArray(R.array.actions)[15]);
+            toolBarText.setText(getResources().getStringArray(R.array.actions)[12]);
             fillFields();
         }
 

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddBusiness">
+
+    <Button
+        android:id="@+id/btn_selectBusImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageBus"
+        android:layout_alignLeft="@+id/et_des_bus"
+        android:layout_alignStart="@+id/et_des_bus"
+        android:layout_marginBottom="12dp"
+        android:onClick="onClickBusImage"
+        android:text="לחץ כאן לבחירת לוגו של העסק" />
+
+    <LinearLayout
+        android:id="@+id/layout_main"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/tool_bar" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/et_des_bus"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:layout_alignEnd="@+id/et_category_bus"
+        android:layout_alignLeft="@+id/et_category_bus"
+        android:layout_alignRight="@+id/et_category_bus"
+        android:layout_alignStart="@+id/et_category_bus"
+        android:layout_below="@+id/et_category_bus"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:gravity="top"
+        android:hint="תיאור קצר"
+        android:inputType="textMultiLine" />
+
+
+    <ImageView
+        android:id="@+id/imageBus"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="43dp"
+        android:layout_toEndOf="@+id/btn_selectBusImage"
+        android:layout_toRightOf="@+id/btn_selectBusImage"
+        android:src="@drawable/gallery_event" />
+
+    <EditText
+        android:id="@+id/et_name_bus"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/layout_main"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="14dp"
+        android:ems="10"
+        android:hint="שם העסק"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/et_category_bus"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/et_name_bus"
+        android:layout_alignStart="@+id/et_name_bus"
+        android:layout_below="@+id/et_name_bus"
+        android:layout_marginTop="14dp"
+        android:ems="10"
+        android:hint="קטגוריית העסק"
+        android:inputType="textPersonName" />
+
+
+    <fragment
+        android:id="@+id/place_autocomplete_fragment"
+        android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/et_des_bus"
+        android:layout_alignStart="@+id/et_des_bus"
+        android:layout_below="@+id/et_des_bus"
+        android:layout_marginTop="11dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+
+    <EditText
+        android:id="@+id/et_phone_bus"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="טלפון נייד"
+        android:inputType="phone"
+        android:layout_marginTop="19dp"
+        android:layout_below="@+id/place_autocomplete_fragment"
+        android:layout_alignLeft="@+id/place_autocomplete_fragment"
+        android:layout_alignStart="@+id/place_autocomplete_fragment" />
+
+    <EditText
+        android:id="@+id/et_email_bus"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="כתובת אימייל"
+        android:inputType="textEmailAddress"
+        android:layout_marginTop="12dp"
+        android:layout_below="@+id/et_phone_bus"
+        android:layout_alignLeft="@+id/et_phone_bus"
+        android:layout_alignStart="@+id/et_phone_bus" />
+
+
+</RelativeLayout>

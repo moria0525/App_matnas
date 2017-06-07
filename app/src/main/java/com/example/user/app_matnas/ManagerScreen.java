@@ -148,6 +148,8 @@ public class ManagerScreen extends AppCompatActivity {
                         t.getDB(0);
                         break;
                     case 14:
+                        i = new Intent(ManagerScreen.this, AddBusiness.class);
+                        startActivity(i);
                         break;
                 }
             }

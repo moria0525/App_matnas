@@ -69,7 +69,7 @@
         <item>הוספת איש צוות</item>
         <item>עריכת איש צוות קיים</item>
         <item>מחיקת איש צוות</item>
-        <item>עריכת העדכונים הזזים</item>
+        <item>הוספת עסק חדש</item>
 
     </string-array>
 
@@ -176,5 +176,24 @@
     <string name="clickCancelTeam">האם לצאת מבלי לשמור את איש הצוות?</string>
     <string name="editTeam">בחר איש צוות</string>
     <string name="clickCancelWorkShop">האם לצאת מבלי לשמור את הסדנא?</string>
+    <string name="clickCancelBusiness">האם לצאת מבלי לשמור את בית העסק?</string>
     <string name="editWorkShop">בחר סדנא</string>
+
+
+    <string name="selected_place">Last Selected Place:</string>
+    <string name="place_details">
+    <![CDATA[
+        <b>%1$s</b>
+        <br/>
+        <i>Place Id: %2$s</i>
+        <br/>
+        Address: %3$s
+        <br/>
+        Phone: %4$s
+        <br/>
+        Website: %5$s
+    ]]>
+</string>
+
+
 </resources>
