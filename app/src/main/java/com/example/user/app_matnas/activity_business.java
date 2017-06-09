@@ -1,13 +1,23 @@
 package com.example.user.app_matnas;
 
 import android.app.ProgressDialog;
+import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -18,7 +28,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-
 public class activity_business extends AppCompatActivity {
 
     private DatabaseReference mDatabaseRef;
@@ -28,6 +37,8 @@ public class activity_business extends AppCompatActivity {
     private GridView gv;
     private Toolbar toolbar;
     private TextView toolBarText;
+    private FloatingActionButton fb;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,14 +47,25 @@ public class activity_business extends AppCompatActivity {
         categoryList = new ArrayList<>();
         gv = (GridView) findViewById(R.id.gallery_grid);
 
+        gv.setNumColumns(3);
+        RelativeLayout ll = (RelativeLayout) findViewById(R.id.albums);
+        gv.setPadding(15, 10, 15, 10);
+
+        ll.setBackgroundResource(R.color.colorBackgroundHome);
+        //mRecyclerView.setHasFixedSize(true);
+
+
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolBarText = (TextView) findViewById(R.id.toolBarText);
-        toolBarText.setText(R.string.text_events);
+        toolBarText.setText(R.string.text_business);
+
+        fb = (FloatingActionButton)findViewById(R.id.floatingActionButton);
+        fb.setVisibility(View.VISIBLE);
 
         //Show progress dialog during list image loading
         progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("המתן לטעינת הקטגוריות");
+        progressDialog.setMessage("עוד רגע..");
         progressDialog.show();
 
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("business");
@@ -58,7 +80,7 @@ public class activity_business extends AppCompatActivity {
                 }
 
                 //Init adapter
-                adapter = new StringAdapter(activity_business.this, R.layout.gallery_item, categoryList);
+                adapter = new StringAdapter(activity_business.this, R.layout.category_item, categoryList, 0);
                 //Set adapter for listview
                 gv.setAdapter(adapter);
             }

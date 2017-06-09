@@ -21,7 +21,7 @@ public class Business implements Serializable {
     public Business() {
     }
 
-    public Business(String businessName, String businessCategory, String businessDes, CharSequence place, String businessPhone, String businessMail, String businessImage,double latitude, double longitude) {
+    public Business(String businessName, String businessCategory, String businessDes, CharSequence place, String businessPhone, String businessMail, String businessImage, double latitude, double longitude) {
         this.businessName = businessName;
         this.businessCategory = businessCategory;
         this.businessDes = businessDes;

@@ -16,9 +16,10 @@
         <include
             android:id="@+id/toolbar"
             layout="@layout/tool_bar"
-            android:layout_width="394dp"
-            android:layout_height="71dp" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </LinearLayout>
+
 
     <TextView
         android:id="@+id/contactus_Taddress"

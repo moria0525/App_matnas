@@ -6,7 +6,7 @@
     <!--Home Screen Icons-->
     <string name="text_about">אודות</string>
     <string name="text_messages">הודעות</string>
-    <string name="text_events">לוח אירועים</string>
+    <string name="text_business">עסקים בשכונה</string>
     <string name="text_projects">פרוייקטים</string>
     <string name="text_hobbies">חוגים</string>
     <string name="text_workshops">סדנאות</string>

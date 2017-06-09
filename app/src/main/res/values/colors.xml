@@ -10,5 +10,86 @@
     <color name="text">#000</color>
     <color name="yellow">#F1F1B3</color>
     <color name="black">#000</color>
+    <color name="gray">#f2f2f2</color>
+
+
+
+    <item name="purple" type="color">#FFAA66CC</item>
+    <item name="green" type="color">#FF99CC00</item>
+    <item name="orange" type="color">#FFFFBB33</item>
+    <item name="red" type="color">#FFFF4444</item>
+    <item name="darkblue" type="color">#FF0099CC</item>
+    <item name="darkpurple" type="color">#FF9933CC</item>
+    <item name="darkgreen" type="color">#FF669900</item>
+    <item name="darkorange" type="color">#FFFF8800</item>
+    <item name="darkred" type="color">#FFCC0000</item>
+
+
+    <color name="Yellow">#FFFF00</color>
+    <color name="Bisque">#FFE4C4</color>
+    <color name="Moccasin">#FFE4B5</color>
+    <color name="NavajoWhite">#FFDEAD</color>
+    <color name="PeachPuff">#FFDAB9</color>
+    <color name="Gold">#FFD700</color>
+    <color name="Pink">#FFC0CB</color>
+    <color name="LightPink">#FFB6C1</color>
+    <color name="Orange">#FFA500</color>
+    <color name="LightSalmon">#FFA07A</color>
+    <color name="DarkOrange">#FF8C00</color>
+    <color name="Coral">#FF7F50</color>
+    <color name="HotPink">#FF69B4</color>
+    <color name="Tomato">#FF6347</color>
+    <color name="OrangeRed">#FF4500</color>
+    <color name="DeepPink">#FF1493</color>
+
+
+
+    <integer-array name="androidcolors">
+        <item>@color/blue</item>
+        <item>@color/purple</item>
+        <item>@color/green</item>
+        <item>@color/orange</item>
+        <item>@color/red</item>
+        <item>@color/darkblue</item>
+        <item>@color/darkpurple</item>
+        <item>@color/darkgreen</item>
+        <item>@color/darkorange</item>
+        <item>@color/darkred</item>
+        <item name="Yellow">@color/Yellow</item>
+        <item name="Bisque">@color/Bisque</item>
+        <item name="Moccasin">@color/Moccasin</item>
+        <item name="NavajoWhite">@color/NavajoWhite</item>
+        <item name="PeachPuff">@color/PeachPuff</item>
+        <item name="Gold">@color/Gold</item>
+        <item name="Pink">@color/Pink</item>
+        <item name="LightPink">@color/LightPink</item>
+        <item name="Orange">@color/Orange</item>
+        <item name="LightSalmon">@color/LightSalmon</item>
+        <item name="DarkOrange">@color/DarkOrange</item>
+        <item name="Coral">@color/Coral</item>
+        <item name="HotPink">@color/HotPink</item>
+        <item name="Tomato">@color/Tomato</item>
+        <item name="OrangeRed">@color/OrangeRed</item>
+        <item name="DeepPink">@color/DeepPink</item>
+
+
+    </integer-array>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </resources>

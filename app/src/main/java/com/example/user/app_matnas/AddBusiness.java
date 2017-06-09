@@ -91,6 +91,9 @@ public class AddBusiness extends AppCompatActivity{
         PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
                 getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
 
+        autocompleteFragment.setHint("הקלד כתובת מלאה של העסק");
+
+
         autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override
             public void onPlaceSelected(Place place) {
@@ -253,6 +256,7 @@ public class AddBusiness extends AppCompatActivity{
         final String s_mail = mail.getText().toString();
         final CharSequence s_address = _place.getAddress();
 
+
         //Get the storage reference
         StorageReference ref = mStorageRef.child(FB_STORAGE_BUSINESS).child(s_name);//CHILD?
 
@@ -285,7 +289,6 @@ public class AddBusiness extends AppCompatActivity{
                     }
 
                     Toast.makeText(getApplicationContext(), "פרטי בית העסק נשמרו בהצלחה", Toast.LENGTH_SHORT).show();
-                    Toast.makeText(getApplicationContext(),""+s_address,Toast.LENGTH_LONG).show();
                     finish();
 
                 }

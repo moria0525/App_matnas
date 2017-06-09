@@ -19,8 +19,9 @@
             android:id="@+id/toolbar"
             layout="@layout/tool_bar"
             android:layout_width="match_parent"
-            android:layout_height="73dp" />
+            android:layout_height="wrap_content" />
     </LinearLayout>
+
 
     <ListView
         android:id="@+id/List"

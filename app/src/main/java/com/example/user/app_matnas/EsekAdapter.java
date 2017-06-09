@@ -9,11 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.user.app_matnas.R;
 import com.example.user.app_matnas.Team;
 
@@ -39,33 +41,19 @@ public class EsekAdapter extends ArrayAdapter<Business> {
         View v = inflater.inflate(resource, null);
         TextView tvName = (TextView) v.findViewById(R.id.tv_EName);
         TextView tvDes = (TextView) v.findViewById(R.id.tv_EDes);
-        TextView tvAddress = (TextView)v.findViewById(R.id.tv_EAddress);
+       // TextView tvAddress = (TextView)v.findViewById(R.id.tv_EAddress);
         ImageView img = (ImageView) v.findViewById(R.id.imageViewEsek);
-        ImageView mail = (ImageView) v.findViewById(R.id.imageViewMail);
-        ImageView sms = (ImageView) v.findViewById(R.id.imageViewSms);
-        ImageView phone = (ImageView) v.findViewById(R.id.imageViewPhone);
-        ImageView waze = (ImageView) v.findViewById(R.id.imageViewWaze);
+        //ImageView mail = (ImageView) v.findViewById(R.id.imageViewMail);
+        Button sms = (Button) v.findViewById(R.id.sms);
+        Button phone = (Button) v.findViewById(R.id.phone);
+        Button waze = (Button)v.findViewById(R.id.waze);
 
-        mail.setImageResource(R.drawable.social_media_mail);
-        sms.setImageResource(R.drawable.sms);
-        phone.setImageResource(R.drawable.social_media_phone);
-        waze.setImageResource(R.drawable.waze);
 
         tvName.setText(listBus.get(position).getBusinessName());
         tvDes.setText(listBus.get(position).getBusinessDes());
-        tvAddress.setText((listBus.get(position).getBusinessAddress()));
-        Glide.with(context).load(listBus.get(position).getBusinessImage()).into(img);
-        Toast.makeText(context,""+tvAddress,Toast.LENGTH_LONG).show();
-
-        mail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Uri mail = Uri.parse("mailto:" + listBus.get(position).getBusinessMail());
-                Intent intent = new Intent(Intent.ACTION_VIEW, mail);
-                intent.putExtra(Intent.EXTRA_SUBJECT, "פניה ל" + listBus.get(position).getBusinessName());
-                context.startActivity(intent);
-            }
-        });
+        Glide.with(context).load(listBus.get(position).getBusinessImage()).thumbnail(0.5f).override(200,200)
+                .crossFade()
+                .diskCacheStrategy(DiskCacheStrategy.ALL).into(img);
 
         sms.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,11 +91,11 @@ public class EsekAdapter extends ArrayAdapter<Business> {
         return listBus.size();
     }
 
-//    public void setFilter(ArrayList<Team> newList) {
-//        listBus = new ArrayList<>();
-//        listBus.addAll(newList);
-//        notifyDataSetChanged();
-//
-//    }
+    public void setFilter(ArrayList<Business> newList) {
+        listBus = new ArrayList<>();
+        listBus.addAll(newList);
+        notifyDataSetChanged();
+
+    }
 
 }
