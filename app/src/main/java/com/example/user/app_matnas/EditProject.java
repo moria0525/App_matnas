@@ -23,13 +23,10 @@ import com.google.firebase.storage.StorageReference;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
-import static android.R.id.list;
+import static com.example.user.app_matnas.FirebaseHelper.*;
 
 public class EditProject extends AppCompatActivity {
-    private DatabaseReference mDatabaseRef;
-    public static final String DATABASE_PATH = "projects";
-    public List<Project> proList;
+    public List<String> proList;
     String name;
 
     private StorageReference mStorageRef;
@@ -59,7 +56,7 @@ public class EditProject extends AppCompatActivity {
         mStorageRef = FirebaseStorage.getInstance().getReference();
         active = flag;
         showProgressDialog();
-        mDatabaseRef.addValueEventListener(new ValueEventListener() {
+        mDatabaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
                      @Override
                      public void onDataChange(DataSnapshot dataSnapshot) {
                          for (DataSnapshot snapshot : dataSnapshot.getChildren()) {

@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -13,18 +12,17 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
 import com.google.firebase.database.DatabaseException;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
+
+import static com.example.user.app_matnas.FirebaseHelper.*;
 
 public class AddActivity extends AppCompatActivity {
 
@@ -32,20 +30,18 @@ public class AddActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private TextView toolBarText;
     private EditText name, age, timeStart, timeEnd, description;
-    private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("activities");
-
     private String s_type, s_days;
-    private String error;
     private String[] AlertDialogItemsType;
     private String[] AlertDialogItemsDays;
     private List<String> ItemsIntoList;
-
     private boolean[] SelectedtruefalseType = new boolean[3];
     private boolean[] SelectedtruefalseDays = new boolean[5];
 
     private AlertDialog.Builder alertdialogbuilder;
-
+    private Button type, days;
     private Activity a_edit;
+
+    String old = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,18 +67,22 @@ public class AddActivity extends AppCompatActivity {
         timeStart = (EditText) findViewById(R.id.timeStart);
         timeEnd = (EditText) findViewById(R.id.timeEnd);
         description = (EditText) findViewById(R.id.description);
-
-
+        type = (Button)findViewById(R.id.type);
+        days = (Button)findViewById(R.id.days);
         a_edit = (Activity) getIntent().getSerializableExtra("edit");
 
         if (a_edit != null)
         {
+            old = a_edit.getActivityName();
+            Toast.makeText(context,"!!!" + a_edit.getActivityName() ,Toast.LENGTH_SHORT).show();
             toolBarText.setText(getResources().getStringArray(R.array.actions)[3]);
             fillFields();
         }
+
     }
 
-    private void fillFields() {
+    private void fillFields()
+    {
         name.setText(a_edit.getActivityName());
         age.setText(a_edit.getActivityAge());
         timeStart.setText(a_edit.getActivityStart());
@@ -207,7 +207,7 @@ public class AddActivity extends AppCompatActivity {
                     public void onClick(DialogInterface arg0, int arg1)
                     {
                         arg0.dismiss();
-                        backToManagerScreen();
+                        finish();
                     }
                 });
 
@@ -243,74 +243,71 @@ public class AddActivity extends AppCompatActivity {
     }
 
     /*Method to validation fields in form */
-    private void checkFullFields() {
-        error = "";
+    private void checkFullFields()
+    {
+        boolean flag = true;
         String s_name = name.getText().toString();
         String s_age = age.getText().toString();
         String s_timeStart = timeStart.getText().toString();
         String s_timeEnd = timeEnd.getText().toString();
         String s_description = description.getText().toString();
-
-        boolean entriesValid = true;
-        try {
             if (TextUtils.isEmpty(s_name)) {
-                error += getResources().getStringArray(R.array.error)[0] + "\n";
-                entriesValid = false;
+                name.setError("");
+                flag = false;
             }
             if (!checkArray(SelectedtruefalseType)) {
-                error += getResources().getStringArray(R.array.error)[1] + "\n";
-                entriesValid = false;
+                type.setError("");
+                flag = false;
             }
             if (TextUtils.isEmpty(s_age)) {
-                error += getResources().getStringArray(R.array.error)[2] + "\n";
-                entriesValid = false;
+                age.setError("");
+                flag = false;
             }
             if (!checkArray(SelectedtruefalseDays)) {
-                error += getResources().getStringArray(R.array.error)[3] + "\n";
-                entriesValid = false;
+                days.setError("");
+                flag = false;
             }
             if (TextUtils.isEmpty(s_timeStart)) {
-                error += getResources().getStringArray(R.array.error)[4] + "\n";
-                entriesValid = false;
+                timeStart.setError("");
+                flag = false;
             }
             if (TextUtils.isEmpty(s_timeEnd)) {
-                error += getResources().getStringArray(R.array.error)[5] + "\n";
-                entriesValid = false;
+                timeEnd.setError("");
+                flag = false;
             }
             if (TextUtils.isEmpty(s_description)) {
-                error += getResources().getStringArray(R.array.error)[6] + "\n";
-                entriesValid = false;
+                description.setError("");
+                flag = false;
             }
+            if (flag) {
+                //add data to DB
+                Activity activity = new Activity(s_name, s_type, s_description, s_age, s_days, s_timeStart, s_timeEnd);
+                try {
+//                    if(!old.isEmpty())
+//                    {
+//                        mDatabaseRef.child(DB_ACTIVITIES).child(a_edit.getActivityName()).removeValue();
+//                    }
+                    mDatabaseRef.child(DB_ACTIVITIES).child(s_name).setValue(activity);
+//                    if(a_edit!=null){//TODO BUG same name
+//
+//                    }
+                    if(!old.isEmpty())
+                    {
+                        Toast.makeText(getApplicationContext(), "החוג התעדכן בהצלחה", Toast.LENGTH_LONG).show();
+                        finish();
+                        finish();
+                    }
+                    else
+                        Toast.makeText(getApplicationContext(), "החוג נוסף בהצלחה", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context,"finis 293",Toast.LENGTH_LONG).show();
+                    finish();
+                } catch (DatabaseException e) {
+                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                    e.printStackTrace();
+                }
 
-        } catch (Exception e) {
-            entriesValid = false;
-        }
-        if (!entriesValid) {
-            errorFields();
-        } else {
-            //add data to DB
-            Activity activity = new Activity(s_name, s_type, s_description, s_age, s_days, s_timeStart, s_timeEnd);
-            try {
-                mDatabase.child(s_name).setValue(activity);
-                //activity.setActivityBType(SelectedtruefalseType);
-                Toast.makeText(getApplicationContext(), "החוג נוסף בהצלחה", Toast.LENGTH_LONG).show();
-                backToManagerScreen();
-            } catch (DatabaseException e) {
-                Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-                e.printStackTrace();
             }
-
         }
-    }
-
-    /* Method to build dialog error*/
-    private void errorFields() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(AddActivity.this);
-        builder.setTitle(getResources().getString(R.string.errorDialog));
-        builder.setMessage(error);
-        builder.setPositiveButton(getResources().getString(R.string.understand), null);
-        builder.show();
-    }
 
     /* Method to check if select items in multiple choice items */
     private boolean checkArray(boolean[] temp) {
@@ -321,11 +318,5 @@ public class AddActivity extends AppCompatActivity {
                 break;
             }
         return flag;
-    }
-
-    /* Method to back to screen manager after saving new activity */
-    private void backToManagerScreen()
-    {
-        finish();
     }
 }

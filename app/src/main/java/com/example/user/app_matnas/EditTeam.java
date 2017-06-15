@@ -60,7 +60,7 @@ public class EditTeam extends AppCompatActivity
         mStorageRef = FirebaseStorage.getInstance().getReference();
         active = flag;
         showProgressDialog();
-        mDatabaseRef.addValueEventListener(new ValueEventListener() {
+        mDatabaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {

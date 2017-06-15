@@ -10,4 +10,5 @@ public class FirebaseHelper
     public static DatabaseReference mDatabaseRef  = FirebaseDatabase.getInstance().getReference();
     public static StorageReference mStorageRef = FirebaseStorage.getInstance().getReference();
     public static String DB_ACTIVITIES = "activities";
+    public static String DB_PROJECTS = "projects";
 }

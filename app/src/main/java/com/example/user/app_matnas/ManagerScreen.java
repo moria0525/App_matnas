@@ -60,6 +60,10 @@ public class ManagerScreen extends AppCompatActivity {
     private TextView toolBarText;
     private String[] values;
 
+    String edit = "edit";
+    String delete = "delete";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,12 +108,14 @@ public class ManagerScreen extends AppCompatActivity {
                         startActivity(i);
                         break;
                     case 3:
-                        EditActivity ea = new EditActivity(ManagerScreen.this);
-                        ea.getDB(-1);
+                        i = new Intent(ManagerScreen.this, EditActivity.class);
+                        i.putExtra("action",edit);
+                        startActivity(i);
                         break;
                     case 4:
-                        ea = new EditActivity(ManagerScreen.this);
-                        ea.getDB(0);
+                        i = new Intent(ManagerScreen.this, EditActivity.class);
+                        i.putExtra("action",delete);
+                        startActivity(i);
                         break;
                     case 5:
                         i = new Intent(ManagerScreen.this, AddProject.class);
