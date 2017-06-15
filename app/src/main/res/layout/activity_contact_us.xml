@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_contact_us"
     style="@style/general_match_parent"
-    android:background="@color/colorBackgroundHome"
     tools:context="com.example.user.app_matnas.activity_contactUs">
 
     <LinearLayout

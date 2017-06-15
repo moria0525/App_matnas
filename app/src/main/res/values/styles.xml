@@ -20,24 +20,6 @@
     </style>
     <!---->
 
-    <!-- Home Screen. -->
-    <style name="imageButtonInHomePage">
-        <item name="android:scaleType">fitCenter</item>
-        <item name="android:layout_width">59dp</item>
-        <item name="android:layout_height">93dp</item>
-        <item name="android:tint">#000</item>
-        <item name="android:background">@color/colorBackgroundHome</item>
-
-    </style>
-
-    <style name="textImageButtonHomePage">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:gravity">center</item>
-    </style>
-
-    <!---->
-
     <!-- Contact Us Screen.-->
 
     <style name="map">
@@ -90,27 +72,18 @@
     <style name="social_media">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:background">@color/colorBackgroundHome</item>
+        <item name="android:background">@color/white</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/white</item>
     </style>
 
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
-
-    <!--<style name="form_btn">-->
-    <!--<item name="android:layout_weight">0.01</item>-->
-    <!--<item name="android:textColor">#fff</item>-->
-    <!--<item name="android:layout_alignBaseline">@+id/form_message</item>-->
-    <!--<item name="android:layout_alignBottom">@+id/form_message</item>-->
-    <!--</style>-->
-
-    <!---->
 
 </resources>

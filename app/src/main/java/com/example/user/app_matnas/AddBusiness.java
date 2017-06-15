@@ -66,7 +66,9 @@ public class AddBusiness extends AppCompatActivity{
     private Uri imgUri;
     private StorageReference mStorageRef;
     public static String FB_STORAGE_BUSINESS = "business";
-
+    PlaceAutocompleteFragment autocompleteFragment;
+    double latitude;
+    double longitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,7 +90,7 @@ public class AddBusiness extends AppCompatActivity{
         description = (EditText) findViewById(R.id.et_des_bus);
 
 
-        PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
+        autocompleteFragment = (PlaceAutocompleteFragment)
                 getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
 
         autocompleteFragment.setHint("הקלד כתובת מלאה של העסק");
@@ -111,35 +113,7 @@ public class AddBusiness extends AppCompatActivity{
         mail = (EditText) findViewById(R.id.et_email_bus);
         image = (ImageView) findViewById(R.id.imageBus);
 
-
-//        final Spinner spinner = (Spinner) findViewById(R.id.spinner);
-//
-//        spinner.setOnItemSelectedListener(this);
-//
-//        mDatabase.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                final List<String> categories = new ArrayList<String>();
-//                for (DataSnapshot areaSnapshot : dataSnapshot.getChildren()) {
-//                    String areaName = areaSnapshot.getKey();
-//                    categories.add(areaName);
-//                }
-//
-//
-//                ArrayAdapter<String> Adapter = new ArrayAdapter<String>(AddBusiness.this, android.R.layout.simple_spinner_item, categories);
-//                Adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//                spinner.setAdapter(Adapter);
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
-
-
-
-        b_edit = (Business) getIntent().getSerializableExtra("editBus");
+        b_edit = (Business) getIntent().getSerializableExtra("editBusiness");
 
         if (b_edit != null) {
             toolBarText.setText(getResources().getStringArray(R.array.actions)[15]);
@@ -148,23 +122,15 @@ public class AddBusiness extends AppCompatActivity{
 
     }
 
-//    @Override
-//    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//        s_category = parent.getItemAtPosition(position).toString();
-//    }
-//    public void onNothingSelected(AdapterView<?> arg0) {
-//
-//    }
-
-
-
-
     private void fillFields() {
         name.setText(b_edit.getBusinessName());
         category.setText(b_edit.getBusinessCategory());
         description.setText(b_edit.getBusinessDes());
         phone.setText(b_edit.getBusinessPhone());
         mail.setText(b_edit.getBusinessMail());
+        autocompleteFragment.setHint("לשינוי כתובת, לחץ כאן");
+        latitude = b_edit.getLatitude();
+        longitude = b_edit.getLongitude();
         Glide.with(getApplicationContext()).load(b_edit.getBusinessImage()).into(image);
     }
 
@@ -244,27 +210,24 @@ public class AddBusiness extends AppCompatActivity{
         }
     }
 
-
     /*Method to validation fields in form */
     @SuppressWarnings("VisibleForTests")
     private void saveDB() {
 
+        //TODO TAKE LONGLAT NEW IF CLICK ADDRESS EDIT
+        //todo delete image IF DELETE ESEK
         final String s_name = name.getText().toString();
         final String s_description = description.getText().toString();
         final String s_category = category.getText().toString();
         final String s_phone = phone.getText().toString();
         final String s_mail = mail.getText().toString();
-        final CharSequence s_address = _place.getAddress();
-
 
         //Get the storage reference
         StorageReference ref = mStorageRef.child(FB_STORAGE_BUSINESS).child(s_name);//CHILD?
-
         //TODO without image...
-
         if(b_edit!= null)
         {
-            business = new Business(s_name, s_category, s_description, s_address, s_phone, s_mail, b_edit.getBusinessImage(),_place.getLatLng().latitude, _place.getLatLng().longitude);
+            business = new Business(s_name, s_category, s_description, s_phone, s_mail, b_edit.getBusinessImage(), this.latitude, longitude);
             try {
                 mDatabase.child(s_category).child(s_name).setValue(business);
             } catch (DatabaseException e) {
@@ -272,7 +235,7 @@ public class AddBusiness extends AppCompatActivity{
                 e.printStackTrace();
             }
             Toast.makeText(getApplicationContext(), "פרטי בית העסק עודכנו בהצלחה", Toast.LENGTH_SHORT).show();
-            finish();
+            backToManagerScreen();
         }
         else {
             ref.putFile(imgUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -280,7 +243,7 @@ public class AddBusiness extends AppCompatActivity{
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
                     //add data to DB
-                    business = new Business(s_name, s_category, s_description, s_address, s_phone, s_mail, taskSnapshot.getDownloadUrl().toString(),_place.getLatLng().latitude, _place.getLatLng().longitude);
+                    business = new Business(s_name, s_category, s_description, s_phone, s_mail, taskSnapshot.getDownloadUrl().toString(),_place.getLatLng().latitude, _place.getLatLng().longitude);
                     try {
                         mDatabase.child(s_category).child(s_name).setValue(business);
                     } catch (DatabaseException e) {
@@ -305,9 +268,9 @@ public class AddBusiness extends AppCompatActivity{
     }
 
 
-
     /* Method to back to screen manager after saving new activity */
     private void backToManagerScreen() {
+        finish();
         Intent i = new Intent(AddBusiness.this, ManagerScreen.class);
         startActivity(i);
     }

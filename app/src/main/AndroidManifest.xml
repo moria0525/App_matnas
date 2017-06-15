@@ -71,12 +71,14 @@
         <activity android:name=".EditWorkShop" />
         <activity android:name=".activity_workShop" />
         <activity android:name=".AddBusiness" />
+        <activity android:name=".EditBusiness" />
+        <activity android:name=".SelectCategory"/>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDuAyGu9a_ZFoucS8aGCDT2n5LoXQ5iaag" />
 
-        <activity android:name=".Esek"></activity>
+        <activity android:name=".Esek"/>
     </application>
 
 </manifest>

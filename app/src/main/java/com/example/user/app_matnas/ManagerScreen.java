@@ -151,6 +151,16 @@ public class ManagerScreen extends AppCompatActivity {
                         i = new Intent(ManagerScreen.this, AddBusiness.class);
                         startActivity(i);
                         break;
+                    case 15:
+                        i = new Intent(ManagerScreen.this, SelectCategory.class);
+                        i.putExtra("active",1);
+                        startActivity(i);
+                        break;
+                    case 16:
+                        i = new Intent(ManagerScreen.this, SelectCategory.class);
+                        i.putExtra("active",0);
+                        startActivity(i);
+                        break;
                 }
             }
 

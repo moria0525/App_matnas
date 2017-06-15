@@ -1,5 +1,6 @@
 package com.example.user.app_matnas;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.LayoutRes;
@@ -19,6 +20,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.user.app_matnas.R;
 import com.example.user.app_matnas.Team;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,23 +38,22 @@ public class EsekAdapter extends ArrayAdapter<Business> {
 
     @NonNull
     @Override
-    public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+    public View getView(final int position, @Nullable final View convertView, @NonNull ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
         View v = inflater.inflate(resource, null);
-        TextView tvName = (TextView) v.findViewById(R.id.tv_EName);
-        TextView tvDes = (TextView) v.findViewById(R.id.tv_EDes);
-       // TextView tvAddress = (TextView)v.findViewById(R.id.tv_EAddress);
+        final TextView tvName = (TextView) v.findViewById(R.id.tv_EName);
+        final TextView tvDes = (TextView) v.findViewById(R.id.tv_EDes);
+        // TextView tvAddress = (TextView)v.findViewById(R.id.tv_EAddress);
         ImageView img = (ImageView) v.findViewById(R.id.imageViewEsek);
         //ImageView mail = (ImageView) v.findViewById(R.id.imageViewMail);
         Button sms = (Button) v.findViewById(R.id.sms);
         Button phone = (Button) v.findViewById(R.id.phone);
-        Button waze = (Button)v.findViewById(R.id.waze);
-
+        Button waze = (Button) v.findViewById(R.id.waze);
+        Button share = (Button) v.findViewById(R.id.share);
 
         tvName.setText(listBus.get(position).getBusinessName());
         tvDes.setText(listBus.get(position).getBusinessDes());
-        Glide.with(context).load(listBus.get(position).getBusinessImage()).thumbnail(0.5f).override(200,200)
-                .crossFade()
+        Glide.with(context).load(listBus.get(position).getBusinessImage()).crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL).into(img);
 
         sms.setOnClickListener(new View.OnClickListener() {
@@ -74,10 +75,37 @@ public class EsekAdapter extends ArrayAdapter<Business> {
         });
         waze.setOnClickListener(new View.OnClickListener() {
             @Override
+            public void onClick(View v)
+            {
+                try
+                {
+                    String latitude = new DecimalFormat("##.######").format(listBus.get(position).getLatitude());
+                    String longitude = new DecimalFormat("##.######").format(listBus.get(position).getLongitude());
+                    String url = "waze://?ll="+latitude+","+ longitude+"&navigate=yes";
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                    context.startActivity(intent);
+                }
+                catch (ActivityNotFoundException ex)
+                {
+                    Intent intent =
+                            new Intent( Intent.ACTION_VIEW, Uri.parse("market://details?id=com.waze"));
+                    context.startActivity(intent);
+                }
+
+
+            }
+        });
+
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
-                String uri = "geo:" + listBus.get(position).getLatitude() + "," + listBus.get(position).getLongitude();
-                context.startActivity(new Intent(android.content.Intent.ACTION_VIEW,
-                        Uri.parse(uri)));
+                String text = tvName.getText().toString() + "\n" +
+                        tvDes.getText().toString() + "\n";
+                Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "שיתפתי איתך עסק בקטמונים!");
+                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, text);
+                context.startActivity(Intent.createChooser(sharingIntent, "שתף באמצעות"));
 
             }
         });

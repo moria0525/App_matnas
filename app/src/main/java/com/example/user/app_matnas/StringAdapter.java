@@ -45,7 +45,7 @@ public class StringAdapter extends ArrayAdapter<String> {
             v.setBackgroundColor(randomAndroidColor);
 
         }
-        else{
+        else if(i == -1){
             ImageView img = (ImageView) v.findViewById(R.id.ImageGallery);
             img.setImageResource(R.drawable.gallery_event);
         }

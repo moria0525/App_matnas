@@ -5,7 +5,7 @@
 
     <!--Home Screen Icons-->
     <string name="text_about">אודות</string>
-    <string name="text_messages">הודעות</string>
+    <string name="text_news">חדשות</string>
     <string name="text_business">עסקים בשכונה</string>
     <string name="text_projects">פרוייקטים</string>
     <string name="text_hobbies">חוגים</string>
@@ -13,7 +13,7 @@
     <string name="text_team">צוות המרכז</string>
     <string name="text_gallery">גלריית תמונות</string>
     <string name="text_contactus">צור קשר</string>
-    <string name="text_help">עזרה</string>
+
 
     <!--ContactUs Screen -->
     <string name="contactUs_title">צור קשר</string>
@@ -21,7 +21,6 @@
     <string name="contactus_address">\r\n מוריס פישר 20 \r\n שכונת פת \r\n ירושלים</string>
     <string name="form_title">כתוב לנו</string>
     <string name="form_name">שם*</string>
-    <string name="form_email">כתובת מייל</string>
     <string name="form_phone">מספר נייד*</string>
     <string name="form_message">ההודעה שלך*</string>
     <string name="form_btn">שלח</string>
@@ -70,7 +69,8 @@
         <item>עריכת איש צוות קיים</item>
         <item>מחיקת איש צוות</item>
         <item>הוספת עסק חדש</item>
-
+        <item>עריכת עסק קיים</item>
+        <item>מחיקת עסק קיים</item>
     </string-array>
 
 
@@ -194,6 +194,8 @@
         Website: %5$s
     ]]>
 </string>
+    <string name="editCategory">בחר קטגוריה של העסק</string>
+    <string name="editBusiness">בחר עסק</string>
 
 
 </resources>

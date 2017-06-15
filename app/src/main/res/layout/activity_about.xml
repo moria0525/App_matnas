@@ -22,17 +22,6 @@
     </LinearLayout>
 
 
-
-
-    <!--<ScrollView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:layout_alignParentLeft="true"-->
-        <!--android:layout_alignParentStart="true"-->
-        <!--android:layout_below="@+id/layout_main">-->
-
-
-
         <TextView
             android:text="@string/about"
             android:textStyle="bold"
@@ -45,5 +34,4 @@
             android:layout_marginTop="60dp"
             android:id="@+id/textView" />
 
-    <!--</ScrollView>-->
 </RelativeLayout>

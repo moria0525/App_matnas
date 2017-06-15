@@ -60,7 +60,7 @@
             android:padding="6dp"
             android:paddingBottom="50dp"
             android:stretchMode="columnWidth"
-            android:theme="@color/colorBackgroundHome"
+            android:theme="@color/white"
             android:verticalSpacing="30dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"

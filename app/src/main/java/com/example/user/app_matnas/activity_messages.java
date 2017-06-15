@@ -39,7 +39,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.user.app_matnas.MainAdapter.notification;
-import static com.example.user.app_matnas.R.id.imageView;
+
 import static com.example.user.app_matnas.SendNews.countNotification;
 
 public class activity_messages extends AppCompatActivity {

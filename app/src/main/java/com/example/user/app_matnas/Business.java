@@ -11,7 +11,6 @@ public class Business implements Serializable {
     private String businessName;
     private String businessCategory;
     private String businessDes;
-    private CharSequence place;
     private String businessPhone;
     private String businessMail;
     private String businessImage;
@@ -21,11 +20,10 @@ public class Business implements Serializable {
     public Business() {
     }
 
-    public Business(String businessName, String businessCategory, String businessDes, CharSequence place, String businessPhone, String businessMail, String businessImage, double latitude, double longitude) {
+    public Business(String businessName, String businessCategory, String businessDes, String businessPhone, String businessMail, String businessImage, double latitude, double longitude) {
         this.businessName = businessName;
         this.businessCategory = businessCategory;
         this.businessDes = businessDes;
-        this.place = place;
         this.businessPhone = businessPhone;
         this.businessMail = businessMail;
         this.businessImage = businessImage;
@@ -43,10 +41,6 @@ public class Business implements Serializable {
 
     public String getBusinessDes() {
         return businessDes;
-    }
-
-    public CharSequence getBusinessAddress() {
-        return place;
     }
 
     public String getBusinessPhone() {

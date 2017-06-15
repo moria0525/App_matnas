@@ -1,9 +1,7 @@
 package com.example.user.app_matnas;
 
-
 import android.app.ProgressDialog;
 import android.app.SearchManager;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -11,33 +9,22 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.google.firebase.database.DataSnapshot;
-
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.example.user.app_matnas.FirebaseHelper.*;
 
 
 public class activity_hobbies extends AppCompatActivity {
 
-    //todo change user - activity and hobbies - activites and psik in days
     private ActivitiesAdapter adapter;
-    private DatabaseReference databaseReference;
     private ProgressDialog mProgressDialog;
     private List<Activity> activityList = new ArrayList<>();
     private RecyclerView recyclerView;
@@ -48,9 +35,6 @@ public class activity_hobbies extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recycle_view);
-
-        databaseReference = FirebaseDatabase.getInstance().getReference();
-
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolBarText = (TextView) findViewById(R.id.toolBarText);
@@ -59,13 +43,12 @@ public class activity_hobbies extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         getDataFromDB();
 
-
     }
 
     public void getDataFromDB() {
 
         showProgressDialog();
-        databaseReference.child("activities").addValueEventListener(new ValueEventListener() {
+        mDatabaseRef.child(DB_ACTIVITIES).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
@@ -75,7 +58,7 @@ public class activity_hobbies extends AppCompatActivity {
                     }
                 }
                 hideProgressDialog();
-                adapter = new ActivitiesAdapter(activityList, getApplicationContext());
+                adapter = new ActivitiesAdapter(activityList, activity_hobbies.this);
                 recyclerView.setAdapter(adapter);
             }
 
@@ -101,12 +84,6 @@ public class activity_hobbies extends AppCompatActivity {
         }
     }
 
-    public void onClickRegister(View view) {
-
-        // Toast.makeText(getApplicationContext(),""+i,Toast.LENGTH_LONG).show();
-    }
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -116,10 +93,7 @@ public class activity_hobbies extends AppCompatActivity {
         SearchManager searchManager = (SearchManager) getSystemService(SEARCH_SERVICE);
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         searchView.setQueryHint("חיפוש חופשי");
-
-
         SearchView.OnQueryTextListener queryTextListener = new SearchView.OnQueryTextListener() {
-
 
             @Override
             public boolean onQueryTextSubmit(String query) {

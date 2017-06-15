@@ -4,36 +4,20 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Parcelable;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
-import android.widget.ListView;
 import android.widget.Toast;
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import static android.R.id.list;
-
+import static com.example.user.app_matnas.FirebaseHelper.*;
 
 public class EditActivity extends AppCompatActivity {
-    private DatabaseReference mDatabaseRef;
-    public static final String DATABASE_PATH = "activities";
     public List<Activity> actList;
     String name;
     String list[];
@@ -62,11 +46,10 @@ public class EditActivity extends AppCompatActivity {
     public void getDB(int flag) {
 
         actList = new ArrayList<>();
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference(DATABASE_PATH);
         active = flag;
         showProgressDialog();
 
-        mDatabaseRef.addValueEventListener(new ValueEventListener() {
+        mDatabaseRef.child(DB_ACTIVITIES).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot)
             {
@@ -149,10 +132,10 @@ public class EditActivity extends AppCompatActivity {
     }
 
     /* Method to back to screen manager after saving new activity */
-    private void backToManagerScreen() {
+    private void backToManagerScreen()
+    {
         Toast.makeText(context, "אין חוגים", Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(context, ManagerScreen.class);
-        context.startActivity(intent);
+        finish();
     }
 
 }

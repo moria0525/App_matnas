@@ -7,10 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class ActivitiesAdapter extends RecyclerView.Adapter<ActivitiesAdapter.UserViewHolder> {
 
@@ -42,7 +44,9 @@ public class ActivitiesAdapter extends RecyclerView.Adapter<ActivitiesAdapter.Us
         holder.tvStart.setText(activity.getActivityStart());
         holder.tvEnd.setText(activity.getActivityEnd());
         holder.tvDes.setText(activity.getActivityDes());
-
+        int[] androidColors = context.getResources().getIntArray(R.array.androidcolors);
+        int randomAndroidColor = androidColors[new Random().nextInt(androidColors.length)];
+        holder.rv.setBackgroundColor(randomAndroidColor);
         holder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,6 +55,7 @@ public class ActivitiesAdapter extends RecyclerView.Adapter<ActivitiesAdapter.Us
                 r.showDialog(inflater);
             }
         });
+
 
     }
 
@@ -71,7 +76,7 @@ public class ActivitiesAdapter extends RecyclerView.Adapter<ActivitiesAdapter.Us
         TextView tvEnd;
         TextView tvDes;
         Button button;
-
+        LinearLayout rv;
         public UserViewHolder(View itemView) {
             super(itemView);
             tvName = (TextView) itemView.findViewById(R.id.view_name);
@@ -82,6 +87,7 @@ public class ActivitiesAdapter extends RecyclerView.Adapter<ActivitiesAdapter.Us
             tvEnd = (TextView) itemView.findViewById(R.id.view_end);
             tvDes = (TextView) itemView.findViewById(R.id.view_des);
             button = (Button) itemView.findViewById(R.id.button3);
+            rv = (LinearLayout)itemView.findViewById(R.id.rv);
         }
 
     }

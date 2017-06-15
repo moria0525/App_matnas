@@ -2,6 +2,7 @@ package com.example.user.app_matnas;
 
 import android.app.ProgressDialog;
 import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -12,13 +13,16 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -37,13 +41,15 @@ public class activity_business extends AppCompatActivity {
     private GridView gv;
     private Toolbar toolbar;
     private TextView toolBarText;
-    private FloatingActionButton fb;
+    private Button button;
+    private Context context;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.albums);
+        context = getApplicationContext();
         categoryList = new ArrayList<>();
         gv = (GridView) findViewById(R.id.gallery_grid);
 
@@ -51,7 +57,7 @@ public class activity_business extends AppCompatActivity {
         RelativeLayout ll = (RelativeLayout) findViewById(R.id.albums);
         gv.setPadding(15, 10, 15, 10);
 
-        ll.setBackgroundResource(R.color.colorBackgroundHome);
+//        ll.setBackgroundResource(R.color.colorBackgroundHome);
         //mRecyclerView.setHasFixedSize(true);
 
 
@@ -60,8 +66,8 @@ public class activity_business extends AppCompatActivity {
         toolBarText = (TextView) findViewById(R.id.toolBarText);
         toolBarText.setText(R.string.text_business);
 
-        fb = (FloatingActionButton)findViewById(R.id.floatingActionButton);
-        fb.setVisibility(View.VISIBLE);
+        button = (Button)findViewById(R.id.btn_Bregister);
+        button.setVisibility(View.VISIBLE);
 
         //Show progress dialog during list image loading
         progressDialog = new ProgressDialog(this);
@@ -104,6 +110,13 @@ public class activity_business extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public void onClickBRegister(View view)
+    {
+        LayoutInflater inflater = LayoutInflater.from(activity_business.this);
+        Register r = new Register("רשימת בעלי עסקים בקטמונים", activity_business.this);
+        r.showDialog(inflater);
     }
 
 }
