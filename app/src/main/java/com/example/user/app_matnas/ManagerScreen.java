@@ -122,12 +122,14 @@ public class ManagerScreen extends AppCompatActivity {
                         startActivity(i);
                         break;
                     case 6:
-                        EditProject ep = new EditProject(ManagerScreen.this);
-                        ep.getDB(-1);
+                        i = new Intent(ManagerScreen.this, EditProject.class);
+                        i.putExtra("action",edit);
+                        startActivity(i);
                         break;
                     case 7:
-                        ep = new EditProject(ManagerScreen.this);
-                        ep.getDB(0);
+                        i = new Intent(ManagerScreen.this, EditProject.class);
+                        i.putExtra("action",delete);
+                        startActivity(i);
                         break;
                     case 8:
                         i = new Intent(ManagerScreen.this, AddWorkShop.class);
@@ -146,12 +148,14 @@ public class ManagerScreen extends AppCompatActivity {
                         startActivity(i);
                         break;
                     case 12:
-                        EditTeam t = new EditTeam(ManagerScreen.this);
-                        t.getDB(-1);
+                        i = new Intent(ManagerScreen.this, EditTeam.class);
+                        i.putExtra("action",edit);
+                        startActivity(i);
                         break;
                     case 13:
-                        t = new EditTeam(ManagerScreen.this);
-                        t.getDB(0);
+                        i = new Intent(ManagerScreen.this, EditTeam.class);
+                        i.putExtra("action",delete);
+                        startActivity(i);
                         break;
                     case 14:
                         i = new Intent(ManagerScreen.this, AddBusiness.class);

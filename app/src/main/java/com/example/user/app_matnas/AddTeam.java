@@ -24,29 +24,24 @@ import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseException;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
+import static com.example.user.app_matnas.FirebaseHelper.*;
+
 public class AddTeam extends AppCompatActivity {
 
-    private Context context;
     private Toolbar toolbar;
     private TextView toolBarText;
     private EditText name, role, mail, description;
     private ImageView image;
-    private DatabaseReference mDatabase;
     private Team t_edit;
     private Team team;
-    public static final int GALLERY_CODE = 1;
     private Uri imgUri;
-    private StorageReference mStorageRef;
-    public static String FB_STORAGE_TEAM = "team";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,13 +49,10 @@ public class AddTeam extends AppCompatActivity {
         setContentView(R.layout.activity_add_team);
 
         //init screen and variables
-        context = getApplicationContext();
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolBarText = (TextView) findViewById(R.id.toolBarText);
         toolBarText.setText(getResources().getStringArray(R.array.actions)[11]);
-        mDatabase = FirebaseDatabase.getInstance().getReference("team");
-        mStorageRef = FirebaseStorage.getInstance().getReference();
         //find id fields
         name = (EditText) findViewById(R.id.et_name_team);
         role = (EditText) findViewById(R.id.et_role_team);
@@ -68,16 +60,12 @@ public class AddTeam extends AppCompatActivity {
         description = (EditText) findViewById(R.id.et_des_team);
         image = (ImageView) findViewById(R.id.imageTeam);
 
-        t_edit = (Team) getIntent().getSerializableExtra("editTeam");
+        t_edit = (Team) getIntent().getSerializableExtra("edit");
 
         if (t_edit != null) {
             toolBarText.setText(getResources().getStringArray(R.array.actions)[12]);
             fillFields();
         }
-
-
-
-
     }
     private void fillFields() {
         name.setText(t_edit.getTeamName());
@@ -124,7 +112,7 @@ public class AddTeam extends AppCompatActivity {
                     public void onClick(DialogInterface arg0, int arg1)
                     {
                         arg0.dismiss();
-                        backToManagerScreen();
+                        finish();
                     }
                 });
 
@@ -160,11 +148,11 @@ public class AddTeam extends AppCompatActivity {
                 image.setImageBitmap(bitmap);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
-                Toast.makeText(AddTeam.this, "Something went wrong", Toast.LENGTH_LONG).show();
+                Toast.makeText(AddTeam.this, "שגיאה", Toast.LENGTH_LONG).show();
             }
 
         } else {
-            Toast.makeText(AddTeam.this, "You haven't picked Image", Toast.LENGTH_LONG).show();
+            Toast.makeText(AddTeam.this, "לא בחרת תמונה של איש הצוות", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -173,62 +161,71 @@ public class AddTeam extends AppCompatActivity {
     @SuppressWarnings("VisibleForTests")
     private void saveDB() {
 
+        boolean flag = true;
         final String s_name = name.getText().toString();
         final String s_role = role.getText().toString();
         final String s_mail = mail.getText().toString();
         final String s_description = description.getText().toString();
 
-        //Get the storage reference
-        StorageReference ref = mStorageRef.child(FB_STORAGE_TEAM).child(s_name);
-
-        //TODO without image...
-
-        if(t_edit!= null)
-        {
-            team = new Team(s_name, s_role, s_mail, s_description, t_edit.getTeamImage());
-            try {
-                mDatabase.child(s_name).setValue(team);
-            } catch (DatabaseException e) {
-                Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-                e.printStackTrace();
-            }
-            Toast.makeText(getApplicationContext(), "פרטי איש הצוות עודכנו בהצלחה", Toast.LENGTH_SHORT).show();
-            finish();
+        if (s_name.isEmpty()) {
+            name.setError("");
+            flag = false;
         }
-        else {
-            ref.putFile(imgUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
-                    //add data to DB
-                    team = new Team(s_name, s_role, s_mail, s_description, taskSnapshot.getDownloadUrl().toString());
-                    try {
-                        mDatabase.child(s_name).setValue(team);
-                    } catch (DatabaseException e) {
-                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-                        e.printStackTrace();
-                    }
-                    Toast.makeText(getApplicationContext(), "פרטי איש הצוות נשמרו בהצלחה", Toast.LENGTH_SHORT).show();
-                    finish();
-
+        if (s_role.isEmpty()) {
+            role.setError("");
+            flag = false;
+        }
+        if (s_mail.isEmpty()) {
+            mail.setError("");
+            flag = false;
+        }
+        if (s_description.isEmpty()) {
+            description.setError("");
+            flag = false;
+        }
+        if (t_edit == null && imgUri == null) {
+            Toast.makeText(getApplicationContext(), "לא בחרת תמונה של איש צוות", Toast.LENGTH_SHORT).show();
+            flag = false;
+        }
+        if(flag) {
+            StorageReference ref = mStorageRef.child(ST_STORAGE_LOGO).child(s_name);
+            if (t_edit != null) {
+                team = new Team(s_name, s_role, s_mail, s_description, t_edit.getTeamImage());
+                try {
+                    mDatabaseRef.child(DB_TEAM).child(s_name).setValue(team);
+                } catch (DatabaseException e) {
+                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                    e.printStackTrace();
                 }
-            })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getApplicationContext(), "פרטי איש הצוות עודכנו בהצלחה", Toast.LENGTH_SHORT).show();
+                finish();
+            } else {
+                ref.putFile(imgUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                            //Display err toast msg
-                            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                        //add data to DB
+                        team = new Team(s_name, s_role, s_mail, s_description, taskSnapshot.getDownloadUrl().toString());
+                        try {
+                            mDatabaseRef.child(DB_TEAM).child(s_name).setValue(team);
+                        } catch (DatabaseException e) {
+                            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                            e.printStackTrace();
                         }
-                    });
+                        Toast.makeText(getApplicationContext(), "פרטי איש הצוות נשמרו בהצלחה", Toast.LENGTH_SHORT).show();
+                        finish();
+
+                    }
+                })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+
+                                //Display err toast msg
+                                Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+            }
         }
-    }
-
-
-
-    /* Method to back to screen manager after saving new activity */
-    private void backToManagerScreen() {
-        Intent i = new Intent(AddTeam.this, ManagerScreen.class);
-        startActivity(i);
     }
 }
