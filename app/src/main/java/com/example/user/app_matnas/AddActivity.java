@@ -74,7 +74,6 @@ public class AddActivity extends AppCompatActivity {
         if (a_edit != null)
         {
             old = a_edit.getActivityName();
-            Toast.makeText(context,"!!!" + a_edit.getActivityName() ,Toast.LENGTH_SHORT).show();
             toolBarText.setText(getResources().getStringArray(R.array.actions)[3]);
             fillFields();
         }
@@ -283,14 +282,7 @@ public class AddActivity extends AppCompatActivity {
                 //add data to DB
                 Activity activity = new Activity(s_name, s_type, s_description, s_age, s_days, s_timeStart, s_timeEnd);
                 try {
-//                    if(!old.isEmpty())
-//                    {
-//                        mDatabaseRef.child(DB_ACTIVITIES).child(a_edit.getActivityName()).removeValue();
-//                    }
                     mDatabaseRef.child(DB_ACTIVITIES).child(s_name).setValue(activity);
-//                    if(a_edit!=null){//TODO BUG same name
-//
-//                    }
                     if(!old.isEmpty())
                     {
                         Toast.makeText(getApplicationContext(), "החוג התעדכן בהצלחה", Toast.LENGTH_LONG).show();

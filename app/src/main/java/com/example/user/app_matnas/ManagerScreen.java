@@ -51,6 +51,9 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.example.user.app_matnas.FirebaseHelper.DB_WORKSHOP;
+import static com.example.user.app_matnas.FirebaseHelper.mDatabaseRef;
+
 public class ManagerScreen extends AppCompatActivity {
 
     private FirebaseAuth auth;
@@ -136,12 +139,16 @@ public class ManagerScreen extends AppCompatActivity {
                         startActivity(i);
                         break;
                     case 9:
-                        EditWorkShop ws = new EditWorkShop(ManagerScreen.this);
-                        ws.getDB(-1);
+                        i = new Intent(ManagerScreen.this, EditWorkShop.class);
+                        i.putExtra("action",edit);
+//                        final DatabaseReference child = mDatabaseRef.child(DB_WORKSHOP);
+//                            Toast.makeText(getApplicationContext(), child.getDatabase().toString(), Toast.LENGTH_SHORT).show();
+                        startActivity(i);
                         break;
                     case 10:
-                        ws = new EditWorkShop(ManagerScreen.this);
-                        ws.getDB(0);
+                        i = new Intent(ManagerScreen.this, EditWorkShop.class);
+                        i.putExtra("action",delete);
+                        startActivity(i);
                         break;
                     case 11:
                         i = new Intent(ManagerScreen.this, AddTeam.class);

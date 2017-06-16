@@ -4,15 +4,10 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
-import android.os.Handler;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -27,49 +22,10 @@ import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseException;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-
-
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.bumptech.glide.Glide;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.database.DatabaseException;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
-
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.util.Calendar;
+
+import static com.example.user.app_matnas.FirebaseHelper.*;
 
 
 public class AddWorkShop extends AppCompatActivity {
@@ -77,9 +33,9 @@ public class AddWorkShop extends AppCompatActivity {
     private Toolbar toolbar;
     private TextView toolBarText;
     private EditText name, date, description;
-    private DatabaseReference mDatabase;
     private WorkShop w_edit;
     private WorkShop workShop;
+    private String old = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,7 +47,7 @@ public class AddWorkShop extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolBarText = (TextView) findViewById(R.id.toolBarText);
         toolBarText.setText(getResources().getStringArray(R.array.actions)[8]);
-        mDatabase = FirebaseDatabase.getInstance().getReference("workShop");
+
         //find id fields
         name = (EditText) findViewById(R.id.et_name_workshop);
         date = (EditText) findViewById(R.id.et_date_workshop);
@@ -102,25 +58,26 @@ public class AddWorkShop extends AppCompatActivity {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 //To show current date in the datepicker
-                Calendar mcurrentDate=Calendar.getInstance();
-                int mYear=mcurrentDate.get(Calendar.YEAR);
-                int mMonth=mcurrentDate.get(Calendar.MONTH);
-                int mDay=mcurrentDate.get(Calendar.DAY_OF_MONTH);
+                Calendar mcurrentDate = Calendar.getInstance();
+                int mYear = mcurrentDate.get(Calendar.YEAR);
+                int mMonth = mcurrentDate.get(Calendar.MONTH);
+                int mDay = mcurrentDate.get(Calendar.DAY_OF_MONTH);
 
-                DatePickerDialog mDatePicker=new DatePickerDialog(AddWorkShop.this, new DatePickerDialog.OnDateSetListener() {
+                DatePickerDialog mDatePicker = new DatePickerDialog(AddWorkShop.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
-                    public void onDateSet(DatePicker datepicker, int selectedyear, int selectedmonth, int selectedday)
-                    {
-                     date.setText(selectedday + "/" + ++selectedmonth +"/" + selectedyear);
+                    public void onDateSet(DatePicker datepicker, int selectedyear, int selectedmonth, int selectedday) {
+                        date.setText(selectedday + "/" + ++selectedmonth + "/" + selectedyear);
                     }
-                },mYear, mMonth, mDay);
+                }, mYear, mMonth, mDay);
                 mDatePicker.setTitle("בחר תאריך");
-                mDatePicker.show();  }
+                mDatePicker.show();
+            }
         });
 
-        w_edit = (WorkShop) getIntent().getSerializableExtra("editWorkShop");
+        w_edit = (WorkShop) getIntent().getSerializableExtra("edit");
 
         if (w_edit != null) {
+            old = w_edit.getWorkShopName();
             toolBarText.setText(getResources().getStringArray(R.array.actions)[9]);
             fillFields();
         }
@@ -133,7 +90,6 @@ public class AddWorkShop extends AppCompatActivity {
         date.setText(w_edit.getWorkShopDate());
         description.setText(w_edit.getWorkShopDes());
     }
-
 
 
     /*Method to create menu*/
@@ -169,7 +125,7 @@ public class AddWorkShop extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
                         arg0.dismiss();
-                        backToManagerScreen();
+                        finish();
                     }
                 });
 
@@ -187,38 +143,54 @@ public class AddWorkShop extends AppCompatActivity {
 
     /*Method to validation fields in form */
     private void saveDB() {
-
+        boolean flag = true;
         final String s_name = name.getText().toString();
         final String s_date = date.getText().toString();
         final String s_description = description.getText().toString();
 
+        if (TextUtils.isEmpty(s_name)) {
+            name.setError("");
+            flag = false;
+        }
+        if (TextUtils.isEmpty(s_date)) {
+            date.setError("");
+            flag = false;
+        }
+        if (TextUtils.isEmpty(s_description)) {
+            description.setError("");
+            flag = false;
+        }
+        //todo if date pass andt error toast
+
+
         //add data to DB
-        workShop = new WorkShop(s_name, s_date, s_description);
-        try {
-            mDatabase.child(s_name).setValue(workShop);
-        } catch (DatabaseException e) {
-            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-            e.printStackTrace();
-        }
-        if(w_edit!=null)
-        {
+        if (flag) {
+            workShop = new WorkShop(s_name, s_date, s_description);
+            try {
+                mDatabaseRef.child(DB_WORKSHOP).child(s_name).setValue(workShop);
+                if (!old.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "הסנדא התעדכנה בהצלחה", Toast.LENGTH_LONG).show();
+                    finish();
+                    finish();
+                } else {
+                    Toast.makeText(getApplicationContext(), "הסדנא נוספה בהצלחה", Toast.LENGTH_LONG).show();
+                    finish();
+                }
 
-            Toast.makeText(getApplicationContext(), "הסדנא התעדכנה בהצלחה", Toast.LENGTH_SHORT).show();
+            } catch (DatabaseException e) {
+                Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                e.printStackTrace();
+            }
+//            if (w_edit != null) {
+//
+//                Toast.makeText(getApplicationContext(), "הסדנא התעדכנה בהצלחה", Toast.LENGTH_SHORT).show();
+//            } else {
+//                Toast.makeText(getApplicationContext(), "הסדנא נוספה בהצלחה", Toast.LENGTH_LONG).show();
+//            }
+            //backToManagerScreen();
+            //finish();
         }
-        else {
-            Toast.makeText(getApplicationContext(), "הסדנא נוספה בהצלחה", Toast.LENGTH_LONG).show();
-        }
-        //backToManagerScreen();
-        finish();
     }
 
-
-
-    /* Method to back to screen manager after saving new activity */
-    private void backToManagerScreen()
-    {
-        Intent i = new Intent(AddWorkShop.this,ManagerScreen.class);
-        startActivity(i);
-    }
 
 }
