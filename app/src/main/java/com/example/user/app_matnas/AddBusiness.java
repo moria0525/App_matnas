@@ -128,7 +128,7 @@ public class AddBusiness extends AppCompatActivity{
         description.setText(b_edit.getBusinessDes());
         phone.setText(b_edit.getBusinessPhone());
         mail.setText(b_edit.getBusinessMail());
-        autocompleteFragment.setHint("לשינוי כתובת, לחץ כאן");
+        autocompleteFragment.setHint("לשינוי כתובת העסק, לחץ כאן");
         latitude = b_edit.getLatitude();
         longitude = b_edit.getLongitude();
         Glide.with(getApplicationContext()).load(b_edit.getBusinessImage()).into(image);

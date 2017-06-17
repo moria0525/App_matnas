@@ -38,8 +38,11 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -111,58 +114,48 @@ public class ManagerScreen extends AppCompatActivity {
                         startActivity(i);
                         break;
                     case 3:
-                        i = new Intent(ManagerScreen.this, EditActivity.class);
-                        i.putExtra("action",edit);
-                        startActivity(i);
+                        EditActivity ed = new EditActivity(ManagerScreen.this, edit);
+                        ed.getDB();
                         break;
                     case 4:
-                        i = new Intent(ManagerScreen.this, EditActivity.class);
-                        i.putExtra("action",delete);
-                        startActivity(i);
+                        ed = new EditActivity(ManagerScreen.this, delete);
+                        ed.getDB();
                         break;
                     case 5:
                         i = new Intent(ManagerScreen.this, AddProject.class);
                         startActivity(i);
                         break;
                     case 6:
-                        i = new Intent(ManagerScreen.this, EditProject.class);
-                        i.putExtra("action",edit);
-                        startActivity(i);
+                        EditProject ep = new EditProject(ManagerScreen.this,edit);
+                        ep.getDB();
                         break;
                     case 7:
-                        i = new Intent(ManagerScreen.this, EditProject.class);
-                        i.putExtra("action",delete);
-                        startActivity(i);
+                        ep = new EditProject(ManagerScreen.this,delete);
+                        ep.getDB();
                         break;
                     case 8:
                         i = new Intent(ManagerScreen.this, AddWorkShop.class);
                         startActivity(i);
                         break;
                     case 9:
-                        i = new Intent(ManagerScreen.this, EditWorkShop.class);
-                        i.putExtra("action",edit);
-//                        final DatabaseReference child = mDatabaseRef.child(DB_WORKSHOP);
-//                            Toast.makeText(getApplicationContext(), child.getDatabase().toString(), Toast.LENGTH_SHORT).show();
-                        startActivity(i);
+                        EditWorkShop ws = new EditWorkShop(ManagerScreen.this, edit);
+                        ws.getDB();
                         break;
                     case 10:
-                        i = new Intent(ManagerScreen.this, EditWorkShop.class);
-                        i.putExtra("action",delete);
-                        startActivity(i);
+                        ws = new EditWorkShop(ManagerScreen.this, delete);
+                        ws.getDB();
                         break;
                     case 11:
                         i = new Intent(ManagerScreen.this, AddTeam.class);
                         startActivity(i);
                         break;
                     case 12:
-                        i = new Intent(ManagerScreen.this, EditTeam.class);
-                        i.putExtra("action",edit);
-                        startActivity(i);
+                        EditTeam et = new EditTeam(ManagerScreen.this, edit);
+                        et.getDB();
                         break;
                     case 13:
-                        i = new Intent(ManagerScreen.this, EditTeam.class);
-                        i.putExtra("action",delete);
-                        startActivity(i);
+                        et = new EditTeam(ManagerScreen.this, delete);
+                        et.getDB();
                         break;
                     case 14:
                         i = new Intent(ManagerScreen.this, AddBusiness.class);
@@ -170,12 +163,12 @@ public class ManagerScreen extends AppCompatActivity {
                         break;
                     case 15:
                         i = new Intent(ManagerScreen.this, SelectCategory.class);
-                        i.putExtra("active",1);
+                        i.putExtra("active", 1);
                         startActivity(i);
                         break;
                     case 16:
                         i = new Intent(ManagerScreen.this, SelectCategory.class);
-                        i.putExtra("active",0);
+                        i.putExtra("active", 0);
                         startActivity(i);
                         break;
                 }
@@ -183,6 +176,7 @@ public class ManagerScreen extends AppCompatActivity {
 
         });
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

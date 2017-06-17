@@ -7,26 +7,25 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.user.app_matnas.FirebaseHelper.*;
+
 
 public class EditBusiness extends AppCompatActivity {
-    private DatabaseReference mDatabaseRef;
     public List<Business> busList;
     String name;
     String list[];
-    int active;
     Context context;
+    int active;
     private ProgressDialog mProgressDialog;
 
 
@@ -49,11 +48,11 @@ public class EditBusiness extends AppCompatActivity {
 
     public void getDB(String category, int flag)
     {
-        busList = new ArrayList<>();
         active = flag;
+        mDatabaseRef = mDatabaseRef.child("business").child(category);
+        busList = new ArrayList<>();
         showProgressDialog();
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference().child("business").child(category);
-        mDatabaseRef.addValueEventListener(new ValueEventListener()
+        mDatabaseRef.addListenerForSingleValueEvent(new ValueEventListener()
         {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot)
@@ -78,12 +77,16 @@ public class EditBusiness extends AppCompatActivity {
     public void showDialog()
     {
         list = new String[busList.size()];
-        for (int i = 0; i < busList.size(); i++) {
+        for (int i = 0; i < busList.size(); i++)
+        {
             list[i] = busList.get(i).getBusinessName();
         }
-        if (list.length == 0) {
-            backToManagerScreen();
-        }
+//        if (list.length == 0)
+//        {
+//            Toast.makeText(context, "לא נמצאו עסקים",Toast.LENGTH_LONG).show();
+//            finish();
+//            return;
+//        }
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle(R.string.editBusiness);
@@ -103,10 +106,12 @@ public class EditBusiness extends AppCompatActivity {
                 name = busList.get(selectedPosition).getBusinessName();
 
                 if (active == 0) {
-                    mDatabaseRef.child(name).removeValue();
-                    backToManagerScreen();
+                    mDatabaseRef.child(name).removeValue(); //////todo
+                    Toast.makeText(context,"בית העסק נמחק בהצלחה",Toast.LENGTH_LONG).show();
                     dialogInterface.dismiss();
-                } else {
+
+                }
+                else if(active == 1) {
                     Business business = busList.get(selectedPosition);
                     intent = new Intent(context, AddBusiness.class);
                     intent.putExtra("editBusiness", business);
@@ -136,9 +141,4 @@ public class EditBusiness extends AppCompatActivity {
         }
     }
 
-    /* Method to back to screen manager after saving new activity */
-    private void backToManagerScreen() {
-        Intent intent = new Intent(context, ManagerScreen.class);
-        context.startActivity(intent);
-    }
 }

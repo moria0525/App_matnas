@@ -13,6 +13,7 @@ public class FirebaseHelper
     public static String DB_PROJECTS = "projects";
     public static String DB_TEAM = "team";
     public static String DB_WORKSHOP = "workShop";
+    public static String DB_BUSINESS = "business";
     public static String ST_STORAGE_LOGO = "logoProjects";
     public static final int GALLERY_CODE = 1;
     public static String ST_STORAGE_TEAM = "team";

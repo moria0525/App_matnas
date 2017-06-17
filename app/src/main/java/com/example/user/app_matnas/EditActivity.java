@@ -8,6 +8,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -28,107 +29,112 @@ import java.util.List;
 import static com.example.user.app_matnas.FirebaseHelper.*;
 
 public class EditActivity extends AppCompatActivity {
-    public List<String> actList;
-
+    public List<Activity> actList;
     String name;
-    private ListView listView;
-    private Toolbar toolbar;
-    private TextView toolBarText;
+    String list[];
+    String active;
     Context context;
     private ProgressDialog mProgressDialog;
-    ArrayAdapter<String> adapter;
-    String flag;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.list);
-        flag = getIntent().getStringExtra("action");
-
-        context = getApplicationContext();
-        actList = new ArrayList<>();
-        listView = (ListView) findViewById(R.id.list);
-
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolBarText = (TextView) findViewById(R.id.toolBarText);
-        toolBarText.setText("בחר חוג");
-
-        showProgressDialog();
-        getDB();
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            Activity activity;
-
-            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                //Get item at position
-                final String select = (String) parent.getItemAtPosition(position);
-                final DatabaseReference child = mDatabaseRef.child(DB_ACTIVITIES).child(select);
-                child.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot snapshot)
-                    {
-                        activity = snapshot.getValue(Activity.class);
-                        if (flag.equals("edit"))
-                        {
-                            finish();
-                            Intent i = new Intent(EditActivity.this, AddActivity.class);
-                            Toast.makeText(context,"here",Toast.LENGTH_SHORT).show();
-                            i.putExtra("edit", activity);
-                            startActivity(i);
-                            finish();
-                        }
-                        else if (flag.equals("delete"))
-                        {
-                            finish();
-                            child.removeValue();
-                            Toast.makeText(context, "החוג נמחק בהצלחה", Toast.LENGTH_LONG).show();
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                    }
-
-                });
-
-            }
-        });
-
+    public EditActivity() {
 
     }
 
-    public void getDB() {
 
-        mDatabaseRef.child(DB_ACTIVITIES).addValueEventListener(new ValueEventListener() {
+    public EditActivity(Context context, String active)
+    {
+        this.context = context;
+        this.active = active;
+    }
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+
+    public void getDB()
+    {
+
+        actList = new ArrayList<>();
+        showProgressDialog();
+        mDatabaseRef.child(DB_ACTIVITIES).addListenerForSingleValueEvent
+                (new ValueEventListener() {
+                     @Override
+                     public void onDataChange(DataSnapshot dataSnapshot) {
+                         for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                             Activity activity = snapshot.getValue(Activity.class);
+                             actList.add(activity);
+                         }
+                         hideProgressDialog();
+                         showDialog();
+                     }
+
+                     @Override
+                     public void onCancelled(DatabaseError databaseError) {
+                         hideProgressDialog();
+                     }
+                 }
+                );
+    }
+
+    private void showDialog()
+    {
+
+        list = new String[actList.size()];
+        if (list.length == 0)
+        {
+            Toast.makeText(context, "לא נמצאו חוגים",Toast.LENGTH_LONG).show();
+            finish();
+            return;
+        }
+        for (int i = 0; i < actList.size(); i++) {
+            list[i] = actList.get(i).getActivityName();
+        }
+        final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        Toast.makeText(context, "wwwww",Toast.LENGTH_LONG).show();
+
+        builder.setTitle(R.string.editActivity);
+
+        builder.setSingleChoiceItems(list, -1, new DialogInterface.OnClickListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String activity = snapshot.getValue(Activity.class).getActivityName();
-                    actList.add(activity);
-                }
-                hideProgressDialog();
-                if (actList.size() == 0) {
-                    Toast.makeText(context, "לא נמצאו חוגים", Toast.LENGTH_LONG).show();
+            public void onClick(DialogInterface dialogInterface, int i) {
+            }
+        });
+
+        builder.setPositiveButton(context.getString(R.string.ok), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+                Intent intent;
+                int selectedPosition = ((AlertDialog) dialogInterface).getListView().getCheckedItemPosition();
+                name = actList.get(selectedPosition).getActivityName();
+
+                if (active.equals("delete")) {
+                    mDatabaseRef.child(DB_ACTIVITIES).child(name).removeValue();
+                    Toast.makeText(context, "החוג נמחק בהצלחה",Toast.LENGTH_SHORT).show();
+                    dialogInterface.dismiss();
                     finish();
+                } else if(active.equals("edit")) {
+                    Activity activity = actList.get(selectedPosition);
+                    intent = new Intent(context, AddActivity.class);
+                    intent.putExtra("edit", activity);
+                    mDatabaseRef.child(DB_ACTIVITIES).child(name).removeValue();
+                    context.startActivity(intent);
                 }
-                adapter = new ArrayAdapter<String>(EditActivity.this, android.R.layout.simple_list_item_1, android.R.id.text1, actList);
-
-                listView.setAdapter(adapter);
             }
+        });
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                hideProgressDialog();
-            }
-                                                                }
-        );
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
     }
 
     private void showProgressDialog() {
         if (mProgressDialog == null) {
-            mProgressDialog = new ProgressDialog(EditActivity.this);
+            mProgressDialog = new ProgressDialog(context);
             mProgressDialog.setMessage("עוד רגע..");
             mProgressDialog.setIndeterminate(true);
         }

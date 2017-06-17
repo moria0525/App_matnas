@@ -8,6 +8,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,6 +16,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.wallet.Wallet;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,104 +30,111 @@ import java.util.List;
 import static com.example.user.app_matnas.FirebaseHelper.*;
 
 public class EditWorkShop extends AppCompatActivity {
-    private List<String> wsList;
-
+    public List<WorkShop> wsList;
     String name;
-    private ListView listView;
-    private Toolbar toolbar;
-    private TextView toolBarText;
+    String list[];
+    String active;
     Context context;
     private ProgressDialog mProgressDialog;
-    ArrayAdapter<String> adapter;
-    String flag;
+
+
+    public EditWorkShop() {
+
+    }
+
+
+    public EditWorkShop(Context context, String active)
+    {
+        this.context = context;
+        this.active = active;
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.list);
-        flag = getIntent().getStringExtra("action");
-
-        context = getApplicationContext();
-        wsList = new ArrayList<>();
-        listView = (ListView) findViewById(R.id.list);
-
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolBarText = (TextView) findViewById(R.id.toolBarText);
-        toolBarText.setText("בחר סדנא");
-
-        showProgressDialog();
-        getDB();
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            WorkShop workShop;
-
-            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                //Get item at position
-                final String select = (String) parent.getItemAtPosition(position);
-                final DatabaseReference child = mDatabaseRef.child(DB_WORKSHOP).child(select);
-                child.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot snapshot)
-                    {
-                        workShop = snapshot.getValue(WorkShop.class);
-                        if (flag.equals("edit"))
-                        {
-                            finish();
-                            Intent i = new Intent(EditWorkShop.this, AddWorkShop.class);
-                            i.putExtra("edit", workShop);
-                            startActivity(i);
-                            finish();
-                        }
-                        else if (flag.equals("delete"))
-                        {
-                            finish();
-                            child.removeValue();
-                            Toast.makeText(context, "הסדנא נמחקה בהצלחה", Toast.LENGTH_LONG).show();
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                    }
-
-                });
-
-            }
-        });
     }
 
-    public void getDB() {
 
-        mDatabaseRef.child(DB_WORKSHOP).addValueEventListener(new ValueEventListener() {
+    public void getDB()
+    {
+
+        wsList = new ArrayList<>();
+        showProgressDialog();
+        mDatabaseRef.child(DB_WORKSHOP).addListenerForSingleValueEvent
+                (new ValueEventListener() {
+                     @Override
+                     public void onDataChange(DataSnapshot dataSnapshot) {
+                         for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                             WorkShop workShop = snapshot.getValue(WorkShop.class);
+                             wsList.add(workShop);
+                         }
+                         hideProgressDialog();
+                         showDialog();
+                     }
+
+                     @Override
+                     public void onCancelled(DatabaseError databaseError) {
+                         hideProgressDialog();
+                     }
+                 }
+                );
+    }
+
+    private void showDialog()
+    {
+
+        list = new String[wsList.size()];
+        if (list.length == 0)
+        {
+            Toast.makeText(context, "לא נמצאו סדנאות",Toast.LENGTH_LONG).show();
+            finish();
+            return;
+        }
+        for (int i = 0; i < wsList.size(); i++) {
+            list[i] = wsList.get(i).getWorkShopName();
+        }
+        final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+
+        builder.setTitle(R.string.editWorkShop);
+
+        builder.setSingleChoiceItems(list, -1, new DialogInterface.OnClickListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String workShop = snapshot.getValue(WorkShop.class).getWorkShopName();
-                    wsList.add(workShop);
-                }
-                hideProgressDialog();
-                if (wsList.size() == 0) {
-                    Toast.makeText(context, "לא נמצאו סדנאות", Toast.LENGTH_LONG).show();
-                    finish();
-                }
-                adapter = new ArrayAdapter<String>(EditWorkShop.this, android.R.layout.simple_list_item_1, android.R.id.text1, wsList);
-
-                listView.setAdapter(adapter);
+            public void onClick(DialogInterface dialogInterface, int i) {
             }
+        });
 
+        builder.setPositiveButton(context.getString(R.string.ok), new DialogInterface.OnClickListener() {
             @Override
-            public void onCancelled(DatabaseError databaseError) {
-                                                                        hideProgressDialog();
-                                                                    }
-                                                                }
-        );
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+                Intent intent;
+                int selectedPosition = ((AlertDialog) dialogInterface).getListView().getCheckedItemPosition();
+                name = wsList.get(selectedPosition).getWorkShopName();
+
+                if (active.equals("delete")) {
+                    mDatabaseRef.child(DB_WORKSHOP).child(name).removeValue();
+                    Toast.makeText(context, "הסדנא נמחקה בהצלחה",Toast.LENGTH_SHORT).show();
+                    dialogInterface.dismiss();
+                    finish();
+                } else if(active.equals("edit")) {
+                    WorkShop workShop = wsList.get(selectedPosition);
+                    intent = new Intent(context, AddWorkShop.class);
+                    intent.putExtra("edit", workShop);
+                    mDatabaseRef.child(DB_WORKSHOP).child(name).removeValue();
+                    context.startActivity(intent);
+                }
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
     }
 
     private void showProgressDialog() {
         if (mProgressDialog == null) {
-            mProgressDialog = new ProgressDialog(EditWorkShop.this);
+            mProgressDialog = new ProgressDialog(context);
             mProgressDialog.setMessage("עוד רגע..");
             mProgressDialog.setIndeterminate(true);
         }

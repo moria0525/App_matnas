@@ -15,6 +15,7 @@ import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -36,6 +37,7 @@ public class SelectCategory extends AppCompatActivity {
     private TextView toolBarText;
     private Context context;
     ArrayAdapter<String> adapter;
+    String active;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +70,11 @@ public class SelectCategory extends AppCompatActivity {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     categoryList.add(snapshot.getKey());
                 }
+                if (categoryList.size() == 0) {
+                    Toast.makeText(context, "לא נמצאו קטגוריות", Toast.LENGTH_LONG).show();
+                    finish();
+                    return;
+                }
                 progressDialog.dismiss();
                 //Init adapter
                 adapter = new ArrayAdapter<String>(SelectCategory.this, android.R.layout.simple_list_item_1, android.R.id.text1, categoryList);
@@ -87,7 +94,7 @@ public class SelectCategory extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 //Get item at position
                 String category = (String) parent.getItemAtPosition(position);
-                int active = getIntent().getIntExtra("active",-1);
+                int  active = getIntent().getIntExtra("active",-1);
                 EditBusiness b = new EditBusiness(SelectCategory.this);
                 b.getDB(category, active);
             }
