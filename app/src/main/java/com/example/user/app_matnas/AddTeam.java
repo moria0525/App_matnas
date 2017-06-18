@@ -11,6 +11,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -167,19 +168,19 @@ public class AddTeam extends AppCompatActivity {
         final String s_mail = mail.getText().toString();
         final String s_description = description.getText().toString();
 
-        if (s_name.isEmpty()) {
+        if (TextUtils.isEmpty(s_name)) {
             name.setError("");
             flag = false;
         }
-        if (s_role.isEmpty()) {
+        if (TextUtils.isEmpty(s_role)) {
             role.setError("");
             flag = false;
         }
-        if (s_mail.isEmpty()) {
+        if (TextUtils.isEmpty(s_mail)) {
             mail.setError("");
             flag = false;
         }
-        if (s_description.isEmpty()) {
+        if (TextUtils.isEmpty(s_description))  {
             description.setError("");
             flag = false;
         }
@@ -187,6 +188,7 @@ public class AddTeam extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "לא בחרת תמונה של איש צוות", Toast.LENGTH_SHORT).show();
             flag = false;
         }
+
         if(flag) {
             StorageReference ref = mStorageRef.child(ST_STORAGE_LOGO).child(s_name);
             if (t_edit != null) {
@@ -220,8 +222,6 @@ public class AddTeam extends AppCompatActivity {
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-
-                                //Display err toast msg
                                 Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });

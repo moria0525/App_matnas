@@ -18,10 +18,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseException;
+
 
 import java.util.Calendar;
 
@@ -53,26 +51,6 @@ public class AddWorkShop extends AppCompatActivity {
         date = (EditText) findViewById(R.id.et_date_workshop);
         description = (EditText) findViewById(R.id.et_des_workshop);
 
-        date.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                //To show current date in the datepicker
-                Calendar mcurrentDate = Calendar.getInstance();
-                int mYear = mcurrentDate.get(Calendar.YEAR);
-                int mMonth = mcurrentDate.get(Calendar.MONTH);
-                int mDay = mcurrentDate.get(Calendar.DAY_OF_MONTH);
-
-                DatePickerDialog mDatePicker = new DatePickerDialog(AddWorkShop.this, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker datepicker, int selectedyear, int selectedmonth, int selectedday) {
-                        date.setText(selectedday + "/" + ++selectedmonth + "/" + selectedyear);
-                    }
-                }, mYear, mMonth, mDay);
-                mDatePicker.setTitle("בחר תאריך");
-                mDatePicker.show();
-            }
-        });
 
         w_edit = (WorkShop) getIntent().getSerializableExtra("edit");
 
@@ -89,6 +67,24 @@ public class AddWorkShop extends AppCompatActivity {
         name.setText(w_edit.getWorkShopName());
         date.setText(w_edit.getWorkShopDate());
         description.setText(w_edit.getWorkShopDes());
+    }
+
+    public void onClickDate(View v) {
+
+        //To show current date in the datepicker
+        Calendar mcurrentDate = Calendar.getInstance();
+        int mYear = mcurrentDate.get(Calendar.YEAR);
+        int mMonth = mcurrentDate.get(Calendar.MONTH);
+        int mDay = mcurrentDate.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog mDatePicker = new DatePickerDialog(AddWorkShop.this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datepicker, int selectedyear, int selectedmonth, int selectedday) {
+                date.setText(selectedday + "/" + ++selectedmonth + "/" + selectedyear);
+            }
+        }, mYear, mMonth, mDay);
+        mDatePicker.setTitle("בחר תאריך");
+        mDatePicker.show();
     }
 
 
@@ -160,8 +156,6 @@ public class AddWorkShop extends AppCompatActivity {
             description.setError("");
             flag = false;
         }
-        //todo if date pass andt error toast
-
 
         //add data to DB
         if (flag) {
@@ -181,14 +175,6 @@ public class AddWorkShop extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                 e.printStackTrace();
             }
-//            if (w_edit != null) {
-//
-//                Toast.makeText(getApplicationContext(), "הסדנא התעדכנה בהצלחה", Toast.LENGTH_SHORT).show();
-//            } else {
-//                Toast.makeText(getApplicationContext(), "הסדנא נוספה בהצלחה", Toast.LENGTH_LONG).show();
-//            }
-            //backToManagerScreen();
-            //finish();
         }
     }
 

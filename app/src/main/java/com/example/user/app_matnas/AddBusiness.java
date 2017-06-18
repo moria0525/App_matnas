@@ -214,6 +214,7 @@ public class AddBusiness extends AppCompatActivity{
     @SuppressWarnings("VisibleForTests")
     private void saveDB() {
 
+        boolean flag = true;
         //TODO TAKE LONGLAT NEW IF CLICK ADDRESS EDIT
         //todo delete image IF DELETE ESEK
         final String s_name = name.getText().toString();
@@ -222,48 +223,85 @@ public class AddBusiness extends AppCompatActivity{
         final String s_phone = phone.getText().toString();
         final String s_mail = mail.getText().toString();
 
-        //Get the storage reference
-        StorageReference ref = mStorageRef.child(FB_STORAGE_BUSINESS).child(s_name);//CHILD?
-        //TODO without image...
-        if(b_edit!= null)
+        if(TextUtils.isEmpty(s_name))
         {
-            business = new Business(s_name, s_category, s_description, s_phone, s_mail, b_edit.getBusinessImage(), this.latitude, longitude);
-            try {
-                mDatabase.child(s_category).child(s_name).setValue(business);
-            } catch (DatabaseException e) {
-                Toast.makeText(getApplicationContext(), "220: "+e.getMessage(), Toast.LENGTH_LONG).show();
-                e.printStackTrace();
-            }
-            Toast.makeText(getApplicationContext(), "פרטי בית העסק עודכנו בהצלחה", Toast.LENGTH_SHORT).show();
-            backToManagerScreen();
+            name.setError("");
+            flag = false;
         }
-        else {
-            ref.putFile(imgUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+        if(TextUtils.isEmpty(s_description))
+        {
+            description.setError("");
+            flag = false;
+        }
+        if(TextUtils.isEmpty(s_category))
+        {
+            category.setError("");
+            flag = false;
+        }
+        if(TextUtils.isEmpty(s_phone))
+        {
+            phone.setError("");
+            flag = false;
+        }
+        if(TextUtils.isEmpty(s_mail))
+        {
+            mail.setError("");
+            flag = false;
+        }
+        if(_place == null)
+        {
+            Toast.makeText(context,"לא בחרת כתובת של העסק",Toast.LENGTH_LONG).show();
+            flag = false;
+        }
+        if (b_edit == null && imgUri == null)
+        {
+            Toast.makeText(getApplicationContext(), "לא בחרת לוגו של העסק", Toast.LENGTH_SHORT).show();
+            flag = false;
+        }
 
-                    //add data to DB
-                    business = new Business(s_name, s_category, s_description, s_phone, s_mail, taskSnapshot.getDownloadUrl().toString(),_place.getLatLng().latitude, _place.getLatLng().longitude);
-                    try {
-                        mDatabase.child(s_category).child(s_name).setValue(business);
-                    } catch (DatabaseException e) {
-                        Toast.makeText(getApplicationContext(), "236 "+e.getMessage(), Toast.LENGTH_LONG).show();
-                        e.printStackTrace();
-                    }
 
-                    Toast.makeText(getApplicationContext(), "פרטי בית העסק נשמרו בהצלחה", Toast.LENGTH_SHORT).show();
-                    finish();
+        if(flag) {
+            //Get the storage reference
+            StorageReference ref = mStorageRef.child(FB_STORAGE_BUSINESS).child(s_name);//CHILD?
 
+            if (b_edit != null) {
+                business = new Business(s_name, s_category, s_description, s_phone, s_mail, b_edit.getBusinessImage(), this.latitude, longitude);
+                try {
+                    mDatabase.child(s_category).child(s_name).setValue(business);
+                } catch (DatabaseException e) {
+                    Toast.makeText(getApplicationContext(), "220: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                    e.printStackTrace();
                 }
-            })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getApplicationContext(), "פרטי בית העסק עודכנו בהצלחה", Toast.LENGTH_SHORT).show();
+                backToManagerScreen();
+            } else {
+                ref.putFile(imgUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                            //Display err toast msg
-                            Toast.makeText(getApplicationContext(), "249 "+ e.getMessage(), Toast.LENGTH_SHORT).show();
+                        //add data to DB
+                        business = new Business(s_name, s_category, s_description, s_phone, s_mail, taskSnapshot.getDownloadUrl().toString(), _place.getLatLng().latitude, _place.getLatLng().longitude);
+                        try {
+                            mDatabase.child(s_category).child(s_name).setValue(business);
+                        } catch (DatabaseException e) {
+                            Toast.makeText(getApplicationContext(), "236 " + e.getMessage(), Toast.LENGTH_LONG).show();
+                            e.printStackTrace();
                         }
-                    });
+
+                        Toast.makeText(getApplicationContext(), "פרטי בית העסק נשמרו בהצלחה", Toast.LENGTH_SHORT).show();
+                        finish();
+
+                    }
+                })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+
+                                //Display err toast msg
+                                Toast.makeText(getApplicationContext(), "249 " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+            }
         }
     }
 
