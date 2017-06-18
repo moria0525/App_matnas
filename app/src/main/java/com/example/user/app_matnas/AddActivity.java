@@ -155,7 +155,7 @@ public class AddActivity extends AppCompatActivity {
                 while (a < SelectedtruefalseDays.length) {
                     boolean value = SelectedtruefalseDays[a];
                     if (value) {
-                        s_days += ItemsIntoList.get(a) + " ";
+                        s_days += ItemsIntoList.get(a) + ", ";
                     }
                     a++;
                 }

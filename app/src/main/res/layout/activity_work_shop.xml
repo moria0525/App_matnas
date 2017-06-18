@@ -10,6 +10,7 @@
     <RelativeLayout
         android:layout_width="167dp"
         android:layout_height="162dp"
+        android:background="@drawable/workshop"
         android:descendantFocusability="blocksDescendants"
         android:padding="8dp">
 
@@ -18,16 +19,16 @@
             android:id="@+id/tv_WName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/tv_WDate"
             android:layout_gravity="left"
             android:text="fdszvweds"
             android:textAlignment="center"
             android:textColor="#000"
-            android:textSize="16sp"
-            android:layout_below="@+id/tv_WDate"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/btn_workShop"
@@ -35,25 +36,27 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:text="להרשמה" />
+            android:text="להרשמה"
+            android:background="@color/yellow"
+            android:textColor="@color/black"/>
 
         <TextView
             android:id="@+id/tv_WDes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/btn_workShop"
+            android:layout_alignLeft="@+id/btn_workShop"
+            android:layout_alignRight="@+id/btn_workShop"
+            android:layout_alignStart="@+id/btn_workShop"
+            android:layout_below="@+id/tv_WName"
             android:layout_gravity="left"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="13dp"
             android:maxWidth="150dip"
             android:text="fdszvweds"
             android:textAlignment="center"
-            android:textColor="#000"
-            android:layout_below="@+id/tv_WName"
-            android:layout_alignRight="@+id/btn_workShop"
-            android:layout_alignEnd="@+id/btn_workShop"
-            android:layout_marginRight="12dp"
-            android:layout_marginEnd="12dp"
-            android:layout_marginTop="13dp"
-            android:layout_alignLeft="@+id/btn_workShop"
-            android:layout_alignStart="@+id/btn_workShop" />
+            android:textColor="#000" />
 
         <TextView
             android:id="@+id/tv_WDate"

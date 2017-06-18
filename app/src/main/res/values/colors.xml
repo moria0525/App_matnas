@@ -10,6 +10,7 @@
     <color name="yellow">#F1F1B3</color>
     <color name="black">#000</color>
     <color name="gray">#f2f2f2</color>
+    <color name="gallery">#A3E0F5</color>
 
 
 
@@ -35,7 +36,6 @@
 
 
 
-
     <item name="purple" type="color">#FFAA66CC</item>
     <item name="green" type="color">#FF99CC00</item>
     <item name="orange" type="color">#FFFFBB33</item>
@@ -57,7 +57,6 @@
         <item>@color/darkgreen</item>
         <item>@color/darkorange</item>
         <item>@color/darkred</item>
-
 
         <item name="Yellow">@color/Yellow</item>
         <item name="Bisque">@color/Bisque</item>

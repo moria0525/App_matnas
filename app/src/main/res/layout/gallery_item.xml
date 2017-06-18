@@ -3,12 +3,13 @@
     android:id="@+id/card_view"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    card_view:cardUseCompatPadding="true"
     card_view:cardCornerRadius="4dp"
     card_view:cardElevation="4dp"
->
+    card_view:cardBackgroundColor="@color/gallery"
+    card_view:cardUseCompatPadding="true">
 
     <RelativeLayout
+
         android:layout_width="wrap_content"
         android:layout_height="158dp"
         android:descendantFocusability="blocksDescendants"
@@ -19,8 +20,8 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_alignParentTop="true"
-            android:contentDescription="hello_world"
             android:layout_centerHorizontal="true"
+            android:contentDescription="hello_world"
             android:scaleType="centerCrop" />
 
         <TextView
@@ -28,16 +29,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/ImageGallery"
+            android:layout_centerHorizontal="true"
             android:layout_gravity="left"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
             android:inputType="textMultiLine"
             android:maxWidth="120dip"
             android:textAlignment="center"
             android:textColor="#000"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_centerHorizontal="true"/>
+            android:textStyle="bold" />
 
     </RelativeLayout>
 

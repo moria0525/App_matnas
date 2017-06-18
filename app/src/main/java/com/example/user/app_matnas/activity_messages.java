@@ -58,9 +58,9 @@ public class activity_messages extends AppCompatActivity {
 
         countNotification = 0;
         notification.setText(""+countNotification);
-        if(countNotification <= 0) {
-            notification.setVisibility(View.INVISIBLE);
-        }
+//        if(countNotification <= 0) {
+//            notification.setVisibility(View.INVISIBLE);
+//        }
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
@@ -160,7 +160,8 @@ public class activity_messages extends AppCompatActivity {
         return true;
     }
 
-    public class NewsAdapter extends ArrayAdapter<News> {
+    public class NewsAdapter extends ArrayAdapter<News>
+    {
 
         private android.app.Activity context;
         private int resource;

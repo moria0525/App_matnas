@@ -1,6 +1,8 @@
 package com.example.user.app_matnas;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,13 +42,20 @@ public class ActivitiesAdapter extends RecyclerView.Adapter<ActivitiesAdapter.Us
         String type = activity.getActivityType().substring(0, activity.getActivityType().length() - 2);
         holder.tvType.setText(type);
         holder.tvAge.setText(activity.getActivityAge());
-        holder.tvDays.setText(activity.getActivityDays());
+        String days = activity.getActivityDays().substring(0, activity.getActivityDays().length() - 2);
+        holder.tvDays.setText(days);
         holder.tvStart.setText(activity.getActivityStart());
         holder.tvEnd.setText(activity.getActivityEnd());
         holder.tvDes.setText(activity.getActivityDes());
         int[] androidColors = context.getResources().getIntArray(R.array.androidcolors);
         int randomAndroidColor = androidColors[new Random().nextInt(androidColors.length)];
-        holder.rv.setBackgroundColor(randomAndroidColor);
+        GradientDrawable drawable = new GradientDrawable();
+        drawable.setShape(GradientDrawable.RECTANGLE);
+        drawable.setStroke(3, randomAndroidColor);
+        drawable.setCornerRadius(8);
+        drawable.setColor(randomAndroidColor);
+        holder.aaa.setBackgroundDrawable(drawable);
+
         holder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,6 +86,7 @@ public class ActivitiesAdapter extends RecyclerView.Adapter<ActivitiesAdapter.Us
         TextView tvDes;
         Button button;
         LinearLayout rv;
+        LinearLayout aaa;
         public UserViewHolder(View itemView) {
             super(itemView);
             tvName = (TextView) itemView.findViewById(R.id.view_name);
@@ -88,6 +98,7 @@ public class ActivitiesAdapter extends RecyclerView.Adapter<ActivitiesAdapter.Us
             tvDes = (TextView) itemView.findViewById(R.id.view_des);
             button = (Button) itemView.findViewById(R.id.button3);
             rv = (LinearLayout)itemView.findViewById(R.id.rv);
+            aaa = (LinearLayout)itemView.findViewById(R.id.aaa);
         }
 
     }

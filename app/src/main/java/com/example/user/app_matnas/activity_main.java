@@ -18,8 +18,8 @@ public class activity_main extends AppCompatActivity {
     private GridView nineIcon;
     public int[] imageIDs = {
             R.drawable.about,
-            R.drawable.messages,
-            R.drawable.event,
+            R.drawable.news,
+            R.drawable.business,
             R.drawable.projects,
             R.drawable.hobbies,
             R.drawable.workshops,

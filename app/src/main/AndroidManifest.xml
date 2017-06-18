@@ -23,7 +23,9 @@
         android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".activity_main">
+        <activity
+            android:name=".activity_main"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -37,48 +39,97 @@
 
         <activity
             android:name=".activity_contactUs"
-            android:label="@string/text_contactus" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity_about"
-            android:label="@string/text_about" />
-        <activity android:name=".activity_business" />
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity_business"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity_gallery"
-            android:label="@string/text_gallery" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity_hobbies"
-            android:label="@string/text_hobbies" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity_login_manager"
-            android:label="@string/title_activity_login" />
-        <activity android:name=".activity_messages" />
-        <activity android:name=".ForgetPassword" />
-        <activity android:name=".ManagerScreen" />
-        <activity android:name=".AddActivity" />
-        <activity android:name=".EditActivity" />
-        <activity android:name=".UploadImage" />
-        <activity android:name=".Register" />
-        <activity android:name=".Grid" />
-        <activity android:name=".FullImage" />
-        <activity android:name=".SendNews" />
-        <activity android:name=".AddProject" />
-        <activity android:name=".activity_project" />
-        <activity android:name=".EditProject" />
-        <activity android:name=".activity_team" />
-        <activity android:name=".AddTeam" />
-        <activity android:name=".EditTeam" />
-        <activity android:name=".AddWorkShop" />
-        <activity android:name=".EditWorkShop" />
-        <activity android:name=".activity_workShop" />
-        <activity android:name=".AddBusiness" />
-        <activity android:name=".EditBusiness" />
-        <activity android:name=".SelectCategory"/>
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity_messages"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ForgetPassword"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ManagerScreen"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AddActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".EditActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UploadImage"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Register"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Grid"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".FullImage"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SendNews"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AddProject"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity_project"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".EditProject"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity_team"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AddTeam"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".EditTeam"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AddWorkShop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".EditWorkShop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity_workShop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AddBusiness"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".EditBusiness"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SelectCategory"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".Esek"
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDuAyGu9a_ZFoucS8aGCDT2n5LoXQ5iaag" />
 
-        <activity android:name=".Esek"/>
     </application>
 
 </manifest>
