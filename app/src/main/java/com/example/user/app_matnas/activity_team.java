@@ -57,7 +57,7 @@ public class activity_team extends AppCompatActivity
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolBarText = (TextView) findViewById(R.id.toolBarText);
-        toolBarText.setText("הצוות שלנו");
+        toolBarText.setText(R.string.text_team);
         list = (ListView) findViewById(R.id.list);
         getDataFromDB();
 }

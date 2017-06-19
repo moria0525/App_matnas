@@ -2,7 +2,6 @@ package com.example.user.app_matnas;
 
 import android.app.ProgressDialog;
 import android.content.ClipData;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -12,19 +11,15 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.webkit.MimeTypeMap;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -77,7 +72,7 @@ public class UploadImage extends AppCompatActivity {
         builder.setTitle("העלאת תמונות לגלרייה");
         LayoutInflater inflater = LayoutInflater.from(this);
 
-        layoutView = inflater.inflate(R.layout.muploadimage, null);
+        layoutView = inflater.inflate(R.layout.upload_image, null);
         builder.setView(layoutView);
 
 
@@ -113,7 +108,7 @@ public class UploadImage extends AppCompatActivity {
 
                     s_event = name.getText().toString();
                     if (TextUtils.isEmpty(s_event)) {
-                        name.setError("insert name");
+                        name.setError("");
                         entriesValid = false;
                     } else if (!flag) {
                         Toast.makeText(context, "לא נבחרו תמונות להעלאה", Toast.LENGTH_LONG).show();
@@ -146,11 +141,7 @@ public class UploadImage extends AppCompatActivity {
 
 
     public boolean onClickUploadPictures(View v) {
-//        flag = true;
-//        Intent intent = new Intent();
-//        intent.setType("image/*");
-//        intent.setAction(Intent.ACTION_GET_CONTENT);
-//        startActivityForResult(Intent.createChooser(intent, "Select image"), REQUEST_CODE);
+
         flag = true;
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -159,7 +150,7 @@ public class UploadImage extends AppCompatActivity {
         }
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "בחר תמונות"), REQUEST_CODE);
-
+        Toast.makeText(context, "לחץ על התמונה הראשונה בלחיצה ארוכה", Toast.LENGTH_LONG).show();
 
         return flag;
     }

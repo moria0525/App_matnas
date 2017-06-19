@@ -50,13 +50,13 @@
             android:name=".activity_gallery"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity_hobbies"
+            android:name=".activity_activities"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity_login_manager"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity_messages"
+            android:name=".activity_news"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ForgetPassword"

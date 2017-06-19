@@ -1,35 +1,26 @@
 package com.example.user.app_matnas;
 
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.app.SearchManager;
-
-import android.icu.util.Calendar;
 import android.os.Build;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.view.MenuItemCompat;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
-import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
@@ -37,24 +28,19 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
 
-import java.sql.Timestamp;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import static com.example.user.app_matnas.MainAdapter.countNotification;
 import static com.example.user.app_matnas.MainAdapter.notification;
 
 
-public class activity_messages extends AppCompatActivity {
+public class activity_news extends AppCompatActivity {
     private NewsAdapter adapter;
     private DatabaseReference databaseReference;
     private List<News> newsList = new ArrayList<>();
@@ -81,7 +67,7 @@ public class activity_messages extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
         toolBarText = (TextView) findViewById(R.id.toolBarText);
-        toolBarText.setText("מה חדש במרכז");
+        toolBarText.setText(R.string.text_news);
         list = (ListView) findViewById(R.id.list);
 
         getDataFromDB();
@@ -103,7 +89,7 @@ public class activity_messages extends AppCompatActivity {
                 }
                 Collections.reverse(newsList);
                 hideProgressDialog();
-                adapter = new NewsAdapter(activity_messages.this, R.layout.activity_messages, newsList);
+                adapter = new NewsAdapter(activity_news.this, R.layout.activity_messages, newsList);
                 list.setAdapter(adapter);
             }
 
@@ -116,7 +102,7 @@ public class activity_messages extends AppCompatActivity {
 
     private void showProgressDialog() {
         if (mProgressDialog == null) {
-            mProgressDialog = new ProgressDialog(activity_messages.this);
+            mProgressDialog = new ProgressDialog(activity_news.this);
             mProgressDialog.setMessage("טוען את החדשות..עוד רגע..");
             mProgressDialog.setIndeterminate(true);
         }

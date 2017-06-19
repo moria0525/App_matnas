@@ -44,7 +44,7 @@ public class activity_project extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolBarText = (TextView) findViewById(R.id.toolBarText);
-        toolBarText.setText("פרוייקטים");
+        toolBarText.setText(R.string.text_projects);
         list = (ListView) findViewById(R.id.list);
         getDataFromDB();
 

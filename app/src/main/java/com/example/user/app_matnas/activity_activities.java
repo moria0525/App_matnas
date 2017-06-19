@@ -11,7 +11,6 @@ import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.View;
 import android.widget.TextView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,7 +21,7 @@ import java.util.List;
 import static com.example.user.app_matnas.FirebaseHelper.*;
 
 
-public class activity_hobbies extends AppCompatActivity {
+public class activity_activities extends AppCompatActivity {
 
     private ActivitiesAdapter adapter;
     private ProgressDialog mProgressDialog;
@@ -38,7 +37,7 @@ public class activity_hobbies extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolBarText = (TextView) findViewById(R.id.toolBarText);
-        toolBarText.setText("חוגים");
+        toolBarText.setText(R.string.text_activities);
         recyclerView = (RecyclerView) findViewById(R.id.recycleView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         getDataFromDB();
@@ -58,7 +57,7 @@ public class activity_hobbies extends AppCompatActivity {
                     }
                 }
                 hideProgressDialog();
-                adapter = new ActivitiesAdapter(activityList, activity_hobbies.this);
+                adapter = new ActivitiesAdapter(activityList, activity_activities.this);
                 recyclerView.setAdapter(adapter);
             }
 
@@ -71,7 +70,7 @@ public class activity_hobbies extends AppCompatActivity {
 
     private void showProgressDialog() {
         if (mProgressDialog == null) {
-            mProgressDialog = new ProgressDialog(activity_hobbies.this);
+            mProgressDialog = new ProgressDialog(activity_activities.this);
             mProgressDialog.setMessage("טוען את החוגים..עוד רגע..");
             mProgressDialog.setIndeterminate(true);
         }

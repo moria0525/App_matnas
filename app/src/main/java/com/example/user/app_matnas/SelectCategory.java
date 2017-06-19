@@ -52,7 +52,7 @@ public class SelectCategory extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolBarText = (TextView) findViewById(R.id.toolBarText);
-        toolBarText.setText("בחר קטגוריה אליה העסק שייך");
+        toolBarText.setText(R.string.editCategory);
 
 
         //Show progress dialog during list image loading

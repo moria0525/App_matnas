@@ -66,7 +66,7 @@ public class activity_main extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case 1:
-                intent = new Intent(activity_main.this, activity_messages.class);
+                intent = new Intent(activity_main.this, activity_news.class);
                 startActivity(intent);
                 break;
             case 2:
@@ -78,7 +78,7 @@ public class activity_main extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case 4:
-                intent = new Intent(activity_main.this, activity_hobbies.class);
+                intent = new Intent(activity_main.this, activity_activities.class);
                 startActivity(intent);
                 break;
             case 5:

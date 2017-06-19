@@ -7,17 +7,17 @@
 
     <EditText
         android:id="@+id/et_name_event"
-        android:layout_width="181dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="17dp"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="13dp"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="12dp"
         android:ems="10"
-        android:hint="שם האירוע"
-        android:inputType="textPersonName" />
+        android:hint="שם האלבום"
+        android:inputType="textPersonName"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 
     <ImageButton
@@ -26,19 +26,18 @@
         android:layout_height="70dp"
         android:background="@drawable/gallery_event"
         android:onClick="onClickUploadPictures"
-        android:layout_marginTop="19dp"
-        android:layout_below="@+id/photo_event"
-        android:layout_toRightOf="@+id/et_name_event"
-        android:layout_toEndOf="@+id/et_name_event"
-        android:layout_marginLeft="30dp"
-        android:layout_marginStart="30dp" />
+        android:layout_alignTop="@+id/photo_event"
+        android:layout_toRightOf="@+id/photo_event"
+        android:layout_toEndOf="@+id/photo_event"
+        android:layout_marginLeft="35dp"
+        android:layout_marginStart="35dp" />
 
     <TextView
         android:id="@+id/photo_event"
         android:layout_width="152dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:text="בחר תמונות להעלאה:"
+        android:layout_marginTop="14dp"
+        android:text="לחץ על התמונה לבחירת תמונות להעלאה לאלבום"
         android:layout_below="@+id/et_name_event"
         android:layout_alignLeft="@+id/et_name_event"
         android:layout_alignStart="@+id/et_name_event" />

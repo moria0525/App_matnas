@@ -45,7 +45,7 @@ public class activity_workShop extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolBarText = (TextView) findViewById(R.id.toolBarText);
-        toolBarText.setText("סדנאות");
+        toolBarText.setText(R.string.text_workshops);
         recyclerView = (RecyclerView) findViewById(R.id.recycleView);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         getDataFromDB();
