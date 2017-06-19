@@ -10,10 +10,8 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-public class activity_main extends AppCompatActivity {
 
-//    private Toolbar toolbar;
-//    private TextView toolBarText;
+public class activity_main extends AppCompatActivity {
 
     private GridView nineIcon;
     public int[] imageIDs = {
@@ -35,15 +33,12 @@ public class activity_main extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
         news = (TextView)findViewById(R.id.news);
         news.setText("שעות פעילות המרכז:ראשון עד חמישי בין השעות 8:30-19:00");
         news.setSelected(true);
 
-
-//        toolbar = (Toolbar)findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//        toolBarText = (TextView)findViewById(R.id.toolBarText);
-//        toolBarText.setText(R.string.app_name);
 
         nineIcon = (GridView) findViewById(R.id.activity_main);
         TextView notification =  (TextView)findViewById(R.id.badge_notification_3);
@@ -63,36 +58,6 @@ public class activity_main extends AppCompatActivity {
 
     }
 
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        super.onCreateOptionsMenu(menu);
-//        MenuInflater inflater = getMenuInflater();
-//        inflater.inflate(R.menu.activity_menu, menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle item selection
-//        switch (item.getItemId()) {
-//            case R.id.menu_login_manager:
-//                if(auth.getCurrentUser() == null)
-//                {
-//                    onClickManager();
-//                }
-//               else{
-//                    Intent intent = new Intent(activity_main.this,ManagerScreen.class);
-//                    startActivity(intent);
-//                }
-//                return true;
-//            case R.id.menu_help:
-//                onClickHelp();
-//                return true;
-//            default:
-//                return super.onOptionsItemSelected(item);
-//        }
-//    }
 
     private void iconSelect(int position) {
         switch (position) {

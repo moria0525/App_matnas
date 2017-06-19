@@ -11,13 +11,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
-public class MainAdapter extends BaseAdapter
-{
+
+public class MainAdapter extends BaseAdapter {
+    public static int countNotification = 0;
     private Context context;
     private int[] imageIDs;
     public static TextView notification;
-    public MainAdapter(Context c, int[] imageIDs,TextView notification)
-    {
+
+    public MainAdapter(Context c, int[] imageIDs, TextView notification) {
         context = c;
         this.imageIDs = imageIDs;
         this.notification = notification;
@@ -38,11 +39,9 @@ public class MainAdapter extends BaseAdapter
     }
 
     //---returns an ImageView view---
-    public View getView(int position, View convertView, ViewGroup parent)
-    {
+    public View getView(int position, View convertView, ViewGroup parent) {
         ImageView imageView;
-        if (convertView == null)
-        {
+        if (convertView == null) {
             imageView = new ImageView(context);
             imageView.setLayoutParams(new GridView.LayoutParams(500, 500));
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
@@ -51,8 +50,7 @@ public class MainAdapter extends BaseAdapter
         } else {
             imageView = (ImageView) convertView;
         }
-        if (position == 1)
-        {
+        if (position == 1 && countNotification > 0) {
             notification.setVisibility(View.VISIBLE);
         }
         imageView.setImageResource(imageIDs[position]);

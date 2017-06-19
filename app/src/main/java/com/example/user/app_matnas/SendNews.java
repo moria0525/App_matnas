@@ -56,6 +56,7 @@ import java.util.Iterator;
 import java.util.Locale;
 import java.util.Objects;
 
+import static com.example.user.app_matnas.MainAdapter.countNotification;
 import static com.example.user.app_matnas.MainAdapter.notification;
 
 public class SendNews extends AppCompatActivity {
@@ -77,7 +78,7 @@ public class SendNews extends AppCompatActivity {
     private Bitmap selectedImage;
     private String[] tmp;
     private News news;
-    public static int countNotification = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,7 +89,7 @@ public class SendNews extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         toolBarText = (TextView) findViewById(R.id.toolBarText);
-        toolBarText.setText("שליחת הודעה למשתמשים");
+        toolBarText.setText("הוספת חדשות");
 
         content = (EditText) findViewById(R.id.et_content_news);
         image = (ImageView) findViewById(R.id.imageNews);
@@ -184,7 +185,7 @@ public class SendNews extends AppCompatActivity {
             date = format.format(new Date());
 
             final ProgressDialog dialog = new ProgressDialog(this);
-            dialog.setTitle("שולח את ההודעה");
+            dialog.setTitle("מוסיף את החדשה");
             dialog.show();
             //Get the storage reference
             StorageReference ref = mStorageRef.child(FB_STORAGE).child(date);
@@ -236,9 +237,8 @@ public class SendNews extends AppCompatActivity {
                         });
             }
             countNotification++;
-            Toast.makeText(getApplicationContext(), "ההודעה נשלחה בהצלחה", Toast.LENGTH_SHORT).show();
-            //update count
-            if(notification.getVisibility() == View.INVISIBLE)
+            Toast.makeText(getApplicationContext(), "החדשה נוספה בהצלחה", Toast.LENGTH_SHORT).show();
+            //update count //TODO
             notification.setVisibility(View.VISIBLE);
             notification.setText(""+countNotification);
             if (flagSend) {
