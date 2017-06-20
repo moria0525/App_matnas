@@ -17,6 +17,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.user.app_matnas.AddBusiness.FB_STORAGE_BUSINESS;
 import static com.example.user.app_matnas.FirebaseHelper.*;
 
 
@@ -107,6 +108,7 @@ public class EditBusiness extends AppCompatActivity {
 
                 if (active == 0) {
                     mDatabaseRef.child(name).removeValue(); //////todo
+                    mStorageRef.child(FB_STORAGE_BUSINESS).child(name).delete();
                     Toast.makeText(context,"בית העסק נמחק בהצלחה",Toast.LENGTH_LONG).show();
                     dialogInterface.dismiss();
 

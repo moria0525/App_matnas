@@ -269,7 +269,7 @@ public class AddBusiness extends AppCompatActivity{
                 try {
                     mDatabase.child(s_category).child(s_name).setValue(business);
                 } catch (DatabaseException e) {
-                    Toast.makeText(getApplicationContext(), "220: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "שגיאה: " + e.getMessage(), Toast.LENGTH_LONG).show();
                     e.printStackTrace();
                 }
                 Toast.makeText(getApplicationContext(), "פרטי בית העסק עודכנו בהצלחה", Toast.LENGTH_SHORT).show();
@@ -284,7 +284,7 @@ public class AddBusiness extends AppCompatActivity{
                         try {
                             mDatabase.child(s_category).child(s_name).setValue(business);
                         } catch (DatabaseException e) {
-                            Toast.makeText(getApplicationContext(), "236 " + e.getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "שגיאה: " + e.getMessage(), Toast.LENGTH_LONG).show();
                             e.printStackTrace();
                         }
 
@@ -298,7 +298,7 @@ public class AddBusiness extends AppCompatActivity{
                             public void onFailure(@NonNull Exception e) {
 
                                 //Display err toast msg
-                                Toast.makeText(getApplicationContext(), "249 " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "שגיאה: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });
             }

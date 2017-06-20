@@ -56,7 +56,7 @@ public class activity_news extends AppCompatActivity {
 
         countNotification = 0;
         notification.setText("" + countNotification);
-        if(countNotification <= 0) {
+        if (countNotification <= 0) {
             notification.setVisibility(View.INVISIBLE);
         }
 
@@ -89,7 +89,7 @@ public class activity_news extends AppCompatActivity {
                 }
                 Collections.reverse(newsList);
                 hideProgressDialog();
-                adapter = new NewsAdapter(activity_news.this, R.layout.activity_messages, newsList);
+                adapter = new NewsAdapter(activity_news.this, R.layout.activity_news, newsList);
                 list.setAdapter(adapter);
             }
 
@@ -103,7 +103,7 @@ public class activity_news extends AppCompatActivity {
     private void showProgressDialog() {
         if (mProgressDialog == null) {
             mProgressDialog = new ProgressDialog(activity_news.this);
-            mProgressDialog.setMessage("טוען את החדשות..עוד רגע..");
+            mProgressDialog.setMessage("עוד רגע..");
             mProgressDialog.setIndeterminate(true);
         }
         mProgressDialog.show();
@@ -145,8 +145,7 @@ public class activity_news extends AppCompatActivity {
                 ArrayList<News> newList = new ArrayList<>();
                 for (News news : newsList) {
                     String name = news.getNewsContent().toLowerCase();
-                    String date = news.getNewsDate().toLowerCase();
-                    if (name.contains(newText) || date.contains(newText)) {
+                    if (name.contains(newText)) {
                         newList.add(news);
                     }
                 }
@@ -160,96 +159,6 @@ public class activity_news extends AppCompatActivity {
         return true;
     }
 
-    public class NewsAdapter extends ArrayAdapter<News> {
 
-        private android.app.Activity context;
-        private int resource;
-        private List<News> newsList;
-
-        public NewsAdapter(@NonNull android.app.Activity context, @LayoutRes int resource, @NonNull List<News> objects) {
-            super(context, resource, objects);
-            this.context = context;
-            this.resource = resource;
-            newsList = objects;
-        }
-
-        @RequiresApi(api = Build.VERSION_CODES.N)
-        @NonNull
-        @Override
-        public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-            LayoutInflater inflater = context.getLayoutInflater();
-            final View v = inflater.inflate(resource, null);
-            TextView tvName = (TextView) v.findViewById(R.id.textView2);
-            TextView tvDate = (TextView) v.findViewById(R.id.textView3);
-            ImageView img = (ImageView) v.findViewById(R.id.imageView);
-            String date = getAgo(newsList.get(position).getNewsDate());
-
-            tvName.setText(newsList.get(position).getNewsContent());
-            tvDate.setText(date);
-
-            if (!newsList.get(position).getNewsImage().isEmpty()) {
-                Glide.with(context).load(newsList.get(position).getNewsImage()).into(img);
-            } else {
-               img.setVisibility(View.INVISIBLE);
-            }
-            return v;
-
-        }
-
-        @Override
-        public int getCount() {
-            return newsList.size();
-        }
-
-        public void setFilter(ArrayList<News> newList) {
-            newsList = new ArrayList<>();
-            newsList.addAll(newList);
-            notifyDataSetChanged();
-
-        }
-
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.N)
-
-        private String getAgo(String fire) {
-            Date d1;
-            Date d2;
-
-            SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-            String now = format.format(new Date());
-            String result = "";
-
-            try {
-                d1 = format.parse(fire);
-                d2 = format.parse(now);
-
-                //in milliseconds
-                long diff = d2.getTime() - d1.getTime();
-                long diffSeconds = diff / 1000 % 60;
-                long diffMinutes = diff / (60 * 1000) % 60;
-                long diffHours = diff / (60 * 60 * 1000) % 24;
-                long diffDays = diff / (24 * 60 * 60 * 1000);
-
-                result = "לפני " + diffHours + " שעות";
-                if(diffMinutes < 1)
-                {
-                    result = "לפני " + diffSeconds + " שניות";
-                }
-                if(diffHours > 24)
-                    result = "לפני " + diffDays + "ימים";
-                if(diffHours == 0 && diffMinutes >=1)
-                {
-                    result = "לפני " + diffMinutes + " דקות";
-                }
-
-
-            } catch (ParseException e1)
-
-            {
-                e1.printStackTrace();
-            }
-            return result;
-        }
-    }
+}
 

@@ -74,7 +74,7 @@ public class SendNews extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_send_news);
+        setContentView(R.layout.activity_add_news);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -339,13 +339,13 @@ public class SendNews extends AppCompatActivity {
                 if (!click) {
 
                     noti = new Notification.Builder(getApplicationContext())
-                            .setContentTitle(tmp[0]).setSmallIcon(R.mipmap.logo)
+                            .setContentTitle(tmp[0]).setSmallIcon(R.mipmap.ic_launcher)
                             .setContentIntent(pIntent).setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
                             .build();
                 } else {
                     noti = new Notification.Builder(getApplicationContext())
                             .setContentTitle(tmp[0])
-                            .setContentText(tmp[1]).setSmallIcon(R.mipmap.logo)
+                            .setContentText(tmp[0]).setSmallIcon(R.mipmap.ic_launcher)
                             .setContentIntent(pIntent).setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
                             .setStyle(new Notification.BigPictureStyle()
                                     .bigPicture(result)).build();

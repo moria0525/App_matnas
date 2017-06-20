@@ -190,7 +190,7 @@ public class AddTeam extends AppCompatActivity {
         }
 
         if(flag) {
-            StorageReference ref = mStorageRef.child(ST_STORAGE_LOGO).child(s_name);
+            StorageReference ref = mStorageRef.child(ST_STORAGE_TEAM).child(s_name);
             if (t_edit != null) {
                 team = new Team(s_name, s_role, s_mail, s_description, t_edit.getTeamImage());
                 try {

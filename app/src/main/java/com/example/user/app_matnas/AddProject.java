@@ -174,7 +174,7 @@ public class AddProject extends AppCompatActivity {
 
         if (flag) {
             //Get the storage reference
-            StorageReference ref = mStorageRef.child(ST_STORAGE_LOGO).child(s_name);
+            StorageReference ref = mStorageRef.child(ST_STORAGE_PROJECT).child(s_name);
             if (p_edit != null) {
                 project = new Project(s_name, s_description, p_edit.getProjectLogo());
                 try {

@@ -152,7 +152,7 @@
                 android:layout_height="42dp"
                 android:onClick="onClickSubmitForm"
                 android:layout_weight="1"
-                android:background="@color/yellow"
+                android:background="@color/green"
                 android:text="@string/form_btn"
                 android:textColor="@color/black"
                 android:layout_marginBottom="33dp"

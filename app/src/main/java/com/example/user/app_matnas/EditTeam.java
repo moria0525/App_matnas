@@ -114,6 +114,7 @@ public class EditTeam extends AppCompatActivity {
 
                 if (active.equals("delete")) {
                     mDatabaseRef.child(DB_TEAM).child(name).removeValue();
+                    mStorageRef.child(ST_STORAGE_TEAM).child(name).delete();
                     Toast.makeText(context, "איש הצוות נמחק בהצלחה",Toast.LENGTH_SHORT).show();
                     dialogInterface.dismiss();
                     finish();

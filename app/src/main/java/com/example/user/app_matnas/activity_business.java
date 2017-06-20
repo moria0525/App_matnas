@@ -1,28 +1,18 @@
 package com.example.user.app_matnas;
 
 import android.app.ProgressDialog;
-import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -48,7 +38,7 @@ public class activity_business extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.albums);
+        setContentView(R.layout.grid);
         context = getApplicationContext();
         categoryList = new ArrayList<>();
         gv = (GridView) findViewById(R.id.gallery_grid);
@@ -86,7 +76,7 @@ public class activity_business extends AppCompatActivity {
                 }
 
                 //Init adapter
-                adapter = new StringAdapter(activity_business.this, R.layout.category_item, categoryList, 0);
+                adapter = new StringAdapter(activity_business.this, R.layout.category, categoryList, 0);
                 //Set adapter for listview
                 gv.setAdapter(adapter);
             }

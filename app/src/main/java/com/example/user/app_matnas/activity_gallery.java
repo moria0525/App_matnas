@@ -33,7 +33,7 @@ public class activity_gallery extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.albums);
+        setContentView(R.layout.grid);
         imgList = new ArrayList<>();
         gv = (GridView) findViewById(R.id.gallery_grid);
 
@@ -78,7 +78,7 @@ public class activity_gallery extends AppCompatActivity {
                 String item = (String) parent.getItemAtPosition(position);
                 //Pass the image title and url to DetailsActivity
                 Intent intent = new Intent(activity_gallery.this, Grid.class);
-                intent.putExtra("grid", item);
+                intent.putExtra("category", item);
                 //Start details activity
                 startActivity(intent);
             }

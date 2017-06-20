@@ -111,7 +111,8 @@ public class EditProject extends AppCompatActivity {
                 name = proList.get(selectedPosition).getProjectName();
 
                 if (active.equals("delete")) {
-                    mDatabaseRef.child(DB_ACTIVITIES).child(name).removeValue();
+                    mDatabaseRef.child(DB_PROJECTS).child(name).removeValue();
+                    mStorageRef.child(ST_STORAGE_PROJECT).child(name).delete();
                     Toast.makeText(context, "הפרויקט נמחק בהצלחה",Toast.LENGTH_SHORT).show();
                     dialogInterface.dismiss();
                     finish();

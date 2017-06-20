@@ -34,7 +34,7 @@ public class Grid extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.images);
         Intent i = getIntent();
-        String image = i.getStringExtra("grid");
+        String image = i.getStringExtra("category");
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
