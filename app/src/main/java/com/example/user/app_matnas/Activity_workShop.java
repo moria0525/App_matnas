@@ -1,21 +1,15 @@
 package com.example.user.app_matnas;
 
-import android.app.ProgressDialog;
-import android.app.SearchManager;
-import android.content.DialogInterface;
+import android.app.*;
 import android.support.v4.view.MenuItemCompat;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -27,71 +21,48 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class activity_project extends AppCompatActivity {
-    private ProjectAdapter adapter;
+public class Activity_workShop extends AppCompatActivity {
+
+    private WorkShopAdapter adapter;
     private DatabaseReference databaseReference;
-    private List<Project> projectList = new ArrayList<>();
-    private ListView list;
+    private List<WorkShop> wsList = new ArrayList<>();
     private Toolbar toolbar;
     private TextView toolBarText;
     private ProgressDialog mProgressDialog;
+    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.list);
+        setContentView(R.layout.recycle_view);
         databaseReference = FirebaseDatabase.getInstance().getReference();
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolBarText = (TextView) findViewById(R.id.toolBarText);
-        toolBarText.setText(R.string.text_projects);
-        list = (ListView) findViewById(R.id.list);
+        toolBarText.setText(R.string.text_workshops);
+        recyclerView = (RecyclerView) findViewById(R.id.recycleView);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         getDataFromDB();
 
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-            final Project project = projectList.get(position);
-            final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(activity_project.this);
-            alertDialogBuilder.setTitle(project.getProjectName());
-            alertDialogBuilder.setMessage(project.getProjectDes())
-                    .setPositiveButton(R.string.joinProject, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id)
-                        {
-                            dialog.dismiss();
-                            LayoutInflater inflater = LayoutInflater.from(activity_project.this);
-                            Register r = new Register(project.getProjectName(),activity_project.this);
-                            r.showDialog(inflater);
-                        }
-                    })
-                    .setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                        }
-                    });
-            AlertDialog alertDialog = alertDialogBuilder.create();
-            alertDialog.show();
-        }
-                                    }
-        );
     }
 
 
     public void getDataFromDB() {
 
         showProgressDialog();
-        databaseReference.child("projects").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("workShop").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
                     for (DataSnapshot postSnapShot : dataSnapshot.getChildren()) {
-                        Project project = postSnapShot.getValue(Project.class);
-                        projectList.add(project);
+                        WorkShop workShop = postSnapShot.getValue(WorkShop.class);
+                        wsList.add(workShop);
                     }
                 }
+
                 hideProgressDialog();
-                adapter = new ProjectAdapter(activity_project.this, R.layout.activity_project, projectList);
-                list.setAdapter(adapter);
+                adapter = new WorkShopAdapter(wsList, Activity_workShop.this);
+                recyclerView.setAdapter(adapter);
             }
 
             @Override
@@ -103,8 +74,8 @@ public class activity_project extends AppCompatActivity {
 
     private void showProgressDialog() {
         if (mProgressDialog == null) {
-            mProgressDialog = new ProgressDialog(activity_project.this);
-            mProgressDialog.setMessage("טוען את הפרוייקטים..עוד רגע..");
+            mProgressDialog = new ProgressDialog(Activity_workShop.this);
+            mProgressDialog.setMessage("טוען את הסדנאות..עוד רגע..");
             mProgressDialog.setIndeterminate(true);
         }
         mProgressDialog.show();
@@ -139,13 +110,16 @@ public class activity_project extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
+
                 newText = newText.toLowerCase();
-                ArrayList<Project> newList = new ArrayList<>();
-                for (Project project : projectList) {
-                    String name = project.getProjectName().toLowerCase();
-                    String des = project.getProjectDes().toLowerCase();
-                    if (name.contains(newText) || des.contains(newText)) {
-                        newList.add(project);
+                ArrayList<WorkShop> newList = new ArrayList<>();
+                for (WorkShop workShop : wsList) {
+                    String name = workShop.getWorkShopName().toLowerCase();
+                    String des = workShop.getWorkShopDes().toLowerCase();
+                    String date = workShop.getWorkShopDate().toLowerCase();
+
+                    if (name.contains(newText) || des.contains(newText) || date.contains(newText)) {
+                        newList.add(workShop);
                     }
                 }
                 adapter.setFilter(newList);
@@ -153,8 +127,8 @@ public class activity_project extends AppCompatActivity {
                 return true;
             }
         };
+
         searchView.setOnQueryTextListener(queryTextListener);
         return true;
     }
-
 }

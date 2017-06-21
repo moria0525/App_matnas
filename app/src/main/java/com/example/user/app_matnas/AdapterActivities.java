@@ -1,14 +1,12 @@
 package com.example.user.app_matnas;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -16,13 +14,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class ActivitiesAdapter extends RecyclerView.Adapter<ActivitiesAdapter.UserViewHolder> {
+public class AdapterActivities extends RecyclerView.Adapter<AdapterActivities.UserViewHolder> {
 
     private List<Activity> actList;
     private Context context;
 
 
-    public ActivitiesAdapter(List<Activity> actList, Context context) {
+    public AdapterActivities(List<Activity> actList, Context context) {
         this.actList = actList;
         this.context = context;
     }

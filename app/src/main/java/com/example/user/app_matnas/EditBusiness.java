@@ -47,13 +47,12 @@ public class EditBusiness extends AppCompatActivity {
     }
 
 
-    public void getDB(String category, int flag)
+    public void getDB(final String category, int flag)
     {
         active = flag;
-        mDatabaseRef = mDatabaseRef.child("business").child(category);
         busList = new ArrayList<>();
         showProgressDialog();
-        mDatabaseRef.addListenerForSingleValueEvent(new ValueEventListener()
+        mDatabaseRef.child("business").child(category).addListenerForSingleValueEvent(new ValueEventListener()
         {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot)
@@ -64,7 +63,7 @@ public class EditBusiness extends AppCompatActivity {
                     busList.add(business);
                 }
                 hideProgressDialog();
-                showDialog();
+                showDialog(category);
             }
 
             @Override
@@ -75,19 +74,13 @@ public class EditBusiness extends AppCompatActivity {
         );
     }
 
-    public void showDialog()
+    public void showDialog(final String category)
     {
         list = new String[busList.size()];
         for (int i = 0; i < busList.size(); i++)
         {
             list[i] = busList.get(i).getBusinessName();
         }
-//        if (list.length == 0)
-//        {
-//            Toast.makeText(context, "לא נמצאו עסקים",Toast.LENGTH_LONG).show();
-//            finish();
-//            return;
-//        }
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle(R.string.editBusiness);
@@ -107,7 +100,7 @@ public class EditBusiness extends AppCompatActivity {
                 name = busList.get(selectedPosition).getBusinessName();
 
                 if (active == 0) {
-                    mDatabaseRef.child(name).removeValue(); //////todo
+                    mDatabaseRef.child("business").child(category).child(name).removeValue(); //////todo
                     mStorageRef.child(FB_STORAGE_BUSINESS).child(name).delete();
                     Toast.makeText(context,"בית העסק נמחק בהצלחה",Toast.LENGTH_LONG).show();
                     dialogInterface.dismiss();
@@ -117,7 +110,7 @@ public class EditBusiness extends AppCompatActivity {
                     Business business = busList.get(selectedPosition);
                     intent = new Intent(context, AddBusiness.class);
                     intent.putExtra("editBusiness", business);
-                    mDatabaseRef.child(name).removeValue();
+                    mDatabaseRef.child("business").child(category).child(name).removeValue();
                     context.startActivity(intent);
                 }
             }

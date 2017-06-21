@@ -113,7 +113,7 @@ public class EditProject extends AppCompatActivity {
                 if (active.equals("delete")) {
                     mDatabaseRef.child(DB_PROJECTS).child(name).removeValue();
                     mStorageRef.child(ST_STORAGE_PROJECT).child(name).delete();
-                    Toast.makeText(context, "הפרויקט נמחק בהצלחה",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "הפרויקט נמחק בהצלחה",Toast.LENGTH_LONG).show();
                     dialogInterface.dismiss();
                     finish();
                 } else if(active.equals("edit")) {

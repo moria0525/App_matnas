@@ -19,7 +19,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 
-public class activity_login_manager extends AppCompatActivity
+public class Activity_login_manager extends AppCompatActivity
 {
     private EditText inputEmail, inputPassword;
     private FirebaseAuth auth;
@@ -35,7 +35,7 @@ public class activity_login_manager extends AppCompatActivity
         auth = FirebaseAuth.getInstance();
 
         if (auth.getCurrentUser() != null) {
-            startActivity(new Intent(activity_login_manager.this, ManagerScreen.class));
+            startActivity(new Intent(Activity_login_manager.this, ManagerScreen.class));
             finish();
         }
 
@@ -60,7 +60,7 @@ public class activity_login_manager extends AppCompatActivity
         btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(activity_login_manager.this, ForgetPassword.class));
+                startActivity(new Intent(Activity_login_manager.this, ForgetPassword.class));
             }
         });
 
@@ -72,12 +72,12 @@ public class activity_login_manager extends AppCompatActivity
                 final String password = inputPassword.getText().toString();
 
                 if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "הקלד את כתובת המייל שלך", Toast.LENGTH_LONG).show();
                     return;
                 }
 
                 if (TextUtils.isEmpty(password)) {
-                    Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "הקלד את הסיסמא שלך", Toast.LENGTH_LONG).show();
                     return;
                 }
 
@@ -85,7 +85,7 @@ public class activity_login_manager extends AppCompatActivity
 
                 //authenticate user
                 auth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(activity_login_manager.this, new OnCompleteListener<AuthResult>() {
+                        .addOnCompleteListener(Activity_login_manager.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 // If sign in fails, display a message to the user. If sign in succeeds
@@ -97,10 +97,10 @@ public class activity_login_manager extends AppCompatActivity
                                     if (password.length() < 6) {
                                         inputPassword.setError(getString(R.string.minimum_password));
                                     } else {
-                                        Toast.makeText(activity_login_manager.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
+                                        Toast.makeText(Activity_login_manager.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
                                     }
                                 } else {
-                                    Intent intent = new Intent(activity_login_manager.this, ManagerScreen.class);
+                                    Intent intent = new Intent(Activity_login_manager.this, ManagerScreen.class);
                                     startActivity(intent);
                                     finish();
                                 }

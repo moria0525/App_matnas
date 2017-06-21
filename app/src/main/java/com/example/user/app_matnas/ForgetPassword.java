@@ -50,7 +50,7 @@ public class ForgetPassword extends AppCompatActivity {
                 String email = inputEmail.getText().toString().trim();
 
                 if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(getApplication(), "Enter your registered email id", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplication(), "הזן את כתובת המייל שלך", Toast.LENGTH_LONG).show();
                     return;
                 }
 
@@ -62,7 +62,7 @@ public class ForgetPassword extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(ForgetPassword.this, "נשלח לך במייל הוראות לאיפוס סיסמא", Toast.LENGTH_LONG).show();
                                     finish();
-                                    Intent i = new Intent(ForgetPassword.this, activity_login_manager.class);
+                                    Intent i = new Intent(ForgetPassword.this, Activity_login_manager.class);
                                     startActivity(i);
                                 } else {
                                     Toast.makeText(ForgetPassword.this, "שגיאה, נסה שנית", Toast.LENGTH_LONG).show();

@@ -2,94 +2,65 @@ package com.example.user.app_matnas;
 
 import android.app.ProgressDialog;
 import android.app.SearchManager;
-import android.os.Build;
-import android.support.annotation.LayoutRes;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
-import static com.example.user.app_matnas.MainAdapter.countNotification;
-import static com.example.user.app_matnas.MainAdapter.notification;
-
-
-public class activity_news extends AppCompatActivity {
-    private NewsAdapter adapter;
+public class Activity_team extends AppCompatActivity
+{
+    private TeamAdapter adapter;
     private DatabaseReference databaseReference;
-    private List<News> newsList = new ArrayList<>();
+    private List<Team> teamList = new ArrayList<>();
     private ListView list;
     private Toolbar toolbar;
     private TextView toolBarText;
     private ProgressDialog mProgressDialog;
+    private View layoutView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list);
-
-        countNotification = 0;
-        notification.setText("" + countNotification);
-        if (countNotification <= 0) {
-            notification.setVisibility(View.INVISIBLE);
-        }
-
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
-
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-
         setSupportActionBar(toolbar);
         toolBarText = (TextView) findViewById(R.id.toolBarText);
-        toolBarText.setText(R.string.text_news);
+        toolBarText.setText(R.string.text_team);
         list = (ListView) findViewById(R.id.list);
-
         getDataFromDB();
-
-    }
-
+}
 
     public void getDataFromDB() {
 
         showProgressDialog();
-        databaseReference.child("news").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("team").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
                     for (DataSnapshot postSnapShot : dataSnapshot.getChildren()) {
-                        News news = postSnapShot.getValue(News.class);
-                        newsList.add(news);
+                        Team team = postSnapShot.getValue(Team.class);
+                        teamList.add(team);
                     }
                 }
-                Collections.reverse(newsList);
                 hideProgressDialog();
-                adapter = new NewsAdapter(activity_news.this, R.layout.activity_news, newsList);
+                adapter = new TeamAdapter(Activity_team.this, R.layout.activity_team, teamList);
                 list.setAdapter(adapter);
             }
 
@@ -102,8 +73,8 @@ public class activity_news extends AppCompatActivity {
 
     private void showProgressDialog() {
         if (mProgressDialog == null) {
-            mProgressDialog = new ProgressDialog(activity_news.this);
-            mProgressDialog.setMessage("עוד רגע..");
+            mProgressDialog = new ProgressDialog(Activity_team.this);
+            mProgressDialog.setMessage("טוען את אנשי הצוות..עוד רגע..");
             mProgressDialog.setIndeterminate(true);
         }
         mProgressDialog.show();
@@ -124,8 +95,7 @@ public class activity_news extends AppCompatActivity {
         final SearchView searchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.app_bar_search));
         SearchManager searchManager = (SearchManager) getSystemService(SEARCH_SERVICE);
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-        searchView.setQueryHint("חיפוש חופשי");
-
+        searchView.setQueryHint("חיפוש לפי שם");
 
         SearchView.OnQueryTextListener queryTextListener = new SearchView.OnQueryTextListener() {
 
@@ -137,28 +107,33 @@ public class activity_news extends AppCompatActivity {
                 return true;
             }
 
-
             @Override
             public boolean onQueryTextChange(String newText) {
 
                 newText = newText.toLowerCase();
-                ArrayList<News> newList = new ArrayList<>();
-                for (News news : newsList) {
-                    String name = news.getNewsContent().toLowerCase();
-                    if (name.contains(newText)) {
-                        newList.add(news);
+                ArrayList<Team> newList = new ArrayList<>();
+                for (Team team : teamList) {
+                    String name = team.getTeamName().toLowerCase();
+                    String role = team.getTeamRole().toLowerCase();
+                    if (name.contains(newText) || role.contains(newText)) {
+                        newList.add(team);
                     }
                 }
                 adapter.setFilter(newList);
-
                 return true;
             }
+
         };
 
         searchView.setOnQueryTextListener(queryTextListener);
         return true;
-    }
 
+        }
 
 }
+
+
+
+
+
 

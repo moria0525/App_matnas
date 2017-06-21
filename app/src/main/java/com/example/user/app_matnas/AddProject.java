@@ -168,7 +168,7 @@ public class AddProject extends AppCompatActivity {
             flag = false;
         }
         if (p_edit == null && imgUri == null) {
-            Toast.makeText(getApplicationContext(), "לא בחרת לוגו של הפרויקט", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "לא בחרת לוגו של הפרויקט", Toast.LENGTH_LONG).show();
             flag = false;
         }
 
@@ -180,10 +180,10 @@ public class AddProject extends AppCompatActivity {
                 try {
                     mDatabaseRef.child(DB_PROJECTS).child(s_name).setValue(project);
                 } catch (DatabaseException e) {
-                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "שגיאה: "+e.getMessage(), Toast.LENGTH_LONG).show();
                     e.printStackTrace();
                 }
-                Toast.makeText(getApplicationContext(), "הפרוייקט התעדכן בהצלחה", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "הפרוייקט התעדכן בהצלחה", Toast.LENGTH_LONG).show();
                 finish();
             } else {
                 ref.putFile(imgUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -195,10 +195,10 @@ public class AddProject extends AppCompatActivity {
                         try {
                             mDatabaseRef.child(DB_PROJECTS).child(s_name).setValue(project);
                         } catch (DatabaseException e) {
-                            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "שגיאה: "+e.getMessage(), Toast.LENGTH_LONG).show();
                             e.printStackTrace();
                         }
-                        Toast.makeText(getApplicationContext(), "הפרוייקט נשמר בהצלחה", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "הפרוייקט נשמר בהצלחה", Toast.LENGTH_LONG).show();
                         finish();
 
                     }
@@ -208,7 +208,7 @@ public class AddProject extends AppCompatActivity {
                             public void onFailure(@NonNull Exception e) {
 
                                 //Display err toast msg
-                                Toast.makeText(getApplicationContext(), "שגיאה:" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "שגיאה:" + e.getMessage(), Toast.LENGTH_LONG).show();
                 }
                         });
             }

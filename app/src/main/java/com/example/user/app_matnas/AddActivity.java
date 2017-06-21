@@ -291,10 +291,9 @@ public class AddActivity extends AppCompatActivity {
                     }
                     else
                         Toast.makeText(getApplicationContext(), "החוג נוסף בהצלחה", Toast.LENGTH_LONG).show();
-                    Toast.makeText(context,"finis 293",Toast.LENGTH_LONG).show();
                     finish();
                 } catch (DatabaseException e) {
-                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),  "שגיאה: "+e.getMessage(), Toast.LENGTH_LONG).show();
                     e.printStackTrace();
                 }
 

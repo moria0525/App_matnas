@@ -33,7 +33,7 @@
 
     <EditText
         android:id="@+id/et_name_activity"
-        android:layout_width="181dp"
+        android:layout_width="210dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="22dp"
         android:ems="10"
@@ -47,7 +47,7 @@
 
     <EditText
         android:id="@+id/et_age_activity"
-        android:layout_width="181dp"
+        android:layout_width="210dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="גילאים"
@@ -64,11 +64,11 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:layout_alignTop="@+id/days"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:layout_marginTop="68dp"
         android:layout_alignLeft="@+id/days"
-        android:layout_alignStart="@+id/days">
+        android:layout_alignStart="@+id/days"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true">
 
         <EditText
             android:id="@+id/timeStart"
@@ -115,10 +115,9 @@
         android:maxLength="30"
         android:hint="תיאור החוג"
         android:inputType="textPersonName"
-        android:layout_marginTop="54dp"
-        android:layout_alignTop="@+id/tableRow"
         android:layout_alignLeft="@+id/tableRow"
-        android:layout_alignStart="@+id/tableRow" />
+        android:layout_alignStart="@+id/tableRow"
+        android:layout_below="@+id/tableRow" />
 
     <Button
         android:id="@+id/type"

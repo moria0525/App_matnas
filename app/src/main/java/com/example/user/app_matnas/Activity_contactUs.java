@@ -22,7 +22,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class activity_contactUs extends AppCompatActivity implements OnMapReadyCallback {
+public class Activity_contactUs extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private float zoomLevel = 17;

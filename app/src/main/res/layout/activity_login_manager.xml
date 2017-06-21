@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".activity_login_manager">
+    tools:context=".Activity_login_manager">
 
     <LinearLayout
         android:id="@+id/layout_main"
@@ -83,9 +83,9 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dip"
-            android:background="@color/blue"
+            android:background="@color/green"
             android:text="@string/btn_login"
-            android:textColor="@android:color/black" />
+            android:textColor="@color/black" />
 
         <Button
             android:id="@+id/btn_reset_password"
@@ -95,7 +95,7 @@
             android:background="@null"
             android:text="@string/btn_forgot_password"
             android:textAllCaps="false"
-            android:textColor="@color/blue" />
+            android:textColor="@color/green" />
 
     </LinearLayout>
 </RelativeLayout>

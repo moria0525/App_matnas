@@ -2,63 +2,82 @@ package com.example.user.app_matnas;
 
 import android.app.ProgressDialog;
 import android.app.SearchManager;
-import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.os.Bundle;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-import static com.example.user.app_matnas.FirebaseHelper.*;
+import static com.example.user.app_matnas.MainAdapter.countNotification;
+import static com.example.user.app_matnas.MainAdapter.notification;
 
 
-public class activity_activities extends AppCompatActivity {
-
-    private ActivitiesAdapter adapter;
-    private ProgressDialog mProgressDialog;
-    private List<Activity> activityList = new ArrayList<>();
-    private RecyclerView recyclerView;
+public class Activity_news extends AppCompatActivity {
+    private NewsAdapter adapter;
+    private DatabaseReference databaseReference;
+    private List<News> newsList = new ArrayList<>();
+    private ListView list;
     private Toolbar toolbar;
     private TextView toolBarText;
+    private ProgressDialog mProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.recycle_view);
+        setContentView(R.layout.list);
+
+        countNotification = 0;
+        notification.setText("" + countNotification);
+        if (countNotification <= 0) {
+            notification.setVisibility(View.INVISIBLE);
+        }
+
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+
+
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+
         setSupportActionBar(toolbar);
         toolBarText = (TextView) findViewById(R.id.toolBarText);
-        toolBarText.setText(R.string.text_activities);
-        recyclerView = (RecyclerView) findViewById(R.id.recycleView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        toolBarText.setText(R.string.text_news);
+        list = (ListView) findViewById(R.id.list);
+
         getDataFromDB();
 
     }
 
+
     public void getDataFromDB() {
 
         showProgressDialog();
-        mDatabaseRef.child(DB_ACTIVITIES).addValueEventListener(new ValueEventListener() {
+        databaseReference.child("news").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
                     for (DataSnapshot postSnapShot : dataSnapshot.getChildren()) {
-                        Activity activity = postSnapShot.getValue(Activity.class);
-                        activityList.add(activity);
+                        News news = postSnapShot.getValue(News.class);
+                        newsList.add(news);
                     }
                 }
+                Collections.reverse(newsList);
                 hideProgressDialog();
-                adapter = new ActivitiesAdapter(activityList, activity_activities.this);
-                recyclerView.setAdapter(adapter);
+                adapter = new NewsAdapter(Activity_news.this, R.layout.activity_news, newsList);
+                list.setAdapter(adapter);
             }
 
             @Override
@@ -70,8 +89,8 @@ public class activity_activities extends AppCompatActivity {
 
     private void showProgressDialog() {
         if (mProgressDialog == null) {
-            mProgressDialog = new ProgressDialog(activity_activities.this);
-            mProgressDialog.setMessage("טוען את החוגים..עוד רגע..");
+            mProgressDialog = new ProgressDialog(Activity_news.this);
+            mProgressDialog.setMessage("עוד רגע..");
             mProgressDialog.setIndeterminate(true);
         }
         mProgressDialog.show();
@@ -83,6 +102,7 @@ public class activity_activities extends AppCompatActivity {
         }
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -92,7 +112,10 @@ public class activity_activities extends AppCompatActivity {
         SearchManager searchManager = (SearchManager) getSystemService(SEARCH_SERVICE);
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         searchView.setQueryHint("חיפוש חופשי");
+
+
         SearchView.OnQueryTextListener queryTextListener = new SearchView.OnQueryTextListener() {
+
 
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -100,25 +123,17 @@ public class activity_activities extends AppCompatActivity {
                 searchView.clearFocus();
                 return true;
             }
+
+
             @Override
             public boolean onQueryTextChange(String newText) {
 
                 newText = newText.toLowerCase();
-                ArrayList<Activity> newList = new ArrayList<>();
-                for (Activity activity : activityList)
-                {
-                    String name = activity.getActivityName().toLowerCase();
-                    String age = activity.getActivityAge().toLowerCase();
-                    String type = activity.getActivityType().toLowerCase();
-                    String days = activity.getActivityDays().toLowerCase();
-                    String des = activity.getActivityDes().toLowerCase();
-                    String start = activity.getActivityStart().toLowerCase();
-                    String end = activity.getActivityEnd().toLowerCase();
-
-                    if (name.contains(newText) || age.contains(newText) || type.contains(newText)
-                            || days.contains(newText) || des.contains(newText) || start.contains(newText)
-                            || end.contains(newText)) {
-                        newList.add(activity);
+                ArrayList<News> newList = new ArrayList<>();
+                for (News news : newsList) {
+                    String name = news.getNewsContent().toLowerCase();
+                    if (name.contains(newText)) {
+                        newList.add(news);
                     }
                 }
                 adapter.setFilter(newList);
@@ -133,3 +148,4 @@ public class activity_activities extends AppCompatActivity {
 
 
 }
+

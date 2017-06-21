@@ -24,7 +24,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity
-            android:name=".activity_main"
+            android:name=".Activity_main"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,25 +38,25 @@
         <!-- android:value="@string/google_maps_key" /> -->
 
         <activity
-            android:name=".activity_contactUs"
+            android:name=".Activity_contactUs"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity_about"
+            android:name=".Activity_about"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity_business"
+            android:name=".Activity_business"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity_gallery"
+            android:name=".Activity_gallery"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity_activities"
+            android:name=".Activity_activities"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity_login_manager"
+            android:name=".Activity_login_manager"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity_news"
+            android:name=".Activity_news"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ForgetPassword"
@@ -89,13 +89,13 @@
             android:name=".AddProject"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity_project"
+            android:name=".Activity_project"
             android:screenOrientation="portrait" />
         <activity
             android:name=".EditProject"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity_team"
+            android:name=".Activity_team"
             android:screenOrientation="portrait" />
         <activity
             android:name=".AddTeam"
@@ -110,7 +110,7 @@
             android:name=".EditWorkShop"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity_workShop"
+            android:name=".Activity_workShop"
             android:screenOrientation="portrait" />
         <activity
             android:name=".AddBusiness"

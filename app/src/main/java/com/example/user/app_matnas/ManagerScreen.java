@@ -190,7 +190,7 @@ public class ManagerScreen extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_logout:
                 auth.signOut();
-                startActivity(new Intent(ManagerScreen.this, activity_main.class));
+                startActivity(new Intent(ManagerScreen.this, Activity_main.class));
                 break;
             default:
                 return super.onOptionsItemSelected(item);

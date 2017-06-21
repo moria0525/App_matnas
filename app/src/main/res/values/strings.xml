@@ -41,7 +41,7 @@
 
     <string name="btn_sign_out">התנתק</string>
     <string name="lbl_forgot_password">שכחת סיסמא?</string>
-    <string name="forgot_password_msg">הזן את כתובת המייל שלך בכדי לשלוח לך הוראות לאיפוס סיסמא במייל</string>
+    <string name="forgot_password_msg">הזן את כתובת האימייל שלך בכדי לשלוח לך הוראות לאיפוס סיסמא באימייל</string>
 
     <!--Manager Screen-->
     <string-array name="actions">
@@ -124,7 +124,7 @@
     <string name="err_msg_fname">הכנס/י שם פרטי</string>
     <string name="err_msg_lname">הכנס/י שם משפחה</string>
     <string name="err_msg_neighborhood">הכנס/י שם שכונה</string>
-    <string name="err_msg_email">הכנס/י כתובת מייל תקינה</string>
+    <string name="err_msg_email">הכנס/י כתובת אימייל תקינה</string>
     <string name="err_msg_phone">הכנס/י טלפון נייד תקין</string>
 
     <string name="hint_fname">שם פרטי</string>

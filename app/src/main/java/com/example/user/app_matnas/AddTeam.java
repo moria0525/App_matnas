@@ -185,7 +185,7 @@ public class AddTeam extends AppCompatActivity {
             flag = false;
         }
         if (t_edit == null && imgUri == null) {
-            Toast.makeText(getApplicationContext(), "לא בחרת תמונה של איש צוות", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "לא בחרת תמונה של איש צוות", Toast.LENGTH_LONG).show();
             flag = false;
         }
 
@@ -196,10 +196,10 @@ public class AddTeam extends AppCompatActivity {
                 try {
                     mDatabaseRef.child(DB_TEAM).child(s_name).setValue(team);
                 } catch (DatabaseException e) {
-                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "שגיאה: "+e.getMessage(), Toast.LENGTH_LONG).show();
                     e.printStackTrace();
                 }
-                Toast.makeText(getApplicationContext(), "פרטי איש הצוות עודכנו בהצלחה", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "פרטי איש הצוות עודכנו בהצלחה", Toast.LENGTH_LONG).show();
                 finish();
             } else {
                 ref.putFile(imgUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -211,10 +211,10 @@ public class AddTeam extends AppCompatActivity {
                         try {
                             mDatabaseRef.child(DB_TEAM).child(s_name).setValue(team);
                         } catch (DatabaseException e) {
-                            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "שגיאה: "+e.getMessage(), Toast.LENGTH_LONG).show();
                             e.printStackTrace();
                         }
-                        Toast.makeText(getApplicationContext(), "פרטי איש הצוות נשמרו בהצלחה", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "פרטי איש הצוות נשמרו בהצלחה", Toast.LENGTH_LONG).show();
                         finish();
 
                     }
@@ -222,7 +222,7 @@ public class AddTeam extends AppCompatActivity {
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "שגיאה: "+e.getMessage(), Toast.LENGTH_LONG).show();
                             }
                         });
             }

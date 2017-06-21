@@ -35,14 +35,19 @@
             android:layout_alignParentTop="true"
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
             android:layout_toEndOf="@+id/imageViewEsek"
             android:layout_toRightOf="@+id/imageViewEsek"
             android:maxWidth="120dip"
             android:text="TextView"
-            android:textSize="20sp" />
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/tv_EDes"
+            android:textSize="10sp"
+            android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/tv_EName"

@@ -114,7 +114,7 @@ public class EditWorkShop extends AppCompatActivity {
 
                 if (active.equals("delete")) {
                     mDatabaseRef.child(DB_WORKSHOP).child(name).removeValue();
-                    Toast.makeText(context, "הסדנא נמחקה בהצלחה",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "הסדנא נמחקה בהצלחה",Toast.LENGTH_LONG).show();
                     dialogInterface.dismiss();
                     finish();
                 } else if(active.equals("edit")) {

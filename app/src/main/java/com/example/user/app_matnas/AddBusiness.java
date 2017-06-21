@@ -24,6 +24,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -88,7 +89,6 @@ public class AddBusiness extends AppCompatActivity{
         name = (EditText) findViewById(R.id.et_name_bus);
         category = (EditText) findViewById(R.id.et_category_bus);
         description = (EditText) findViewById(R.id.et_des_bus);
-
 
         autocompleteFragment = (PlaceAutocompleteFragment)
                 getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
@@ -202,11 +202,11 @@ public class AddBusiness extends AppCompatActivity{
                 image.setImageBitmap(bitmap);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
-                Toast.makeText(AddBusiness.this, "Something went wrong", Toast.LENGTH_LONG).show();
+                Toast.makeText(AddBusiness.this, "קרתה שגיאה, נסה שנית", Toast.LENGTH_LONG).show();
             }
 
         } else {
-            Toast.makeText(AddBusiness.this, "You haven't picked Image", Toast.LENGTH_LONG).show();
+            Toast.makeText(AddBusiness.this, "לא בחרת לוגו של העסק", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -248,14 +248,14 @@ public class AddBusiness extends AppCompatActivity{
             mail.setError("");
             flag = false;
         }
-        if(_place == null)
-        {
-            Toast.makeText(context,"לא בחרת כתובת של העסק",Toast.LENGTH_LONG).show();
-            flag = false;
-        }
+//        if(_place == null)
+//        {
+//            Toast.makeText(context,"לא בחרת כתובת של העסק",Toast.LENGTH_LONG).show();
+//            flag = false;
+//        }
         if (b_edit == null && imgUri == null)
         {
-            Toast.makeText(getApplicationContext(), "לא בחרת לוגו של העסק", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "לא בחרת לוגו של העסק", Toast.LENGTH_LONG).show();
             flag = false;
         }
 
@@ -272,13 +272,12 @@ public class AddBusiness extends AppCompatActivity{
                     Toast.makeText(getApplicationContext(), "שגיאה: " + e.getMessage(), Toast.LENGTH_LONG).show();
                     e.printStackTrace();
                 }
-                Toast.makeText(getApplicationContext(), "פרטי בית העסק עודכנו בהצלחה", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "פרטי בית העסק עודכנו בהצלחה", Toast.LENGTH_LONG).show();
                 backToManagerScreen();
             } else {
                 ref.putFile(imgUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
                         //add data to DB
                         business = new Business(s_name, s_category, s_description, s_phone, s_mail, taskSnapshot.getDownloadUrl().toString(), _place.getLatLng().latitude, _place.getLatLng().longitude);
                         try {
@@ -287,8 +286,7 @@ public class AddBusiness extends AppCompatActivity{
                             Toast.makeText(getApplicationContext(), "שגיאה: " + e.getMessage(), Toast.LENGTH_LONG).show();
                             e.printStackTrace();
                         }
-
-                        Toast.makeText(getApplicationContext(), "פרטי בית העסק נשמרו בהצלחה", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "פרטי בית העסק נשמרו בהצלחה", Toast.LENGTH_LONG).show();
                         finish();
 
                     }
@@ -298,7 +296,7 @@ public class AddBusiness extends AppCompatActivity{
                             public void onFailure(@NonNull Exception e) {
 
                                 //Display err toast msg
-                                Toast.makeText(getApplicationContext(), "שגיאה: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "שגיאה: " + e.getMessage(), Toast.LENGTH_LONG).show();
                             }
                         });
             }

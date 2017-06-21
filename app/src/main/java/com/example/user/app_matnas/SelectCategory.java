@@ -62,7 +62,7 @@ public class SelectCategory extends AppCompatActivity {
 
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("business");
 
-        mDatabaseRef.addValueEventListener(new ValueEventListener() {
+        mDatabaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 progressDialog.dismiss();

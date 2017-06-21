@@ -40,6 +40,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
@@ -170,8 +171,7 @@ public class SendNews extends AppCompatActivity {
             rb_send.setError("");//Set error to last Radio button
         }
 
-        if (flag)
-        {
+        if (flag) {
             SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault());
             date = format.format(new Date());
 
@@ -186,7 +186,7 @@ public class SendNews extends AppCompatActivity {
                 try {
                     mDatabase.child(date).setValue(news);
                 } catch (DatabaseException e) {
-                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "שגיאה: "+e.getMessage(), Toast.LENGTH_LONG).show();
                     e.printStackTrace();
                 }
 
@@ -200,7 +200,7 @@ public class SendNews extends AppCompatActivity {
                         try {
                             mDatabase.child(date).setValue(news);
                         } catch (DatabaseException e) {
-                            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "שגיאה: " +e.getMessage(), Toast.LENGTH_LONG).show();
                             e.printStackTrace();
                         }
                     }
@@ -213,7 +213,7 @@ public class SendNews extends AppCompatActivity {
                                 //Dismiss dialog when error
                                 dialog.dismiss();
                                 //Display err toast msg
-                                Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "שגיאה: " + e.getMessage(), Toast.LENGTH_LONG).show();
                             }
                         })
                         .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
@@ -228,10 +228,10 @@ public class SendNews extends AppCompatActivity {
                         });
             }
             countNotification++;
-            Toast.makeText(getApplicationContext(), "החדשה נוספה בהצלחה", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "החדשה נוספה בהצלחה", Toast.LENGTH_LONG).show();
             //update count //TODO
             notification.setVisibility(View.VISIBLE);
-            notification.setText(""+countNotification);
+            notification.setText("" + countNotification);
             if (flagSend) {
 
                 Notification();
@@ -332,7 +332,7 @@ public class SendNews extends AppCompatActivity {
         @Override
         protected void onPostExecute(Bitmap result) {
             Notification noti;
-            Intent intent = new Intent(SendNews.this, activity_news.class);
+            Intent intent = new Intent(SendNews.this, Activity_news.class);
             PendingIntent pIntent = PendingIntent.getActivity(SendNews.this, (int) System.currentTimeMillis(), intent, 0);
 
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {

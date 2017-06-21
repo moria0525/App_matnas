@@ -19,29 +19,31 @@
             android:id="@+id/imageViewTeam"
             android:layout_width="123dp"
             android:layout_height="135dp"
+            android:scaleType="centerInside"
             android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
             android:layout_alignParentBottom="true" />
 
 
         <TextView
             android:id="@+id/tv_TName"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView"
             android:textSize="20sp"
             android:maxWidth="120dip"
+            android:textColor="@color/black"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="14dp" />
+            android:layout_toRightOf="@+id/imageViewTeam"
+            android:layout_toEndOf="@+id/imageViewTeam" />
 
         <TextView
             android:id="@+id/tv_TRole"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView"
-            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:textSize="17sp"
             android:layout_below="@+id/tv_TName"
             android:layout_alignLeft="@+id/tv_TName"
             android:layout_alignStart="@+id/tv_TName" />
@@ -50,23 +52,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="fdsgrewsdgwrre"
+            android:textColor="@color/black"
             android:textSize="12sp"
             android:maxWidth="120dip"
-            android:layout_below="@+id/imageViewMail"
+            android:layout_alignParentBottom="true"
             android:layout_alignLeft="@+id/tv_TRole"
             android:layout_alignStart="@+id/tv_TRole"
-            android:layout_marginTop="24dp" />
+            android:layout_marginBottom="12dp" />
 
         <ImageView
             android:id="@+id/imageViewMail"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/social_media_mail"
-            android:layout_centerVertical="true"
+            android:layout_marginRight="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_alignBottom="@+id/tv_TDes"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginRight="15dp"
-            android:layout_marginEnd="15dp" />
+            android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
 

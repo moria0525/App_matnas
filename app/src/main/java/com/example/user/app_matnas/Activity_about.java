@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
-public class activity_about extends AppCompatActivity
+public class Activity_about extends AppCompatActivity
 {
     private Toolbar toolbar;
     private TextView toolBarText;

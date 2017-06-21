@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 
 
-public class activity_main extends AppCompatActivity {
+public class Activity_main extends AppCompatActivity {
 
     private GridView nineIcon;
     public int[] imageIDs = {
@@ -62,39 +62,39 @@ public class activity_main extends AppCompatActivity {
     private void iconSelect(int position) {
         switch (position) {
             case 0:
-                Intent intent = new Intent(activity_main.this, activity_about.class);
+                Intent intent = new Intent(Activity_main.this, Activity_about.class);
                 startActivity(intent);
                 break;
             case 1:
-                intent = new Intent(activity_main.this, activity_news.class);
+                intent = new Intent(Activity_main.this, Activity_news.class);
                 startActivity(intent);
                 break;
             case 2:
-                intent = new Intent(activity_main.this, activity_business.class);
+                intent = new Intent(Activity_main.this, Activity_business.class);
                 startActivity(intent);
                 break;
             case 3:
-                intent = new Intent(activity_main.this,activity_project.class);
+                intent = new Intent(Activity_main.this,Activity_project.class);
                 startActivity(intent);
                 break;
             case 4:
-                intent = new Intent(activity_main.this, activity_activities.class);
+                intent = new Intent(Activity_main.this, Activity_activities.class);
                 startActivity(intent);
                 break;
             case 5:
-                intent = new Intent(activity_main.this, activity_workShop.class);
+                intent = new Intent(Activity_main.this, Activity_workShop.class);
                 startActivity(intent);
                 break;
             case 6:
-                intent = new Intent(activity_main.this, activity_team.class);
+                intent = new Intent(Activity_main.this, Activity_team.class);
                 startActivity(intent);
                 break;
             case 7:
-                intent = new Intent(activity_main.this, activity_gallery.class);
+                intent = new Intent(Activity_main.this, Activity_gallery.class);
                 startActivity(intent);
                 break;
             case 8:
-                intent = new Intent(activity_main.this, activity_contactUs.class);
+                intent = new Intent(Activity_main.this, Activity_contactUs.class);
                 startActivity(intent);
                 break;
 
@@ -103,7 +103,7 @@ public class activity_main extends AppCompatActivity {
     }
 
     public void onClickManager(View view) {
-        Intent intent = new Intent(activity_main.this, activity_login_manager.class);
+        Intent intent = new Intent(Activity_main.this, Activity_login_manager.class);
         startActivity(intent);
     }
 

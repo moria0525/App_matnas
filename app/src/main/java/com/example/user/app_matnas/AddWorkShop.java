@@ -172,7 +172,7 @@ public class AddWorkShop extends AppCompatActivity {
                 }
 
             } catch (DatabaseException e) {
-                Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),"שגיאה: "+e.getMessage(), Toast.LENGTH_LONG).show();
                 e.printStackTrace();
             }
         }

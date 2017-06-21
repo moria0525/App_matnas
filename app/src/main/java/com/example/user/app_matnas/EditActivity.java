@@ -94,7 +94,6 @@ public class EditActivity extends AppCompatActivity {
             list[i] = actList.get(i).getActivityName();
         }
         final AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        Toast.makeText(context, "wwwww",Toast.LENGTH_LONG).show();
 
         builder.setTitle(R.string.editActivity);
 
@@ -114,7 +113,7 @@ public class EditActivity extends AppCompatActivity {
 
                 if (active.equals("delete")) {
                     mDatabaseRef.child(DB_ACTIVITIES).child(name).removeValue();
-                    Toast.makeText(context, "החוג נמחק בהצלחה",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "החוג נמחק בהצלחה",Toast.LENGTH_LONG).show();
                     dialogInterface.dismiss();
                     finish();
                 } else if(active.equals("edit")) {

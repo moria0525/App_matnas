@@ -215,7 +215,7 @@ public class UploadImage extends AppCompatActivity {
                         {
                             dialog.dismiss();
                             //Display success toast msg
-                            Toast.makeText(getApplicationContext(), "התמונות עלו בהצלחה", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "התמונות עלו בהצלחה", Toast.LENGTH_LONG).show();
                             backToManagerScreen();
                         }
                     }
@@ -227,7 +227,7 @@ public class UploadImage extends AppCompatActivity {
                                 //Dismiss dialog when error
                                 dialog.dismiss();
                                 //Display err toast msg
-                                Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(),"שגיאה: "+ e.getMessage(), Toast.LENGTH_LONG).show();
                             }
                         })
                         .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
@@ -242,7 +242,7 @@ public class UploadImage extends AppCompatActivity {
                         });
             }
         } else {
-            Toast.makeText(getApplicationContext(), "Please select image", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "בחר תמונות להעלאה", Toast.LENGTH_LONG).show();
         }
     }
 
