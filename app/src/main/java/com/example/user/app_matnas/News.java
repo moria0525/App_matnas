@@ -3,6 +3,11 @@ package com.example.user.app_matnas;
 import java.io.Serializable;
 import java.util.Arrays;
 
+/**
+ * News.java
+ * This class represents an object of a News
+ */
+
 public class News {
 
     private String newsDate;
@@ -10,8 +15,7 @@ public class News {
     private String newsImage;
     private boolean newsPush;
 
-    public News()
-    {
+    public News() {
 
     }
 

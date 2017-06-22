@@ -21,62 +21,59 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.util.ArrayList;
 
+import static com.example.user.app_matnas.FirebaseHelper.*;
+
+/*
+ * This Activity of manager to upload images to gallery
+ * Allows to images from gallery in device
+ */
+
 public class UploadImage extends AppCompatActivity {
 
     private EditText name;
     private ProgressDialog mProgressDialog;
-
     private boolean flag = false;
     private Context context;
-
-    int counter = 0;
+    private int counter = 0;
     private TextView count;
     private View layoutView;
-
-    private StorageReference mStorageRef;
-    private DatabaseReference mDatabaseRef;
-    private Uri imgUri;
-    ArrayList<Uri> uris = null;
-
-    public static String FB_STORAGE_PATH;
-    public static final String FB_DATABASE_PATH = "image";
-    public static final int REQUEST_CODE = 1234;
-    String s_event;
+    private ArrayList<Uri> uris = null;
+    private String FB_STORAGE_PATH;
+    private String s_event;
+    private DatabaseReference child;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = getApplicationContext();
 
-        mStorageRef = FirebaseStorage.getInstance().getReference();
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference(FB_DATABASE_PATH);
+        child = mDatabaseRef.child(DB_IMAGE);
 
         mProgressDialog = new ProgressDialog(this);
-        uploadPictureTogallery();
+        uploadPictureToGallery();
     }
 
-    private void uploadPictureTogallery() {
+    //This method to show dialog
+    private void uploadPictureToGallery() {
 
         final AlertDialog.Builder builder;
         final AlertDialog dialog;
 
         builder = new AlertDialog.Builder(this);
-        builder.setTitle("העלאת תמונות לגלרייה");
+        builder.setTitle(getResources().getStringArray(R.array.actions)[0]);
         LayoutInflater inflater = LayoutInflater.from(this);
 
         layoutView = inflater.inflate(R.layout.upload_image, null);
         builder.setView(layoutView);
 
 
-        builder.setPositiveButton("אישור",
+        builder.setPositiveButton(R.string.ok,
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -85,7 +82,7 @@ public class UploadImage extends AppCompatActivity {
                         //pass a handler the button doesn't get instantiated
                     }
                 });
-        builder.setNegativeButton("ביטול",
+        builder.setNegativeButton(R.string.cancel,
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -104,14 +101,12 @@ public class UploadImage extends AppCompatActivity {
                 boolean entriesValid = true;
                 try {
                     name = (EditText) layoutView.findViewById(R.id.et_name_event);
-                    // count = (TextView) layoutView.findViewById(R.id.cunt);
-
                     s_event = name.getText().toString();
                     if (TextUtils.isEmpty(s_event)) {
                         name.setError("");
                         entriesValid = false;
                     } else if (!flag) {
-                        Toast.makeText(context, "לא נבחרו תמונות להעלאה", Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, R.string.errorSelectImgages, Toast.LENGTH_LONG).show();
                         entriesValid = false;
                     }
 
@@ -132,14 +127,14 @@ public class UploadImage extends AppCompatActivity {
             public void onClick(View v) {
                 counter = 0;
                 dialog.dismiss();
-                backToManagerScreen();
+                finish();
             }
 
         });
 
     }
 
-
+    //This Method open gallery to select images from device to upload gallery screen
     public boolean onClickUploadPictures(View v) {
 
         flag = true;
@@ -149,12 +144,13 @@ public class UploadImage extends AppCompatActivity {
             intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
         }
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "בחר תמונות"), REQUEST_CODE);
-        Toast.makeText(context, "לחץ על התמונה הראשונה בלחיצה ארוכה", Toast.LENGTH_LONG).show();
+        startActivityForResult(Intent.createChooser(intent, getString(R.string.selectImage)), REQUEST_CODE);
+        Toast.makeText(context, R.string.msgInfo, Toast.LENGTH_LONG).show();
 
         return flag;
     }
 
+    //This method for treating selected images
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_CODE && resultCode == RESULT_OK && data != null) {
@@ -173,13 +169,12 @@ public class UploadImage extends AppCompatActivity {
                 if (uris != null) {
 
                     count = (TextView) layoutView.findViewById(R.id.counter);
-                    count.setText("נבחרו עד כה: " + counter + " תמונות");
+                    count.setText(getString(R.string.select) + " " + counter + " " + getString(R.string.image));
                     mProgressDialog.dismiss();
                     flag = true;
                 }
             }
-        }
-        else {
+        } else {
             flag = false;
         }
 
@@ -187,14 +182,14 @@ public class UploadImage extends AppCompatActivity {
     }
 
 
+    //This method to save images in Firebase Storage
     @SuppressWarnings("VisibleForTests")
     public void btnUpload_Click() {
         if (uris != null) {
             final ProgressDialog dialog = new ProgressDialog(this);
-            dialog.setTitle("מעלה את "+counter+" התמונות שנבחרו");
+            dialog.setTitle(getString(R.string.upload) + " " + counter + " " + getString(R.string.selected));
             dialog.show();
-            for(int i = 0;i<uris.size();i++)
-            {
+            for (int i = 0; i < uris.size(); i++) {
                 FB_STORAGE_PATH = s_event + "/";
                 //Get the storage reference
                 StorageReference ref = mStorageRef.child(FB_STORAGE_PATH).child(uris.get(i).getLastPathSegment());
@@ -208,15 +203,14 @@ public class UploadImage extends AppCompatActivity {
                         Image imageUpload = new Image(s_event, taskSnapshot.getDownloadUrl().toString());
 
                         //Save image info in to firebase database
-                        String uploadId = mDatabaseRef.push().getKey();
-                        mDatabaseRef.child(s_event).child(uploadId).setValue(imageUpload.getUrl());
+                        String uploadId = child.push().getKey();
+                        child.child(s_event).child(uploadId).setValue(imageUpload.getUrl());
                         //Dimiss dialog when success
-                        if(finalI == uris.size()-1)
-                        {
+                        if (finalI == uris.size() - 1) {
                             dialog.dismiss();
                             //Display success toast msg
-                            Toast.makeText(getApplicationContext(), "התמונות עלו בהצלחה", Toast.LENGTH_LONG).show();
-                            backToManagerScreen();
+                            Toast.makeText(getApplicationContext(), R.string.successUpload, Toast.LENGTH_LONG).show();
+                            finish();
                         }
                     }
                 })
@@ -227,7 +221,7 @@ public class UploadImage extends AppCompatActivity {
                                 //Dismiss dialog when error
                                 dialog.dismiss();
                                 //Display err toast msg
-                                Toast.makeText(getApplicationContext(),"שגיאה: "+ e.getMessage(), Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), R.string.error + " "+ e.getMessage(), Toast.LENGTH_LONG).show();
                             }
                         })
                         .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
@@ -237,18 +231,12 @@ public class UploadImage extends AppCompatActivity {
 
                                 //Show upload progress
                                 double progress = (100 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
-                                dialog.setMessage("מעלה " + (int) progress + "%");
+                                dialog.setMessage(getString(R.string.uploadImage) + " " + (int) progress + "%");
                             }
                         });
             }
         } else {
-            Toast.makeText(getApplicationContext(), "בחר תמונות להעלאה", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), R.string.selectImages, Toast.LENGTH_LONG).show();
         }
     }
-
-    /* Method to back to screen manager after saving new activity */
-    private void backToManagerScreen() {
-       finish();
-    }
-
 }

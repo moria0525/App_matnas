@@ -35,6 +35,7 @@
         android:layout_width="290dp"
         android:layout_height="160dp"
         android:ems="10"
+        android:maxLength="172"
         android:hint="תוכן ההודעה"
         android:inputType="textMultiLine"
         android:layout_marginLeft="20dp"

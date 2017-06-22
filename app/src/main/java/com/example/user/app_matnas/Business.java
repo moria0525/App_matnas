@@ -6,6 +6,12 @@ import com.google.android.gms.maps.model.LatLng;
 import java.io.Serializable;
 import java.util.Arrays;
 
+/**
+ * Bussiness.java
+ * This class represents an object of a Business
+ */
+
+
 public class Business implements Serializable {
 
     private String businessName;

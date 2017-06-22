@@ -1,9 +1,12 @@
 package com.example.user.app_matnas;
 
 
-import java.io.Serializable;
+/**
+ * Image.java
+ * This class represents an object of a Image
+ */
 
-public class Image{
+public class Image {
 
     public Image() {
     }

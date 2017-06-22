@@ -3,13 +3,19 @@ package com.example.user.app_matnas;
 import java.io.Serializable;
 import java.util.Arrays;
 
+/**
+ * Project.java
+ * This class represents an object of a Project
+ */
+
 public class Project implements Serializable {
 
     private String projectName;
     private String projectDes;
     private String projectLogo;
 
-    public Project(){}
+    public Project() {
+    }
 
     public Project(String projectName, String projectDes, String projectLogo) {
         this.projectName = projectName;

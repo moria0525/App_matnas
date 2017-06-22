@@ -17,9 +17,10 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.user.app_matnas.AddBusiness.FB_STORAGE_BUSINESS;
 import static com.example.user.app_matnas.FirebaseHelper.*;
 
+/*This Activity to edit Business in app
+ */
 
 public class EditBusiness extends AppCompatActivity {
     public List<Business> busList;
@@ -46,39 +47,35 @@ public class EditBusiness extends AppCompatActivity {
         super.onCreate(savedInstanceState);
     }
 
-
-    public void getDB(final String category, int flag)
-    {
+    //This method get data of DB and set in list and list set in dialog
+    public void getDB(final String category, int flag) {
         active = flag;
         busList = new ArrayList<>();
         showProgressDialog();
-        mDatabaseRef.child("business").child(category).addListenerForSingleValueEvent(new ValueEventListener()
-        {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot)
-            {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren())
-                {
-                    Business business = snapshot.getValue(Business.class);
-                    busList.add(business);
-                }
-                hideProgressDialog();
-                showDialog(category);
-            }
+        mDatabaseRef.child(DB_BUSINESS).child(category).addListenerForSingleValueEvent
+                (new ValueEventListener() {
+                     @Override
+                     public void onDataChange(DataSnapshot dataSnapshot) {
+                         for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                             Business business = snapshot.getValue(Business.class);
+                             busList.add(business);
+                         }
+                         hideProgressDialog();
+                         showDialog(category);
+                     }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                hideProgressDialog();
-            }
-        }
-        );
+                     @Override
+                     public void onCancelled(DatabaseError databaseError) {
+                         hideProgressDialog();
+                     }
+                 }
+                );
     }
 
-    public void showDialog(final String category)
-    {
+    //set list business in dialog
+    public void showDialog(final String category) {
         list = new String[busList.size()];
-        for (int i = 0; i < busList.size(); i++)
-        {
+        for (int i = 0; i < busList.size(); i++) {
             list[i] = busList.get(i).getBusinessName();
         }
 
@@ -99,18 +96,19 @@ public class EditBusiness extends AppCompatActivity {
                 int selectedPosition = ((AlertDialog) dialogInterface).getListView().getCheckedItemPosition();
                 name = busList.get(selectedPosition).getBusinessName();
 
-                if (active == 0) {
-                    mDatabaseRef.child("business").child(category).child(name).removeValue(); //////todo
-                    mStorageRef.child(FB_STORAGE_BUSINESS).child(name).delete();
-                    Toast.makeText(context,"בית העסק נמחק בהצלחה",Toast.LENGTH_LONG).show();
+                if (active == 0)  //delete business
+                {
+                    mDatabaseRef.child(DB_BUSINESS).child(category).child(name).removeValue();
+                    mStorageRef.child(ST_STORAGE_BUSINESS).child(name).delete();
+                    Toast.makeText(context, R.string.successDeleteBusiness, Toast.LENGTH_LONG).show();
                     dialogInterface.dismiss();
 
-                }
-                else if(active == 1) {
+                } else if (active == 1) //edit business
+                {
                     Business business = busList.get(selectedPosition);
                     intent = new Intent(context, AddBusiness.class);
                     intent.putExtra("editBusiness", business);
-                    mDatabaseRef.child("business").child(category).child(name).removeValue();
+                    mDatabaseRef.child(DB_BUSINESS).child(category).child(name).removeValue();
                     context.startActivity(intent);
                 }
             }
@@ -121,15 +119,17 @@ public class EditBusiness extends AppCompatActivity {
 
     }
 
+    //This method show progress dialog until loading all data
     private void showProgressDialog() {
         if (mProgressDialog == null) {
             mProgressDialog = new ProgressDialog(context);
-            mProgressDialog.setMessage("עוד רגע..");
+            mProgressDialog.setMessage(getString(R.string.loading));
             mProgressDialog.setIndeterminate(true);
         }
         mProgressDialog.show();
     }
 
+    //This method dismiss progress dialog if show after loading all data
     private void hideProgressDialog() {
         if (mProgressDialog != null && mProgressDialog.isShowing()) {
             mProgressDialog.dismiss();

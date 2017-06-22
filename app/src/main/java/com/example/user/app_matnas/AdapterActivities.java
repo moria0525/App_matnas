@@ -14,6 +14,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/*
+ * This Adapter for activities
+ */
+
+
 public class AdapterActivities extends RecyclerView.Adapter<AdapterActivities.UserViewHolder> {
 
     private List<Activity> actList;
@@ -33,6 +38,7 @@ public class AdapterActivities extends RecyclerView.Adapter<AdapterActivities.Us
     }
 
 
+    //set all data in screen
     @Override
     public void onBindViewHolder(UserViewHolder holder, final int position) {
         final Activity activity = actList.get(position);
@@ -45,7 +51,7 @@ public class AdapterActivities extends RecyclerView.Adapter<AdapterActivities.Us
         holder.tvStart.setText(activity.getActivityStart());
         holder.tvEnd.setText(activity.getActivityEnd());
         holder.tvDes.setText(activity.getActivityDes());
-        int[] androidColors = context.getResources().getIntArray(R.array.androidcolors);
+        int[] androidColors = context.getResources().getIntArray(R.array.androidcolors);//random image
         int randomAndroidColor = androidColors[new Random().nextInt(androidColors.length)];
         GradientDrawable drawable = new GradientDrawable();
         drawable.setShape(GradientDrawable.RECTANGLE);
@@ -85,6 +91,7 @@ public class AdapterActivities extends RecyclerView.Adapter<AdapterActivities.Us
         Button button;
         LinearLayout rv;
         LinearLayout aaa;
+
         public UserViewHolder(View itemView) {
             super(itemView);
             tvName = (TextView) itemView.findViewById(R.id.view_name);
@@ -95,13 +102,13 @@ public class AdapterActivities extends RecyclerView.Adapter<AdapterActivities.Us
             tvEnd = (TextView) itemView.findViewById(R.id.view_end);
             tvDes = (TextView) itemView.findViewById(R.id.view_des);
             button = (Button) itemView.findViewById(R.id.button3);
-            rv = (LinearLayout)itemView.findViewById(R.id.rv);
-            aaa = (LinearLayout)itemView.findViewById(R.id.aaa);
+            rv = (LinearLayout) itemView.findViewById(R.id.rv);
+            aaa = (LinearLayout) itemView.findViewById(R.id.aaa);
         }
 
     }
 
-
+    //filter list
     public void setFilter(ArrayList<Activity> newList) {
         actList = new ArrayList<>();
         actList.addAll(newList);

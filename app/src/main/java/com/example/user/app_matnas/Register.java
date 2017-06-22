@@ -261,7 +261,7 @@ public class Register extends AppCompatActivity {
     private void backToScreen() {
         alertDialog.dismiss();
 //        if()
-//        Intent i = new Intent(context, Activity_main.class);
+//        Intent i = new Intent(context, activity_main.class);
 //        context.startActivity(i);
 //        finish();
     }

@@ -28,6 +28,10 @@ import java.util.List;
 
 import static com.example.user.app_matnas.FirebaseHelper.*;
 
+
+/*This Activity to edit Project in app
+ */
+
 public class EditProject extends AppCompatActivity {
     public List<Project> proList;
     String name;
@@ -42,8 +46,7 @@ public class EditProject extends AppCompatActivity {
     }
 
 
-    public EditProject(Context context, String active)
-    {
+    public EditProject(Context context, String active) {
         this.context = context;
         this.active = active;
     }
@@ -54,9 +57,9 @@ public class EditProject extends AppCompatActivity {
         super.onCreate(savedInstanceState);
     }
 
+    //This method get data of DB and set in list and list set in dialog
 
-    public void getDB()
-    {
+    public void getDB() {
         proList = new ArrayList<>();
         showProgressDialog();
         mDatabaseRef.child(DB_PROJECTS).addListenerForSingleValueEvent
@@ -79,13 +82,11 @@ public class EditProject extends AppCompatActivity {
                 );
     }
 
-    private void showDialog()
-    {
+    private void showDialog() {
 
         list = new String[proList.size()];
-        if (list.length == 0)
-        {
-            Toast.makeText(context, "לא נמצאו פרויקטים",Toast.LENGTH_LONG).show();
+        if (list.length == 0) {
+            Toast.makeText(context, R.string.noProject, Toast.LENGTH_LONG).show();
             finish();
             return;
         }
@@ -113,10 +114,10 @@ public class EditProject extends AppCompatActivity {
                 if (active.equals("delete")) {
                     mDatabaseRef.child(DB_PROJECTS).child(name).removeValue();
                     mStorageRef.child(ST_STORAGE_PROJECT).child(name).delete();
-                    Toast.makeText(context, "הפרויקט נמחק בהצלחה",Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, R.string.successDeleteProject, Toast.LENGTH_LONG).show();
                     dialogInterface.dismiss();
                     finish();
-                } else if(active.equals("edit")) {
+                } else if (active.equals("edit")) {
                     Project project = proList.get(selectedPosition);
                     intent = new Intent(context, AddProject.class);
                     intent.putExtra("edit", project);
@@ -131,15 +132,17 @@ public class EditProject extends AppCompatActivity {
 
     }
 
+    //This method show progress dialog until loading all data
     private void showProgressDialog() {
         if (mProgressDialog == null) {
             mProgressDialog = new ProgressDialog(context);
-            mProgressDialog.setMessage("עוד רגע..");
+            mProgressDialog.setMessage(getString(R.string.loading));
             mProgressDialog.setIndeterminate(true);
         }
         mProgressDialog.show();
     }
 
+    //This method dismiss progress dialog if show after loading all data
     private void hideProgressDialog() {
         if (mProgressDialog != null && mProgressDialog.isShowing()) {
             mProgressDialog.dismiss();

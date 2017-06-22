@@ -26,6 +26,11 @@ import java.util.Calendar;
 import static com.example.user.app_matnas.FirebaseHelper.*;
 
 
+/*
+ * This Activity to add new WorkShop to app
+ */
+
+
 public class AddWorkShop extends AppCompatActivity {
 
     private Toolbar toolbar;
@@ -83,7 +88,7 @@ public class AddWorkShop extends AppCompatActivity {
                 date.setText(selectedday + "/" + ++selectedmonth + "/" + selectedyear);
             }
         }, mYear, mMonth, mDay);
-        mDatePicker.setTitle("בחר תאריך");
+        mDatePicker.setTitle(R.string.selectDate);
         mDatePicker.show();
     }
 
@@ -163,20 +168,18 @@ public class AddWorkShop extends AppCompatActivity {
             try {
                 mDatabaseRef.child(DB_WORKSHOP).child(s_name).setValue(workShop);
                 if (!old.isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "הסנדא התעדכנה בהצלחה", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), R.string.successUpdateWorkShop, Toast.LENGTH_LONG).show();
                     finish();
                     finish();
                 } else {
-                    Toast.makeText(getApplicationContext(), "הסדנא נוספה בהצלחה", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),  R.string.successAddWorkShop , Toast.LENGTH_LONG).show();
                     finish();
                 }
 
             } catch (DatabaseException e) {
-                Toast.makeText(getApplicationContext(),"שגיאה: "+e.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), R.string.error +" "+e.getMessage(), Toast.LENGTH_LONG).show();
                 e.printStackTrace();
             }
         }
     }
-
-
 }

@@ -2,7 +2,6 @@ package com.example.user.app_matnas;
 
 import android.app.AlertDialog;
 import android.app.TimePickerDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,16 +16,21 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
 import com.google.firebase.database.DatabaseException;
+
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
 import static com.example.user.app_matnas.FirebaseHelper.*;
 
+/*
+ * This Activity to add new activity to app
+ */
+
 public class AddActivity extends AppCompatActivity {
 
-    private Context context;
     private Toolbar toolbar;
     private TextView toolBarText;
     private EditText name, age, timeStart, timeEnd, description;
@@ -49,7 +53,6 @@ public class AddActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_activity);
 
         //init screen and variables
-        context = getApplicationContext();
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolBarText = (TextView) findViewById(R.id.toolBarText);
@@ -67,12 +70,12 @@ public class AddActivity extends AppCompatActivity {
         timeStart = (EditText) findViewById(R.id.timeStart);
         timeEnd = (EditText) findViewById(R.id.timeEnd);
         description = (EditText) findViewById(R.id.description);
-        type = (Button)findViewById(R.id.type);
-        days = (Button)findViewById(R.id.days);
+        type = (Button) findViewById(R.id.type);
+        days = (Button) findViewById(R.id.days);
         a_edit = (Activity) getIntent().getSerializableExtra("edit");
 
-        if (a_edit != null)
-        {
+        //if edit activity
+        if (a_edit != null) {
             old = a_edit.getActivityName();
             toolBarText.setText(getResources().getStringArray(R.array.actions)[3]);
             fillFields();
@@ -80,8 +83,8 @@ public class AddActivity extends AppCompatActivity {
 
     }
 
-    private void fillFields()
-    {
+    //fill fields from DB
+    private void fillFields() {
         name.setText(a_edit.getActivityName());
         age.setText(a_edit.getActivityAge());
         timeStart.setText(a_edit.getActivityStart());
@@ -203,8 +206,7 @@ public class AddActivity extends AppCompatActivity {
         alertDialogBuilder.setPositiveButton(getResources().getString(R.string.yes),
                 new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface arg0, int arg1)
-                    {
+                    public void onClick(DialogInterface arg0, int arg1) {
                         arg0.dismiss();
                         finish();
                     }
@@ -242,63 +244,60 @@ public class AddActivity extends AppCompatActivity {
     }
 
     /*Method to validation fields in form */
-    private void checkFullFields()
-    {
+    private void checkFullFields() {
         boolean flag = true;
         String s_name = name.getText().toString();
         String s_age = age.getText().toString();
         String s_timeStart = timeStart.getText().toString();
         String s_timeEnd = timeEnd.getText().toString();
         String s_description = description.getText().toString();
-            if (TextUtils.isEmpty(s_name)) {
-                name.setError("");
-                flag = false;
-            }
-            if (!checkArray(SelectedtruefalseType)) {
-                type.setError("");
-                flag = false;
-            }
-            if (TextUtils.isEmpty(s_age)) {
-                age.setError("");
-                flag = false;
-            }
-            if (!checkArray(SelectedtruefalseDays)) {
-                days.setError("");
-                flag = false;
-            }
-            if (TextUtils.isEmpty(s_timeStart)) {
-                timeStart.setError("");
-                flag = false;
-            }
-            if (TextUtils.isEmpty(s_timeEnd)) {
-                timeEnd.setError("");
-                flag = false;
-            }
-            if (TextUtils.isEmpty(s_description)) {
-                description.setError("");
-                flag = false;
-            }
-            if (flag) {
-                //add data to DB
-                Activity activity = new Activity(s_name, s_type, s_description, s_age, s_days, s_timeStart, s_timeEnd);
-                try {
-                    mDatabaseRef.child(DB_ACTIVITIES).child(s_name).setValue(activity);
-                    if(!old.isEmpty())
-                    {
-                        Toast.makeText(getApplicationContext(), "החוג התעדכן בהצלחה", Toast.LENGTH_LONG).show();
-                        finish();
-                        finish();
-                    }
-                    else
-                        Toast.makeText(getApplicationContext(), "החוג נוסף בהצלחה", Toast.LENGTH_LONG).show();
-                    finish();
-                } catch (DatabaseException e) {
-                    Toast.makeText(getApplicationContext(),  "שגיאה: "+e.getMessage(), Toast.LENGTH_LONG).show();
-                    e.printStackTrace();
-                }
-
-            }
+        if (TextUtils.isEmpty(s_name)) {
+            name.setError("");
+            flag = false;
         }
+        if (!checkArray(SelectedtruefalseType)) {
+            type.setError("");
+            flag = false;
+        }
+        if (TextUtils.isEmpty(s_age)) {
+            age.setError("");
+            flag = false;
+        }
+        if (!checkArray(SelectedtruefalseDays)) {
+            days.setError("");
+            flag = false;
+        }
+        if (TextUtils.isEmpty(s_timeStart)) {
+            timeStart.setError("");
+            flag = false;
+        }
+        if (TextUtils.isEmpty(s_timeEnd)) {
+            timeEnd.setError("");
+            flag = false;
+        }
+        if (TextUtils.isEmpty(s_description)) {
+            description.setError("");
+            flag = false;
+        }
+        if (flag) {
+            //add data to DB
+            Activity activity = new Activity(s_name, s_type, s_description, s_age, s_days, s_timeStart, s_timeEnd);
+            try {
+                mDatabaseRef.child(DB_ACTIVITIES).child(s_name).setValue(activity);
+                if (!old.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), R.string.successUpdateActivity, Toast.LENGTH_LONG).show();
+                    finish();
+                    finish();
+                } else
+                    Toast.makeText(getApplicationContext(), R.string.successAddActivity, Toast.LENGTH_LONG).show();
+                finish();
+            } catch (DatabaseException e) {
+                Toast.makeText(getApplicationContext(), R.string.error + " " + e.getMessage(), Toast.LENGTH_LONG).show();
+                e.printStackTrace();
+            }
+
+        }
+    }
 
     /* Method to check if select items in multiple choice items */
     private boolean checkArray(boolean[] temp) {

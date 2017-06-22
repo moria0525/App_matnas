@@ -2,6 +2,10 @@ package com.example.user.app_matnas;
 
 import java.io.Serializable;
 
+/**
+ * Activity.java
+ * This class represents an object of a Activity
+ */
 public class Activity implements Serializable {
 
     private String activityName;
@@ -13,7 +17,6 @@ public class Activity implements Serializable {
     private String activityDes;
 
     public Activity() {
-
     }
 
     public Activity(String activityName, String activityType, String activityDes, String activityAge, String activityDays, String activityStart, String activityEnd) {
@@ -25,7 +28,6 @@ public class Activity implements Serializable {
         this.activityEnd = activityEnd;
         this.activityDes = activityDes;
     }
-
 
     public String getActivityName() {
         return activityName;

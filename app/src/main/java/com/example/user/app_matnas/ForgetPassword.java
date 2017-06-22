@@ -17,6 +17,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
+/*
+ * This Activity to reset password manager
+ */
+
 public class ForgetPassword extends AppCompatActivity {
 
     private EditText inputEmail;
@@ -32,15 +36,15 @@ public class ForgetPassword extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forget_password);
 
-        toolbar = (Toolbar)findViewById(R.id.toolbar);
+        //find if id's fields and init variables
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolBarText = (TextView)findViewById(R.id.toolBarText);
+        toolBarText = (TextView) findViewById(R.id.toolBarText);
         toolBarText.setText(R.string.lbl_forgot_password);
 
         inputEmail = (EditText) findViewById(R.id.email);
         btnReset = (Button) findViewById(R.id.btn_reset_password);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
-
         auth = FirebaseAuth.getInstance();
 
         btnReset.setOnClickListener(new View.OnClickListener() {
@@ -50,7 +54,7 @@ public class ForgetPassword extends AppCompatActivity {
                 String email = inputEmail.getText().toString().trim();
 
                 if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(getApplication(), "הזן את כתובת המייל שלך", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplication(), R.string.enterMail, Toast.LENGTH_LONG).show();
                     return;
                 }
 
@@ -60,12 +64,12 @@ public class ForgetPassword extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(ForgetPassword.this, "נשלח לך במייל הוראות לאיפוס סיסמא", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(ForgetPassword.this, R.string.afterReset, Toast.LENGTH_LONG).show();
                                     finish();
-                                    Intent i = new Intent(ForgetPassword.this, Activity_login_manager.class);
+                                    Intent i = new Intent(ForgetPassword.this, activity_login_manager.class);
                                     startActivity(i);
                                 } else {
-                                    Toast.makeText(ForgetPassword.this, "שגיאה, נסה שנית", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(ForgetPassword.this, R.string.error, Toast.LENGTH_LONG).show();
                                 }
 
                                 progressBar.setVisibility(View.GONE);

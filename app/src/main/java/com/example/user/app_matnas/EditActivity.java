@@ -28,6 +28,9 @@ import java.util.List;
 
 import static com.example.user.app_matnas.FirebaseHelper.*;
 
+/*This Activity to edit Business in app
+ */
+
 public class EditActivity extends AppCompatActivity {
     public List<Activity> actList;
     String name;
@@ -42,8 +45,7 @@ public class EditActivity extends AppCompatActivity {
     }
 
 
-    public EditActivity(Context context, String active)
-    {
+    public EditActivity(Context context, String active) {
         this.context = context;
         this.active = active;
     }
@@ -54,10 +56,8 @@ public class EditActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
     }
 
-
-    public void getDB()
-    {
-
+    //This method get data of DB and set in list and list set in dialog
+    public void getDB() {
         actList = new ArrayList<>();
         showProgressDialog();
         mDatabaseRef.child(DB_ACTIVITIES).addListenerForSingleValueEvent
@@ -80,13 +80,12 @@ public class EditActivity extends AppCompatActivity {
                 );
     }
 
-    private void showDialog()
-    {
+    //show list in dialog
+    private void showDialog() {
 
         list = new String[actList.size()];
-        if (list.length == 0)
-        {
-            Toast.makeText(context, "לא נמצאו חוגים",Toast.LENGTH_LONG).show();
+        if (list.length == 0) {
+            Toast.makeText(context, R.string.noActivity, Toast.LENGTH_LONG).show();
             finish();
             return;
         }
@@ -113,10 +112,10 @@ public class EditActivity extends AppCompatActivity {
 
                 if (active.equals("delete")) {
                     mDatabaseRef.child(DB_ACTIVITIES).child(name).removeValue();
-                    Toast.makeText(context, "החוג נמחק בהצלחה",Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, R.string.successDeleteActivity, Toast.LENGTH_LONG).show();
                     dialogInterface.dismiss();
                     finish();
-                } else if(active.equals("edit")) {
+                } else if (active.equals("edit")) {
                     Activity activity = actList.get(selectedPosition);
                     intent = new Intent(context, AddActivity.class);
                     intent.putExtra("edit", activity);
@@ -131,15 +130,17 @@ public class EditActivity extends AppCompatActivity {
 
     }
 
+    //This method show progress dialog until loading all data
     private void showProgressDialog() {
         if (mProgressDialog == null) {
             mProgressDialog = new ProgressDialog(context);
-            mProgressDialog.setMessage("עוד רגע..");
+            mProgressDialog.setMessage(getString(R.string.loading));
             mProgressDialog.setIndeterminate(true);
         }
         mProgressDialog.show();
     }
 
+    //This method dismiss progress dialog if show after loading all data
     private void hideProgressDialog() {
         if (mProgressDialog != null && mProgressDialog.isShowing()) {
             mProgressDialog.dismiss();

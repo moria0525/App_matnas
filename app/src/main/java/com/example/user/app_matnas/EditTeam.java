@@ -7,27 +7,20 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.app.WindowDecorActionBar;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.user.app_matnas.FirebaseHelper.*;
+
+/*This Activity to edit Team in app
+ */
+
 
 public class EditTeam extends AppCompatActivity {
     public List<Team> teamList;
@@ -42,9 +35,7 @@ public class EditTeam extends AppCompatActivity {
 
     }
 
-
-    public EditTeam(Context context, String active)
-    {
+    public EditTeam(Context context, String active) {
         this.context = context;
         this.active = active;
     }
@@ -55,9 +46,8 @@ public class EditTeam extends AppCompatActivity {
         super.onCreate(savedInstanceState);
     }
 
-
-    public void getDB()
-    {
+    //This method get data of DB and set in list and list set in dialog
+    public void getDB() {
 
         teamList = new ArrayList<>();
         showProgressDialog();
@@ -81,13 +71,11 @@ public class EditTeam extends AppCompatActivity {
                 );
     }
 
-    private void showDialog()
-    {
+    private void showDialog() {
 
         list = new String[teamList.size()];
-        if (list.length == 0)
-        {
-            Toast.makeText(context, "לא נמצאו אנשי צוות",Toast.LENGTH_LONG).show();
+        if (list.length == 0) {
+            Toast.makeText(context, R.string.noTeam, Toast.LENGTH_LONG).show();
             finish();
             return;
         }
@@ -115,10 +103,10 @@ public class EditTeam extends AppCompatActivity {
                 if (active.equals("delete")) {
                     mDatabaseRef.child(DB_TEAM).child(name).removeValue();
                     mStorageRef.child(ST_STORAGE_TEAM).child(name).delete();
-                    Toast.makeText(context, "איש הצוות נמחק בהצלחה",Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, R.string.successDeleteTeam, Toast.LENGTH_LONG).show();
                     dialogInterface.dismiss();
                     finish();
-                } else if(active.equals("edit")) {
+                } else if (active.equals("edit")) {
                     Team team = teamList.get(selectedPosition);
                     intent = new Intent(context, AddTeam.class);
                     intent.putExtra("edit", team);
@@ -132,16 +120,18 @@ public class EditTeam extends AppCompatActivity {
         dialog.show();
 
     }
+    //This method show progress dialog until loading all data
 
     private void showProgressDialog() {
         if (mProgressDialog == null) {
             mProgressDialog = new ProgressDialog(context);
-            mProgressDialog.setMessage("עוד רגע..");
+            mProgressDialog.setMessage(getString(R.string.loading));
             mProgressDialog.setIndeterminate(true);
         }
         mProgressDialog.show();
     }
 
+    //This method dismiss progress dialog if show after loading all data
     private void hideProgressDialog() {
         if (mProgressDialog != null && mProgressDialog.isShowing()) {
             mProgressDialog.dismiss();

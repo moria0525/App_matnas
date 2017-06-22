@@ -3,6 +3,11 @@ package com.example.user.app_matnas;
 import java.io.Serializable;
 import java.util.Arrays;
 
+/**
+ * Team.java
+ * This class represents an object of a Team
+ */
+
 public class Team implements Serializable {
 
     private String teamName;

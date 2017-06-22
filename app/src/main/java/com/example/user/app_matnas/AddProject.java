@@ -32,6 +32,11 @@ import java.io.InputStream;
 import static com.example.user.app_matnas.FirebaseHelper.*;
 
 
+/*
+ * This Activity to add new Project to app
+ */
+
+
 public class AddProject extends AppCompatActivity {
 
     private Toolbar toolbar;
@@ -127,7 +132,7 @@ public class AddProject extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select image"), GALLERY_CODE);
+        startActivityForResult(Intent.createChooser(intent, getString(R.string.selectImage)), GALLERY_CODE);
     }
 
     @Override
@@ -142,11 +147,11 @@ public class AddProject extends AppCompatActivity {
                 logo.setImageBitmap(bitmap);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
-                Toast.makeText(AddProject.this, "שגיאה", Toast.LENGTH_LONG).show();
+                Toast.makeText(AddProject.this, R.string.error, Toast.LENGTH_LONG).show();
             }
 
         } else {
-            Toast.makeText(AddProject.this, "לא בחרת לוגו של הפרויקט", Toast.LENGTH_LONG).show();
+            Toast.makeText(AddProject.this, R.string.logoProject, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -168,7 +173,7 @@ public class AddProject extends AppCompatActivity {
             flag = false;
         }
         if (p_edit == null && imgUri == null) {
-            Toast.makeText(getApplicationContext(), "לא בחרת לוגו של הפרויקט", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), R.string.logoProject, Toast.LENGTH_LONG).show();
             flag = false;
         }
 
@@ -180,10 +185,10 @@ public class AddProject extends AppCompatActivity {
                 try {
                     mDatabaseRef.child(DB_PROJECTS).child(s_name).setValue(project);
                 } catch (DatabaseException e) {
-                    Toast.makeText(getApplicationContext(), "שגיאה: "+e.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), R.string.error + " " + e.getMessage(), Toast.LENGTH_LONG).show();
                     e.printStackTrace();
                 }
-                Toast.makeText(getApplicationContext(), "הפרוייקט התעדכן בהצלחה", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), R.string.successUpdateProject, Toast.LENGTH_LONG).show();
                 finish();
             } else {
                 ref.putFile(imgUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -195,10 +200,10 @@ public class AddProject extends AppCompatActivity {
                         try {
                             mDatabaseRef.child(DB_PROJECTS).child(s_name).setValue(project);
                         } catch (DatabaseException e) {
-                            Toast.makeText(getApplicationContext(), "שגיאה: "+e.getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), R.string.error + " " + e.getMessage(), Toast.LENGTH_LONG).show();
                             e.printStackTrace();
                         }
-                        Toast.makeText(getApplicationContext(), "הפרוייקט נשמר בהצלחה", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), R.string.successAddProject, Toast.LENGTH_LONG).show();
                         finish();
 
                     }
@@ -208,8 +213,8 @@ public class AddProject extends AppCompatActivity {
                             public void onFailure(@NonNull Exception e) {
 
                                 //Display err toast msg
-                                Toast.makeText(getApplicationContext(), "שגיאה:" + e.getMessage(), Toast.LENGTH_LONG).show();
-                }
+                                Toast.makeText(getApplicationContext(), R.string.error + " " + e.getMessage(), Toast.LENGTH_LONG).show();
+                            }
                         });
             }
         }

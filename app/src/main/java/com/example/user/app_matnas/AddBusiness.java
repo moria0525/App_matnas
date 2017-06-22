@@ -1,10 +1,8 @@
 package com.example.user.app_matnas;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -12,20 +10,14 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.text.Html;
-import android.text.Spanned;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,38 +28,32 @@ import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
 import com.google.android.gms.location.places.ui.PlaceSelectionListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseException;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
 
-public class AddBusiness extends AppCompatActivity{
+import static com.example.user.app_matnas.FirebaseHelper.*;
+
+
+/*
+ * This Activity to add new Business to app
+ */
+
+public class AddBusiness extends AppCompatActivity {
 
     private static final String TAG = "google: ";
-    private Context context;
     private Toolbar toolbar;
     private TextView toolBarText;
     private EditText name, category, description, phone, mail;
     private ImageView image;
-    private DatabaseReference mDatabase;
     private Business b_edit;
     private Business business;
     private Place _place;
-    public static final int GALLERY_CODE = 1;
     private Uri imgUri;
-    private StorageReference mStorageRef;
-    public static String FB_STORAGE_BUSINESS = "business";
-    PlaceAutocompleteFragment autocompleteFragment;
+    private PlaceAutocompleteFragment autocompleteFragment;
     double latitude;
     double longitude;
 
@@ -78,14 +64,10 @@ public class AddBusiness extends AppCompatActivity{
         setContentView(R.layout.activity_add_business);
 
         //init screen and variables
-        context = getApplicationContext();
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolBarText = (TextView) findViewById(R.id.toolBarText);
         toolBarText.setText(getResources().getStringArray(R.array.actions)[14]);
-        mDatabase = FirebaseDatabase.getInstance().getReference("business");
-        mStorageRef = FirebaseStorage.getInstance().getReference();
-        //find id fields
         name = (EditText) findViewById(R.id.et_name_bus);
         category = (EditText) findViewById(R.id.et_category_bus);
         description = (EditText) findViewById(R.id.et_des_bus);
@@ -93,7 +75,7 @@ public class AddBusiness extends AppCompatActivity{
         autocompleteFragment = (PlaceAutocompleteFragment)
                 getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
 
-        autocompleteFragment.setHint("הקלד כתובת מלאה של העסק");
+        autocompleteFragment.setHint(getString(R.string.enterAddress));
 
 
         autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
@@ -165,8 +147,7 @@ public class AddBusiness extends AppCompatActivity{
         alertDialogBuilder.setPositiveButton(getResources().getString(R.string.yes),
                 new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface arg0, int arg1)
-                    {
+                    public void onClick(DialogInterface arg0, int arg1) {
                         arg0.dismiss();
                         backToManagerScreen();
                     }
@@ -202,11 +183,11 @@ public class AddBusiness extends AppCompatActivity{
                 image.setImageBitmap(bitmap);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
-                Toast.makeText(AddBusiness.this, "קרתה שגיאה, נסה שנית", Toast.LENGTH_LONG).show();
+                Toast.makeText(AddBusiness.this, R.string.error, Toast.LENGTH_LONG).show();
             }
 
         } else {
-            Toast.makeText(AddBusiness.this, "לא בחרת לוגו של העסק", Toast.LENGTH_LONG).show();
+            Toast.makeText(AddBusiness.this, R.string.logoBusiness, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -215,64 +196,51 @@ public class AddBusiness extends AppCompatActivity{
     private void saveDB() {
 
         boolean flag = true;
-        //TODO TAKE LONGLAT NEW IF CLICK ADDRESS EDIT
-        //todo delete image IF DELETE ESEK
         final String s_name = name.getText().toString();
         final String s_description = description.getText().toString();
         final String s_category = category.getText().toString();
         final String s_phone = phone.getText().toString();
         final String s_mail = mail.getText().toString();
 
-        if(TextUtils.isEmpty(s_name))
-        {
+        if (TextUtils.isEmpty(s_name)) {
             name.setError("");
             flag = false;
         }
-        if(TextUtils.isEmpty(s_description))
-        {
+        if (TextUtils.isEmpty(s_description)) {
             description.setError("");
             flag = false;
         }
-        if(TextUtils.isEmpty(s_category))
-        {
+        if (TextUtils.isEmpty(s_category)) {
             category.setError("");
             flag = false;
         }
-        if(TextUtils.isEmpty(s_phone))
-        {
+        if (TextUtils.isEmpty(s_phone)) {
             phone.setError("");
             flag = false;
         }
-        if(TextUtils.isEmpty(s_mail))
-        {
+        if (TextUtils.isEmpty(s_mail)) {
             mail.setError("");
             flag = false;
         }
-//        if(_place == null)
-//        {
-//            Toast.makeText(context,"לא בחרת כתובת של העסק",Toast.LENGTH_LONG).show();
-//            flag = false;
-//        }
-        if (b_edit == null && imgUri == null)
-        {
+        if (b_edit == null && imgUri == null) {
             Toast.makeText(getApplicationContext(), "לא בחרת לוגו של העסק", Toast.LENGTH_LONG).show();
             flag = false;
         }
 
 
-        if(flag) {
+        if (flag) {
             //Get the storage reference
-            StorageReference ref = mStorageRef.child(FB_STORAGE_BUSINESS).child(s_name);//CHILD?
+            StorageReference ref = mStorageRef.child(ST_STORAGE_BUSINESS).child(s_name);//CHILD?
 
             if (b_edit != null) {
                 business = new Business(s_name, s_category, s_description, s_phone, s_mail, b_edit.getBusinessImage(), this.latitude, longitude);
                 try {
-                    mDatabase.child(s_category).child(s_name).setValue(business);
+                    mDatabaseRef.child(DB_BUSINESS).child(s_category).child(s_name).setValue(business);
                 } catch (DatabaseException e) {
-                    Toast.makeText(getApplicationContext(), "שגיאה: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), R.string.error + " " + e.getMessage(), Toast.LENGTH_LONG).show();
                     e.printStackTrace();
                 }
-                Toast.makeText(getApplicationContext(), "פרטי בית העסק עודכנו בהצלחה", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), R.string.successUpdateBusiness, Toast.LENGTH_LONG).show();
                 backToManagerScreen();
             } else {
                 ref.putFile(imgUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -281,12 +249,12 @@ public class AddBusiness extends AppCompatActivity{
                         //add data to DB
                         business = new Business(s_name, s_category, s_description, s_phone, s_mail, taskSnapshot.getDownloadUrl().toString(), _place.getLatLng().latitude, _place.getLatLng().longitude);
                         try {
-                            mDatabase.child(s_category).child(s_name).setValue(business);
+                            mDatabaseRef.child(DB_BUSINESS).child(s_category).child(s_name).setValue(business);
                         } catch (DatabaseException e) {
-                            Toast.makeText(getApplicationContext(), "שגיאה: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), R.string.error + " " + e.getMessage(), Toast.LENGTH_LONG).show();
                             e.printStackTrace();
                         }
-                        Toast.makeText(getApplicationContext(), "פרטי בית העסק נשמרו בהצלחה", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), R.string.successAddBusiness, Toast.LENGTH_LONG).show();
                         finish();
 
                     }
@@ -296,7 +264,7 @@ public class AddBusiness extends AppCompatActivity{
                             public void onFailure(@NonNull Exception e) {
 
                                 //Display err toast msg
-                                Toast.makeText(getApplicationContext(), "שגיאה: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), R.string.error + " " + e.getMessage(), Toast.LENGTH_LONG).show();
                             }
                         });
             }

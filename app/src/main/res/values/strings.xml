@@ -25,7 +25,6 @@
     <string name="form_message">ההודעה שלך*</string>
     <string name="form_btn">שלח</string>
 
-    <!-- Login Screen -->
 
     <string name="minimum_password">הסיסמא קצרה מדי, הכנס 6 תווים לפחות!</string>
     <string name="auth_failed">האימות נכשל, בדוק שוב את האימייל או הסיסמא</string>
@@ -45,7 +44,7 @@
 
     <!--Manager Screen-->
     <string-array name="actions">
-        <item>העלאת תמונות לגלרייה</item>
+        <item>העלאת תמונות לגלריה</item>
         <item>הוספת חדשות</item>
         <item>הוספת חוג חדש</item>
         <item>עריכת חוג קיים</item>
@@ -144,6 +143,69 @@
 
     <string name="editBusiness">בחר עסק</string>
     <string name="editCategory">בחר קטגוריה אליה העסק שייך</string>
+    <string name="workingHours">שעות פעילות המרכז:ראשון עד חמישי בין השעות 19:00–8:30</string>
+    <string name="loadingActivities">טוען את החוגים..עוד רגע..</string>
+    <string name="loadingCategories">טוען את הקטגוריות..עוד רגע..</string>
+    <string name="loadingBusiness">טוען את העסקים..עוד רגע..</string>
+    <string name="loadingAlbums">טוען את האלבומים..עוד רגע..</string>
+    <string name="loadingNews">עוד רגע..</string>
+    <string name="loadingProject">טוען את הפרויקטים..עוד רגע..</string>
+    <string name="loadingTeam">טוען את אנשי הצוות..עוד רגע..</string>
+    <string name="loadingWorkShop">טוען את הסדנאות..עוד רגע..</string>
+    <string name="loading">עוד רגע..</string>
+    <string name="freeSearch">חיפוש חופשי</string>
+    <string name="nameSearch">חיפוש לפי שם</string>
+    <string name="title_register_business">רשימת בעלי עסקים בקטמונים</string>
+    <string name="errorSelectImgages">לא נבחרו תמונות להעלאה</string>
+    <string name="selectImage">בחר תמונות</string>
+    <string name="msgInfo">לחץ על התמונה הראשונה בלחיצה ארוכה</string>
+    <string name="select">נבחרו עד כה:</string>
+    <string name="image">תמונות</string>
+    <string name="upload">מעלה את</string>
+    <string name="selected">התמונות שנבחרו</string>
+    <string name="successUpload">התמונות עלו בהצלחה</string>
+    <string name="selectImages">בחר תמונות להעלאה</string>
+    <string name="uploadImage">מעלה </string>
+    <string name="enterMail">הקלד את כתובת האימייל שלך</string>
+    <string name="enterPass">הקלד את הסיסמא שלך</string>
+    <string name="error">שגיאה:</string>
+    <string name="before">לפני</string>
+    <string name="hour">שעות</string>
+    <string name="minute">דקות</string>
+    <string name="second">שניות</string>
+    <string name="day">ימים</string>
+    <string name="contact">פניה אישית ל</string>
 
 
+    <string name="successUpdateActivity">החוג התעדכן בהצלחה</string>
+    <string name="successUpdateProject">הפרויקט התעדכן בהצלחה</string>
+    <string name="successUpdateWorkShop">הסדנא התעדכנה בהצלחה</string>
+    <string name="successUpdateTeam">איש הצוות התעדכן בהצלחה</string>
+    <string name="successUpdateBusiness">בית העסק התעדכן בהצלחה</string>
+
+    <string name="successAddActivity">החוג נוסף בהצלחה</string>
+    <string name="successAddProject">הפרויקט נוסף בהצלחה</string>
+    <string name="successAddWorkShop">הסדנא נוספה בהצלחה</string>
+    <string name="successAddTeam">איש הצוות נוסף בהצלחה</string>
+    <string name="successAddBusiness">בית העסק נוסף בהצלחה</string>
+
+    <string name="successDeleteActivity">החוג נמחק בהצלחה</string>
+    <string name="successDeleteProject">הפרויקט נמחק בהצלחה</string>
+    <string name="successDeleteWorkShop">הסדנא נמחקה בהצלחה</string>
+    <string name="successDeleteTeam">איש הצוות נמחק בהצלחה</string>
+    <string name="successDeleteBusiness">בית העסק נמחק בהצלחה</string>
+
+    <string name="noActivity">לא נמצאו חוגים</string>
+    <string name="noProject">לא נמצאו פרויקטים</string>
+    <string name="noWorkShop">לא נמצאו סדנאות</string>
+    <string name="noTeam">לא נמצאו אנשי צוות</string>
+    <string name="noBusiness">לא נמצאו עסקים</string>
+
+    <string name="enterAddress">הקלד כתובת מלאה של העסק</string>
+    <string name="afterReset">נשלח לך במייל הוראות לאיפוס סיסמא</string>
+
+    <string name="logoProject">לא בחרת לוגו של הפרויקט</string>
+    <string name="logoBusiness">לא בחרת לוגו של העסק</string>
+    <string name="imageTeam">לא בחרת תמונה של איש הצוות</string>
+    <string name="selectDate">בחר תאריך</string>
 </resources>

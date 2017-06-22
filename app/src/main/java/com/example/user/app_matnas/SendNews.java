@@ -48,8 +48,8 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.Locale;
 
-import static com.example.user.app_matnas.MainAdapter.countNotification;
-import static com.example.user.app_matnas.MainAdapter.notification;
+import static com.example.user.app_matnas.AdapterMain.countNotification;
+import static com.example.user.app_matnas.AdapterMain.notification;
 
 public class SendNews extends AppCompatActivity {
     private EditText content;
@@ -332,7 +332,7 @@ public class SendNews extends AppCompatActivity {
         @Override
         protected void onPostExecute(Bitmap result) {
             Notification noti;
-            Intent intent = new Intent(SendNews.this, Activity_news.class);
+            Intent intent = new Intent(SendNews.this, activity_news.class);
             PendingIntent pIntent = PendingIntent.getActivity(SendNews.this, (int) System.currentTimeMillis(), intent, 0);
 
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {

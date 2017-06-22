@@ -5,7 +5,7 @@
     android:id="@+id/albums"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.user.app_matnas.Activity_gallery">
+    tools:context="com.example.user.app_matnas.activity_gallery">
 
     <LinearLayout
         android:id="@+id/layout_main"
