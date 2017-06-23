@@ -25,10 +25,9 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/tv_WDate"
             android:layout_gravity="left"
-            android:text="fdszvweds"
             android:textAlignment="center"
-            android:textColor="#000"
-            android:textSize="16sp" />
+            android:textColor="@color/black"
+            android:textSize="@dimen/small" />
 
         <Button
             android:id="@+id/btn_workShop"
@@ -36,9 +35,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:text="להרשמה"
             android:background="@color/yellow"
-            android:textColor="@color/black"/>
+            android:text="@string/toRegister"
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/tv_WDes"
@@ -54,9 +53,8 @@
             android:layout_marginRight="12dp"
             android:layout_marginTop="13dp"
             android:maxWidth="150dip"
-            android:text="fdszvweds"
             android:textAlignment="center"
-            android:textColor="#000" />
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/tv_WDate"
@@ -65,12 +63,10 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_gravity="left"
-            android:inputType="text"
             android:maxWidth="150dip"
-            android:text="efds"
             android:textAlignment="center"
-            android:textColor="#000"
-            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/small"
             android:textStyle="bold" />
 
     </RelativeLayout>

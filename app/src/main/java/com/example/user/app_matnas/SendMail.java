@@ -104,7 +104,7 @@ public class SendMail extends AsyncTask<Void, Void, Void> {
                 new javax.mail.Authenticator() {
                     //Authenticating the password
                     protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(context.getString(R.string.mail), context.getString(R.string.p));
+                        return new PasswordAuthentication(Config.EMAIL, Config.P);
                     }
                 });
 
@@ -113,9 +113,9 @@ public class SendMail extends AsyncTask<Void, Void, Void> {
             MimeMessage mm = new MimeMessage(session);
 
             //Setting sender address
-            mm.setFrom(new InternetAddress(context.getString(R.string.mail)));
+            mm.setFrom(new InternetAddress(Config.EMAIL));
             //Adding receiver
-            mm.addRecipient(Message.RecipientType.TO, new InternetAddress(context.getString(R.string.p)));
+            mm.addRecipient(Message.RecipientType.TO, new InternetAddress(Config.P));
             //Adding subject
             mm.setSubject(subject);
             //Adding content
@@ -129,5 +129,10 @@ public class SendMail extends AsyncTask<Void, Void, Void> {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public class Config {
+        public static final String EMAIL = "uinpat@gmail.com";
+        public static final String P = "uinpat123";
     }
 }

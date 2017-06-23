@@ -7,7 +7,7 @@
     <string name="text_about">אודות</string>
     <string name="text_news">מה חדש במרכז</string>
     <string name="text_business">עסקים בשכונה</string>
-    <string name="text_projects">פרוייקטים</string>
+    <string name="text_projects">פרויקטים</string>
     <string name="text_activities">חוגים</string>
     <string name="text_workshops">סדנאות</string>
     <string name="text_team">צוות המרכז</string>
@@ -49,9 +49,9 @@
         <item>הוספת חוג חדש</item>
         <item>עריכת חוג קיים</item>
         <item>מחיקת חוג קיים</item>
-        <item>הוספת פרוייקט חדש</item>
-        <item>עריכת פרוייקט קיים</item>
-        <item>מחיקת פרוייקט קיים</item>
+        <item>הוספת פרויקט חדש</item>
+        <item>עריכת פרויקט קיים</item>
+        <item>מחיקת פרויקט קיים</item>
         <item>הוספת סדנא חדשה</item>
         <item>עריכת סדנא קיימת</item>
         <item>מחיקת סדנא קיימת</item>
@@ -119,8 +119,6 @@
     <string name="selectDays">בחר ימים</string>
     <string name="selectTime">בחר שעה</string>
 
-    <string name="mail">uinpat@gmail.com</string>
-    <string name="p">uinpat123</string>
     <string name="err_msg_fname">הכנס/י שם פרטי</string>
     <string name="err_msg_lname">הכנס/י שם משפחה</string>
     <string name="err_msg_neighborhood">הכנס/י שם שכונה</string>
@@ -132,9 +130,9 @@
     <string name="hint_neighborhood">שכונת מגורים</string>
     <string name="hint_phone">טלפון נייד</string>
     <string name="clickCancelMessage">האם לצאת מבלי לשלוח את ההודעה?</string>
-    <string name="clickCancelProject">האם לצאת מבלי לשמור את הפרוייקט?</string>
-    <string name="editProject">בחר פרוייקט</string>
-    <string name="joinProject">להצטרפות לפרוייקט</string>
+    <string name="clickCancelProject">האם לצאת מבלי לשמור את הפרויקט?</string>
+    <string name="editProject">בחר פרויקט</string>
+    <string name="joinProject">להצטרפות לפרויקט</string>
     <string name="close">סגור</string>
     <string name="clickCancelTeam">האם לצאת מבלי לשמור את איש הצוות?</string>
     <string name="editTeam">בחר איש צוות</string>
@@ -223,5 +221,40 @@
     <string name="noImage">לא בחרת תמונה</string>
     <string name="addNews">מוסיף את החדשה</string>
 
+    <string name="btn_selectType">לחץ כאן לבחירת סוג החוג</string>
+    <string name="btn_selectDays">לחץ כאן לבחירת ימי החוג</string>
+    <string name="nameActivity">שם החוג</string>
+    <string name="desActivity">תיאור החוג</string>
+    <string name="age">גילאים</string>
+    <string name="timeStart">שעת התחלה</string>
+    <string name="timeEnd">שעת סיום</string>
 
+    <string name="btn_selectLogoBusiness">לחץ כאן לבחירת לוגו של העסק</string>
+    <string name="des">תיאור קצר</string>
+
+    <string name="nameBusiness">שם העסק</string>
+    <string name="categoryBusiness">קטוגריית העסק</string>
+    <string name="text_clickImage">לחץ על התמונה לבחירת תמונות להעלאה לאלבום</string>
+    <string name="nameAlbum">שם האלבום</string>
+    <string name="registerBusiness">בעל עסק בקטמונים? לחץ כאן</string>
+    <string name="symbol">–</string>
+    <string name="toRegister">להרשמה</string>
+
+    <string name="share">שתף</string>
+    <string name="call">חייג</string>
+    <string name="sms">שלח סמס</string>
+    <string name="waze">נווט</string>
+
+    <string name="btn_selectNews">לחץ כאן לבחירת תמונה/פלייר מהמכשיר</string>
+    <string name="news">תוכן ההודעה</string>
+    <string name="push">עם הודעת פוש</string>
+    <string name="noPush">בלי הודעת פוש</string>
+    <string name="btn_selectProject">לחץ כאן לבחירת לוגו הפרויקט</string>
+    <string name="desProject">תיאור הפרויקט</string>
+    <string name="nameProject">שם הפרויקט</string>
+    <string name="btn_selectTeam">לחץ כאן לבחירת תמונת איש צוות</string>
+    <string name="nameTeam">שם איש צוות</string>
+    <string name="role">תפקיד</string>
+    <string name="emailITeam">כתובת אימייל ליצירת קשר</string>
+    <string name="nameWorkShop">שם הסדנא</string>
 </resources>

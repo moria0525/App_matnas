@@ -8,12 +8,12 @@
         android:id="@+id/btn_selectLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="לחץ כאן לבחירת לוגו הפרוייקט"
-        android:onClick="onClickProjectLogo"
-        android:layout_alignTop="@+id/imageProject"
         android:layout_alignLeft="@+id/et_des_project"
         android:layout_alignStart="@+id/et_des_project"
-        android:layout_marginTop="34dp" />
+        android:layout_alignTop="@+id/imageProject"
+        android:layout_marginTop="34dp"
+        android:onClick="onClickProjectLogo"
+        android:text="@string/btn_selectProject" />
 
     <LinearLayout
         android:id="@+id/layout_main"
@@ -33,42 +33,42 @@
         android:id="@+id/et_des_project"
         android:layout_width="300dp"
         android:layout_height="200dp"
-        android:ems="10"
-        android:hint="תיאור הפרוייקט"
-        android:inputType="textMultiLine"
-        android:gravity="top"
-        android:layout_below="@+id/et_name_project"
-        android:layout_alignLeft="@+id/et_name_project"
-        android:layout_alignStart="@+id/et_name_project"
         android:layout_above="@+id/imageProject"
+        android:layout_alignLeft="@+id/et_name_project"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignStart="@+id/et_name_project"
+        android:layout_below="@+id/et_name_project"
+        android:ems="10"
+        android:gravity="top"
+        android:hint="@string/desProject"
+        android:inputType="textMultiLine" />
 
 
     <ImageView
         android:id="@+id/imageProject"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:src="@drawable/gallery_event"
-        android:layout_marginBottom="13dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="13dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
-        android:layout_marginEnd="24dp" />
+        android:src="@drawable/gallery_event" />
 
     <EditText
         android:id="@+id/et_name_project"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="23dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="שם הפרוייקט"
-        android:layout_below="@+id/layout_main"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_below="@+id/layout_main"
         android:layout_marginLeft="12dp"
-        android:layout_marginStart="12dp" />
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="23dp"
+        android:ems="10"
+        android:hint="@string/nameProject"
+        android:inputType="textPersonName" />
 
 </RelativeLayout>

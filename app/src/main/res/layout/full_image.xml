@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="16dp"
-        android:src="@drawable/download"
-        android:onClick="onClickDownload"/>
+        android:onClick="onClickDownload"
+        android:src="@drawable/download" />
 
 </android.support.design.widget.CoordinatorLayout>

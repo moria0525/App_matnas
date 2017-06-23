@@ -7,21 +7,10 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.wallet.Wallet;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -29,12 +18,18 @@ import java.util.List;
 
 import static com.example.user.app_matnas.FirebaseHelper.*;
 
+
+
+
+/*This Activity to edit WorkShop in app
+ */
+
 public class EditWorkShop extends AppCompatActivity {
     public List<WorkShop> wsList;
-    String name;
-    String list[];
-    String active;
-    Context context;
+    private String name;
+    private String list[];
+    private String active;
+    private Context context;
     private ProgressDialog mProgressDialog;
 
 
@@ -43,8 +38,7 @@ public class EditWorkShop extends AppCompatActivity {
     }
 
 
-    public EditWorkShop(Context context, String active)
-    {
+    public EditWorkShop(Context context, String active) {
         this.context = context;
         this.active = active;
     }
@@ -56,8 +50,8 @@ public class EditWorkShop extends AppCompatActivity {
     }
 
 
-    public void getDB()
-    {
+    //This method get data of DB and set in list and list set in dialog
+    public void getDB() {
 
         wsList = new ArrayList<>();
         showProgressDialog();
@@ -81,13 +75,12 @@ public class EditWorkShop extends AppCompatActivity {
                 );
     }
 
-    private void showDialog()
-    {
+    //This method to show dialog list
+    private void showDialog() {
 
         list = new String[wsList.size()];
-        if (list.length == 0)
-        {
-            Toast.makeText(context, "לא נמצאו סדנאות",Toast.LENGTH_LONG).show();
+        if (list.length == 0) {
+            Toast.makeText(context, R.string.noWorkShop, Toast.LENGTH_LONG).show();
             finish();
             return;
         }
@@ -114,10 +107,10 @@ public class EditWorkShop extends AppCompatActivity {
 
                 if (active.equals("delete")) {
                     mDatabaseRef.child(DB_WORKSHOP).child(name).removeValue();
-                    Toast.makeText(context, "הסדנא נמחקה בהצלחה",Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, R.string.successDeleteWorkShop, Toast.LENGTH_LONG).show();
                     dialogInterface.dismiss();
                     finish();
-                } else if(active.equals("edit")) {
+                } else if (active.equals("edit")) {
                     WorkShop workShop = wsList.get(selectedPosition);
                     intent = new Intent(context, AddWorkShop.class);
                     intent.putExtra("edit", workShop);
@@ -132,15 +125,17 @@ public class EditWorkShop extends AppCompatActivity {
 
     }
 
+    //This method show progress dialog until loading all data
     private void showProgressDialog() {
         if (mProgressDialog == null) {
             mProgressDialog = new ProgressDialog(context);
-            mProgressDialog.setMessage("עוד רגע..");
+            mProgressDialog.setMessage(context.getString(R.string.loadingWorkShop));
             mProgressDialog.setIndeterminate(true);
         }
         mProgressDialog.show();
     }
 
+    //This method dismiss progress dialog if show after loading all data
     private void hideProgressDialog() {
         if (mProgressDialog != null && mProgressDialog.isShowing()) {
             mProgressDialog.dismiss();

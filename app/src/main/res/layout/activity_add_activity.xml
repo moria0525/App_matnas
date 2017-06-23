@@ -8,14 +8,14 @@
         android:id="@+id/days"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="onClickDays"
-        android:text="לחץ כאן לבחירת ימי החוג"
-        android:layout_marginTop="26dp"
-        android:layout_below="@+id/et_age_activity"
+        android:layout_alignEnd="@+id/et_age_activity"
         android:layout_alignLeft="@+id/et_age_activity"
-        android:layout_alignStart="@+id/et_age_activity"
         android:layout_alignRight="@+id/et_age_activity"
-        android:layout_alignEnd="@+id/et_age_activity" />
+        android:layout_alignStart="@+id/et_age_activity"
+        android:layout_below="@+id/et_age_activity"
+        android:layout_marginTop="26dp"
+        android:onClick="onClickDays"
+        android:text="@string/btn_selectDays" />
 
     <LinearLayout
         android:id="@+id/layout_main"
@@ -35,40 +35,40 @@
         android:id="@+id/et_name_activity"
         android:layout_width="210dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
-        android:ems="10"
-        android:hint="שם החוג"
-        android:inputType="textPersonName"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/layout_main"
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
-        android:layout_below="@+id/layout_main"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_marginTop="22dp"
+        android:ems="10"
+        android:hint="@string/nameActivity"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/et_age_activity"
         android:layout_width="210dp"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="גילאים"
-        android:inputType="textPersonName"
-        android:layout_below="@+id/type"
         android:layout_alignLeft="@+id/type"
         android:layout_alignStart="@+id/type"
-        android:layout_marginTop="28dp" />
+        android:layout_below="@+id/type"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:hint="@string/age"
+        android:inputType="textPersonName" />
 
 
     <TableRow
         android:id="@+id/tableRow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
+        android:layout_alignLeft="@+id/days"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignStart="@+id/days"
         android:layout_alignTop="@+id/days"
         android:layout_marginTop="68dp"
-        android:layout_alignLeft="@+id/days"
-        android:layout_alignStart="@+id/days"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true">
+        android:gravity="center_horizontal">
 
         <EditText
             android:id="@+id/timeStart"
@@ -83,7 +83,7 @@
             android:layout_weight="1"
             android:ems="10"
             android:focusable="false"
-            android:hint="שעת התחלה"
+            android:hint="@string/timeStart"
             android:onClick="ClickOnTime" />
 
 
@@ -102,7 +102,7 @@
             android:layout_weight="1"
             android:ems="10"
             android:focusable="false"
-            android:hint="שעת סיום"
+            android:hint="@string/timeEnd"
             android:onClick="ClickOnTime" />
 
     </TableRow>
@@ -111,25 +111,25 @@
         android:id="@+id/description"
         android:layout_width="290dp"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:maxLength="30"
-        android:hint="תיאור החוג"
-        android:inputType="textPersonName"
         android:layout_alignLeft="@+id/tableRow"
         android:layout_alignStart="@+id/tableRow"
-        android:layout_below="@+id/tableRow" />
+        android:layout_below="@+id/tableRow"
+        android:ems="10"
+        android:hint="@string/desActivity"
+        android:inputType="textPersonName"
+        android:maxLength="30" />
 
     <Button
         android:id="@+id/type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="לחץ כאן לבחירת סוג החוג"
-        android:onClick="onClickType"
-        android:layout_marginTop="29dp"
-        android:layout_below="@+id/et_name_activity"
+        android:layout_alignEnd="@+id/et_name_activity"
         android:layout_alignLeft="@+id/et_name_activity"
-        android:layout_alignStart="@+id/et_name_activity"
         android:layout_alignRight="@+id/et_name_activity"
-        android:layout_alignEnd="@+id/et_name_activity" />
+        android:layout_alignStart="@+id/et_name_activity"
+        android:layout_below="@+id/et_name_activity"
+        android:layout_marginTop="29dp"
+        android:onClick="onClickType"
+        android:text="@string/btn_selectType" />
 
 </RelativeLayout>

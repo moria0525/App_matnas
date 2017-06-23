@@ -120,12 +120,12 @@ public class EditTeam extends AppCompatActivity {
         dialog.show();
 
     }
-    //This method show progress dialog until loading all data
 
+    //This method show progress dialog until loading all data
     private void showProgressDialog() {
         if (mProgressDialog == null) {
             mProgressDialog = new ProgressDialog(context);
-            mProgressDialog.setMessage(getString(R.string.loading));
+            mProgressDialog.setMessage(context.getString(R.string.loading));
             mProgressDialog.setIndeterminate(true);
         }
         mProgressDialog.show();

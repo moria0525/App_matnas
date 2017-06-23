@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -9,39 +8,39 @@
         android:id="@+id/et_name_event"
         android:layout_width="200dp"
         android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_marginLeft="18dp"
         android:layout_marginStart="18dp"
         android:layout_marginTop="12dp"
         android:ems="10"
-        android:maxLength="20"
-        android:hint="שם האלבום"
+        android:hint="@string/nameAlbum"
         android:inputType="textPersonName"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:maxLength="20" />
 
 
     <ImageButton
         android:id="@+id/gallery_event"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:background="@drawable/gallery_event"
-        android:onClick="onClickUploadPictures"
         android:layout_alignTop="@+id/photo_event"
-        android:layout_toRightOf="@+id/photo_event"
-        android:layout_toEndOf="@+id/photo_event"
         android:layout_marginLeft="35dp"
-        android:layout_marginStart="35dp" />
+        android:layout_marginStart="35dp"
+        android:layout_toEndOf="@+id/photo_event"
+        android:layout_toRightOf="@+id/photo_event"
+        android:background="@drawable/gallery_event"
+        android:onClick="onClickUploadPictures" />
 
     <TextView
         android:id="@+id/photo_event"
         android:layout_width="152dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:text="לחץ על התמונה לבחירת תמונות להעלאה לאלבום"
-        android:layout_below="@+id/et_name_event"
         android:layout_alignLeft="@+id/et_name_event"
-        android:layout_alignStart="@+id/et_name_event" />
+        android:layout_alignStart="@+id/et_name_event"
+        android:layout_below="@+id/et_name_event"
+        android:layout_marginTop="14dp"
+        android:text="@string/text_clickImage" />
 
     <TextView
         android:id="@+id/counter"

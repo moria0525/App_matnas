@@ -4,19 +4,16 @@
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
-    android:theme="@style/AppTheme.NoActionBar"
-    android:background="@color/green">
-
+    android:background="@color/green"
+    android:theme="@style/AppTheme.NoActionBar">
 
 
     <TextView
         android:id="@+id/toolBarText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:textColor="#000" />
+        android:textColor="@color/black"
+        android:textSize="@dimen/medium"
+        android:textStyle="bold" />
 
 </android.support.v7.widget.Toolbar>

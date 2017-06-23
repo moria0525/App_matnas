@@ -17,7 +17,6 @@
         android:layout_alignParentTop="true"
         android:background="@drawable/border">
 
-
         <ImageView
             android:id="@+id/imageViewEsek"
             android:layout_width="90dp"
@@ -39,22 +38,20 @@
             android:layout_toEndOf="@+id/imageViewEsek"
             android:layout_toRightOf="@+id/imageViewEsek"
             android:maxWidth="120dip"
-            android:text="TextView"
-            android:textStyle="bold"
             android:textColor="@color/black"
-            android:textSize="12sp" />
+            android:textSize="@dimen/XXsmall"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_EDes"
-            android:textSize="10sp"
-            android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/tv_EName"
             android:layout_alignStart="@+id/tv_EName"
             android:layout_below="@+id/tv_EName"
             android:maxWidth="140dip"
-            android:text="TextView" />
+            android:textColor="@color/black"
+            android:textSize="@dimen/XXXsmall" />
 
         <Button
             android:id="@+id/waze"
@@ -68,8 +65,8 @@
             android:background="@color/gray"
             android:drawablePadding="0dp"
             android:drawableRight="@drawable/waze"
-            android:text="נווט"
-            android:textSize="16sp" />
+            android:text="@string/waze"
+            android:textSize="@dimen/small" />
 
         <Button
             android:id="@+id/phone"
@@ -81,8 +78,8 @@
             android:background="@color/white"
             android:drawablePadding="-12dp"
             android:drawableRight="@drawable/phone"
-            android:text="חייג"
-            android:textSize="16sp" />
+            android:text="@string/call"
+            android:textSize="@dimen/small" />
 
 
         <Button
@@ -95,8 +92,8 @@
             android:background="@color/white"
             android:drawablePadding="-12dp"
             android:drawableRight="@drawable/sms"
-            android:text="שלח סמס"
-            android:textSize="16sp" />
+            android:text="@string/sms"
+            android:textSize="@dimen/small" />
 
         <Button
             android:id="@+id/share"
@@ -108,8 +105,8 @@
             android:background="@color/white"
             android:drawablePadding="-12dp"
             android:drawableRight="@drawable/share"
-            android:text="שתף"
-            android:textSize="16sp" />
+            android:text="@string/share"
+            android:textSize="@dimen/small" />
 
     </RelativeLayout>
 </android.support.v7.widget.CardView>

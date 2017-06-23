@@ -123,7 +123,7 @@ public class EditBusiness extends AppCompatActivity {
     private void showProgressDialog() {
         if (mProgressDialog == null) {
             mProgressDialog = new ProgressDialog(context);
-            mProgressDialog.setMessage(getString(R.string.loading));
+            mProgressDialog.setMessage(context.getString(R.string.loading));
             mProgressDialog.setIndeterminate(true);
         }
         mProgressDialog.show();

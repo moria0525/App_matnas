@@ -7,4 +7,3 @@
     android:layout_margin="1dp"
     android:adjustViewBounds="true"
     android:scaleType="centerCrop" />
-

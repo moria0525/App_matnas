@@ -55,7 +55,7 @@ public class Register extends AppCompatActivity {
     //This method show form dialog
     public void showDialog(final LayoutInflater inflater) {
 
-        title = R.string.register + name;
+        title = context.getString(R.string.register) + name;
         final AlertDialog.Builder builder = new AlertDialog.Builder(context);
         final View dialogView = inflater.inflate(R.layout.activity_register, null);
         builder.setView(dialogView);

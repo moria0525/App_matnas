@@ -43,9 +43,9 @@ public class AdapterNews extends ArrayAdapter<News> {
     public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
         final View v = inflater.inflate(resource, null);
-        TextView tvName = (TextView) v.findViewById(R.id.textView2);
-        TextView tvDate = (TextView) v.findViewById(R.id.textView3);
-        ImageView img = (ImageView) v.findViewById(R.id.imageView);
+        TextView tvName = (TextView) v.findViewById(R.id.newsName);
+        TextView tvDate = (TextView) v.findViewById(R.id.newsDate);
+        ImageView img = (ImageView) v.findViewById(R.id.imageViewNews);
         String date = getAgo(newsList.get(position).getNewsDate());
 
         tvName.setText(newsList.get(position).getNewsContent());

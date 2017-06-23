@@ -7,7 +7,6 @@
     tools:context="com.example.user.app_matnas.activity_about">
 
 
-
     <LinearLayout
         android:id="@+id/layout_main"
         android:layout_width="match_parent"
@@ -22,17 +21,17 @@
     </LinearLayout>
 
 
-        <TextView
-            android:text="@string/about"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="10dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="60dp"
-            android:id="@+id/textView" />
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="60dp"
+        android:padding="10dp"
+        android:text="@string/about"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
 
 </RelativeLayout>
