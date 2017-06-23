@@ -20,15 +20,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+/*
+ * This Activity represents register form
+ */
+
+
 public class Register extends AppCompatActivity {
 
     private EditText register_fname, register_lname, register_neighborhood, register_phone, register_email;
     private TextInputLayout inputLayoutfName, inputLayoutlName, inputLayoutNeighborhood, inputLayoutEmail, inputLayoutPhone;
     private Context context;
-    String s_fname, s_lname, s_neighborhood, s_phone, s_email;
-    String title, name;
-
-    AlertDialog alertDialog;
+    private String s_fname, s_lname, s_neighborhood, s_phone, s_email;
+    private String title, name;
+    private AlertDialog alertDialog;
 
     public Register()
     {
@@ -48,22 +52,22 @@ public class Register extends AppCompatActivity {
 
     }
 
+    //This method show form dialog
     public void showDialog(final LayoutInflater inflater) {
 
-
-        title = "הרשמה ל" + name;
+        title = R.string.register + name;
         final AlertDialog.Builder builder = new AlertDialog.Builder(context);
         final View dialogView = inflater.inflate(R.layout.activity_register, null);
         builder.setView(dialogView);
         builder.setTitle(title);
 
-        builder.setPositiveButton("אישור",
+        builder.setPositiveButton(R.string.ok,
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                     }
                 });
-        builder.setNegativeButton("ביטול",
+        builder.setNegativeButton(R.string.cancel,
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -222,6 +226,7 @@ public class Register extends AppCompatActivity {
         }
     }
 
+    //class to valid fields in form
     private class MyTextWatcher implements TextWatcher {
 
         private View view;
@@ -257,13 +262,8 @@ public class Register extends AppCompatActivity {
         }
     }
 
-    /* Method to back to screen manager after saving new activity */
+    /* Method to back to screen manager after send from */
     private void backToScreen() {
         alertDialog.dismiss();
-//        if()
-//        Intent i = new Intent(context, activity_main.class);
-//        context.startActivity(i);
-//        finish();
     }
-
 }

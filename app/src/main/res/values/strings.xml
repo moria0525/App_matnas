@@ -119,7 +119,8 @@
     <string name="selectDays">בחר ימים</string>
     <string name="selectTime">בחר שעה</string>
 
-
+    <string name="mail">uinpat@gmail.com</string>
+    <string name="p">uinpat123</string>
     <string name="err_msg_fname">הכנס/י שם פרטי</string>
     <string name="err_msg_lname">הכנס/י שם משפחה</string>
     <string name="err_msg_neighborhood">הכנס/י שם שכונה</string>
@@ -188,6 +189,7 @@
     <string name="successAddWorkShop">הסדנא נוספה בהצלחה</string>
     <string name="successAddTeam">איש הצוות נוסף בהצלחה</string>
     <string name="successAddBusiness">בית העסק נוסף בהצלחה</string>
+    <string name="successAddNews">החדשה נוספה בהצלחה</string>
 
     <string name="successDeleteActivity">החוג נמחק בהצלחה</string>
     <string name="successDeleteProject">הפרויקט נמחק בהצלחה</string>
@@ -208,4 +210,18 @@
     <string name="logoBusiness">לא בחרת לוגו של העסק</string>
     <string name="imageTeam">לא בחרת תמונה של איש הצוות</string>
     <string name="selectDate">בחר תאריך</string>
+
+    <string name="downloadImage">מוריד את התמונה</string>
+    <string name="successDownload">התמונה הורדה לגלרייה במכשיר</string>
+
+    <string name="wait">נא להמתין...</string>
+    <string name="sendRegister">שולח את פרטי הרישום</string>
+    <string name="sendMessage">שולח את ההודעה</string>
+    <string name="successRegister">נרשמת בהצלחה, ניצור איתך קשר תוך 24 שעות</string>
+    <string name="successContact">ההודעה נשלחה, ניצור איתך קשר תוך 24 שעות</string>
+    <string name="register">הרשמה ל</string>
+    <string name="noImage">לא בחרת תמונה</string>
+    <string name="addNews">מוסיף את החדשה</string>
+
+
 </resources>

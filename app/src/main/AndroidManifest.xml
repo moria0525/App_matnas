@@ -83,7 +83,7 @@
             android:name=".FullImage"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SendNews"
+            android:name=".AddNews"
             android:screenOrientation="portrait" />
         <activity
             android:name=".AddProject"

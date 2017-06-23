@@ -19,10 +19,14 @@ public class FirebaseHelper {
     public static String DB_WORKSHOP = "workShop";
     public static String DB_BUSINESS = "business";
     public static String DB_NEWS = "news";
+    public static String DB_IMAGE = "image";
+
     public static String ST_STORAGE_PROJECT = "logoProjects";
     public static String ST_STORAGE_TEAM = "team";
     public static String ST_STORAGE_BUSINESS = "business";
-    public static String DB_IMAGE = "image";
+    public static String ST_STORAGE_NEWS = "news";
+
+
     public static final int GALLERY_CODE = 1;
     public static final int REQUEST_CODE = 1234;
 }

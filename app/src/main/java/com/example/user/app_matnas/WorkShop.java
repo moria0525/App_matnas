@@ -2,6 +2,12 @@ package com.example.user.app_matnas;
 
 import java.io.Serializable;
 
+/**
+ * WorkShop.java
+ * This class represents an object of a WorkShop
+ */
+
+
 public class WorkShop implements Serializable {
 
 

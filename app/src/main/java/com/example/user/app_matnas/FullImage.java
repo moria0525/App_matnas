@@ -15,7 +15,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
+
 import com.bumptech.glide.Glide;
+
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -26,10 +28,15 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 
-public class FullImage extends AppCompatActivity
-{
+/*
+ * This Activity represents an one image from gallery in full screen
+ * Allows download image
+ */
+
+
+public class FullImage extends AppCompatActivity {
     private SectionsPagerAdapter mSectionsPagerAdapter;
-    public ArrayList<String> data = new ArrayList<>();
+    private ArrayList<String> data;
     private int pos;
     private ViewPager mViewPager;
 
@@ -38,9 +45,12 @@ public class FullImage extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.full_image);
 
+        //get url and position from Album.jave
+        data = new ArrayList<>();
         data = getIntent().getStringArrayListExtra("data");
         pos = getIntent().getIntExtra("pos", 0);
 
+        //init scroll page
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), data);
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setPageTransformer(true, new DepthPageTransformer());
@@ -69,12 +79,14 @@ public class FullImage extends AppCompatActivity
 
     }
 
+    //This method to download c urrent image
     public void onClickDownload(View view) {
         DownloadTask downloadTask = new DownloadTask();
         downloadTask.execute(data.get(pos));
     }
 
 
+    //class adapter to paper
     private class SectionsPagerAdapter extends FragmentPagerAdapter {
         public ArrayList<String> data = new ArrayList<>();
 
@@ -162,6 +174,7 @@ public class FullImage extends AppCompatActivity
 
     }
 
+    //class AsyncTask to download image in other process
     private class DownloadTask extends AsyncTask<String, Integer, String> {
 
         ProgressDialog progressDialog;
@@ -169,12 +182,13 @@ public class FullImage extends AppCompatActivity
         @Override
         protected void onPreExecute() {
             progressDialog = new ProgressDialog(FullImage.this);
-            progressDialog.setTitle("מוריד את התמונה..");
+            progressDialog.setTitle(R.string.downloadImage);
             progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
             progressDialog.setMax(100);
             progressDialog.setProgress(0);
             progressDialog.show();
         }
+
         /**
          * Background task
          */
@@ -206,7 +220,7 @@ public class FullImage extends AppCompatActivity
                 /**
                  * Create an output file to store the image for download
                  */
-                File output_file = new File(new_folder, System.currentTimeMillis()+".jpg");
+                File output_file = new File(new_folder, System.currentTimeMillis() + ".jpg");
                 OutputStream outputStream = new FileOutputStream(output_file);
 
                 InputStream inputStream = new BufferedInputStream(url.openStream(), 8192);
@@ -228,7 +242,7 @@ public class FullImage extends AppCompatActivity
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            return "התמונה הורדה לגלרייה במכשיר";
+            return getString(R.string.successDownload);
         }
 
         @Override

@@ -50,23 +50,25 @@ import java.util.Locale;
 
 import static com.example.user.app_matnas.AdapterMain.countNotification;
 import static com.example.user.app_matnas.AdapterMain.notification;
+import static com.example.user.app_matnas.FirebaseHelper.*;
 
-public class SendNews extends AppCompatActivity {
+/*
+ * This Activity represents an screen to add news
+ */
+
+
+public class AddNews extends AppCompatActivity {
     private EditText content;
     private Toolbar toolbar;
     private TextView toolBarText;
     private ImageView image;
     private RadioGroup radioGroup;
     private RadioButton rb_send;
-    public static final int GALLERY_CODE = 1;
     private boolean flagSend = false;
     private Uri imgUri;
-    private DatabaseReference mDatabase;
-    private StorageReference mStorageRef;
-    public static String FB_STORAGE = "news";
     private String date;
     private String s_content;
-    boolean click = false;
+    private boolean click = false;
     private Bitmap selectedImage;
     private String[] tmp;
     private News news;
@@ -77,19 +79,19 @@ public class SendNews extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_news);
 
+        //find if id's fields and init variables
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         toolBarText = (TextView) findViewById(R.id.toolBarText);
-        toolBarText.setText("הוספת חדשות");
+        toolBarText.setText(getResources().getStringArray(R.array.actions)[1]);
 
         content = (EditText) findViewById(R.id.et_content_news);
         image = (ImageView) findViewById(R.id.imageNews);
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
         rb_send = (RadioButton) findViewById(R.id.rb_send);
         tmp = new String[4];
-        mDatabase = FirebaseDatabase.getInstance().getReference("news");
-        mStorageRef = FirebaseStorage.getInstance().getReference();
+
+
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 
             @Override
@@ -124,12 +126,12 @@ public class SendNews extends AppCompatActivity {
                 image.setImageBitmap(selectedImage);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
-                Toast.makeText(SendNews.this, "שגיאה", Toast.LENGTH_LONG).show();
+                Toast.makeText(AddNews.this, R.string.error, Toast.LENGTH_LONG).show();
             }
 
         } else {
             click = false;
-            Toast.makeText(SendNews.this, "לא בחרת תמונה", Toast.LENGTH_LONG).show();
+            Toast.makeText(AddNews.this, R.string.noImage, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -157,6 +159,8 @@ public class SendNews extends AppCompatActivity {
 
     }
 
+
+    //This method save news
     @SuppressWarnings("VisibleForTests")
     private void saveFields() {
 
@@ -176,17 +180,17 @@ public class SendNews extends AppCompatActivity {
             date = format.format(new Date());
 
             final ProgressDialog dialog = new ProgressDialog(this);
-            dialog.setTitle("מוסיף את החדשה");
+            dialog.setTitle(R.string.addNews);
             dialog.show();
             //Get the storage reference
-            StorageReference ref = mStorageRef.child(FB_STORAGE).child(date);
+            StorageReference ref = mStorageRef.child(ST_STORAGE_NEWS).child(date);
 
             if (!click) {
                 news = new News(date, s_content, "", flagSend);
                 try {
-                    mDatabase.child(date).setValue(news);
+                    mDatabaseRef.child(DB_NEWS).child(date).setValue(news);
                 } catch (DatabaseException e) {
-                    Toast.makeText(getApplicationContext(), "שגיאה: "+e.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), R.string.error + " " + e.getMessage(), Toast.LENGTH_LONG).show();
                     e.printStackTrace();
                 }
 
@@ -198,9 +202,9 @@ public class SendNews extends AppCompatActivity {
                         //add data to DB
                         news = new News(date, s_content, taskSnapshot.getDownloadUrl().toString(), flagSend);
                         try {
-                            mDatabase.child(date).setValue(news);
+                            mDatabaseRef.child(DB_NEWS).child(date).setValue(news);
                         } catch (DatabaseException e) {
-                            Toast.makeText(getApplicationContext(), "שגיאה: " +e.getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), R.string.error + " " + e.getMessage(), Toast.LENGTH_LONG).show();
                             e.printStackTrace();
                         }
                     }
@@ -213,7 +217,7 @@ public class SendNews extends AppCompatActivity {
                                 //Dismiss dialog when error
                                 dialog.dismiss();
                                 //Display err toast msg
-                                Toast.makeText(getApplicationContext(), "שגיאה: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), R.string.error + " " + e.getMessage(), Toast.LENGTH_LONG).show();
                             }
                         })
                         .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
@@ -228,8 +232,8 @@ public class SendNews extends AppCompatActivity {
                         });
             }
             countNotification++;
-            Toast.makeText(getApplicationContext(), "החדשה נוספה בהצלחה", Toast.LENGTH_LONG).show();
-            //update count //TODO
+            Toast.makeText(getApplicationContext(), R.string.successAddNews, Toast.LENGTH_LONG).show();
+
             notification.setVisibility(View.VISIBLE);
             notification.setText("" + countNotification);
             if (flagSend) {
@@ -243,10 +247,10 @@ public class SendNews extends AppCompatActivity {
 
     }
 
-
+    //send notification
     private void Notification() {
 
-        mDatabase.child(date).addValueEventListener(new ValueEventListener() {
+        mDatabaseRef.child(DB_NEWS).child(date).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -301,7 +305,7 @@ public class SendNews extends AppCompatActivity {
     }
 
 
-    //  AsyncTask
+    //AsyncTask Notification
     private class notiImage extends AsyncTask<String, Void, Bitmap> {
 
         @Override
@@ -332,8 +336,8 @@ public class SendNews extends AppCompatActivity {
         @Override
         protected void onPostExecute(Bitmap result) {
             Notification noti;
-            Intent intent = new Intent(SendNews.this, activity_news.class);
-            PendingIntent pIntent = PendingIntent.getActivity(SendNews.this, (int) System.currentTimeMillis(), intent, 0);
+            Intent intent = new Intent(AddNews.this, activity_news.class);
+            PendingIntent pIntent = PendingIntent.getActivity(AddNews.this, (int) System.currentTimeMillis(), intent, 0);
 
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
                 if (!click) {
