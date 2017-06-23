@@ -1,8 +1,6 @@
 # Android Application to Community Center - 'Fanny Kaplan'
 
-
-![project logo ()](https://github.com/moria0525/App_matnas/blob/master/Docs/banner.jpg)
-
+<img src="https://github.com/moria0525/App_matnas/blob/master/Docs/banner.jpg" width="500">
 
 ## Contact Info
 Our Email
@@ -11,10 +9,12 @@ moria0525@gmail.com
 
 ## [Trello](https://trello.com/b/5Cuwpy2x/appmatnas)
 
+<img src="https://github.com/moria0525/App_matnas/blob/master/Docs/trello.png" width="200">
+
 ## Disclaimer
 This project is developed as part of the requirements for a [Software Engineering B.Sc](http://projects.jce.ac.il/moodle/) at the Software Engineering Department - [Azrieli - Jerusalem College of Engineering](http://www.jce.ac.il/), Jerusalem, Israel.
 
-[JCE](https://github.com/moria0525/App_matnas/blob/master/Docs/logo_jce.png)
+![JCE](https://github.com/moria0525/App_matnas/blob/master/Docs/logo_jce.png)
 
 
 Please visit our wiki for furthur project info: 
