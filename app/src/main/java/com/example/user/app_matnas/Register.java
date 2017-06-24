@@ -24,7 +24,6 @@ import android.widget.Toast;
  * This Activity represents register form
  */
 
-
 public class Register extends AppCompatActivity {
 
     private EditText register_fname, register_lname, register_neighborhood, register_phone, register_email;
@@ -34,13 +33,11 @@ public class Register extends AppCompatActivity {
     private String title, name;
     private AlertDialog alertDialog;
 
-    public Register()
-    {
+    public Register() {
 
     }
 
-    public Register(String name, Context context)
-    {
+    public Register(String name, Context context) {
 
         this.name = name;
         this.context = context;
@@ -77,35 +74,35 @@ public class Register extends AppCompatActivity {
         alertDialog.show();
         //Overriding the handler immediately after show is probably a better approach than OnShowListener as described below
         alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                register_fname = (EditText) dialogView.findViewById(R.id.register_fname);
-                register_lname = (EditText) dialogView.findViewById(R.id.register_lname);
-                register_neighborhood = (EditText) dialogView.findViewById(R.id.register_neighborhood);
-                register_phone = (EditText) dialogView.findViewById(R.id.register_phone);
-                register_email = (EditText) dialogView.findViewById(R.id.register_email);
+                                                                                  @Override
+                                                                                  public void onClick(View v) {
+                                                                                      register_fname = (EditText) dialogView.findViewById(R.id.register_fname);
+                                                                                      register_lname = (EditText) dialogView.findViewById(R.id.register_lname);
+                                                                                      register_neighborhood = (EditText) dialogView.findViewById(R.id.register_neighborhood);
+                                                                                      register_phone = (EditText) dialogView.findViewById(R.id.register_phone);
+                                                                                      register_email = (EditText) dialogView.findViewById(R.id.register_email);
 
-                inputLayoutfName = (TextInputLayout) dialogView.findViewById(R.id.input_layout_fname);
-                inputLayoutlName = (TextInputLayout) dialogView.findViewById(R.id.input_layout_lname);
-                inputLayoutNeighborhood = (TextInputLayout) dialogView.findViewById(R.id.input_layout_neighborhood);
-                inputLayoutPhone = (TextInputLayout) dialogView.findViewById(R.id.input_layout_phone);
-                inputLayoutEmail = (TextInputLayout) dialogView.findViewById(R.id.input_layout_email);
+                                                                                      inputLayoutfName = (TextInputLayout) dialogView.findViewById(R.id.input_layout_fname);
+                                                                                      inputLayoutlName = (TextInputLayout) dialogView.findViewById(R.id.input_layout_lname);
+                                                                                      inputLayoutNeighborhood = (TextInputLayout) dialogView.findViewById(R.id.input_layout_neighborhood);
+                                                                                      inputLayoutPhone = (TextInputLayout) dialogView.findViewById(R.id.input_layout_phone);
+                                                                                      inputLayoutEmail = (TextInputLayout) dialogView.findViewById(R.id.input_layout_email);
 
-                register_fname.addTextChangedListener(new MyTextWatcher(register_fname));
-                register_lname.addTextChangedListener(new MyTextWatcher(register_lname));
-                register_neighborhood.addTextChangedListener(new MyTextWatcher(register_neighborhood));
-                register_phone.addTextChangedListener(new MyTextWatcher(register_phone));
-                register_email.addTextChangedListener(new MyTextWatcher(register_email));
+                                                                                      register_fname.addTextChangedListener(new MyTextWatcher(register_fname));
+                                                                                      register_lname.addTextChangedListener(new MyTextWatcher(register_lname));
+                                                                                      register_neighborhood.addTextChangedListener(new MyTextWatcher(register_neighborhood));
+                                                                                      register_phone.addTextChangedListener(new MyTextWatcher(register_phone));
+                                                                                      register_email.addTextChangedListener(new MyTextWatcher(register_email));
 
-                s_fname = register_fname.getText().toString().trim();
-                s_lname = register_lname.getText().toString().trim();
-                s_neighborhood = register_neighborhood.getText().toString().trim();
-                s_phone = register_phone.getText().toString().trim();
-                s_email = register_email.getText().toString().trim();
+                                                                                      s_fname = register_fname.getText().toString().trim();
+                                                                                      s_lname = register_lname.getText().toString().trim();
+                                                                                      s_neighborhood = register_neighborhood.getText().toString().trim();
+                                                                                      s_phone = register_phone.getText().toString().trim();
+                                                                                      s_email = register_email.getText().toString().trim();
 
-                submitForm();
-            }
-          }
+                                                                                      submitForm();
+                                                                                  }
+                                                                              }
         );
 
         alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setOnClickListener(new View.OnClickListener() {

@@ -119,6 +119,8 @@
     <string name="selectDays">בחר ימים</string>
     <string name="selectTime">בחר שעה</string>
 
+    <string name="mail">uinpat@gmail.com</string>
+    <string name="p">uinpat123</string>
     <string name="err_msg_fname">הכנס/י שם פרטי</string>
     <string name="err_msg_lname">הכנס/י שם משפחה</string>
     <string name="err_msg_neighborhood">הכנס/י שם שכונה</string>
