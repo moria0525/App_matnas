@@ -2,6 +2,9 @@
 
 <img src="https://github.com/moria0525/App_matnas/blob/master/Docs/banner.jpg" width="500">
 
+## The App
+<img src="https://github.com/moria0525/App_matnas/blob/master/Docs/gif.gif">
+
 ## Contact Info
 Our Email
 moria0525@gmail.com
@@ -20,18 +23,19 @@ This project is developed as part of the requirements for a [Software Engineerin
 Please visit our wiki for furthur project info: 
 
 ### Project Documents
-- [Project Idea](https://github.com/moria0525/App_matnas/blob/master/Docs/%D7%93%D7%95%D7%97%20%D7%94%D7%A6%D7%A2%D7%94%20%D7%9C%D7%90%D7%A4%D7%9C%D7%99%D7%A7%D7%A6%D7%99%D7%94%20%D7%9C%D7%9E%D7%A8%D7%9B%D7%96%20%D7%A7%D7%94%D7%99%D7%9C%D7%AA%D7%99%20%D7%A4%D7%90%D7%A0%D7%99%20%D7%A7%D7%A4%D7%9C%D7%9F%20-%20%D7%9E%D7%95%D7%A8%D7%99%D7%94%20%D7%A8%D7%91%D7%99%D7%95%D7%A3%20.pdf)
-- [Project Inception]
-- [Software Requirements Specification]
-- [Software Design Specification]
-- [Organization Facebook page] (https://www.facebook.com/matnaspat)
+- [Report Proposition](https://github.com/moria0525/App_matnas/wiki/Iteration-1---Proposition#report-proposition)
+
+- [Report Prototype](https://github.com/moria0525/App_matnas/wiki/Iteration-2---Prototype#report-prototype)
+
+- [Report Construction](https://github.com/moria0525/App_matnas/wiki/Iteration-3---Construction#report-construction)
+
+- [Report Delivery](https://github.com/moria0525/App_matnas/wiki/Iteration-4---Delivery#report-final)
+
 
 ### Iteration Pages
-- [Iteration 0 - ZFR]
-- [Iteration 1 - MVP]
-- [Iteration 2 - BPA]
-- [Iteration 3 - PES]
-- [Iteration 4 - SMF]
-
-
+  - [Iteration 0 - Starting](https://github.com/moria0525/App_matnas/wiki/Iteration-0---Starting)
+  - [Iteration 1 - Proposition](https://github.com/moria0525/App_matnas/wiki/Iteration-1---Proposition)
+  - [Iteration 2 - Prototype](https://github.com/moria0525/App_matnas/wiki/Iteration-2---Prototype)
+  - [Iteration 3 - Construction](https://github.com/moria0525/App_matnas/wiki/Iteration-3---Construction)
+  - [Iteration 4 - Delivery](https://github.com/moria0525/App_matnas/wiki/Iteration-4---Delivery)
 
