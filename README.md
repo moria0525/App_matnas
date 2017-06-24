@@ -3,7 +3,7 @@
 <img src="https://github.com/moria0525/App_matnas/blob/master/Docs/banner.jpg" width="500">
 
 ## The App
-<a href="https://imgflip.com/gif/1rggja"><img src="https://i.imgflip.com/1rggja.gif" title="made at imgflip.com"/></a>
+<img src="https://github.com/moria0525/App_matnas/blob/master/Docs/gif.gif">
 
 ## Contact Info
 Our Email
