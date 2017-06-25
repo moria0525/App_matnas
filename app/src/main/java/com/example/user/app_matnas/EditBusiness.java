@@ -23,11 +23,11 @@ import static com.example.user.app_matnas.FirebaseHelper.*;
  */
 
 public class EditBusiness extends AppCompatActivity {
-    public List<Business> busList;
-    String name;
-    String list[];
-    Context context;
-    int active;
+    private List<Business> busList;
+    private String name;
+    private String list[];
+    private Context context;
+    private int active;
     private ProgressDialog mProgressDialog;
 
 

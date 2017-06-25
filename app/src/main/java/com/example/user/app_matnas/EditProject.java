@@ -33,11 +33,11 @@ import static com.example.user.app_matnas.FirebaseHelper.*;
  */
 
 public class EditProject extends AppCompatActivity {
-    public List<Project> proList;
-    String name;
-    String list[];
-    String active;
-    Context context;
+    private List<Project> proList;
+    private String name;
+    private String list[];
+    private String active;
+    private Context context;
     private ProgressDialog mProgressDialog;
 
 

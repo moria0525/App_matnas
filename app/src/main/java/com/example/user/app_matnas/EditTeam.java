@@ -23,11 +23,11 @@ import static com.example.user.app_matnas.FirebaseHelper.*;
 
 
 public class EditTeam extends AppCompatActivity {
-    public List<Team> teamList;
-    String name;
-    String list[];
-    String active;
-    Context context;
+    private List<Team> teamList;
+    private String name;
+    private String list[];
+    private String active;
+    private Context context;
     private ProgressDialog mProgressDialog;
 
 

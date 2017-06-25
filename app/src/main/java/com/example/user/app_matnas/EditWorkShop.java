@@ -19,13 +19,11 @@ import java.util.List;
 import static com.example.user.app_matnas.FirebaseHelper.*;
 
 
-
-
 /*This Activity to edit WorkShop in app
  */
 
 public class EditWorkShop extends AppCompatActivity {
-    public List<WorkShop> wsList;
+    private List<WorkShop> wsList;
     private String name;
     private String list[];
     private String active;
